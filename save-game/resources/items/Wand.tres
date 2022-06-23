@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/magic_wand.png" type="Texture" id=1]
+[ext_resource path="res://resources/ItemData.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+unique_id = "wand"
+display_name = "Wand"
+description = "Makes magic"
+icon = ExtResource( 1 )

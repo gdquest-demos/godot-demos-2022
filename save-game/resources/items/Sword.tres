@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://resources/ItemData.gd" type="Script" id=1]
+[ext_resource path="res://assets/sword.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+unique_id = "sword"
+display_name = "Sword"
+description = "A sword. Wow. Much cut"
+icon = ExtResource( 2 )

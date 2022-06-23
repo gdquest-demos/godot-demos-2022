@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interface/theme.tres" type="Theme" id=1]
+[ext_resource path="res://interface/UISavePanel.gd" type="Script" id=2]
+
+[node name="UISavePanel" type="Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = -144.0
+margin_right = 484.0
+margin_bottom = -56.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="HBoxContainer"]
+margin_right = 184.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="HBoxContainer"]
+margin_left = 204.0
+margin_right = 388.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+text = "Load"
