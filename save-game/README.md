@@ -5,6 +5,8 @@ This project goes with two youtube videos dedicated to saving game data with res
 1. [Godot makes saves so easy!](https://youtu.be/wSq1QJ-g91M)
 2. The easy and robust way to save games in Godot (coming soon)
 
+![](screenshot.png)
+
 ## Who this is for
 
 Resources simplify saving and loading player data, but they also have limitations, as explained below.
