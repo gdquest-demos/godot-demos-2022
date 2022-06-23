@@ -43,4 +43,4 @@ func set_stats(new_stats: Character) -> void:
 
 
 func toggle_camera_offset(is_offset: bool) -> void:
-	camera.position.x = 480.0 if is_offset else 0.0
+	camera.position.x = 424.0 if is_offset else 0.0

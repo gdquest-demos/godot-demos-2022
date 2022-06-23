@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 420.0
-margin_bottom = 280.0
+margin_bottom = 292.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -23,35 +23,35 @@ custom_constants/margin_bottom = 20
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 400.0
-margin_bottom = 260.0
+margin_bottom = 272.0
 custom_constants/separation = 10
 
 [node name="PlayerPositionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 380.0
-margin_bottom = 28.0
+margin_bottom = 34.0
 text = "Global position: "
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-margin_top = 38.0
+margin_top = 44.0
 margin_right = 380.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 custom_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 68.0
+margin_top = 74.0
 margin_right = 380.0
-margin_bottom = 96.0
+margin_bottom = 108.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 102.0
-margin_bottom = 28.0
+margin_right = 124.0
+margin_bottom = 34.0
 text = "Run speed:"
 
 [node name="RunSpeedSlider" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 122.0
+margin_left = 144.0
 margin_right = 380.0
-margin_bottom = 28.0
+margin_bottom = 34.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = 200.0
@@ -59,60 +59,60 @@ max_value = 1000.0
 value = 600.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 106.0
+margin_top = 118.0
 margin_right = 380.0
-margin_bottom = 144.0
+margin_bottom = 156.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_top = 5.0
-margin_right = 274.0
-margin_bottom = 33.0
+margin_top = 2.0
+margin_right = 248.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 text = "Strength"
 
 [node name="StrengthSpinbox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 294.0
+margin_left = 268.0
 margin_right = 380.0
 margin_bottom = 38.0
 max_value = 99.0
 rounded = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 154.0
+margin_top = 166.0
 margin_right = 380.0
-margin_bottom = 192.0
+margin_bottom = 204.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_top = 5.0
-margin_right = 274.0
-margin_bottom = 33.0
+margin_top = 2.0
+margin_right = 248.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 text = "Endurance"
 
 [node name="EnduranceSpinbox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 294.0
+margin_left = 268.0
 margin_right = 380.0
 margin_bottom = 38.0
 max_value = 99.0
 rounded = true
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 202.0
+margin_top = 214.0
 margin_right = 380.0
-margin_bottom = 240.0
+margin_bottom = 252.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
-margin_top = 5.0
-margin_right = 274.0
-margin_bottom = 33.0
+margin_top = 2.0
+margin_right = 248.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 text = "Intelligence"
 
 [node name="IntelligenceSpinbox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
-margin_left = 294.0
+margin_left = 268.0
 margin_right = 380.0
 margin_bottom = 38.0
 max_value = 99.0

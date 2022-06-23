@@ -99,7 +99,7 @@ process_material = SubResource( 16 )
 texture = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -40.5866 )
+position = Vector2( 0, -130 )
 current = true
 smoothing_enabled = true
 smoothing_speed = 7.0

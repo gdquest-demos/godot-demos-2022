@@ -38,28 +38,28 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_right = 80.0
+margin_right = 60.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 80, 0 )
+rect_min_size = Vector2( 60, 0 )
 mouse_filter = 2
-size_flags_horizontal = 0
 expand = true
 stretch_mode = 6
 
 [node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-margin_left = 100.0
+margin_left = 80.0
 margin_top = 23.0
-margin_right = 195.0
+margin_right = 235.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 3
 valign = 1
+clip_text = true
 
 [node name="AmountLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-margin_left = 215.0
+margin_left = 255.0
 margin_top = 23.0
 margin_right = 295.0
 margin_bottom = 37.0
-rect_min_size = Vector2( 80, 0 )
+rect_min_size = Vector2( 40, 0 )
 align = 2
 valign = 1

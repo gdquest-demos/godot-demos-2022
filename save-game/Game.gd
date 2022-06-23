@@ -1,3 +1,5 @@
+# Takes care of loading or creating a new save game and provides appropriate
+# resources to the user interface and the player.
 extends Node2D
 
 var _save: SaveGame
@@ -11,7 +13,11 @@ onready var _ui_info_display := $UI/UIInfoDisplay
 func _ready() -> void:
 	_ui_save_panel.connect("reload_requested", self, "_create_or_load_save")
 	_ui_save_panel.connect("save_requested", self, "_save_game")
+
 	_create_or_load_save()
+	# This function offsets the camera when the inventory menu is open to not 
+	# hide the player.
+	_player.toggle_camera_offset(_ui_inventory.visible)
 
 
 func _unhandled_input(event: InputEvent) -> void:

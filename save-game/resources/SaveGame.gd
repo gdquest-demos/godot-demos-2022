@@ -27,7 +27,8 @@ static func load_savegame() -> Resource:
 	
 	# /!\ Workaround for bug https://github.com/godotengine/godot/issues/59686
 	# Without that, sub-resources will not reload from the saved data.
-	# We copy the SaveGame resource's data to a temporary file, load that file as a resource, and make it take over the save game.
+	# We copy the SaveGame resource's data to a temporary file, load that file
+	# as a resource, and make it take over the save game.
 
 	# We first load the save game resource's content as text and store it.
 	var file := File.new()

@@ -1,6 +1,5 @@
 extends Node
 
-
 # Maps unique IDs of items to ItemData instances.
 var ITEMS := {}
 

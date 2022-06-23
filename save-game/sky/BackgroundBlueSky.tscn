@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sky/cloud_c.png" type="Texture" id=4]
+[ext_resource path="res://sky/LoopClouds.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Shader" id=30]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment(){
+	vec4 base_color = texture(TEXTURE,UV);
+	vec4 new_color = mix(base_color,color,color.a*base_color.a);
+	new_color.a = base_color.a;
+	COLOR = new_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=32]
+shader = SubResource( 30 )
+shader_param/color = Color( 0.317647, 0.768627, 0.933333, 0.152941 )
+
+[sub_resource type="ShaderMaterial" id=31]
+shader = SubResource( 30 )
+shader_param/color = Color( 0.317647, 0.768627, 0.933333, 0.458824 )
+
+[sub_resource type="Animation" id=36]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cloud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 576, 988 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "loop"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cloud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 576, 988 ), Vector2( 2496, 988 ) ]
+}
+
+[node name="BackgroundBlueSky" type="ParallaxBackground"]
+
+[node name="BlueSky" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.419608, 0.772549, 0.882353, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LayerBottom" type="ParallaxLayer" parent="."]
+modulate = Color( 1, 1, 1, 0.384314 )
+material = SubResource( 32 )
+scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 4000, 2000 )
+
+[node name="LayerMiddle" type="ParallaxLayer" parent="."]
+material = SubResource( 31 )
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="LoopClouds" parent="LayerMiddle" instance=ExtResource( 5 )]
+
+[node name="LayerTop" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 3000, 1500 )
+
+[node name="Cloud" type="Sprite" parent="LayerTop"]
+position = Vector2( 576, 988 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="CloudMirror" type="Sprite" parent="LayerTop/Cloud"]
+position = Vector2( -1920, 0 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LayerTop"]
+autoplay = "loop"
+playback_speed = 0.2
+anims/RESET = SubResource( 36 )
+anims/loop = SubResource( 37 )
+
+[node name="Fade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.545098, 0.72549, 0.823529, 0.14902 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
