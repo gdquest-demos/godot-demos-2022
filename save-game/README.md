@@ -1,6 +1,6 @@
 # Save game with resources
 
-This project goes with two youtube videos dedicated to saving game data with resources.
+This project goes with two youtube videos dedicated to saving game data with resources. It shows how to save and load character stats, the player's position on the map, and an inventory. This shows you all the techniques you need to then save and load more complex data.
 
 1. [Godot makes saves so easy!](https://youtu.be/wSq1QJ-g91M)
 2. The easy and robust way to save games in Godot (coming soon)
@@ -9,11 +9,19 @@ This project goes with two youtube videos dedicated to saving game data with res
 
 ## Who this is for
 
+You need to be comfortable with both Godot and GDScript to read this demo's code.
+
 Resources simplify saving and loading player data, but they also have limitations, as explained below.
 
 Using resources for saving games is something we can recommend to indie developers, especially solo ones or small teams.
 
 The larger and more complex the game, the more you may want to design your own save data format instead.
+
+## How this demo works
+
+You'll find all the resources we save as part of the `SameGame` in the `resources/` folder.
+
+We use the `Game.gd` script to pass resources like the `Inventory` or the `Character` to relevant nodes. Then, when the inventory UI or the character stats UI change a value, it automatically affects the player and the `SaveGame` resource.
 
 ## Why not JSON
 
@@ -49,7 +57,7 @@ If you do any of the above, you will get errors when trying to load the saved da
 
 You can prevent those issues with the following techniques:
 
-- You can store all saved resources in a folder and never move or rename them. That's how we do it typically.
+- You can store all resource scripts in a folder and never move or rename them. That's how we do it typically.
 
 - Instead of nesting resources, you can use dictionaries and arrays to save data, reducing the number of referenced resource scripts. But you'll lose some auto-completion and error reporting. See this project's `Inventory` resource for an example.
 
@@ -71,10 +79,10 @@ This caching system is what allows you to load resources from anywhere in your p
 
 There are two workarounds until this bug is fixed:
 
-1. Don't use sub-resources. If your game isn't too big, you may consider having all the properties you need in the SaveGame resource, or you could save a handful of resources separately. I haven't pushed this approach, but it could be nice, as it'd allow you to save and load the inventory from the inventory menu, etc. But your save data would be split into multiple files.
-2. Copy the save game file's content to a temporary file to avoid Godot's cache and force it to load everything.
+1. *Don't use sub-resources.* If your game isn't too big, you may consider having all the properties you need in the SaveGame resource, or you could save a handful of resources separately. I haven't pushed this approach, but it could be nice, as it'd allow you to save and load the inventory from the inventory menu, etc. But your save data would be split into multiple files.
+2. *Copy the save game file's content* to a temporary file to avoid Godot's cache and force it to load everything.
 
-In this project, we use the trick of copying the save game file's content. See SaveGame.gd's load_savegame() function for the code. Despite this bug, I'd say it's still worth using resources for how easy it is to share them in memory.
+In this project, we use the second trick, copying the save game file's content. See `SaveGame.gd`'s `load_savegame()` function for the code. Despite this bug, I'd say it's still worth using resources for the code it saves you in the long run and how easy it is to share them in memory.
 
 ## Rewriting resource paths
 
