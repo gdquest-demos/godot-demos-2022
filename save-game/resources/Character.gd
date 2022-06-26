@@ -1,7 +1,7 @@
 class_name Character
 extends Resource
 
-# Use to display the character's name in-game
+# You could use this to display the character's name in-game, in menus, dialogues...
 export var display_name := "Godot"
 export var run_speed := 600.0
 

@@ -1,11 +1,15 @@
 class_name SaveGame
 extends Resource
 
+# You must use the user:// path prefix when saving the player's data. The .tres
+# extension stands for "text resource."
 const SAVE_GAME_PATH := "user://save.tres"
 
-# Use this to detect old player saves and update their data
+# Use this to detect old player saves and update their data.
 export var version := 1
 
+# We directly reference the characters stats and inventory in the save game resource.
+# When saving this resource, they'll get saved alongside it. 
 export var character: Resource
 export var inventory: Resource
 
@@ -13,6 +17,7 @@ export var map_name := ""
 export var global_position := Vector2.ZERO
 
 
+# The next three functions are just to keep the save API inside of the SaveGame resource.
 func write_savegame() -> void:
 	ResourceSaver.save(SAVE_GAME_PATH, self)
 
@@ -23,6 +28,7 @@ static func save_exists() -> bool:
 
 static func load_savegame() -> Resource:
 	if not ResourceLoader.has_cached(SAVE_GAME_PATH):
+		# Once the resource caching bug is fixed, you will only need this line of code to load the save game.
 		return ResourceLoader.load(SAVE_GAME_PATH, "", true)
 	
 	# /!\ Workaround for bug https://github.com/godotengine/godot/issues/59686

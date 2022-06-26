@@ -1,6 +1,14 @@
 class_name Inventory
 extends Resource
 
+# Ideally, I would like to store an array of item resources here, but this is
+# not well-supported in Godot 3. Once loaded back, the item resources would lose
+# their type information. This is because GDScript does not support typed arrays in Godot 3.
+#
+# So instead, we use a plain dictionary with strings and numbers. Keys are the
+# items' unique ids and values represent the owned amount.
+#
+# Note that dictionaries preserve their order in GDScript.
 export var items := {}
 
 

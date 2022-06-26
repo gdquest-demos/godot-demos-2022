@@ -2,6 +2,7 @@
 # resources to the user interface and the player.
 extends Node2D
 
+# We always keep a reference to the SaveGame resource here to prevent it from unloading.
 var _save: SaveGame
 
 onready var _player := $PlayerCharacter
