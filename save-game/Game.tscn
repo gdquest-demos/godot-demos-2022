@@ -23,17 +23,17 @@ margin_top = 32.0
 margin_right = -32.0
 margin_bottom = -24.0
 
+[node name="UIInfoDisplay" parent="UI" instance=ExtResource( 5 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 452.0
+margin_bottom = 324.0
+
 [node name="UISavePanel" parent="UI" instance=ExtResource( 4 )]
 margin_left = 32.0
 margin_top = -112.0
 margin_right = 452.0
 margin_bottom = -24.0
-
-[node name="UIInfoDisplay" parent="UI" instance=ExtResource( 5 )]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 452.0
-margin_bottom = 312.0
 
 [node name="BackgroundBlueSky" parent="." instance=ExtResource( 6 )]
 

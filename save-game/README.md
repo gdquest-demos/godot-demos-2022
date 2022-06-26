@@ -75,6 +75,10 @@ Godot's scene files (tscn) are resources. If you've ever made a huge 2D level, y
 
 In Godot 3.4, resources have a [bug when loading nested resources](https://github.com/godotengine/godot/issues/59686), like for our save game file. Godot will not reload sub-resources as it considers them cached.
 
+Our teammate's already [coded a fix](https://github.com/godotengine/godot/pull/62408) and we're waiting for it to get merged.
+
+In the meantime, you need a workaround you'll find in this demo.
+
 This caching system is what allows you to load resources from anywhere in your projects and only have them loaded once and shared.
 
 There are two workarounds until this bug is fixed:

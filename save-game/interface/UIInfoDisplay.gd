@@ -1,6 +1,9 @@
 extends PanelContainer
 
+# The character stats to display and update with this interface.
 var character: Character setget set_character
+
+var _ignore_value_change := false
 
 onready var _player_position_label := $MarginContainer/VBoxContainer/PlayerPositionLabel as Label
 
@@ -20,10 +23,13 @@ func _ready() -> void:
 func update_player_position(global_position: Vector2) -> void:
 	_player_position_label.text = "Global position: " + str(global_position.round())
 
-var _ignore_value_change := false
 
 func set_character(new_character: Character) -> void:
 	character = new_character
+	# Changing the spin box value triggers their value_changed signal, which we
+	# use to update the character stats using the panel.
+	# This boolean prevents changing the spinbox values from code from
+	# overwriting the character resource.
 	_ignore_value_change = true
 
 	_run_speed_slider.value = character.run_speed

@@ -30,17 +30,17 @@ custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 720.0
-margin_bottom = 28.0
+margin_bottom = 34.0
 text = "Inventory"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 48.0
+margin_top = 54.0
 margin_right = 720.0
-margin_bottom = 52.0
+margin_bottom = 58.0
 
 [node name="ItemGrid" type="GridContainer" parent="VBoxContainer"]
-margin_top = 72.0
+margin_top = 78.0
 margin_right = 720.0
 margin_bottom = 680.0
 size_flags_vertical = 3

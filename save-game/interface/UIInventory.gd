@@ -2,6 +2,8 @@ extends Control
 
 const UIItemScene := preload("UIItem.tscn")
 
+# This menu displays the content of this inventory resource. Clicking the 
+# buttons to add or remove items directly removes them from this resource.
 var inventory: Inventory = null setget set_inventory
 
 onready var _item_grid := $VBoxContainer/ItemGrid as GridContainer

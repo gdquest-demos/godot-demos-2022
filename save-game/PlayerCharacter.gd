@@ -10,6 +10,7 @@ const DIRECTION_TO_FRAME := {
 }
 
 var stats: Character setget set_stats
+
 var velocity := Vector2.ZERO
 
 onready var sprite := $Godot
@@ -23,7 +24,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
 	var desired_velocity := stats.run_speed * direction
+	
 	var steering := desired_velocity - velocity
 	velocity += steering * DRAG_FACTOR
 	velocity = move_and_slide(velocity, Vector2.ZERO)
