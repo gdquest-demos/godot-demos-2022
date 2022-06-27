@@ -13,6 +13,13 @@ onready var _add_item_button := $VBoxContainer/HBoxContainer/AddItemButton as Bu
 onready var _remove_item_button := $VBoxContainer/HBoxContainer/RemoveItemButton as Button
 
 func _ready() -> void:
+	# If running the scene with F6, we create an inventory for testing purposes.
+	if get_parent() == get_tree().root:
+		var test_inventory := Inventory.new()
+		test_inventory.add_item("healing_gem", 3)
+		test_inventory.add_item("sword", 2)
+		set_inventory(test_inventory)
+
 	_add_item_button.connect("pressed", self, "_add_random_item")
 	_remove_item_button.connect("pressed", self, "_remove_random_item")
 
@@ -20,6 +27,7 @@ func _ready() -> void:
 func set_inventory(new_inventory: Inventory) -> void:
 	if inventory != new_inventory:
 		new_inventory.connect("changed", self, "_update_items_display")
+
 	inventory = new_inventory
 	_update_items_display()
 
