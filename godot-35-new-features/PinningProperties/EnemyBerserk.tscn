@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PinningProperties/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/shield_berserk.png" type="Texture" id=2]
+
+[node name="EnemyBerserk" instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_pinned_properties_": [ "rotation_speed", "follow_during_charge", "charge_time" ]
+}
+charge_time = 1.0
+rotation_speed = 0.2
+follow_during_charge = true
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )

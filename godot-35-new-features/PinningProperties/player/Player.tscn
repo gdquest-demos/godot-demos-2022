@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://PinningProperties/player/godot_bottom.png" type="Texture" id=1]
+[ext_resource path="res://PinningProperties/player/Skin.gd" type="Script" id=2]
+[ext_resource path="res://PinningProperties/player/Player.gd" type="Script" id=3]
+[ext_resource path="res://assets/shadow_circle.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 19.0754
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 3
+script = ExtResource( 3 )
+
+[node name="Skin" type="Sprite" parent="."]
+position = Vector2( -0.474655, 0 )
+z_index = 2
+texture = ExtResource( 1 )
+offset = Vector2( 0.474655, -40.5866 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.270588 )
+position = Vector2( 0, 17 )
+texture = ExtResource( 4 )
+
+[node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]

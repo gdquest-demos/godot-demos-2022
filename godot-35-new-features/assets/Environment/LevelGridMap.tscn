@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Environment/space_environment_meshlib.tres" type="MeshLibrary" id=1]
+
+[node name="LevelGridMap" type="GridMap"]
+mesh_library = ExtResource( 1 )
+cell_center_y = false
+collision_mask = 0
+data = {
+"cells": PoolIntArray(  )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
