@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://GradientTexture2D/Stylized_Stone_Floor_005_normal.jpg" type="Texture" id=1]
 [ext_resource path="res://GradientTexture2D/Stylized_Stone_Floor_005_basecolor.jpg" type="Texture" id=2]
-[ext_resource path="res://GradientTexture2D/Light.gd" type="Script" id=3]
 [ext_resource path="res://GradientTexture2D/GradientTexture2DDemo.gd" type="Script" id=6]
 [ext_resource path="res://GradientTexture2D/GradientTexture2D.tres" type="Texture" id=7]
 
@@ -22,11 +21,6 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
-
-[sub_resource type="SphereMesh" id=5]
-
-[sub_resource type="SpatialMaterial" id=8]
-albedo_texture = ExtResource( 7 )
 
 [sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0, 0.296407, 0.664671 )
@@ -55,6 +49,67 @@ scale_random = 0.07
 scale_curve = SubResource( 13 )
 color_ramp = SubResource( 11 )
 
+[sub_resource type="CanvasItemMaterial" id=16]
+blend_mode = 3
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0.150838, 0.24581, 1 )
+colors = PoolColorArray( 0.259727, 0.267358, 0.281738, 1, 0.163519, 0.391385, 0.820801, 1, 0, 0.81543, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=15]
+gradient = SubResource( 14 )
+fill_from = Vector2( 0.35, 0.383333 )
+fill_to = Vector2( 1, 1 )
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0, 0.449102, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.815686, 0.956863, 1, 0.376471, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
+
+[sub_resource type="Curve" id=19]
+_data = [ Vector2( 0, 0.506818 ), 0.0, 2.27182, 0, 0, Vector2( 1, 0.443182 ), -1.94727, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=21]
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_box_extents = Vector3( 1024, 600, 600 )
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.7
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+scale_random = 1.0
+scale_curve = SubResource( 20 )
+color = Color( 0.956863, 0.956863, 0.956863, 1 )
+color_ramp = SubResource( 18 )
+hue_variation = 0.11
+hue_variation_random = 0.57
+
+[sub_resource type="Gradient" id=22]
+colors = PoolColorArray( 1, 1, 1, 0.908571, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=23]
+gradient = SubResource( 22 )
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 1, 0.5 )
+
+[sub_resource type="SphereMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 7 )
+
 [node name="GradientTexture2DDemo" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -72,7 +127,45 @@ position = Vector2( 593, 382 )
 texture = ExtResource( 7 )
 energy = 7.1
 shadow_enabled = true
-script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -80.0
+margin_right = -40.0
+margin_bottom = -40.0
+
+[node name="Particles2D" type="Particles2D" parent="Control"]
+light_mask = 0
+amount = 100
+lifetime = 3.0
+local_coords = false
+process_material = SubResource( 9 )
+texture = ExtResource( 7 )
+
+[node name="Night" type="TextureRect" parent="."]
+unique_name_in_owner = true
+self_modulate = Color( 1, 1, 1, 0.501961 )
+light_mask = 0
+material = SubResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 15 )
+expand = true
+stretch_mode = 1
+
+[node name="Particles2D" type="Particles2D" parent="Night"]
+light_mask = 0
+position = Vector2( 508, 273 )
+amount = 1000
+lifetime = 10.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 21 )
+texture = SubResource( 23 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 light_mask = 0
@@ -88,19 +181,28 @@ light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 207.0
-margin_bottom = 507.0
+margin_bottom = 547.0
 
-[node name="Button" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+[node name="RepeatButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 light_mask = 0
 margin_right = 200.0
 margin_bottom = 36.0
-text = "Repeat"
+text = "Repeat Texture"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+[node name="NightButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 light_mask = 0
 margin_top = 40.0
 margin_right = 200.0
-margin_bottom = 296.0
+margin_bottom = 76.0
+text = "Make it night"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+light_mask = 0
+margin_top = 80.0
+margin_right = 200.0
+margin_bottom = 336.0
 rect_min_size = Vector2( 0, 256 )
 size_flags_horizontal = 3
 texture = ExtResource( 7 )
@@ -114,9 +216,9 @@ text = " 2D"
 
 [node name="ViewportContainer" type="ViewportContainer" parent="PanelContainer/VBoxContainer"]
 light_mask = 0
-margin_top = 300.0
+margin_top = 340.0
 margin_right = 200.0
-margin_bottom = 500.0
+margin_bottom = 540.0
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ViewportContainer"]
 margin_right = 40.0
@@ -138,23 +240,3 @@ unique_name_in_owner = true
 transform = Transform( 0.927726, -0.149489, 0.342021, 0.115791, -0.755838, -0.644439, 0.354849, 0.637465, -0.683901, 0, 0, 0 )
 mesh = SubResource( 5 )
 material = SubResource( 8 )
-
-[node name="Control" type="Control" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -80.0
-margin_top = -80.0
-margin_right = -40.0
-margin_bottom = -40.0
-
-[node name="Particles2D" type="Particles2D" parent="Control"]
-light_mask = 0
-amount = 100
-lifetime = 3.0
-local_coords = false
-process_material = SubResource( 9 )
-texture = ExtResource( 7 )
-
-[connection signal="toggled" from="PanelContainer/VBoxContainer/Button" to="Light2D" method="_on_Button_toggled"]
