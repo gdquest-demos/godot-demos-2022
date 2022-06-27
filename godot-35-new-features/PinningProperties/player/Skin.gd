@@ -14,7 +14,7 @@ const SPRITES_MAP := {
 var look_direction := Vector2.RIGHT
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var input_vector := Vector2(
 		float(Input.is_action_pressed("ui_right")) - float(Input.is_action_pressed("ui_left")),
 		float(Input.is_action_pressed("ui_down")) - float(Input.is_action_pressed("ui_up"))

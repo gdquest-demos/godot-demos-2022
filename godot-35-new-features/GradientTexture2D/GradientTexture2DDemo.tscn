@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://GradientTexture2D/Stylized_Stone_Floor_005_normal.jpg" type="Texture" id=1]
 [ext_resource path="res://GradientTexture2D/Stylized_Stone_Floor_005_basecolor.jpg" type="Texture" id=2]
@@ -36,16 +36,17 @@ _data = [ Vector2( 0.00840336, 0.170455 ), 0.0, 2.21515, 0, 0, Vector2( 1, 1 ), 
 curve = SubResource( 12 )
 
 [sub_resource type="ParticlesMaterial" id=9]
+trail_divisor = 5
 flag_disable_z = true
-spread = 100.89
+spread = 73.42
 gravity = Vector3( 0, -98, 0 )
-initial_velocity = 26.32
+initial_velocity = 89.48
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping = 10.0
 angle_random = 0.63
-scale = 0.05
-scale_random = 0.07
+scale = 0.2
+scale_random = 0.13
 scale_curve = SubResource( 13 )
 color_ramp = SubResource( 11 )
 
@@ -105,11 +106,6 @@ fill = 1
 fill_from = Vector2( 0.5, 0.5 )
 fill_to = Vector2( 1, 0.5 )
 
-[sub_resource type="SphereMesh" id=5]
-
-[sub_resource type="SpatialMaterial" id=8]
-albedo_texture = ExtResource( 7 )
-
 [node name="GradientTexture2DDemo" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -128,18 +124,20 @@ texture = ExtResource( 7 )
 energy = 7.1
 shadow_enabled = true
 
-[node name="Control" type="Control" parent="."]
-anchor_left = 1.0
+[node name="Fire" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -80.0
-margin_top = -80.0
-margin_right = -40.0
-margin_bottom = -40.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
 
-[node name="Particles2D" type="Particles2D" parent="Control"]
+[node name="Particles2D" type="Particles2D" parent="Fire"]
 light_mask = 0
+position = Vector2( 0, 48 )
 amount = 100
 lifetime = 3.0
 local_coords = false
@@ -148,6 +146,7 @@ texture = ExtResource( 7 )
 
 [node name="Night" type="TextureRect" parent="."]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color( 1, 1, 1, 0.501961 )
 light_mask = 0
 material = SubResource( 16 )
@@ -173,7 +172,7 @@ anchor_bottom = 1.0
 margin_left = 24.0
 margin_top = 17.0
 margin_right = 238.0
-margin_bottom = -280.0
+margin_bottom = -702.0
 size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
@@ -181,7 +180,7 @@ light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 207.0
-margin_bottom = 776.0
+margin_bottom = 383.0
 
 [node name="RepeatButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -190,53 +189,29 @@ margin_right = 200.0
 margin_bottom = 36.0
 text = "Repeat Texture"
 
-[node name="NightButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 light_mask = 0
 margin_top = 40.0
 margin_right = 200.0
-margin_bottom = 76.0
-text = "Make it night"
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
-light_mask = 0
-margin_top = 80.0
-margin_right = 200.0
-margin_bottom = 336.0
+margin_bottom = 296.0
 rect_min_size = Vector2( 0, 256 )
 size_flags_horizontal = 3
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TextureRect"]
-margin_right = 40.0
-margin_bottom = 28.0
-text = " 2D"
+[node name="NightButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 0
+margin_top = 300.0
+margin_right = 200.0
+margin_bottom = 336.0
+text = "Make it night"
 
-[node name="ViewportContainer" type="ViewportContainer" parent="PanelContainer/VBoxContainer"]
+[node name="FireButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 light_mask = 0
 margin_top = 340.0
 margin_right = 200.0
-margin_bottom = 540.0
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ViewportContainer"]
-margin_right = 40.0
-margin_bottom = 28.0
-text = " 3D"
-
-[node name="Viewport" type="Viewport" parent="PanelContainer/VBoxContainer/ViewportContainer"]
-size = Vector2( 200, 200 )
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Camera" type="Camera" parent="PanelContainer/VBoxContainer/ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.13038 )
-
-[node name="Spatial" type="Spatial" parent="PanelContainer/VBoxContainer/ViewportContainer/Viewport"]
-
-[node name="CSGMesh" type="CSGMesh" parent="PanelContainer/VBoxContainer/ViewportContainer/Viewport/Spatial"]
-unique_name_in_owner = true
-transform = Transform( 0.927726, -0.149489, 0.342021, 0.115791, -0.755838, -0.644439, 0.354849, 0.637465, -0.683901, 0, 0, 0 )
-mesh = SubResource( 5 )
-material = SubResource( 8 )
+margin_bottom = 376.0
+text = "Light A Fire"

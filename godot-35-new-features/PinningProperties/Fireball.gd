@@ -1,6 +1,6 @@
 extends Area2D
 
-export var default_speed := 750
+export var default_speed := 750.0
 export var damage := 1
 
 var max_range := 1000.0
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		_destroy()
 
 
-func hit_body(body: Node) -> void:
+func hit_body(_body: Node) -> void:
 	_destroy()
 
 
