@@ -112,4 +112,3 @@ material/0 = SubResource( 9 )
 
 [connection signal="input_event" from="Player/HandTween/Cards/Card" to="Player/HandTween" method="_on_Card_input_event"]
 [connection signal="input_event" from="Player/HandTween/Cards/Card2" to="Player/HandTween" method="_on_Card_input_event"]
-[connection signal="card_drawn" from="Player/Deck" to="Player/HandTween" method="add_card"]
