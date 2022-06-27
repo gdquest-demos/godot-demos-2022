@@ -14,7 +14,7 @@ func _on_input_event(_camera, event: InputEvent, _click_position, _click_normal,
 		return
 
 	var new_card: Card3D = card_scene.instance()
-	new_card.card_art = preload("res://common/blackhole.png")
+	new_card.card_art = preload("res://assets/blackhole.png")
 	new_card.card_name = "Black Hole"
 	new_card.translation = translation
 

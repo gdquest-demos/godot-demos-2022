@@ -13,74 +13,102 @@ rect_min_size = Vector2( 1920, 1080 )
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 
-[node name="mark_empty_1" type="Sprite" parent="."]
-position = Vector2( 959.998, 308.998 )
-texture = ExtResource( 4 )
-
-[node name="Box1" type="TextureRect" parent="." groups=["box"]]
+[node name="Control" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -159.0
-margin_top = -390.0
-margin_right = 159.0
-margin_bottom = -72.0
+margin_left = -20.0
+margin_top = -252.0
+margin_right = 20.0
+margin_bottom = -212.0
+
+[node name="mark_empty_1" type="Sprite" parent="Control"]
+position = Vector2( 19.998, 20.998 )
+texture = ExtResource( 4 )
+
+[node name="Box1" type="TextureRect" parent="Control" groups=["box"]]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -158.002
+margin_top = -157.002
+margin_right = 159.998
+margin_bottom = 160.998
 rect_min_size = Vector2( 318, 128 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 159, 159 )
 texture = ExtResource( 3 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="mark_empty_2" type="Sprite" parent="."]
-position = Vector2( 839.998, 514.998 )
-texture = ExtResource( 4 )
-
-[node name="Box2" type="TextureRect" parent="." groups=["box"]]
+[node name="Control2" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -279.0
-margin_top = -184.0
-margin_right = 39.0
-margin_bottom = 134.0
+margin_left = -140.0
+margin_top = -44.0
+margin_right = -100.0
+margin_bottom = -4.0
+
+[node name="mark_empty_2" type="Sprite" parent="Control2"]
+position = Vector2( 19.998, 18.998 )
+texture = ExtResource( 4 )
+
+[node name="Box2" type="TextureRect" parent="Control2" groups=["box"]]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -159.002
+margin_top = -158.002
+margin_right = 158.998
+margin_bottom = 159.998
 rect_min_size = Vector2( 318, 128 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 159, 159 )
 texture = ExtResource( 3 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="mark_empty_3" type="Sprite" parent="."]
-position = Vector2( 1080, 514.998 )
-texture = ExtResource( 4 )
-
-[node name="Box3" type="TextureRect" parent="." groups=["box"]]
+[node name="Control3" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -39.0
-margin_top = -184.0
-margin_right = 279.0
-margin_bottom = 134.0
+margin_left = 100.0
+margin_top = -47.0
+margin_right = 140.0
+margin_bottom = -7.0
+
+[node name="mark_empty_3" type="Sprite" parent="Control3"]
+position = Vector2( 20, 21.998 )
+texture = ExtResource( 4 )
+
+[node name="Box3" type="TextureRect" parent="Control3" groups=["box"]]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -159.002
+margin_top = -155.002
+margin_right = 158.998
+margin_bottom = 162.998
 rect_min_size = Vector2( 318, 128 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 159, 159 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="PopButton" parent="." instance=ExtResource( 2 )]
-margin_left = 801.0
-margin_top = 747.0
-margin_right = 1119.0
-margin_bottom = 875.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -159.0
+margin_top = 184.0
+margin_right = 159.0
+margin_bottom = 312.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 text = "Pop"

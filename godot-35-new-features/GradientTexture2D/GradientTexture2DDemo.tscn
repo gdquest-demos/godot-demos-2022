@@ -181,7 +181,7 @@ light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 207.0
-margin_bottom = 547.0
+margin_bottom = 776.0
 
 [node name="RepeatButton" type="CheckBox" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true

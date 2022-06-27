@@ -24,21 +24,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -188.0
-margin_top = -278.0
-margin_right = 481.0
-margin_bottom = 278.0
+margin_left = -357.0
+margin_top = -337.0
+margin_right = 357.0
+margin_bottom = 337.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 662.0
-margin_bottom = 549.0
+margin_right = 707.0
+margin_bottom = 667.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
-margin_right = 655.0
+margin_right = 700.0
 margin_bottom = 40.0
 theme_type_variation = "TitleBig"
 text = "KEY BINDINGS"
@@ -46,27 +46,27 @@ align = 1
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
 margin_top = 44.0
-margin_right = 655.0
+margin_right = 700.0
 margin_bottom = 48.0
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
 margin_top = 52.0
-margin_right = 655.0
-margin_bottom = 542.0
+margin_right = 700.0
+margin_bottom = 660.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
 [node name="Empty" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 11.0
+margin_top = 18.0
 margin_right = 142.0
-margin_bottom = 39.0
+margin_bottom = 46.0
 align = 2
 
 [node name="Title" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["title"]]
 margin_left = 146.0
-margin_right = 399.0
-margin_bottom = 50.0
+margin_right = 421.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = "Title"
@@ -76,9 +76,9 @@ icon_align = 1
 expand_icon = true
 
 [node name="Title2" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["title"]]
-margin_left = 403.0
-margin_right = 655.0
-margin_bottom = 50.0
+margin_left = 425.0
+margin_right = 700.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = "Title"
@@ -88,17 +88,17 @@ icon_align = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 65.0
+margin_top = 85.0
 margin_right = 142.0
-margin_bottom = 93.0
+margin_bottom = 113.0
 text = "Go Up"
 align = 2
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 54.0
-margin_right = 399.0
-margin_bottom = 104.0
+margin_top = 68.0
+margin_right = 421.0
+margin_bottom = 131.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 1 )
@@ -106,27 +106,27 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 54.0
-margin_right = 655.0
-margin_bottom = 104.0
+margin_left = 425.0
+margin_top = 68.0
+margin_right = 700.0
+margin_bottom = 131.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "W"
 expand_icon = true
 
 [node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 119.0
+margin_top = 152.0
 margin_right = 142.0
-margin_bottom = 147.0
+margin_bottom = 180.0
 text = "Go Right"
 align = 2
 
 [node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 108.0
-margin_right = 399.0
-margin_bottom = 158.0
+margin_top = 135.0
+margin_right = 421.0
+margin_bottom = 198.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 8 )
@@ -134,27 +134,27 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 108.0
-margin_right = 655.0
-margin_bottom = 158.0
+margin_left = 425.0
+margin_top = 135.0
+margin_right = 700.0
+margin_bottom = 198.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "A"
 expand_icon = true
 
 [node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 173.0
+margin_top = 219.0
 margin_right = 142.0
-margin_bottom = 201.0
+margin_bottom = 247.0
 text = "Go Down"
 align = 2
 
 [node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 162.0
-margin_right = 399.0
-margin_bottom = 212.0
+margin_top = 202.0
+margin_right = 421.0
+margin_bottom = 265.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 2 )
@@ -162,27 +162,27 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 162.0
-margin_right = 655.0
-margin_bottom = 212.0
+margin_left = 425.0
+margin_top = 202.0
+margin_right = 700.0
+margin_bottom = 265.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "S"
 expand_icon = true
 
 [node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 227.0
+margin_top = 286.0
 margin_right = 142.0
-margin_bottom = 255.0
+margin_bottom = 314.0
 text = "Go Left"
 align = 2
 
 [node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 216.0
-margin_right = 399.0
-margin_bottom = 266.0
+margin_top = 269.0
+margin_right = 421.0
+margin_bottom = 332.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 4 )
@@ -190,44 +190,44 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 216.0
-margin_right = 655.0
-margin_bottom = 266.0
+margin_left = 425.0
+margin_top = 269.0
+margin_right = 700.0
+margin_bottom = 332.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "D"
 expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 270.0
+margin_top = 336.0
 margin_right = 142.0
-margin_bottom = 274.0
+margin_bottom = 340.0
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/GridContainer"]
 margin_left = 146.0
-margin_top = 270.0
-margin_right = 399.0
-margin_bottom = 274.0
+margin_top = 336.0
+margin_right = 421.0
+margin_bottom = 340.0
 
 [node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_left = 403.0
-margin_top = 270.0
-margin_right = 655.0
-margin_bottom = 274.0
+margin_left = 425.0
+margin_top = 336.0
+margin_right = 700.0
+margin_bottom = 340.0
 
 [node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 289.0
+margin_top = 361.0
 margin_right = 142.0
-margin_bottom = 317.0
+margin_bottom = 389.0
 text = "Attack / Ok"
 align = 2
 
 [node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 278.0
-margin_right = 399.0
-margin_bottom = 328.0
+margin_top = 344.0
+margin_right = 421.0
+margin_bottom = 407.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 5 )
@@ -235,27 +235,27 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 278.0
-margin_right = 655.0
-margin_bottom = 328.0
+margin_left = 425.0
+margin_top = 344.0
+margin_right = 700.0
+margin_bottom = 407.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "ENTER"
 expand_icon = true
 
 [node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 343.0
+margin_top = 428.0
 margin_right = 142.0
-margin_bottom = 371.0
+margin_bottom = 456.0
 text = "Defend/ Cancel"
 align = 2
 
 [node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 332.0
-margin_right = 399.0
-margin_bottom = 382.0
+margin_top = 411.0
+margin_right = 421.0
+margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 3 )
@@ -263,27 +263,27 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 332.0
-margin_right = 655.0
-margin_bottom = 382.0
+margin_left = 425.0
+margin_top = 411.0
+margin_right = 700.0
+margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "SHIFT"
 expand_icon = true
 
 [node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 397.0
+margin_top = 495.0
 margin_right = 142.0
-margin_bottom = 425.0
+margin_bottom = 523.0
 text = "Switch Target"
 align = 2
 
 [node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 386.0
-margin_right = 399.0
-margin_bottom = 436.0
+margin_top = 478.0
+margin_right = 421.0
+margin_bottom = 541.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 6 )
@@ -291,27 +291,27 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 386.0
-margin_right = 655.0
-margin_bottom = 436.0
+margin_left = 425.0
+margin_top = 478.0
+margin_right = 700.0
+margin_bottom = 541.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "INSERT"
 expand_icon = true
 
 [node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
-margin_top = 451.0
+margin_top = 562.0
 margin_right = 142.0
-margin_bottom = 479.0
+margin_bottom = 590.0
 text = "Menu"
 align = 2
 
 [node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
 margin_left = 146.0
-margin_top = 440.0
-margin_right = 399.0
-margin_bottom = 490.0
+margin_top = 545.0
+margin_right = 421.0
+margin_bottom = 608.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 7 )
@@ -319,24 +319,26 @@ icon_align = 1
 expand_icon = true
 
 [node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" groups=["button"]]
-margin_left = 403.0
-margin_top = 440.0
-margin_right = 655.0
-margin_bottom = 490.0
+margin_left = 425.0
+margin_top = 545.0
+margin_right = 700.0
+margin_bottom = 608.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "TAB"
 expand_icon = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
-margin_right = 320.0
-margin_bottom = 198.0
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 404.0
+margin_bottom = 127.0
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer2"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 313.0
-margin_bottom = 191.0
+margin_right = 360.0
+margin_bottom = 88.0
 columns = 2
 
 [node name="Label" type="Label" parent="PanelContainer2/GridContainer"]
@@ -348,7 +350,7 @@ text = "Titles"
 [node name="TitlesAlignement" type="OptionButton" parent="PanelContainer2/GridContainer"]
 unique_name_in_owner = true
 margin_left = 77.0
-margin_right = 306.0
+margin_right = 353.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
@@ -362,6 +364,6 @@ text = "Buttons"
 unique_name_in_owner = true
 margin_left = 77.0
 margin_top = 38.0
-margin_right = 306.0
+margin_right = 353.0
 margin_bottom = 72.0
 size_flags_horizontal = 3

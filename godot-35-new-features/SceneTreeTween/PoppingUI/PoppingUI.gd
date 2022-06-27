@@ -1,16 +1,13 @@
 extends Control
 
-var box_list := []
+onready var box_list := [
+	get_node("%Box1"),
+	get_node("%Box2"),
+	get_node("%Box3")
+]
 
 
 func _ready() -> void:
-	for child in get_children():
-		if child is TextureRect:
-			box_list.append(child)
-	assert(box_list)
-
-
-func _enter_tree() -> void:
 	for box in box_list:
 		box.rect_scale = Vector2.ZERO
 		pass

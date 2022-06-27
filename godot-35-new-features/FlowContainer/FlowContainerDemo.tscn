@@ -42,13 +42,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -309.0
-margin_top = -205.5
-margin_right = 309.0
-margin_bottom = 205.5
+margin_left = -375.5
+margin_top = -269.5
+margin_right = 375.5
+margin_bottom = 269.5
 popup_exclusive = true
 window_title = "Inventory"
 resizable = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="WindowDialog"]
 anchor_right = 1.0
@@ -63,12 +66,12 @@ custom_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 608.0
-margin_bottom = 401.0
+margin_right = 741.0
+margin_bottom = 529.0
 
 [node name="VFlowContainer" type="VFlowContainer" parent="WindowDialog/MarginContainer/HBoxContainer"]
 margin_right = 76.0
-margin_bottom = 391.0
+margin_bottom = 519.0
 
 [node name="AddItemButton" type="Button" parent="WindowDialog/MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
@@ -103,14 +106,14 @@ icon = ExtResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="WindowDialog/MarginContainer/HBoxContainer"]
 margin_left = 80.0
-margin_right = 598.0
-margin_bottom = 391.0
+margin_right = 731.0
+margin_bottom = 519.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 
 [node name="HFlowContainer" type="HFlowContainer" parent="WindowDialog/MarginContainer/HBoxContainer/ScrollContainer"]
-margin_right = 506.0
+margin_right = 639.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 0, 1000 )
 size_flags_horizontal = 3

@@ -11,8 +11,8 @@ position = Vector2( 229, 202 )
 follow_during_charge = true
 
 [node name="EnemyBerserk" parent="." instance=ExtResource( 3 )]
-position = Vector2( 825, 452 )
+position = Vector2( 1423, 808 )
 charge_time = 2.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 480, 380 )
+position = Vector2( 900, 528 )
