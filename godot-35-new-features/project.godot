@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/Card/3DCard.gd"
 }, {
-"base": "EditorVCSInterface",
+"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -26,7 +26,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Features"
+config/name="New Features in Godot 3.5 (GDQuest)"
+config/description="A highlight of some cool new features in Godot 3.5."
 config/icon="res://icon.png"
 
 [debug]
