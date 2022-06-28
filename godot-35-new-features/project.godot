@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Card3D",
 "language": "GDScript",
 "path": "res://assets/Card/3DCard.gd"
-}, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
 } ]
 _global_script_class_icons={
-"Card3D": "",
-"GitAPI": ""
+"Card3D": ""
 }
 
 [application]
@@ -38,12 +32,17 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/ColorPickerPresets/plugin.cfg" )
+
 [gdnative]
 
-singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+singletons=[  ]
 
 [gui]
 
