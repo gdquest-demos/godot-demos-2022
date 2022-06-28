@@ -1,122 +1,88 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://FlowContainer/FlowContainerDemo.gd" type="Script" id=1]
-[ext_resource path="res://assets/mark_less.png" type="Texture" id=2]
 [ext_resource path="res://assets/mark_plus.png" type="Texture" id=3]
-[ext_resource path="res://assets/mark_more.png" type="Texture" id=4]
 [ext_resource path="res://assets/pickup_ice.png" type="Texture" id=5]
 [ext_resource path="res://assets/pickup_health.png" type="Texture" id=6]
 [ext_resource path="res://assets/pickup_shield.png" type="Texture" id=7]
 [ext_resource path="res://assets/pickup_lightning.png" type="Texture" id=8]
 [ext_resource path="res://assets/pickup_sword.png" type="Texture" id=9]
 [ext_resource path="res://assets/pickup_mace.png" type="Texture" id=10]
-[ext_resource path="res://assets/pickup_big_gem.png" type="Texture" id=11]
 [ext_resource path="res://assets/pickup_gem.png" type="Texture" id=12]
 [ext_resource path="res://assets/pickup_hammer.png" type="Texture" id=13]
 [ext_resource path="res://assets/pickup_fire.png" type="Texture" id=14]
 [ext_resource path="res://assets/pickup_stones.png" type="Texture" id=15]
-[ext_resource path="res://assets/theme.tres" type="Theme" id=16]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=16]
 [ext_resource path="res://assets/mark_minus.png" type="Texture" id=17]
 
-[node name="FlowContainerDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="FlowContainerDemo" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -572.0
+margin_top = -340.0
+margin_right = 572.0
+margin_bottom = 340.0
 theme = ExtResource( 16 )
 script = ExtResource( 1 )
-items = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 12 ) ]
-
-[node name="OpenInventoryButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -36.5
-margin_top = -10.0
-margin_right = 36.5
-margin_bottom = 10.0
-text = "Inventory"
-
-[node name="WindowDialog" type="WindowDialog" parent="."]
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -375.5
-margin_top = -269.5
-margin_right = 375.5
-margin_bottom = 269.5
-popup_exclusive = true
-window_title = "Inventory"
-resizable = true
 __meta__ = {
 "_edit_group_": true
 }
+items = [ ExtResource( 9 ), ExtResource( 15 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 14 ) ]
 
-[node name="MarginContainer" type="MarginContainer" parent="WindowDialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1144.0
+margin_bottom = 680.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 741.0
-margin_bottom = 529.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1124.0
+margin_bottom = 660.0
+custom_constants/separation = 40
 
-[node name="VFlowContainer" type="VFlowContainer" parent="WindowDialog/MarginContainer/HBoxContainer"]
-margin_right = 76.0
-margin_bottom = 519.0
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 640.0
 
-[node name="AddItemButton" type="Button" parent="WindowDialog/MarginContainer/HBoxContainer/VFlowContainer"]
+[node name="AddItemButton" type="Button" parent="MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
-margin_right = 76.0
-margin_bottom = 70.0
+margin_right = 64.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 icon = ExtResource( 3 )
 
-[node name="RemoveItemButton" type="Button" parent="WindowDialog/MarginContainer/HBoxContainer/VFlowContainer"]
+[node name="RemoveItemButton" type="Button" parent="MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
-margin_top = 74.0
-margin_right = 76.0
-margin_bottom = 144.0
+margin_top = 76.0
+margin_right = 64.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 0, 64 )
 icon = ExtResource( 17 )
 
-[node name="MarginsIncreaseButton" type="Button" parent="WindowDialog/MarginContainer/HBoxContainer/VFlowContainer"]
+[node name="VSlider" type="VSlider" parent="MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
-margin_top = 148.0
-margin_right = 76.0
-margin_bottom = 218.0
-rect_min_size = Vector2( 0, 64 )
-icon = ExtResource( 4 )
+margin_top = 152.0
+margin_right = 64.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 1
 
-[node name="MarginsDecreaseButton" type="Button" parent="WindowDialog/MarginContainer/HBoxContainer/VFlowContainer"]
-unique_name_in_owner = true
-margin_top = 222.0
-margin_right = 76.0
-margin_bottom = 292.0
-rect_min_size = Vector2( 0, 64 )
-icon = ExtResource( 2 )
-
-[node name="ScrollContainer" type="ScrollContainer" parent="WindowDialog/MarginContainer/HBoxContainer"]
-margin_left = 80.0
-margin_right = 731.0
-margin_bottom = 519.0
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 1104.0
+margin_bottom = 640.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="HFlowContainer" type="HFlowContainer" parent="WindowDialog/MarginContainer/HBoxContainer/ScrollContainer"]
-margin_right = 639.0
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+margin_right = 988.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 0, 1000 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/vseparation = 1
-custom_constants/hseparation = 1
