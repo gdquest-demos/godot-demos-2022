@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Basic3D/SafetyNet.gd" type="Script" id=1]
+[ext_resource path="res://assets/Environment/LevelGridMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Player3D/Player3D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NavigationServer/Navigation/NavigationEnemy3D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Camera3D/ThirdPersonCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/PressurePlate3D/PressurePlate3D.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Door3D/Door3D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NavigationServer/Navigation/NavigationOptions3D/ModalNavigation3D.gd" type="Script" id=10]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 50, 1, 50 )
+
+[sub_resource type="NavigationMesh" id=2]
+vertices = PoolVector3Array( -1.25, 0.4, -5.05, -0.55, 0.4, -5.35, -0.75, 0.4, -7.15, -3.05, 0.4, -3.75, -1.35, 0.4, -3.85, -1.25, 0.4, -5.05, -6.65, 0.4, -2.85, -3.35, 0.4, -2.65, -3.35, 0.4, -3.35, -6.65, 0.4, -2.85, -3.35, 0.4, -3.35, -3.05, 0.4, -3.75, -3.05, 0.4, -3.75, -1.25, 0.4, -5.05, -0.75, 0.4, -7.15, -6.65, 0.4, -7.25, -6.65, 0.4, -2.85, 0.45, 0.4, -3.15, 0.650001, 0.4, -3.15, 0.75, 0.4, -3.55, 0.45, 0.4, -4.85, -0.75, 0.4, -7.15, -0.0500002, 0.4, -5.35, 0.45, 0.4, -4.85, 2.75, 0.4, -3.85, 2.75, 0.4, -7.15, 0.45, 0.4, -4.85, 0.75, 0.4, -3.55, 1.15, 0.4, -3.85, -0.75, 0.4, -7.15, -0.55, 0.4, -5.35, -0.0500002, 0.4, -5.35, 0.45, 0.4, -4.85, 1.15, 0.4, -3.85, 2.75, 0.4, -3.85, 2.75, 0.4, -7.15, 2.75, 0.4, -3.85, 3.65, 0.4, -3.75, 3.65, 0.4, -3.75, 3.95, 0.4, -3.05, 7.25, 0.4, -2.85, 7.25, 0.4, -7.15, 2.75, 0.4, -7.15, 0.75, 0.4, -2.65, 0.650001, 0.4, -3.15, 0.45, 0.4, -3.15, 0.35, 0.4, -2.45, 2.45, 0.4, -2.45, 1.15, 0.4, -2.35, -0.15, 0.4, -2.05, -1.95, 0.4, 1.95, 2.45, 0.4, 1.95, 1.15, 0.4, -2.35, 0.75, 0.4, -2.65, 0.35, 0.4, -2.45, -0.15, 0.4, -2.05, -0.85, 0.4, -2.05, -1.25, 0.4, -2.45, -1.95, 0.4, -2.45, -1.95, 0.4, 1.95, -0.15, 0.4, -2.05, -0.85, 0.4, -2.05, -1.95, 0.4, 1.95, 4.15, 0.4, 1.15, 3.85, 0.4, 1.45, 3.95, 0.4, 2.55, 7.25, 0.4, 2.35, 3.95, 0.4, -3.05, 3.85, 0.4, -1.55, 4.15, 0.4, -1.15, 7.25, 0.4, -2.85, 7.25, 0.4, 2.35, 7.25, 0.4, -2.85, 4.15, 0.4, -1.15, 4.15, 0.4, 1.15, -3.35, 0.4, 2.35, -3.35, 0.4, -2.65, -6.65, 0.4, -2.85, -6.75, 0.4, 2.55, 3.55, 0.4, 3.35, 3.05, 0.4, 3.45, 2.85, 0.4, 6.75, 7.25, 0.4, 2.35, 3.95, 0.4, 2.55, 3.85, 0.4, 3.05, 3.85, 0.4, 3.05, 3.55, 0.4, 3.35, 2.85, 0.4, 6.75, 7.25, 0.4, 6.75, 7.25, 0.4, 2.35, -3.25, 0.4, 3.15, -3.35, 0.4, 2.35, -6.75, 0.4, 2.55, -2.35, 0.4, 6.75, -2.55, 0.4, 3.45, -3.25, 0.4, 3.15, -6.75, 0.4, 2.55, -6.75, 0.4, 6.75, -2.55, 0.4, 3.45, -2.35, 0.4, 6.75, 2.85, 0.4, 6.75, 3.05, 0.4, 3.45 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 15, 12, 16 ), PoolIntArray( 18, 17, 19 ), PoolIntArray( 19, 17, 20 ), PoolIntArray( 22, 21, 23 ), PoolIntArray( 23, 21, 25 ), PoolIntArray( 23, 25, 24 ), PoolIntArray( 26, 28, 27 ), PoolIntArray( 31, 30, 29 ), PoolIntArray( 34, 33, 32 ), PoolIntArray( 37, 36, 35 ), PoolIntArray( 39, 38, 40 ), PoolIntArray( 40, 38, 41 ), PoolIntArray( 41, 38, 42 ), PoolIntArray( 44, 43, 45 ), PoolIntArray( 45, 43, 46 ), PoolIntArray( 48, 47, 49 ), PoolIntArray( 49, 47, 51 ), PoolIntArray( 49, 51, 50 ), PoolIntArray( 53, 52, 54 ), PoolIntArray( 54, 52, 55 ), PoolIntArray( 57, 56, 58 ), PoolIntArray( 58, 56, 59 ), PoolIntArray( 60, 62, 61 ), PoolIntArray( 64, 63, 65 ), PoolIntArray( 65, 63, 66 ), PoolIntArray( 68, 67, 69 ), PoolIntArray( 69, 67, 70 ), PoolIntArray( 74, 73, 71 ), PoolIntArray( 71, 73, 72 ), PoolIntArray( 76, 75, 77 ), PoolIntArray( 77, 75, 78 ), PoolIntArray( 81, 80, 79 ), PoolIntArray( 84, 83, 82 ), PoolIntArray( 85, 89, 86 ), PoolIntArray( 86, 89, 88 ), PoolIntArray( 86, 88, 87 ), PoolIntArray( 92, 91, 90 ), PoolIntArray( 94, 93, 95 ), PoolIntArray( 95, 93, 97 ), PoolIntArray( 95, 97, 96 ), PoolIntArray( 99, 98, 100 ), PoolIntArray( 100, 98, 101 ) ]
+cell_size = 0.1
+agent_max_climb = 0.1
+agent_max_slope = 12.9
+
+[sub_resource type="NavigationMesh" id=3]
+vertices = PoolVector3Array( -2.85, 0.4, -3.85, -2.25, 0.4, -3.85, -2.45, 0.4, -7.25, -6.65, 0.4, -2.85, -3.35, 0.4, -2.65, -3.25, 0.4, -3.55, -3.25, 0.4, -3.55, -2.85, 0.4, -3.85, -2.45, 0.4, -7.25, -6.65, 0.4, -7.25, -6.65, 0.4, -2.85, -2.25, 0.4, -3.85, 2.75, 0.4, -3.85, 2.75, 0.4, -7.15, -2.45, 0.4, -7.25, 2.75, 0.4, -7.15, 2.75, 0.4, -3.85, 3.65, 0.4, -3.75, 3.65, 0.4, -3.75, 3.95, 0.4, -3.05, 7.25, 0.4, -2.85, 7.25, 0.4, -7.15, 2.75, 0.4, -7.15, 3.95, 0.4, -1.15, 3.25, 0.4, -0.55, 3.25, 0.4, -0.15, 5.15, 0.4, -0.15, 3.95, 0.4, -1.15, 5.15, 0.4, -0.15, 5.55, 0.4, 0.150001, 7.25, 0.4, 0.75, 7.25, 0.4, -2.85, 3.95, 0.4, -3.05, 5.55, 0.4, 0.150001, 5.65, 0.4, 0.75, 7.25, 0.4, 0.75, -3.35, 0.4, 2.35, -3.35, 0.4, -2.65, -6.65, 0.4, -2.85, -6.75, 0.4, 2.55, 3.25, 0.4, -0.15, 3.25, 0.4, -0.55, 2.75, 0.4, -0.65, 2.65, 0.4, -0.0500002, -0.85, 0.4, -2.05, -1.95, 0.4, -2.45, -1.95, 0.4, 1.95, 2.45, 0.4, 1.95, 2.35, 0.4, 0.35, 2.35, 0.4, 0.35, 2.65, 0.4, -0.0500002, 2.75, 0.4, -0.65, 2.35, 0.4, -1.15, 1.35, 0.4, -2.05, -0.85, 0.4, -2.05, 2.45, 0.4, -2.45, 1.75, 0.4, -2.45, 1.35, 0.4, -2.05, 2.35, 0.4, -1.15, -0.85, 0.4, -2.05, -1.25, 0.4, -2.45, -1.95, 0.4, -2.45, 5.15, 0.4, 1.65, 3.85, 0.4, 1.65, 3.95, 0.4, 2.85, 7.25, 0.4, 0.75, 5.65, 0.4, 0.75, 5.55, 0.4, 1.35, 5.55, 0.4, 1.35, 5.15, 0.4, 1.65, 3.95, 0.4, 2.85, 5.55, 0.4, 1.35, 3.95, 0.4, 2.85, 3.55, 0.4, 3.35, 2.85, 0.4, 6.75, 7.25, 0.4, 6.75, 7.25, 0.4, 0.75, 3.55, 0.4, 3.35, 3.05, 0.4, 3.45, 2.85, 0.4, 6.75, -3.25, 0.4, 3.15, -3.35, 0.4, 2.35, -6.75, 0.4, 2.55, -2.35, 0.4, 6.75, -2.55, 0.4, 3.45, -3.25, 0.4, 3.15, -6.75, 0.4, 2.55, -6.75, 0.4, 6.75, -2.55, 0.4, 3.45, -2.35, 0.4, 6.75, 2.85, 0.4, 6.75, 3.05, 0.4, 3.45 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 3, 5, 4 ), PoolIntArray( 7, 6, 8 ), PoolIntArray( 8, 6, 9 ), PoolIntArray( 9, 6, 10 ), PoolIntArray( 12, 11, 13 ), PoolIntArray( 13, 11, 14 ), PoolIntArray( 17, 16, 15 ), PoolIntArray( 19, 18, 20 ), PoolIntArray( 20, 18, 21 ), PoolIntArray( 21, 18, 22 ), PoolIntArray( 24, 23, 25 ), PoolIntArray( 25, 23, 26 ), PoolIntArray( 28, 27, 29 ), PoolIntArray( 29, 27, 32 ), PoolIntArray( 29, 32, 31 ), PoolIntArray( 29, 31, 30 ), PoolIntArray( 33, 35, 34 ), PoolIntArray( 37, 36, 38 ), PoolIntArray( 38, 36, 39 ), PoolIntArray( 41, 40, 42 ), PoolIntArray( 42, 40, 43 ), PoolIntArray( 45, 44, 46 ), PoolIntArray( 46, 44, 48 ), PoolIntArray( 46, 48, 47 ), PoolIntArray( 50, 49, 51 ), PoolIntArray( 51, 49, 52 ), PoolIntArray( 52, 49, 53 ), PoolIntArray( 53, 49, 54 ), PoolIntArray( 56, 55, 57 ), PoolIntArray( 57, 55, 58 ), PoolIntArray( 61, 60, 59 ), PoolIntArray( 64, 63, 62 ), PoolIntArray( 67, 66, 65 ), PoolIntArray( 70, 69, 68 ), PoolIntArray( 72, 71, 73 ), PoolIntArray( 73, 71, 76 ), PoolIntArray( 73, 76, 74 ), PoolIntArray( 74, 76, 75 ), PoolIntArray( 79, 78, 77 ), PoolIntArray( 82, 81, 80 ), PoolIntArray( 84, 83, 85 ), PoolIntArray( 85, 83, 87 ), PoolIntArray( 85, 87, 86 ), PoolIntArray( 89, 88, 90 ), PoolIntArray( 90, 88, 91 ) ]
+cell_size = 0.1
+agent_max_climb = 0.1
+agent_max_slope = 12.9
+
+[node name="NavigationOption3D" type="Spatial"]
+
+[node name="Player3D" parent="." instance=ExtResource( 4 )]
+
+[node name="CameraController" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+player_path = NodePath("../Player3D")
+
+[node name="NavigationEnemy3D" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5 )
+collision_layer = 4
+navigation_path = NodePath("../ModalNavigation3D")
+player_path = NodePath("../Player3D")
+
+[node name="Model" parent="NavigationEnemy3D" index="1"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.76837e-07, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.707107, 0.5, 0.5, 0, -0.707107, 0.707107, 0.707107, -0.5, -0.5, 0, 10, 0 )
+shadow_enabled = true
+shadow_bias = 0.05
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.2
+directional_shadow_max_distance = 50.0
+
+[node name="SafetyNet" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.47564, 0 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SafetyNet"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164833, 4.57253, 0 )
+shape = SubResource( 1 )
+
+[node name="PressurePlate3D" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+target_path = NodePath("../ModalNavigation3D")
+
+[node name="NorthDoor" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, -3.15 )
+
+[node name="EastDoor" parent="." instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.15, 0, -0.25 )
+open = true
+
+[node name="LevelGridMap" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0.75 )
+data = {
+"cells": PoolIntArray( 0, 0, 38, 1, 0, 39, 65535, 0, 1441831, -65536, 0, 12, -65535, 0, 12, -65534, 0, 12, -65533, 0, 12, -65532, 0, 13, -4, 0, 655377, -3, 0, 1048582, -2, 0, 12, -1, 0, 12, 65535, 1, 0, -65536, 1, 12, -65535, 1, 12, -65534, 1, 12, -65533, 1, 12, -65532, 1, 13, -4, 1, 655377, -3, 1, 6, -2, 1, 12, -1, 1, 12, 3, 2, 1441792, 65534, 2, 3, 65535, 2, 655361, -65536, 2, 12, -65535, 2, 12, -65534, 2, 12, -65533, 2, 655366, -65532, 2, 13, -4, 2, 655373, -3, 2, 12, -2, 2, 12, -1, 2, 12, -65536, 3, 1441805, -65535, 3, 1441805, -65534, 3, 1441805, -65533, 3, 1441805, -65532, 3, 11, -4, 3, 1441803, -3, 3, 1441805, -2, 3, 1441805, -1, 3, 1441805, -65536, 65531, 1048589, -65535, 65531, 1048589, -65534, 65531, 1048589, -65533, 65531, 1048589, -65532, 65531, 1048587, -4, 65531, 655371, -3, 65531, 1048589, -2, 65531, 1048589, -1, 65531, 1048589, 3, 65532, 1441794, 65533, 65532, 5, 65534, 65532, 2, -65536, 65532, 12, -65535, 65532, 6, -65534, 65532, 12, -65533, 65532, 12, -65532, 65532, 13, -4, 65532, 655373, -3, 65532, 12, -2, 65532, 12, -1, 65532, 12, 3, 65533, 655364, 65533, 65533, 1048577, -65536, 65533, 12, -65535, 65533, 12, -65534, 65533, 12, -65533, 65533, 12, -65532, 65533, 13, -4, 65533, 655373, -3, 65533, 12, -2, 65533, 12, -1, 65533, 12, 1, 65534, 1048615, 65535, 65534, 655399, -65536, 65534, 12, -65535, 65534, 6, -65534, 65534, 12, -65533, 65534, 12, -65532, 65534, 13, -4, 65534, 655373, -3, 65534, 12, -2, 65534, 12, -1, 65534, 12, 65535, 65535, 1441830, -65536, 65535, 12, -65535, 65535, 12, -65534, 65535, 12, -65533, 65535, 12, -65532, 65535, 13, -4, 65535, 655373, -3, 65535, 12, -2, 65535, 12, -1, 65535, 12 )
+}
+
+[node name="ModalNavigation3D" type="Navigation" parent="."]
+script = ExtResource( 10 )
+north_door_path = NodePath("../NorthDoor")
+east_door_path = NodePath("../EastDoor")
+
+[node name="NorthDoorOpen" type="NavigationMeshInstance" parent="ModalNavigation3D"]
+navmesh = SubResource( 2 )
+enabled = false
+
+[node name="EastDoorOpen" type="NavigationMeshInstance" parent="ModalNavigation3D"]
+navmesh = SubResource( 3 )
+enabled = false
+
+[editable path="NavigationEnemy3D"]
+[editable path="PressurePlate3D"]

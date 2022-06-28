@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://NavigationServer/Navigation2D/GridNavigation/GridNavigation.gd" type="Script" id=1]
+[ext_resource path="res://addons/node-essential-helpers/debug_drawing/halo_circle.shader" type="Shader" id=2]
+[ext_resource path="res://addons/node-essential-helpers/debug_drawing/HaloCircle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/enemy/enemy.png" type="Texture" id=4]
+[ext_resource path="res://assets/crosshair.png" type="Texture" id=5]
+[ext_resource path="res://assets/sidescroll_tileset/tileset_sidescroll-tileset.tres" type="TileSet" id=6]
+
+[sub_resource type="Curve2D" id=1]
+bake_interval = 0.01
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 1520, 400, 1520, 880, 1440, 880, 1360, 720, 1360, 480, 1360, 400, 1280, 480, 400, 800, 400, 480, 560, 720, 560, 960, 160, 160, 1760, 160, 1760, 240, 1360, 240, 1280, 320, 1200, 320, 1200, 240, 560, 240, 560, 400, 1040, 400, 1040, 480, 480, 400, 960, 480, 480, 240, 240, 240, 160, 960, 240, 400, 1120, 480, 1120, 640, 960, 640, 560, 480, 1200, 640, 1200, 720, 1120, 720, 1680, 880, 1680, 400, 1760, 400, 1760, 960, 1440, 960, 1200, 880, 1200, 800, 1120, 800, 960, 720, 560, 640, 720, 720, 960, 960, 720, 960, 240, 480, 240, 800, 400, 960, 400, 880, 240, 880, 240, 960 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 0, 4, 6 ), PoolIntArray( 7, 8, 9, 10 ), PoolIntArray( 11, 12, 13, 14 ), PoolIntArray( 5, 6, 15, 14 ), PoolIntArray( 15, 16, 17, 14 ), PoolIntArray( 11, 14, 17 ), PoolIntArray( 11, 17, 18 ), PoolIntArray( 19, 20, 21 ), PoolIntArray( 22, 19, 21, 23 ), PoolIntArray( 18, 19, 22, 24 ), PoolIntArray( 11, 18, 24 ), PoolIntArray( 11, 24, 25 ), PoolIntArray( 26, 11, 25, 27 ), PoolIntArray( 21, 28, 29, 30 ), PoolIntArray( 21, 30, 23 ), PoolIntArray( 22, 23, 31 ), PoolIntArray( 29, 32, 33, 34 ), PoolIntArray( 35, 36, 37, 38 ), PoolIntArray( 35, 38, 39, 1 ), PoolIntArray( 1, 39, 2 ), PoolIntArray( 3, 2, 40, 41 ), PoolIntArray( 33, 3, 41, 42 ), PoolIntArray( 33, 42, 34 ), PoolIntArray( 30, 29, 34, 43 ), PoolIntArray( 44, 30, 43, 45 ), PoolIntArray( 43, 46, 47, 45 ), PoolIntArray( 44, 45, 9 ), PoolIntArray( 44, 9, 8 ), PoolIntArray( 31, 44, 8, 22 ), PoolIntArray( 27, 22, 8, 48 ), PoolIntArray( 26, 27, 48 ), PoolIntArray( 26, 48, 49 ), PoolIntArray( 10, 50, 51 ), PoolIntArray( 7, 10, 51 ), PoolIntArray( 49, 7, 51, 52 ), PoolIntArray( 26, 49, 52 ), PoolIntArray( 26, 52, 53 ) ]
+outlines = [ PoolVector2Array( 160, 160, 160, 960, 240, 960, 240, 880, 400, 880, 400, 960, 560, 960, 560, 720, 720, 720, 720, 960, 960, 960, 960, 720, 1120, 720, 1120, 800, 1200, 800, 1200, 880, 1440, 880, 1440, 960, 1760, 960, 1760, 400, 1680, 400, 1680, 880, 1520, 880, 1520, 400, 1360, 400, 1360, 240, 1760, 240, 1760, 160 ), PoolVector2Array( 240, 400, 240, 240, 480, 240, 480, 400 ), PoolVector2Array( 560, 400, 1040, 400, 1040, 480, 1120, 480, 1120, 640, 1200, 640, 1200, 720, 1360, 720, 1360, 480, 1280, 480, 1280, 320, 1200, 320, 1200, 240, 560, 240 ), PoolVector2Array( 240, 800, 400, 800, 400, 480, 240, 480 ), PoolVector2Array( 560, 640, 960, 640, 960, 480, 560, 480 ) ]
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/halo_color = Color( 1, 1, 1, 1 )
+shader_param/bounds_half_length = 0.0
+shader_param/halo_radius = 12.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Click"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 1.333, 1.333 ), Vector2( 1, 1 ) ]
+}
+
+[node name="GridNavigation" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 80, 80 )
+collision_layer = 5
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 1, 12, 0, 1, 13, 0, 1, 14, 0, 1, 15, 0, 1, 16, 0, 1, 17, 0, 1, 18, 0, 1, 19, 0, 1, 20, 0, 1, 21, 0, 1, 22, 0, 1, 23, 0, 2, 65536, 0, 65536, 65537, 0, 65541, 65538, 0, 131073, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 131073, 65543, 0, 131073, 65544, 0, 131073, 65545, 0, 131073, 65546, 0, 131073, 65547, 0, 131073, 65548, 0, 131073, 65549, 0, 131073, 65550, 0, 131073, 65551, 0, 131073, 65552, 0, 131073, 65553, 0, 131073, 65554, 0, 131073, 65555, 0, 131073, 65556, 0, 131073, 65557, 0, 131073, 65558, 0, 65542, 65559, 0, 65538, 131072, 0, 65536, 131073, 0, 65538, 131094, 0, 65536, 131095, 0, 65538, 196608, 0, 65536, 196609, 0, 65538, 196611, 0, 0, 196612, 0, 1, 196613, 0, 2, 196615, 0, 0, 196616, 0, 1, 196617, 0, 1, 196618, 0, 1, 196619, 0, 1, 196620, 0, 1, 196621, 0, 1, 196622, 0, 2, 196625, 0, 0, 196626, 0, 1, 196627, 0, 1, 196628, 0, 1, 196629, 0, 1, 196630, 0, 131078, 196631, 0, 65538, 262144, 0, 65536, 262145, 0, 65538, 262147, 0, 131072, 262148, 0, 131073, 262149, 0, 131074, 262151, 0, 131072, 262152, 0, 131073, 262153, 0, 131073, 262154, 0, 131073, 262155, 0, 131073, 262156, 0, 131073, 262157, 0, 65542, 262158, 0, 131077, 262159, 0, 2, 262161, 0, 131072, 262162, 0, 131073, 262163, 0, 65542, 262164, 0, 65541, 262165, 0, 131073, 262166, 0, 65542, 262167, 0, 65538, 327680, 0, 65536, 327681, 0, 65538, 327693, 0, 131072, 327694, 0, 65542, 327695, 0, 65538, 327699, 0, 65536, 327700, 0, 65538, 327702, 0, 65536, 327703, 0, 65538, 393216, 0, 65536, 393217, 0, 65538, 393219, 0, 0, 393220, 0, 2, 393223, 0, 0, 393224, 0, 1, 393225, 0, 1, 393226, 0, 1, 393227, 0, 2, 393230, 0, 65536, 393231, 0, 131077, 393232, 0, 2, 393235, 0, 65536, 393236, 0, 65538, 393238, 0, 65536, 393239, 0, 65538, 458752, 0, 65536, 458753, 0, 65538, 458755, 0, 65536, 458756, 0, 65538, 458759, 0, 131072, 458760, 0, 131073, 458761, 0, 131073, 458762, 0, 131073, 458763, 0, 131074, 458766, 0, 131072, 458767, 0, 65542, 458768, 0, 65538, 458771, 0, 65536, 458772, 0, 65538, 458774, 0, 65536, 458775, 0, 65538, 524288, 0, 65536, 524289, 0, 65538, 524291, 0, 65536, 524292, 0, 65538, 524303, 0, 131072, 524304, 0, 131074, 524307, 0, 65536, 524308, 0, 65538, 524310, 0, 65536, 524311, 0, 65538, 589824, 0, 65536, 589825, 0, 65538, 589827, 0, 131072, 589828, 0, 131074, 589831, 0, 0, 589832, 0, 2, 589836, 0, 0, 589837, 0, 2, 589843, 0, 65536, 589844, 0, 65538, 589846, 0, 65536, 589847, 0, 65538, 655360, 0, 65536, 655361, 0, 65538, 655367, 0, 65536, 655368, 0, 65538, 655372, 0, 65536, 655373, 0, 131077, 655374, 0, 2, 655379, 0, 131072, 655380, 0, 131074, 655382, 0, 65536, 655383, 0, 65538, 720896, 0, 65536, 720897, 0, 65538, 720899, 0, 0, 720900, 0, 2, 720903, 0, 65536, 720904, 0, 65538, 720908, 0, 65536, 720909, 0, 65537, 720910, 0, 131077, 720911, 0, 1, 720912, 0, 1, 720913, 0, 2, 720918, 0, 65536, 720919, 0, 65538, 786432, 0, 65536, 786433, 0, 131077, 786434, 0, 1, 786435, 0, 131078, 786436, 0, 131077, 786437, 0, 1, 786438, 0, 1, 786439, 0, 131078, 786440, 0, 131077, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 131078, 786445, 0, 65537, 786446, 0, 65537, 786447, 0, 65537, 786448, 0, 65537, 786449, 0, 131077, 786450, 0, 1, 786451, 0, 1, 786452, 0, 1, 786453, 0, 1, 786454, 0, 131078, 786455, 0, 65538, 851968, 0, 131072, 851969, 0, 131073, 851970, 0, 131073, 851971, 0, 131073, 851972, 0, 131073, 851973, 0, 131073, 851974, 0, 131073, 851975, 0, 131073, 851976, 0, 131073, 851977, 0, 131073, 851978, 0, 131073, 851979, 0, 131073, 851980, 0, 131073, 851981, 0, 131073, 851982, 0, 131073, 851983, 0, 131073, 851984, 0, 131073, 851985, 0, 131073, 851986, 0, 131073, 851987, 0, 131073, 851988, 0, 131073, 851989, 0, 131073, 851990, 0, 131073, 851991, 0, 131074 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 200, 192 )
+
+[node name="Ship" type="Sprite" parent="Path2D/PathFollow2D"]
+rotation = 1.5708
+texture = ExtResource( 4 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 2 )
+
+[node name="HaloCircle" parent="." instance=ExtResource( 3 )]
+material = SubResource( 3 )
+scale = Vector2( 1e-05, 1e-05 )
+size = 0.0
+
+[node name="Crosshair" type="Sprite" parent="."]
+position = Vector2( 584, 584 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crosshair"]
+anims/Click = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]

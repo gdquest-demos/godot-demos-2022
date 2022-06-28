@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Door/door.png" type="Texture" id=1]
+[ext_resource path="res://assets/Door/doorExtra.png" type="Texture" id=2]
+[ext_resource path="res://assets/Door/Door.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 136 )
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 96 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Hinge" type="Sprite" parent="."]
+position = Vector2( 0.8367, 187.748 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Door" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, 96 )

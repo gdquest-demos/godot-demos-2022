@@ -9,19 +9,48 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "AstronautSkin",
+"language": "GDScript",
+"path": "res://assets/Astronaut/AstronautSkin.gd"
+}, {
+"base": "Reference",
+"class": "Background",
+"language": "GDScript",
+"path": "res://assets/Background.gd"
+}, {
 "base": "Area",
 "class": "Card3D",
 "language": "GDScript",
 "path": "res://assets/Card/3DCard.gd"
+}, {
+"base": "KinematicBody",
+"class": "Enemy3D",
+"language": "GDScript",
+"path": "res://assets/Enemy3D/Enemy3D.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://assets/Player/Player.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player3D",
+"language": "GDScript",
+"path": "res://assets/Player3D/Player3D.gd"
 } ]
 _global_script_class_icons={
-"Card3D": ""
+"AstronautSkin": "",
+"Background": "",
+"Card3D": "",
+"Enemy3D": "",
+"Player": "",
+"Player3D": ""
 }
 
 [application]
 
-config/name="New Features in Godot 3.5 (GDQuest)"
-config/description="A highlight of some cool new features in Godot 3.5."
+config/name="New Features"
 config/icon="res://icon.png"
 
 [debug]
@@ -32,13 +61,8 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/ColorPickerPresets/plugin.cfg" )
 
 [gdnative]
 
@@ -85,6 +109,26 @@ ui_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+camera_left={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":-1.0,"script":null)
+ ]
+}
+camera_right={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":1.0,"script":null)
+ ]
+}
+camera_up={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
+ ]
+}
+camera_down={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":1.0,"script":null)
  ]
 }
 

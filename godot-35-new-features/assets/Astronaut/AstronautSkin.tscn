@@ -1,0 +1,200 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://assets/Astronaut/AstronautSkin.gd" type="Script" id=1]
+[ext_resource path="res://assets/Astronaut/scene.gltf" type="PackedScene" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "ATTACK"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "FALL_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "IDLE_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "IDLE_BREAK"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "JUMP_START"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "ROOT_LEDGE_GRAB"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "ROOT_LEDGE_GRAB_IDLE_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "ROOT_LEDGE_GRAB_UP"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "ROOT_LEDGE_GRAB_LEFT_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "ROOT_LEDGE_GRAB_RIGHT_cycle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=11]
+blend_point_0/node = SubResource( 9 )
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource( 10 )
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
+states/grab/node = SubResource( 6 )
+states/grab/position = Vector2( 350, 174 )
+states/idle/node = SubResource( 7 )
+states/idle/position = Vector2( 576, 174 )
+states/lift/node = SubResource( 8 )
+states/lift/position = Vector2( 972, 174 )
+states/move/node = SubResource( 11 )
+states/move/position = Vector2( 767, 77 )
+transitions = [ "grab", "idle", SubResource( 12 ), "idle", "move", SubResource( 13 ), "move", "idle", SubResource( 14 ), "move", "lift", SubResource( 15 ), "idle", "lift", SubResource( 16 ) ]
+start_node = "grab"
+end_node = "lift"
+graph_offset = Vector2( 41, -5 )
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "WALK_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "RUN_cycle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=20]
+blend_point_0/node = SubResource( 18 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 19 )
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "PUSH_cycle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+advance_condition = "is_moving"
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+advance_condition = "is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+advance_condition = "is_idle"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+advance_condition = "is_falling"
+xfade_time = 0.12
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+advance_condition = "is_grabbing_ledge"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+advance_condition = "is_grabbing_ledge"
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+switch_mode = 1
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+advance_condition = "is_moving"
+
+[sub_resource type="AnimationNodeStateMachine" id=44]
+states/attack/node = SubResource( 1 )
+states/attack/position = Vector2( 391, 327 )
+states/fall/node = SubResource( 2 )
+states/fall/position = Vector2( 752, 283 )
+states/idle/node = SubResource( 3 )
+states/idle/position = Vector2( 72, 110 )
+states/idle_break/node = SubResource( 4 )
+states/idle_break/position = Vector2( 72, 283 )
+states/jump/node = SubResource( 5 )
+states/jump/position = Vector2( 746, 58 )
+states/ledge/node = SubResource( 17 )
+states/ledge/position = Vector2( 996, 200 )
+states/move/node = SubResource( 20 )
+states/move/position = Vector2( 391, -36 )
+states/push/node = SubResource( 21 )
+states/push/position = Vector2( 687, -89 )
+transitions = [ "idle", "move", SubResource( 22 ), "move", "jump", SubResource( 23 ), "idle", "jump", SubResource( 24 ), "move", "fall", SubResource( 25 ), "idle", "fall", SubResource( 26 ), "move", "attack", SubResource( 27 ), "attack", "move", SubResource( 28 ), "attack", "idle", SubResource( 29 ), "move", "idle", SubResource( 30 ), "attack", "jump", SubResource( 31 ), "fall", "idle", SubResource( 32 ), "fall", "move", SubResource( 33 ), "jump", "fall", SubResource( 34 ), "idle", "idle_break", SubResource( 35 ), "idle_break", "idle", SubResource( 36 ), "jump", "ledge", SubResource( 37 ), "fall", "ledge", SubResource( 38 ), "move", "push", SubResource( 39 ), "push", "move", SubResource( 40 ), "idle", "attack", SubResource( 41 ), "ledge", "fall", SubResource( 42 ), "ledge", "idle", SubResource( 43 ), "idle_break", "move", SubResource( 47 ) ]
+start_node = "idle"
+graph_offset = Vector2( -539, -83 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=45]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=46]
+
+[node name="AstronautSkin" instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_process_mode = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 44 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_mode = 0
+parameters/playback = SubResource( 45 )
+parameters/conditions/is_falling = false
+parameters/conditions/is_grabbing_ledge = false
+parameters/conditions/is_idle = false
+parameters/conditions/is_moving = false
+parameters/ledge/playback = SubResource( 46 )
+parameters/ledge/move/blend_position = -1.36872
+parameters/move/blend_position = 1.02469

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Camera3D/ThirdPersonCamera.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.2
+
+[node name="ThirdPersonCamera" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61813, 1.43231 )
+script = ExtResource( 1 )
+
+[node name="CameraTiltPivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0 )
+
+[node name="SpringArm" type="SpringArm" parent="CameraTiltPivot"]
+transform = Transform( 1, 0, 0, 0, 0.999999, -1.49012e-08, 0, 1.49012e-08, 0.999999, 0, 0, 1.5 )
+shape = SubResource( 1 )
+spring_length = 4.0
+
+[node name="Camera" type="Camera" parent="CameraTiltPivot/SpringArm"]
