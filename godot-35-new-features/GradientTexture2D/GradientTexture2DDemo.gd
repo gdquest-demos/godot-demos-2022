@@ -12,7 +12,7 @@ onready var fire := get_node("%Fire") as Control
 func _ready() -> void:
 	night_texture_rect.visible = false
 	repeat_button.connect("toggled", self, "_on_RepeatButton_toggled")
-	night_button.connect("toggled", night_texture_rect, "set_visible")
+	night_button.connect("toggled", self, "_on_NightButton_pressed")
 	fire_button.connect("toggled", fire, "set_visible")
 
 func _physics_process(delta: float) -> void:
@@ -25,3 +25,4 @@ func _on_RepeatButton_toggled(toggled: bool) -> void:
 
 func _on_NightButton_pressed(toggle: bool) -> void:
 	night_texture_rect.visible = toggle
+	light_2d.energy = 2.0 if toggle else 1.15

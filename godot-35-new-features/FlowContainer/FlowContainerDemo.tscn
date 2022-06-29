@@ -70,6 +70,7 @@ margin_right = 64.0
 margin_bottom = 352.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_horizontal = 1
+value = 50.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 104.0
