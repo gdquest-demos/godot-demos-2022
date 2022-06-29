@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/gem_ice.png" type="Texture" id=1]
+[ext_resource path="res://resources/ItemData.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+unique_id = "ice_gem"
+display_name = "Ice gem"
+description = "Freezes enemies in an area."
+icon = ExtResource( 1 )
