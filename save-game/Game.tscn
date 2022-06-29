@@ -81,7 +81,20 @@ cell_clip_uv = true
 collision_layer = 16
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 65533, 0, 0, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 2, 131069, 0, 65536, 131070, 0, 3, 131071, 0, 131073, 65536, 0, 131073, 65537, 0, 131073, 65538, 0, 131074, 196605, 0, 65536, 196606, 0, 65538, 262141, 0, 131072, 262142, 0, 131074 )
+tile_data = PoolIntArray( 131069, 0, 65536, 131070, 0, 3, 131071, 0, 131073, 65536, 0, 131073, 65537, 0, 131073, 65538, 0, 131074, 196605, 0, 65536, 196606, 0, 65538, 262141, 0, 131072, 262142, 0, 131074 )
+
+[node name="WallsTops" type="TileMap" parent="Level"]
+z_index = 1
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+cell_quadrant_size = 64
+cell_tile_origin = 2
+cell_y_sort = true
+cell_clip_uv = true
+collision_layer = 16
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65533, 0, 0, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 2 )
 
 [node name="Limits" type="TileMap" parent="Level"]
 visible = false
