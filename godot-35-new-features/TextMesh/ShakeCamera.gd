@@ -1,7 +1,7 @@
 extends Camera
 
 export var decay := 2
-export var max_offset := 0.05
+export var max_offset := 0.01
 
 var shake_factor := 0.0 setget set_shake_factor
 var shake_factor_power := 1.2

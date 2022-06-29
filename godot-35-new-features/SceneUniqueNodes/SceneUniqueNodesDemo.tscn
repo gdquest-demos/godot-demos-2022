@@ -14,32 +14,32 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel" type="PanelContainer" parent="HBoxContainer"]
-margin_right = 637.0
+margin_right = 626.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 630.0
-margin_bottom = 1073.0
+margin_right = 626.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer"]
-margin_right = 623.0
-margin_bottom = 1066.0
+margin_right = 626.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/MarginContainer"]
-margin_right = 623.0
-margin_bottom = 1066.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 606.0
+margin_bottom = 1060.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 623.0
-margin_bottom = 1066.0
+margin_right = 586.0
+margin_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "A"
@@ -47,33 +47,33 @@ align = 1
 valign = 1
 
 [node name="Panel2" type="PanelContainer" parent="HBoxContainer"]
-margin_left = 641.0
-margin_right = 1278.0
+margin_left = 646.0
+margin_right = 1273.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel2"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 630.0
-margin_bottom = 1073.0
+margin_right = 627.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel2/VBoxContainer"]
-margin_right = 623.0
-margin_bottom = 1066.0
+margin_right = 627.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel2/VBoxContainer/MarginContainer"]
-margin_right = 623.0
-margin_bottom = 1066.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 607.0
+margin_bottom = 1060.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel2/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 623.0
-margin_bottom = 1066.0
+margin_right = 587.0
+margin_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "B"
@@ -81,33 +81,33 @@ align = 1
 valign = 1
 
 [node name="Panel3" type="PanelContainer" parent="HBoxContainer"]
-margin_left = 1282.0
+margin_left = 1293.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel3"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 631.0
-margin_bottom = 1073.0
+margin_right = 627.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel3/VBoxContainer"]
-margin_right = 624.0
-margin_bottom = 1066.0
+margin_right = 627.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel3/VBoxContainer/MarginContainer"]
-margin_right = 624.0
-margin_bottom = 1066.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 607.0
+margin_bottom = 1060.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel3/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 624.0
-margin_bottom = 1028.0
+margin_right = 587.0
+margin_bottom = 978.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "C"
@@ -115,21 +115,21 @@ align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel3/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 1032.0
-margin_right = 624.0
-margin_bottom = 1066.0
+margin_top = 998.0
+margin_right = 587.0
+margin_bottom = 1040.0
 
 [node name="OkButton" type="Button" parent="HBoxContainer/Panel3/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 90.0
-margin_bottom = 34.0
+margin_right = 110.0
+margin_bottom = 42.0
 text = "Approve"
 
 [node name="CancelButton" type="Button" parent="HBoxContainer/Panel3/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 94.0
-margin_right = 154.0
-margin_bottom = 34.0
+margin_left = 130.0
+margin_right = 203.0
+margin_bottom = 42.0
 text = "Deny"
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
