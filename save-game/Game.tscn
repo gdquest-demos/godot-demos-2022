@@ -14,6 +14,7 @@ script = ExtResource( 3 )
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 2 )]
 position = Vector2( 59, 410 )
+collision_mask = 17
 
 [node name="UI" type="CanvasLayer" parent="."]
 
