@@ -3,11 +3,11 @@
 [ext_resource path="res://assets/Basic3D/SafetyNet.gd" type="Script" id=1]
 [ext_resource path="res://assets/Environment/LevelGridMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Player3D/Player3D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://NavigationServer/Navigation/NavigationEnemy3D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Enemy3D/NavigationEnemy3D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Camera3D/ThirdPersonCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/PressurePlate3D/PressurePlate3D.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Door3D/Door3D.tscn" type="PackedScene" id=9]
-[ext_resource path="res://NavigationServer/Navigation/NavigationOptions3D/ModalNavigation3D.gd" type="Script" id=10]
+[ext_resource path="res://NavigationServer/NavigationServer3D/ModalNavigation3D.gd" type="Script" id=10]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50, 1, 50 )

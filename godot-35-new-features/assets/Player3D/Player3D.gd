@@ -12,6 +12,7 @@ export var has_infinite_inertia := true
 export var camera_path: NodePath
 
 var velocity: Vector3
+var is_healing := false setget set_is_healing
 
 var _move_direction := Vector3.ZERO
 var _last_strong_direction := Vector3.FORWARD
@@ -23,13 +24,13 @@ onready var _model: AstronautSkin = $AstronautSkin
 onready var _start_position := global_transform.origin
 onready var _animation_player: AnimationPlayer = $AnimationPlayer
 onready var _hit_box_collision: CollisionShape = $AttackHitBox/CollisionShape
-
+onready var _label_3d: Label3D = get_node_or_null("Label3D")
 
 func _ready() -> void:
 	_camera_controller = get_node(camera_path)
 	_model.max_ground_speed = move_speed
 	_model.connect("attack_finished", _hit_box_collision, "set_deferred", ["disabled", true])
-
+	_label_3d.scale = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
 	_move_direction = _get_camera_oriented_input()
@@ -132,3 +133,27 @@ func start_blink(loop := false) -> void:
 
 func stop_blink() -> void:
 	_animation_player.stop(true)
+
+
+func set_is_healing(is_it: bool) -> void:
+	if is_it == is_healing:
+		return
+	is_healing = is_it
+	
+	if not _label_3d:
+		return
+	
+	# THERE ARE CHARACTERS HERE, DO NOT DELETE
+	# these aren't empty strings, they're characters from a custom icon font
+	# created on Fontello. Godot's editor doesn't show them, but they're there
+	_label_3d.text = ["", "", ""][randi() % 3]
+	
+	create_tween()\
+		.set_trans(Tween.TRANS_ELASTIC)\
+		.set_ease(Tween.EASE_OUT)\
+		.tween_property(
+			_label_3d, 
+			"scale", 
+			Vector3.ONE if is_it else Vector3.ZERO,
+			1.0
+		)

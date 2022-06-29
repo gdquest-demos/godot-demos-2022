@@ -9,8 +9,8 @@ radius = 0.35
 height = 0.5
 
 [sub_resource type="CylinderShape" id=2]
-radius = 1.38531
 height = 0.618427
+radius = 1.38531
 
 [sub_resource type="Animation" id=3]
 resource_name = "blink"
@@ -29,9 +29,7 @@ tracks/0/keys = {
 "values": [ false, true, false, true, false, true ]
 }
 
-[node name="Player3D" type="KinematicBody" groups=[
-"player",
-]]
+[node name="Player3D" type="KinematicBody" groups=["player"]]
 collision_layer = 2
 script = ExtResource( 1 )
 acceleration = 8.0
@@ -41,11 +39,7 @@ camera_path = NodePath("ThirdPersonCamera")
 [node name="ThirdPersonCamera" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.618, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." groups=[
-"Collider",
-"Collision",
-"Draw",
-]]
+[node name="CollisionShape" type="CollisionShape" parent="." groups=["Collider", "Collision", "Draw"]]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.6, 0 )
 shape = SubResource( 1 )
 

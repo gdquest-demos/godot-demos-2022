@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/sidescroll_tileset/tileset_sidescroll-tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://NavigationServer/Navigation2D/NavigationOptions/ModalNavigation2D.gd" type="Script" id=2]
+[ext_resource path="res://NavigationServer/NavigationServer2D/ModalNavigation2D.gd" type="Script" id=2]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Door/Door.tscn" type="PackedScene" id=4]
-[ext_resource path="res://NavigationServer/Navigation2D/MazeChase/MazeSeekingEnemy.gd" type="Script" id=5]
+[ext_resource path="res://NavigationServer/NavigationServer2D/MazeSeekingEnemy.gd" type="Script" id=5]
 [ext_resource path="res://assets/enemy/enemy.png" type="Texture" id=6]
 [ext_resource path="res://assets/PressurePlate/PressurePlate.tscn" type="PackedScene" id=7]
 

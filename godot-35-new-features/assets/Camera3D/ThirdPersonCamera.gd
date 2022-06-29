@@ -25,7 +25,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _mouse_input:
 		_rotation_input = -event.relative.x * mouse_sensitivity
 		_tilt_input = -event.relative.y * mouse_sensitivity
-
+	if event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(
+			(
+				Input.MOUSE_MODE_VISIBLE
+				if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+				else Input.MOUSE_MODE_CAPTURED
+			)
+		)
 
 func _process(delta: float) -> void:
 	global_transform.origin = _parent.global_transform.origin + _offset
