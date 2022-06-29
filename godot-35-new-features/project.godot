@@ -76,7 +76,7 @@ singletons=[  ]
 
 [gui]
 
-theme/custom="res://assets/theme.tres"
+theme/custom="res://interface/theme.tres"
 
 [input]
 
