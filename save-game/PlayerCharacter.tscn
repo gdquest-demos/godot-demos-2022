@@ -72,6 +72,7 @@ script = ExtResource( 3 )
 
 [node name="ShadowCircle" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.356863 )
+z_index = -5
 texture = ExtResource( 1 )
 
 [node name="Godot" type="Sprite" parent="."]
