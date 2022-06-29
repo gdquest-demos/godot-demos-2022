@@ -30,7 +30,8 @@ func _ready() -> void:
 	_camera_controller = get_node(camera_path)
 	_model.max_ground_speed = move_speed
 	_model.connect("attack_finished", _hit_box_collision, "set_deferred", ["disabled", true])
-	_label_3d.scale = Vector3.ZERO
+	if _label_3d:
+		_label_3d.scale = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
 	_move_direction = _get_camera_oriented_input()

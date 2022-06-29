@@ -7,7 +7,7 @@
 [ext_resource path="res://Label3D/fontello.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Label3D/HealingArea.gd" type="Script" id=6]
 [ext_resource path="res://assets/Enemy3D/NavigationEnemy3D.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Label3D/MazeChase3D.gd" type="Script" id=8]
+[ext_resource path="res://Label3D/Label3DDemo.gd" type="Script" id=8]
 [ext_resource path="res://interface/theme.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=4]

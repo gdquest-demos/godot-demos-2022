@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Basic3D/SafetyNet.gd" type="Script" id=1]
+[ext_resource path="res://NavigationServer/NavigationServer3D/NavigationOptions3D.gd" type="Script" id=2]
 [ext_resource path="res://assets/Environment/LevelGridMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Player3D/Player3D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Enemy3D/NavigationEnemy3D.tscn" type="PackedScene" id=5]
@@ -26,7 +27,8 @@ cell_size = 0.1
 agent_max_climb = 0.1
 agent_max_slope = 12.9
 
-[node name="NavigationOption3D" type="Spatial"]
+[node name="NavigationServer3DDemo" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="Player3D" parent="." instance=ExtResource( 4 )]
 
