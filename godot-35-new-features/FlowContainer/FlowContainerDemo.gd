@@ -17,7 +17,7 @@ func _ready() -> void:
 	vslider.value = theme.get_constant("hseparation", "HFlowContainer")
 	vslider.connect("value_changed", self, "set_margins")
 	
-	for _i in 3:
+	for _i in 6:
 		add_item()
 
 

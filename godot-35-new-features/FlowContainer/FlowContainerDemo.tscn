@@ -45,35 +45,35 @@ margin_bottom = 660.0
 custom_constants/separation = 40
 
 [node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 64.0
+margin_right = 80.0
 margin_bottom = 640.0
 
 [node name="AddItemButton" type="Button" parent="MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
-margin_right = 64.0
-margin_bottom = 64.0
+margin_right = 80.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 0, 64 )
 icon = ExtResource( 3 )
 
 [node name="RemoveItemButton" type="Button" parent="MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
-margin_top = 76.0
-margin_right = 64.0
-margin_bottom = 140.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 156.0
 rect_min_size = Vector2( 0, 64 )
 icon = ExtResource( 17 )
 
 [node name="VSlider" type="VSlider" parent="MarginContainer/HBoxContainer/VFlowContainer"]
 unique_name_in_owner = true
-margin_top = 152.0
-margin_right = 64.0
-margin_bottom = 352.0
+margin_top = 168.0
+margin_right = 80.0
+margin_bottom = 368.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_horizontal = 1
 value = 50.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 104.0
+margin_left = 120.0
 margin_right = 1104.0
 margin_bottom = 640.0
 size_flags_horizontal = 3
@@ -82,7 +82,7 @@ follow_focus = true
 
 [node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 988.0
+margin_right = 972.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 0, 1000 )
 size_flags_horizontal = 3

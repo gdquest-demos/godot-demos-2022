@@ -1,16 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/theme.tres" type="Theme" id=1]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/mark_maybe.png" type="Texture" id=2]
 [ext_resource path="res://assets/mark_no.png" type="Texture" id=3]
 [ext_resource path="res://assets/mark_yes.png" type="Texture" id=4]
 
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 1 )
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -19,50 +14,55 @@ margin_left = -262.0
 margin_top = -105.0
 margin_right = 262.0
 margin_bottom = 105.0
+theme = ExtResource( 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 517.0
-margin_bottom = 203.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 524.0
+margin_bottom = 210.0
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
-margin_right = 510.0
-margin_bottom = 124.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 504.0
+margin_bottom = 190.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 484.0
+margin_bottom = 78.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "All changes will be lost. Are you sure you want to exit?"
 autowrap = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
-margin_left = 61.0
-margin_top = 128.0
-margin_right = 449.0
-margin_bottom = 196.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 23.0
+margin_top = 98.0
+margin_right = 460.0
+margin_bottom = 170.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 120.0
-margin_bottom = 68.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 120, 0 )
 theme_type_variation = "ButtonConfirm"
 text = "yes"
 icon = ExtResource( 4 )
 
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 124.0
-margin_right = 244.0
-margin_bottom = 68.0
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 140.0
+margin_right = 260.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 120, 0 )
 theme_type_variation = "ButtonCancel"
 text = "no"
 icon = ExtResource( 3 )
 
-[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 248.0
-margin_right = 388.0
-margin_bottom = 68.0
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 280.0
+margin_right = 437.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 140, 0 )
 theme_type_variation = "ButtonDefault"
 text = "maybe"
