@@ -3,6 +3,7 @@ class_name Card3D
 
 ## How far above the board the card sits to show its order in the stack.
 var rest_height := 0.0
+var is_enabled := false
 
 export var card_art: Texture
 export var card_name: String
@@ -23,6 +24,8 @@ func _ready() -> void:
 
 
 func hover(is_hovering: bool) -> void:
+	if not is_enabled:
+		return
 	if is_hovering:
 		for card in get_tree().get_nodes_in_group("Hovering"):
 			card.remove_from_group("Hovering")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/UI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/UI/fonts/SmallFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/blackhole.png" type="Texture" id=3]
 [ext_resource path="res://assets/Card/3DCard.gd" type="Script" id=4]
+[ext_resource path="res://SceneTreeTween/CardDraw3D/card_back.svg" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -30,7 +31,7 @@ color = Color( 0.921569, 0.337255, 0.294118, 1 )
 [sub_resource type="ViewportTexture" id=4]
 viewport_path = NodePath("CardTexture")
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=11]
 resource_local_to_scene = true
 flags_transparent = true
 flags_unshaded = true
@@ -40,7 +41,15 @@ albedo_texture = SubResource( 4 )
 
 [sub_resource type="PlaneMesh" id=6]
 resource_local_to_scene = true
-material = SubResource( 5 )
+material = SubResource( 11 )
+size = Vector2( 2.5, 3.5 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="PlaneMesh" id=13]
+resource_local_to_scene = true
+material = SubResource( 14 )
 size = Vector2( 2.5, 3.5 )
 
 [sub_resource type="BoxShape" id=10]
@@ -162,7 +171,10 @@ fit_content_height = true
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 6 )
-material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 13 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 10 )
