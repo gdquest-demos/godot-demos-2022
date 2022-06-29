@@ -3,7 +3,7 @@
 This project goes with two youtube videos dedicated to saving game data with resources. It shows how to save and load character stats, the player's position on the map, and an inventory. This shows you all the techniques you need to then save and load more complex data.
 
 1. [Godot makes saves so easy!](https://youtu.be/wSq1QJ-g91M)
-2. The easy and robust way to save games in Godot (coming soon)
+2. [The Easy Way to Save Games in Godot](https://youtu.be/TGdQ57qCCF0)
 
 ![](screenshot.png)
 
