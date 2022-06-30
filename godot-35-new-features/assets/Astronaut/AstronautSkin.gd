@@ -35,7 +35,6 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 onready var _tree: AnimationTree = $AnimationTree
 onready var _playback: AnimationNodeStateMachinePlayback = _tree["parameters/playback"]
-onready var _ledge_playback: AnimationNodeStateMachinePlayback = _tree["parameters/ledge/playback"]
 onready var _skeleton: Skeleton = $"Sketchfab_model/033f197b533a4ee2a426dde7801e0435fbx/Object_2/RootNode/Object_4/Skeleton"
 
 
@@ -49,31 +48,18 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _ledge_playback.get_current_node() == "lift":
-		return
-
 	var speed_squared := velocity.length_squared()
-	if is_on_ledge:
-		transform.origin.y = lerp(transform.origin.y, LEDGE_OFFSET.y, 12.0 * delta)
-		transform.origin.z = lerp(transform.origin.z, LEDGE_OFFSET.z, 20.0 * delta)
-		var is_moving := abs(move_horizontal_direction) > 0.0
-		_set_is_idle(not is_moving)
-		if is_moving:
-			_ledge_playback.travel("move")
-		elif _is_idle:
-			_ledge_playback.travel("idle")
-	else:
-		var speed_ratio := speed_squared / _max_ground_speed_squared
-		var is_moving := speed_squared >= MOVE_SPEED_THRESHOLD
-		_set_is_idle(speed_squared <= MOVE_SPEED_THRESHOLD)
-		_tree["parameters/conditions/is_moving"] = is_moving
-		_tree["parameters/conditions/is_idle"] = _is_idle
-		_tree["parameters/move/blend_position"] = speed_ratio
-		var fall_list = ["move", "jump"] if auto_fall else ["jump"]
-		if velocity.y < -0.1 and _playback.get_current_node() in fall_list:
-			_playback.travel("fall")
-		elif _playback.get_current_node() == "fall" and is_equal_approx(velocity.y, 0.0):
-			_playback.travel("idle")
+	var speed_ratio := speed_squared / _max_ground_speed_squared
+	var is_moving := speed_squared >= MOVE_SPEED_THRESHOLD
+	_set_is_idle(speed_squared <= MOVE_SPEED_THRESHOLD)
+	_tree["parameters/conditions/is_moving"] = is_moving
+	_tree["parameters/conditions/is_idle"] = _is_idle
+	_tree["parameters/move/blend_position"] = speed_ratio
+	var fall_list = ["move", "jump"] if auto_fall else ["jump"]
+	if velocity.y < -0.1 and _playback.get_current_node() in fall_list:
+		_playback.travel("fall")
+	elif _playback.get_current_node() == "fall" and is_equal_approx(velocity.y, 0.0):
+		_playback.travel("idle")
 
 
 func set_velocity(new_velocity: Vector3) -> void:
@@ -112,18 +98,6 @@ func set_is_pushing(new_pushing_state: bool) -> void:
 	elif not is_pushing and new_pushing_state:
 		_playback.travel("push")
 	is_pushing = new_pushing_state
-
-
-func mantle() -> void:
-	set_physics_process(false)
-	_ledge_playback.travel("lift")
-	yield(get_tree().create_timer(MANTLE_DURATION), "timeout")
-	emit_signal("mantle_finished")
-	_ledge_playback.travel("grab")
-	set_is_on_ledge(false)
-	_tree["parameters/conditions/is_moving"] = false
-	set_physics_process(true)
-
 
 func jump() -> void:
 	_playback.travel("jump")

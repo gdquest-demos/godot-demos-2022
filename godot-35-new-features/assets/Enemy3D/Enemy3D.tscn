@@ -141,13 +141,20 @@ cast_to = Vector3( 0, 0, -0.75 )
 transform = Transform( -0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0, 0 )
 
 [node name="enemy_body" parent="Model/RobotSkin" index="0"]
+transform = Transform( 1.035, 0.0262278, -0.193515, 0, 1.04372, 0.141459, 0.195284, -0.139006, 1.02562, 0, 2.08857, 0.162224 )
 mesh = SubResource( 3 )
 
 [node name="outline" parent="Model/RobotSkin/enemy_body" index="0"]
 material/0 = SubResource( 6 )
 
+[node name="enemy_track_right" parent="Model/RobotSkin" index="1"]
+transform = Transform( 0.994165, 0, 0.107874, 0, 1, 0, -0.107874, 0, 0.994165, -1.24318, 0.597586, 0 )
+
 [node name="outline" parent="Model/RobotSkin/enemy_track_right" index="0"]
 material/0 = SubResource( 6 )
+
+[node name="enemy_track_left" parent="Model/RobotSkin" index="2"]
+transform = Transform( 0.990836, 0, -0.135067, 0, 1, 0, 0.135067, 0, 0.990836, 1.24318, 0.597586, 0 )
 
 [node name="outline" parent="Model/RobotSkin/enemy_track_left" index="0"]
 material/0 = SubResource( 6 )
