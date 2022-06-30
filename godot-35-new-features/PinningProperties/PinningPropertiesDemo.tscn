@@ -7,11 +7,11 @@
 [node name="PinningPropertiesDemo" type="Node2D"]
 
 [node name="EnemyBase" parent="." instance=ExtResource( 1 )]
-position = Vector2( 229, 202 )
+position = Vector2( 700, 407 )
 follow_during_charge = true
 
 [node name="EnemyBerserk" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1423, 808 )
+position = Vector2( 1082, 680 )
 charge_time = 2.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
