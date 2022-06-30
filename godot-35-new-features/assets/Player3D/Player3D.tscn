@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [ false, true, false, true, false, true ]
 }
 
-[node name="Player3D" type="KinematicBody" groups=["player"]]
+[node name="Player3D" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 1 )
 acceleration = 8.0
@@ -39,7 +39,7 @@ camera_path = NodePath("ThirdPersonCamera")
 [node name="ThirdPersonCamera" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.618, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." groups=["Collider", "Collision", "Draw"]]
+[node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.6, 0 )
 shape = SubResource( 1 )
 
