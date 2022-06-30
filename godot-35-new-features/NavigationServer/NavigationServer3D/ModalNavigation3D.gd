@@ -12,10 +12,6 @@ onready var _door_map := {
 
 
 func _ready() -> void:
-	_door_map[_east_door].enabled = true
-
-
-func activate() -> void:
 	for door in _door_map:
 		door.activate()
 		_door_map[door].enabled = !_door_map[door].enabled
