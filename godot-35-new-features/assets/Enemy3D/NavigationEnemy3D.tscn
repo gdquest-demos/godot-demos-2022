@@ -6,16 +6,11 @@
 [sub_resource type="SphereShape" id=1]
 radius = 0.427452
 
-[node name="NavigationEnemy3D" type="KinematicBody" groups=[
-"player",
-]]
+[node name="NavigationEnemy3D" type="KinematicBody" groups=["player"]]
 collision_layer = 2
 script = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." groups=[
-"Collider",
-"Draw",
-]]
+[node name="CollisionShape" type="CollisionShape" parent="." groups=["Collider", "Draw"]]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.43, 0 )
 shape = SubResource( 1 )
 

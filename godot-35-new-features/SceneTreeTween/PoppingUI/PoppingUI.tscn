@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/UI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/UI/TextButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/UI/completionmark_gem_blue.png" type="Texture" id=3]
 [ext_resource path="res://assets/UI/completionmark_empty.png" type="Texture" id=4]
 [ext_resource path="res://SceneTreeTween/PoppingUI/PoppingUI.gd" type="Script" id=5]
+[ext_resource path="res://assets/background.png" type="Texture" id=6]
 
 [node name="PoppingUI" type="Control"]
 anchor_right = 1.0
@@ -12,6 +13,11 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 1080 )
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="."]
 anchor_left = 0.5

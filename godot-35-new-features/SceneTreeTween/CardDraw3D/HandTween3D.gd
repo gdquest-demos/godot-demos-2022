@@ -22,9 +22,11 @@ onready var hand: Spatial = $Player/Hand
 onready var deck: Area = $Player/Deck
 onready var cards_resting_place: Area = $Player/CardsRestingPlace
 
+
 func _ready() -> void:
 	deck.connect("clicked", self, "_on_cards_requested")
 	cards_resting_place.connect("area_entered", self, "_on_CardsRestingPlace_area_entered")
+
 
 func _calculate_new_card_transform(index: int, count: int, ratio_in_hand: float) -> Transform:
 	var new_translation := Vector3(
@@ -46,28 +48,19 @@ func _calculate_new_card_transform(index: int, count: int, ratio_in_hand: float)
 
 
 func _clear() -> void:
-	
 	if hand.get_children():
-		
-		var tween := create_tween()\
-			.set_trans(Tween.TRANS_EXPO)\
-			.set_ease(Tween.EASE_OUT)
-			
+		var tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 		for child in hand.get_children():
-			tween.tween_property(
-				child, "translation", cards_resting_place.translation, 1
-			)
+			tween.tween_property(child, "translation", cards_resting_place.translation, 1)
+
 
 func _on_cards_requested() -> void:
-	
 	_clear()
 
-	var tween := create_tween()\
-		.set_trans(Tween.TRANS_EXPO)\
-		.set_ease(Tween.EASE_OUT)
+	var tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 	var adjusted_card_count := int(rand_range(1, 5))
-	
+
 	for child_index in adjusted_card_count + 1:
 		var new_card: Card3D = card_scene.instance()
 		new_card.card_art = preload("res://assets/blackhole.png")
@@ -75,23 +68,17 @@ func _on_cards_requested() -> void:
 		new_card.translation = deck.translation
 		new_card.scale = Vector3.ZERO
 		new_card.translation.z -= 1
-		#new_card.rotation_degrees.z = 180
 
 		hand.add_child(new_card)
-		
+
 		var ratio_in_hand := float(child_index) / adjusted_card_count
-		var new_transform: Transform = _calculate_new_card_transform(child_index, adjusted_card_count, ratio_in_hand)
-		
-		tween.tween_property(
-			new_card, "scale", Vector3.ONE * 0.8, .2
+		var new_transform: Transform = _calculate_new_card_transform(
+			child_index, adjusted_card_count, ratio_in_hand
 		)
-		tween.parallel().tween_property(
-			new_card, "translation:x", new_card.translation.x + 3, .3
-		).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-		
-		tween.tween_property(
-			new_card, "transform", new_transform, 0.5
-		)
+
+		tween.tween_property(new_card, "scale", Vector3.ONE * 0.8, .2)
+		tween.parallel().tween_property(new_card, "translation:x", new_card.translation.x + 3, .3).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+		tween.tween_property(new_card, "transform", new_transform, 0.5)
 
 
 func _on_CardsRestingPlace_area_entered(card: Node) -> void:
