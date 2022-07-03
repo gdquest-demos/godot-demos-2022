@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/button_up.png" type="Texture" id=1]
 [ext_resource path="res://assets/button_down.png" type="Texture" id=2]
@@ -12,12 +12,20 @@
 [ext_resource path="res://assets/controllers_keyboard.png" type="Texture" id=10]
 [ext_resource path="res://interface/theme.tres" type="Theme" id=11]
 [ext_resource path="res://IconsAlignements/IconsAlignementDemo.gd" type="Script" id=12]
+[ext_resource path="res://assets/background.png" type="Texture" id=13]
 
 [node name="IconsAlignementDemo" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 11 )
 script = ExtResource( 12 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 13 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_left = 0.5
