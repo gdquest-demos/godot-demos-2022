@@ -14,6 +14,7 @@ It showcases:
 1. The new SceneTreeTween that allows you to create tweens without creating nodes.
 1. The new `Label3D` node, which displays text as billboards or double-sided quads.
 1. The new flow container for user interface, which is a bit like flexbox in CSS.
+1. The physics interpolation feature, which allows you to lower the physics updates, save performance, yet get smooth motion.
 1. The 2D gradient texture you can use for lights, particle placeholders, and masking.
 1. The ability to align icons on buttons.
 1. The use of property pinning on inherited scenes.
