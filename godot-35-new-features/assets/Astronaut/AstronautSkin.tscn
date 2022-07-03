@@ -1999,7 +1999,6 @@ transform = Transform( 1, 0, 0, 0, 1, -2.64698e-23, 0, 2.64698e-23, 1, 0, 0.3252
 transform = Transform( 100, 0, 0, 0, 0, 100, 0, -100, 0, 0, 221.881, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_process_mode = 0
 anims/FALL_cycle = SubResource( 8 )
 anims/IDLE_cycle = SubResource( 10 )
 anims/JUMP_START = SubResource( 11 )

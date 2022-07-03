@@ -22,7 +22,6 @@ var _camera_controller: Spatial
 
 onready var _model: AstronautSkin = $AstronautSkin
 onready var _start_position := global_transform.origin
-onready var _animation_player: AnimationPlayer = $AnimationPlayer
 onready var _hit_box_collision: CollisionShape = $AttackHitBox/CollisionShape
 onready var _label_3d: Label3D = get_node_or_null("Label3D")
 
@@ -99,9 +98,6 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	)
 
 
-func take_damage() -> void:
-	start_blink(false)
-
 # ANCHOR: attack
 func attack() -> void:
 	_model.attack()
@@ -125,15 +121,6 @@ func is_landing() -> bool:
 
 func reset_position() -> void:
 	transform.origin = _start_position
-
-
-func start_blink(loop := false) -> void:
-	_animation_player.get_animation("blink").set_loop(loop)
-	_animation_player.play("blink")
-
-
-func stop_blink() -> void:
-	_animation_player.stop(true)
 
 
 func set_is_healing(is_it: bool) -> void:

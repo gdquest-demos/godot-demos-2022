@@ -136,6 +136,10 @@ click={
  ]
 }
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 gles3/shaders/shader_compilation_mode=0
