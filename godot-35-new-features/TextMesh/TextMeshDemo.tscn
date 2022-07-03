@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/font_text_bold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://TextMesh/ShakeCamera.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+uniform vec4 ColorUniform : hint_color;
+uniform float HowShiny = 2;
+uniform float Roughness = 0.2;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:4
+	vec3 n_out4p0 = ColorUniform.rgb;
+	float n_out4p1 = ColorUniform.a;
+
+// ScalarUniform:2
+	float n_out2p0 = HowShiny;
+
+// ScalarUniform:3
+	float n_out3p0 = Roughness;
+
+// Output:0
+	ALBEDO = n_out4p0;
+	METALLIC = n_out2p0;
+	ROUGHNESS = n_out3p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/ColorUniform = Color( 0, 0.505882, 1, 1 )
+shader_param/HowShiny = 5.0
+shader_param/Roughness = 0.4
+
+[sub_resource type="TextMesh" id=1]
+material = SubResource( 3 )
+text = "GDQUEST"
+font = ExtResource( 1 )
+uppercase = true
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGMesh:mesh:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "GDQUEST" ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "write"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGMesh:mesh:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "", "G", "GD", "GDQ", "GDQU", "GDQUE", "GDQUES", "GDQUEST" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Camera")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+} ]
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.982376, 3.65963e-09, 0.186918, 0.0569133, 0.952518, -0.299116, -0.178043, 0.304482, 0.93573, 0.155166, -0.0401009, 0.522025 )
+script = ExtResource( 2 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+mesh = SubResource( 1 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.973567, 0, -0.228402, 0, 1, 0, 0.228402, 0, 0.973567, -0.24474, 0.151056, 0.794428 )
+shadow_enabled = true
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.55528 )
+width = 3.82502
+height = 2.87686
+depth = 0.539142
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "write"
+anims/RESET = SubResource( 4 )
+anims/write = SubResource( 5 )

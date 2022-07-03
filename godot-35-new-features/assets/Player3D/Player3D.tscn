@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Player3D/Player3D.gd" type="Script" id=1]
+[ext_resource path="res://assets/Camera3D/ThirdPersonCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Astronaut/AstronautSkin.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.35
+height = 0.5
+
+[sub_resource type="CylinderShape" id=2]
+height = 0.618427
+radius = 1.38531
+
+[sub_resource type="Animation" id=3]
+resource_name = "blink"
+length = 0.75
+step = 0.009
+tracks/0/type = "value"
+tracks/0/path = NodePath("AstronautSkin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28, 0.42, 0.567, 0.711 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+
+[node name="Player3D" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 1 )
+acceleration = 8.0
+rotation_speed = 20.0
+camera_path = NodePath("ThirdPersonCamera")
+
+[node name="ThirdPersonCamera" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.618, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.6, 0 )
+shape = SubResource( 1 )
+
+[node name="AstronautSkin" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0 )
+
+[node name="AttackHitBox" type="Area" parent="."]
+monitoring = false
+
+[node name="CollisionShape" type="CollisionShape" parent="AttackHitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945156, 0 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/blink = SubResource( 3 )

@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/Environment/LevelGridMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Basic3D/SafetyNet.gd" type="Script" id=2]
+[ext_resource path="res://assets/Player3D/Player3D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Label3D/fontello.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Label3D/HealingArea.gd" type="Script" id=6]
+[ext_resource path="res://assets/Robot/RobotSkin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Label3D/Label3DDemo.gd" type="Script" id=8]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=9]
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+outline_size = 3
+font_data = ExtResource( 5 )
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.427452
+
+[sub_resource type="DynamicFont" id=3]
+size = 43
+outline_size = 3
+font_data = ExtResource( 4 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 50, 1, 50 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 3.94903, 2.08476, 2.70946 )
+
+[node name="Label3DDemo" type="Spatial"]
+script = ExtResource( 8 )
+
+[node name="Player3D" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.75844 )
+
+[node name="Label3D" type="Label3D" parent="Player3D"]
+offset = Vector2( 0, 200 )
+alpha_cut = 2
+alpha_scissor_threshold = 0.0
+render_priority = 2
+outline_render_priority = 1
+modulate = Color( 0.14902, 0.776471, 0.968627, 1 )
+text = ""
+font = SubResource( 4 )
+
+[node name="NavigationEnemy3D" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5746, 0, 3.0115 )
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="NavigationEnemy3D"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.43, 0 )
+shape = SubResource( 1 )
+
+[node name="Model" type="Spatial" parent="NavigationEnemy3D"]
+transform = Transform( 0.896718, 0, -0.442602, 0, 1, 0, 0.442602, 0, 0.896718, 0, 0, 0 )
+
+[node name="RobotSkin" parent="NavigationEnemy3D/Model" instance=ExtResource( 7 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+
+[node name="Label3D" type="Label3D" parent="NavigationEnemy3D"]
+cast_shadow = 0
+offset = Vector2( 0, 150 )
+alpha_cut = 2
+alpha_scissor_threshold = 0.0
+render_priority = 2
+outline_render_priority = 1
+text = "Player 2"
+font = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.707107, 0.5, 0.5, 0, -0.707107, 0.707107, 0.707107, -0.5, -0.5, 0, 10, 0 )
+shadow_enabled = true
+shadow_bias = 0.05
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.2
+directional_shadow_max_distance = 50.0
+
+[node name="SafetyNet" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.47564, 0 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SafetyNet"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164833, 4.57253, 0 )
+shape = SubResource( 6 )
+
+[node name="LevelGridMap" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.999873, -0.00399479, 0.0154323, 0.00396344, 0.99999, 0.00206134, -0.0154404, -0.00199991, 0.999879, 0, 0, 0 )
+data = {
+"cells": PoolIntArray( 0, 0, 1048615, 1, 0, 1048614, 65533, 0, 1441792, 65534, 0, 655399, 65535, 0, 655398, -65536, 0, 9, -65535, 0, 1441807, -65534, 0, 9, -65533, 0, 10, -4, 0, 655370, -3, 0, 9, -2, 0, 9, -1, 0, 9, 1, 1, 1048614, 65534, 1, 1441830, 65535, 1, 1441792, -65536, 1, 9, -65535, 1, 9, -65534, 1, 9, -65533, 1, 10, -4, 1, 655370, -3, 1, 9, -2, 1, 9, -1, 1, 9, 0, 2, 1441831, 1, 2, 39, 2, 2, 2, 65534, 2, 1441830, -65536, 2, 9, -65535, 2, 9, -65534, 2, 9, -65533, 2, 10, -4, 2, 655370, -3, 2, 9, -2, 2, 9, -1, 2, 9, 2, 3, 1441793, -65536, 3, 9, -65535, 3, 9, -65534, 3, 9, -65533, 3, 10, -4, 3, 655370, -3, 3, 1441807, -2, 3, 9, -1, 3, 9, 65532, 4, 1441835, -65536, 4, 1441802, -65535, 4, 1441802, -65534, 4, 1441802, -65533, 4, 8, -4, 4, 1441806, -3, 4, 1441808, -2, 4, 1441802, -1, 4, 1441802, -65536, 65532, 1048586, -65535, 65532, 1048586, -65534, 65532, 1048586, -65533, 65532, 1048584, -4, 65532, 655368, -3, 65532, 1048586, -2, 65532, 1048586, -1, 65532, 1048586, -65536, 65533, 9, -65535, 65533, 9, -65534, 65533, 9, -65533, 65533, 10, -4, 65533, 655370, -3, 65533, 9, -2, 65533, 9, -1, 65533, 9, 0, 65534, 29, 1, 65534, 29, 65534, 65534, 29, 65536, 65534, 29, 131070, 65534, 29, 131071, 65534, 29, -65536, 65534, 9, -65535, 65534, 9, -65534, 65534, 9, -65533, 65534, 10, -4, 65534, 655370, -3, 65534, 9, -2, 65534, 9, -1, 65534, 9, 65533, 65535, 0, -65536, 65535, 9, -65535, 65535, 1441807, -65534, 65535, 9, -65533, 65535, 10, -4, 65535, 655370, -3, 65535, 9, -2, 65535, 9, -1, 65535, 9 )
+}
+
+[node name="HealingArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.13865 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HealingArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86851, 0 )
+shape = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 275.0
+margin_bottom = 176.0
+theme = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+margin_right = 243.0
+margin_bottom = 144.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 223.0
+margin_bottom = 124.0
+
+[node name="BillboardCheckBox" type="CheckBox" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 203.0
+margin_bottom = 42.0
+text = "Billboard"
+
+[node name="DepthTestCheckBox" type="CheckBox" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 62.0
+margin_right = 203.0
+margin_bottom = 104.0
+text = "No Depth Test"

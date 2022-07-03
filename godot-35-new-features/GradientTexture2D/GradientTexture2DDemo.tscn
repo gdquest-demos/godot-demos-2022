@@ -1,0 +1,225 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://interface/theme.tres" type="Theme" id=1]
+[ext_resource path="res://GradientTexture2D/Stylized_Stone_Floor_005_basecolor.jpg" type="Texture" id=2]
+[ext_resource path="res://GradientTexture2D/GradientTexture2DDemo.gd" type="Script" id=6]
+[ext_resource path="res://GradientTexture2D/GradientTexture2D.tres" type="Texture" id=7]
+
+[sub_resource type="TileSet" id=3]
+0/name = "Stylized_Stone_Floor_005_basecolor.jpg 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 1024, 1024 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.296407, 0.664671 )
+colors = PoolColorArray( 0.929688, 0.929688, 0.929688, 1, 0.822754, 0.822754, 0.822754, 1, 0.670588, 0.670588, 0.670588, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0.00840336, 0.170455 ), 0.0, 2.21515, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+lifetime_randomness = 0.13
+trail_divisor = 5
+flag_disable_z = true
+spread = 73.42
+gravity = Vector3( 0, -98, 0 )
+initial_velocity = 127.48
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 10.0
+angle_random = 0.63
+scale = 0.7
+scale_random = 0.25
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
+
+[sub_resource type="CanvasItemMaterial" id=16]
+blend_mode = 3
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0.150838, 0.24581, 1 )
+colors = PoolColorArray( 0.259727, 0.267358, 0.281738, 1, 0.163519, 0.391385, 0.820801, 1, 0, 0.81543, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=15]
+gradient = SubResource( 14 )
+fill_from = Vector2( 0.35, 0.383333 )
+fill_to = Vector2( 1, 1 )
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0, 0.449102, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.815686, 0.956863, 1, 0.376471, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
+
+[sub_resource type="Curve" id=19]
+_data = [ Vector2( 0, 0.506818 ), 0.0, 2.27182, 0, 0, Vector2( 1, 0.443182 ), -1.94727, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=21]
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_box_extents = Vector3( 1024, 600, 600 )
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.7
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+scale_random = 1.0
+scale_curve = SubResource( 20 )
+color = Color( 0.956863, 0.956863, 0.956863, 1 )
+color_ramp = SubResource( 18 )
+hue_variation = 0.11
+hue_variation_random = 0.57
+
+[sub_resource type="Gradient" id=22]
+colors = PoolColorArray( 1, 1, 1, 0.908571, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=23]
+gradient = SubResource( 22 )
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 1, 0.5 )
+
+[node name="GradientTexture2DDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 1024, 1024 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0 )
+
+[node name="Light2D" type="Light2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( 697, 546 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+color = Color( 0.847656, 0.814597, 0.663676, 1 )
+energy = 1.23
+shadow_enabled = true
+
+[node name="Fire" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -466.0
+margin_right = 47.0
+margin_bottom = -426.0
+
+[node name="Particles2D" type="Particles2D" parent="Fire"]
+light_mask = 0
+amount = 100
+lifetime = 3.0
+local_coords = false
+process_material = SubResource( 9 )
+texture = ExtResource( 7 )
+
+[node name="Night" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color( 1, 1, 1, 0.501961 )
+light_mask = 0
+material = SubResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 15 )
+expand = true
+stretch_mode = 1
+
+[node name="Particles2D" type="Particles2D" parent="Night"]
+light_mask = 0
+position = Vector2( 982, 570 )
+amount = 1000
+lifetime = 10.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 21 )
+texture = SubResource( 23 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+light_mask = 0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 17.0
+margin_right = 238.0
+margin_bottom = -702.0
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 254.0
+margin_bottom = 364.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+light_mask = 0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 234.0
+margin_bottom = 344.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+light_mask = 0
+margin_right = 214.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="RepeatButton" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 0
+margin_top = 220.0
+margin_right = 214.0
+margin_bottom = 262.0
+text = "Repeat Texture"
+
+[node name="NightButton" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 0
+margin_top = 282.0
+margin_right = 214.0
+margin_bottom = 324.0
+text = "Toggle night"
+
+[node name="FireButton" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+margin_top = 328.0
+margin_right = 190.0
+margin_bottom = 362.0
+text = "Light A Fire"

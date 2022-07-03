@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PinningProperties/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PinningProperties/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PinningProperties/EnemyBerserk.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/background.png" type="Texture" id=4]
+
+[node name="PinningPropertiesDemo" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+
+[node name="EnemyBase" parent="." instance=ExtResource( 1 )]
+position = Vector2( 661, 378 )
+follow_during_charge = true
+
+[node name="EnemyBerserk" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1134, 715 )
+charge_time = 2.0
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 900, 528 )

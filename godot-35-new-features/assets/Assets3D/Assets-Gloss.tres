@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/Assets3D/texures/texture_atlas.png" type="Texture" id=1]
+
+[resource]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 1 )
+roughness = 0.3

@@ -1,0 +1,375 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/button_up.png" type="Texture" id=1]
+[ext_resource path="res://assets/button_down.png" type="Texture" id=2]
+[ext_resource path="res://assets/button_y.png" type="Texture" id=3]
+[ext_resource path="res://assets/button_left.png" type="Texture" id=4]
+[ext_resource path="res://assets/button_x.png" type="Texture" id=5]
+[ext_resource path="res://assets/button_a.png" type="Texture" id=6]
+[ext_resource path="res://assets/button_b.png" type="Texture" id=7]
+[ext_resource path="res://assets/button_right.png" type="Texture" id=8]
+[ext_resource path="res://assets/controllers_joypad.png" type="Texture" id=9]
+[ext_resource path="res://assets/controllers_keyboard.png" type="Texture" id=10]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=11]
+[ext_resource path="res://IconsAlignements/IconsAlignementDemo.gd" type="Script" id=12]
+
+[node name="IconsAlignementDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 11 )
+script = ExtResource( 12 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.5
+margin_top = -391.0
+margin_right = 370.5
+margin_bottom = 391.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 741.0
+margin_bottom = 782.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 721.0
+margin_bottom = 762.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 701.0
+margin_bottom = 34.0
+theme_type_variation = "TitleBig"
+text = "KEY BINDINGS"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 701.0
+margin_bottom = 58.0
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 701.0
+margin_bottom = 742.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Empty" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 14.0
+margin_right = 170.0
+margin_bottom = 48.0
+align = 2
+
+[node name="Title" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["title"]]
+margin_left = 190.0
+margin_right = 436.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = "Title"
+icon = ExtResource( 9 )
+icon_align = 1
+expand_icon = true
+
+[node name="Title2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["title"]]
+margin_left = 456.0
+margin_right = 701.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = "Title"
+icon = ExtResource( 10 )
+icon_align = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 88.0
+margin_right = 170.0
+margin_bottom = 122.0
+text = "Go Up"
+align = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 74.0
+margin_right = 436.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 1 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button9" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 74.0
+margin_right = 701.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "W"
+expand_icon = true
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 162.0
+margin_right = 170.0
+margin_bottom = 196.0
+text = "Go Right"
+align = 2
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 148.0
+margin_right = 436.0
+margin_bottom = 210.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 8 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button10" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 148.0
+margin_right = 701.0
+margin_bottom = 210.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "A"
+expand_icon = true
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 235.0
+margin_right = 170.0
+margin_bottom = 269.0
+text = "Go Down"
+align = 2
+
+[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 222.0
+margin_right = 436.0
+margin_bottom = 283.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 2 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button11" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 222.0
+margin_right = 701.0
+margin_bottom = 283.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "S"
+expand_icon = true
+
+[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 308.0
+margin_right = 170.0
+margin_bottom = 342.0
+text = "Go Left"
+align = 2
+
+[node name="Button4" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 295.0
+margin_right = 436.0
+margin_bottom = 356.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 4 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button12" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 295.0
+margin_right = 701.0
+margin_bottom = 356.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "D"
+expand_icon = true
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 368.0
+margin_right = 170.0
+margin_bottom = 372.0
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_left = 190.0
+margin_top = 368.0
+margin_right = 436.0
+margin_bottom = 372.0
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_left = 456.0
+margin_top = 368.0
+margin_right = 701.0
+margin_bottom = 372.0
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 397.0
+margin_right = 170.0
+margin_bottom = 431.0
+text = "Attack / Ok"
+align = 2
+
+[node name="Button5" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 384.0
+margin_right = 436.0
+margin_bottom = 445.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 5 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button13" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 384.0
+margin_right = 701.0
+margin_bottom = 445.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "ENTER"
+expand_icon = true
+
+[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 470.0
+margin_right = 170.0
+margin_bottom = 504.0
+text = "Defend/ Cancel"
+align = 2
+
+[node name="Button6" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 457.0
+margin_right = 436.0
+margin_bottom = 518.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 3 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button14" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 457.0
+margin_right = 701.0
+margin_bottom = 518.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SHIFT"
+expand_icon = true
+
+[node name="Label7" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 543.0
+margin_right = 170.0
+margin_bottom = 577.0
+text = "Switch Target"
+align = 2
+
+[node name="Button7" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 530.0
+margin_right = 436.0
+margin_bottom = 591.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 6 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button15" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 530.0
+margin_right = 701.0
+margin_bottom = 591.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "INSERT"
+expand_icon = true
+
+[node name="Label8" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+margin_top = 616.0
+margin_right = 170.0
+margin_bottom = 650.0
+text = "Menu"
+align = 2
+
+[node name="Button8" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 190.0
+margin_top = 603.0
+margin_right = 436.0
+margin_bottom = 664.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 7 )
+icon_align = 1
+expand_icon = true
+
+[node name="Button16" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" groups=["button"]]
+margin_left = 456.0
+margin_top = 603.0
+margin_right = 701.0
+margin_bottom = 664.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TAB"
+expand_icon = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 404.0
+margin_bottom = 127.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+margin_right = 367.0
+margin_bottom = 136.0
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer2/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 347.0
+margin_bottom = 116.0
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer/GridContainer"]
+margin_top = 4.0
+margin_right = 89.0
+margin_bottom = 38.0
+text = "Titles"
+
+[node name="TitlesAlignement" type="OptionButton" parent="PanelContainer2/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+margin_left = 109.0
+margin_right = 327.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="PanelContainer2/MarginContainer/GridContainer"]
+margin_top = 58.0
+margin_right = 89.0
+margin_bottom = 92.0
+text = "Buttons"
+
+[node name="ButtonsAlignement" type="OptionButton" parent="PanelContainer2/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+margin_left = 109.0
+margin_top = 54.0
+margin_right = 327.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
