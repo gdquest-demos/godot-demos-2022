@@ -76,20 +76,20 @@ light_mask = 0
 anchor_bottom = 1.0
 margin_left = 24.0
 margin_top = 17.0
-margin_right = 238.0
-margin_bottom = -702.0
+margin_right = 341.0
+margin_bottom = -891.0
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
 margin_right = 317.0
-margin_bottom = 361.0
+margin_bottom = 172.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
 light_mask = 0
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 297.0
-margin_bottom = 341.0
+margin_bottom = 152.0
 
 [node name="PhysicsLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
