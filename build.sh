@@ -11,16 +11,28 @@
 # And, found on https://itch.io/user/settings/api-keys
 # BUTLER_API_KEY=""
 
+
+function get_butler() {
+  command -v butler >/dev/null 2>&1 || {
+    temp_dir=$(mktemp -d)
+    cd "$temp_dir"
+    wget -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default \
+    && unzip butler.zip \
+    && chmod +x butler
+    export PATH="$temp_dir/":$PATH
+  }
+
+}
+
 function check_requirements() {
   
   command -v zip >/dev/null 2>&1 || { echo >&2      "'zip' is required"; exit 1; }
   command -v envsubst >/dev/null 2>&1 || { echo >&2 "'envsubst' is required"; exit 1; }
   command -v awk >/dev/null 2>&1 || { echo >&2      "'awk' is required"; exit 1; }
-  command -v butler >/dev/null 2>&1 || { echo >&2   "'butler' is required"; exit 1; }
 
-  #[ -n "$ITCHIO_USERNAME" ] || { echo >&2 "\$ITCHIO_USERNAME is not set" ; exit 1; }
-  #[ -n "$ITCHIO_GAME" ] || { echo >&2     "\$ITCHIO_GAME is not set" ; exit 1; }
-  #[ -n "$BUTLER_API_KEY" ] || { echo >&2  "\$BUTLER_API_KEY is not set" ; exit 1; }
+  [ -n "$ITCHIO_USERNAME" ] || { echo >&2 "\$ITCHIO_USERNAME is not set" ; exit 1; }
+  [ -n "$ITCHIO_GAME" ] || { echo >&2     "\$ITCHIO_GAME is not set" ; exit 1; }
+  [ -n "$BUTLER_API_KEY" ] || { echo >&2  "\$BUTLER_API_KEY is not set" ; exit 1; }
 
   mkdir -p "$BUILD_DIR" || { echo >&2     "Could not create destination directory $BUILD_DIR"; exit 1; }
   mkdir -p "$ARTIFACTS_DIR" || { echo >&2 "Could not create destination directory $ARTIFACTS_DIR"; exit 1; }
@@ -38,7 +50,7 @@ function process() {
   cd "$ROOT" && zip "$artifact" -r "$base" -x "$base/.import/*" "$base/.git/*"
 
   # push to itch
- # butler push "$artifact" "$ITCHIO_USERNAME/$ITCHIO_GAME:$base" --userversion "$DATE.$GIT_HASH"
+  butler push "$artifact" "$ITCHIO_USERNAME/$ITCHIO_GAME:$base" --userversion "$DATE.$GIT_HASH"
 
   # Generate HTML
   classes="project"
@@ -63,6 +75,7 @@ ARTIFACTS_DIR="$BUILD_DIR/artifacts"
 HTML_TEMPLATE="$ROOT/template.html"
 TEMP_FILE=$(mktemp)
 
+get_butler
 check_requirements
 
 export -f process
