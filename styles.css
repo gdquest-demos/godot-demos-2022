@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --accent: #b55dff;
+  --background: #fff;
+  --text: #484848;
+  --link: #007ac3;
+  --link-hover: #0d99ed;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, helvetica neue, sans-serif;
+  font-size: 1em;
+  color: var(--text);
+}
+a {
+  color: var(--link);
+}
+a:hover {
+  color: var(--link-hover);
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.title {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3em;
+  gap: 1em;
+  background-image: linear-gradient(
+    65deg,
+    hsl(265deg 72% 57%) 0%,
+    hsl(267deg 73% 58%) 10%,
+    hsl(268deg 73% 58%) 19%,
+    hsl(270deg 73% 58%) 27%,
+    hsl(272deg 73% 59%) 35%,
+    hsl(274deg 73% 59%) 42%,
+    hsl(275deg 73% 59%) 50%,
+    hsl(277deg 73% 59%) 59%,
+    hsl(279deg 73% 59%) 70%,
+    hsl(281deg 73% 60%) 83%,
+    hsl(283deg 73% 60%) 100%
+  );
+}
+
+.title h1 {
+  font-size: 4em;
+  color: var(--background);
+}
+
+.back {
+}
+
+.videos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1em;
+}
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.content {
+  margin: 3em auto;
+}
+.file-download {
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
+.file-download a {
+  --icon-size: 1.5em;
+  align-content: center;
+  max-width: 80%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--background);
+  background-color: var(--accent);
+  display: flex;
+  flex-direction: row;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  height: var(--icon-size);
+  line-height: 1.5;
+}
+.file-download a::before {
+  content: "";
+  display: inline-block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: #fff;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg"><path d="M11 5C11 4.44772 11.4477 4 12 4C12.5523 4 13 4.44772 13 5V12.1578L16.2428 8.91501L17.657 10.3292L12.0001 15.9861L6.34326 10.3292L7.75748 8.91501L11 12.1575V5Z" fill="white"/><path d="M4 14H6V18H18V14H20V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V14Z" fill="white"/></svg>');
+}
