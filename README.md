@@ -4,9 +4,11 @@ A collection of Free and Open-Source Godot demos created for learning purposes a
 
 ![](demos-cover.png)
 
-Each sub-directory contains one Godot project and some tips and tricks.
+You can access the demos:
 
-To download the demos, click the green button labeled *Code* at the top of the page, then click *Download ZIP*.
+- on [the website](https://gdquest.github.io/godot-demos-2022/)
+- on [itch.io](https://gdquest.itch.io)
+- on [github](https://github.com/GDQuest/godot-demos-2022/) (To download the demos, click the green button labeled *Code* at the top of the page, then click *Download ZIP*)
 
 ## Get better with Godot and support our work
 
