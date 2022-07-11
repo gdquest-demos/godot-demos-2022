@@ -2,7 +2,7 @@
 
 A collection of Free and Open-Source Godot demos created for learning purposes and for our [YouTube videos](https://www.youtube.com/c/gdquest/) in 2022.
 
-![](save-game/screenshot.png)
+![](demos-cover.png)
 
 Each sub-directory contains one Godot project and some tips and tricks.
 

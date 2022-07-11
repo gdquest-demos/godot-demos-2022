@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html $if(lang)$ lang="$lang$" $endif$>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    $for(author-meta)$
+    <meta name="author" content="$author-meta$" />
+    $endfor$ $if(date-meta)$
+    <meta name="date" content="$date-meta$" />
+    $endif$ $for(css)$
+    <link
+      rel="stylesheet"
+      href="$css$"
+      $if(html5)$$else$type="text/css"
+      $endif$
+    />
+    $endfor$
+    <title>$pagetitle$ | GDQuest</title>
+  </head>
+  <body class="$type$">
+    <header class="title container">
+      $if(is_project)$
+      <img src="./icon.png" alt="logo for $title$" />
+      $endif$ $if(title)$
+      <h1 class="doc-title">$title$</h1>
+      $endif$ $if(is_project)$
+      <a class="back" href="../">Go back to project list</a>
+      $endif$
+    </header>
+    $if(toc)$
+    <header id="$idprefix$TOC" class="toc">
+      <div class="well toc">$toc$</div>
+    </header>
+    $endif$
+    <main class="container">
+      $if(filename)$
+      <section class="file-download">
+        <a href="./artifacts/$filename$" download>Download the project files</a>
+      </section>
+      $endif$ $if(videos)$
+      <section class="videos">
+        $for(videos)$
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube-nocookie.com/embed/$videos$"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        $endfor$
+      </section>
+      $endif$
+      <section class="content">
+        $for(include-before)$ $include-before$ $endfor$ $body$
+        $for(include-after)$ $include-after$ $endfor$
+      </section>
+      $if(filename)$
+      <section class="file-download">
+        <a href="./artifacts/$filename$" download>Download the project files</a>
+      </section>
+      $endif$
+    </main>
+  </body>
+</html>

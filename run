@@ -1,0 +1,253 @@
+#!/usr/bin/env bash
+# vi:syntax=sh
+
+# BUILD SCRIPT
+# Requires the following env variables:
+#
+# For: xananax.itch.io/testing-many-uploads
+# 
+# ITCHIO_USERNAME="xananax"
+# ITCHIO_GAME="testing-many-uploads"
+# 
+# And, found on https://itch.io/user/settings/api-keys
+# BUTLER_API_KEY=""
+
+help(){
+  if [ "$1" == "help" ]; then
+    echo "Shows a short and helpful help text"
+    exit 0
+  fi
+  me=`basename "$0"`
+  echo ""
+  echo "Builder Script for GDQuest demos"
+  echo "please use one of the following commands:"
+  for i in ${!funcs[@]}; do
+    command=${funcs[i]}
+    echo "  - ${command//_/:}"
+  done
+  echo "you can get more info about commands by writing \`$me <command> help\`"
+  echo ""
+}
+
+function check_itch() {
+  
+  if [ "$1" == "help" ]; then
+    echo "Checks itch variables are set, and butler available. Downloads butler if necessary."
+    exit 0
+  fi
+
+  [ -n "$ITCHIO_USERNAME" ] || { echo >&2 "\$ITCHIO_USERNAME is not set" ; exit 1; }
+  [ -n "$ITCHIO_GAME" ] || { echo >&2     "\$ITCHIO_GAME is not set" ; exit 1; }
+  [ -n "$BUTLER_API_KEY" ] || { echo >&2  "\$BUTLER_API_KEY is not set" ; exit 1; }
+
+  command -v butler >/dev/null 2>&1 || {
+    temp_dir=$(mktemp -d)
+    cd "$temp_dir"
+    wget -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default \
+    && unzip butler.zip \
+    && chmod +x butler
+    export PATH="$temp_dir/":$PATH
+  }
+
+}
+
+function check_commands() {
+  if [ "$1" == "help" ]; then
+    echo "Verifies all necessary commands are available on \$PATH"
+    exit 0
+  fi
+  command -v zip >/dev/null 2>&1 || { echo >&2      "'zip' is required"; exit 1; }
+  command -v awk >/dev/null 2>&1 || { echo >&2      "'awk' is required"; exit 1; }
+  command -v pandoc >/dev/null 2>&1 || { echo >&2   "'pandoc' is required"; exit 1; }
+
+}
+
+function check_directories() {
+  if [ "$1" == "help" ]; then
+    echo "Verifies necessary directories exist or creates them."
+    exit 0
+  fi
+  mkdir -p "$BUILD_DIR" || { echo >&2     "Could not create destination directory $BUILD_DIR"; exit 1; }
+  mkdir -p "$ARTIFACTS_DIR" || { echo >&2 "Could not create destination directory $ARTIFACTS_DIR"; exit 1; }
+}
+
+function check() {
+  if [ "$1" == "help" ]; then
+    echo "Verifies necessary directories and softwares exist and creates/downloads them if possible."
+    echo "Pass itch as an argument to check for itch requirements too."
+    exit 0
+  fi
+  check_commands
+  check_directories
+  if [ "$1" == "itch" ]; then
+    check_itch
+  fi
+}
+
+function clean_build() {
+  if [ "$1" == "help" ]; then
+    echo "Removes the build directory"
+    exit 0
+  fi
+  rm -rf build
+}
+
+function clean() {
+  if [ "$1" == "help" ]; then
+    echo "Removes the build directory"
+    exit 0
+  fi
+  clean_build
+}
+
+function _process_project() {
+  project_file="$1"
+  use_itch="$2"
+  
+  project_name=$(awk -F "=" '/config\/name=/ {print $2}' "$project_file" | tr -d '"')
+  project_name=${project_name%"(GDQuest)"}
+  project_name=$(echo "$project_name" | xargs)
+
+  dir=$(dirname "$project_file")
+  base=$(basename "$dir")
+  filename="$base.$DATE.$GIT_BRANCH.$GIT_HASH.zip"
+  artifact="$ARTIFACTS_DIR/$filename"
+  readme="$dir/README.md"
+  destination="$BUILD_DIR/$base"
+
+  #cd "$ROOT" && zip "$artifact" -r "$base" -x "$base/.import/*" "$base/.git/*"
+
+  # push to itch
+  if [ "$use_itch" == "itch" ]; then
+    butler push "$artifact" "$ITCHIO_USERNAME/$ITCHIO_GAME:$base" --userversion "$DATE.$GIT_HASH"
+  fi
+
+  videos_metadata_file="$dir/videos.yaml"
+  videos=""
+  if [[ -f "$videos_metadata_file" ]]; then
+    videos="--metadata-file=$videos_metadata_file"
+  fi
+
+  mkdir -p $destination
+
+  # Generate HTML
+  pandoc \
+    --metadata title="$project_name" \
+    --metadata type="project" \
+    --metadata is_project \
+    --metadata filename="$filename" \
+    $videos \
+    --template="$HTML_TEMPLATE" \
+    --css="../styles.css" \
+    -t gfm -t html5 \
+    -o "$destination/index.html" \
+    "$readme"
+
+  cp $dir/*.png "$destination"
+
+  echo " - [$project_name]($base/index.html)\\n" >> "$TEMP_FILE"
+}
+
+function _generate_index() {
+  pandoc \
+    --metadata title="Demos" \
+    --metadata type="listing" \
+    --template="$ROOT/.github/templates/index.html" \
+    --css="styles.css" \
+    -t gfm -t html5 \
+    -o "$BUILD_DIR/index.html" \
+    "$TEMP_FILE"
+
+  cp "$ROOT/demos-cover.png" "$BUILD_DIR"
+  cp "$ROOT/.github/templates/styles.css" "$BUILD_DIR"
+  cp "$ROOT/.github/templates/favicon.ico" "$BUILD_DIR"
+}
+
+
+function generate() {
+  if [ "$1" == "help" ]; then
+    echo "Generates html files for all projects. Does not check for requirements."
+    echo "Pass itch as an argument to upload to itch too."
+    exit 0
+  fi
+  use_itch=""
+  if [ "$1" == "itch" ]; then
+    use_itch="itch"
+  fi
+
+  export -f _process_project
+  export BUILD_DIR
+  export ARTIFACTS_DIR
+  export ROOT
+  export HTML_TEMPLATE
+  export ITCHIO_USERNAME
+  export BUTLER_API_KEY
+  export ITCHIO_GAME
+  export DATE
+  export GIT_BRANCH
+  export GIT_HASH
+  export TEMP_FILE
+
+  find "$ROOT" -name "project.godot"  -exec bash -c "_process_project \"\$0\" $use_itch" {} \;
+
+  # create main index file
+  _generate_index
+}
+
+
+function build() {
+  if [ "$1" == "help" ]; then
+    echo "Verifies requirements, and generates html files."
+    echo "Pass itch as an argument to use Butler and upload your files to itch."
+    exit 0
+  fi
+  use_itch=""
+  if [ "$1" == "itch" ]; then
+    use_itch="itch"
+  fi
+  check "$use_itch"
+  generate "$use_itch"
+}
+
+
+# these variables are used in several places, and changing them will probably break things
+# specifically, the link to files in the html template, and the pages location in the gh-pages CI
+DATE=$(date '+%Y-%m-%d-%H-%M-%S')
+git_diff=$(git diff --quiet --ignore-submodules HEAD 2>/dev/null; [ $? -eq 1 ] && echo "*")
+GIT_BRANCH=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$git_diff/" | tr -d '*')
+GIT_HASH=$(git rev-parse --short HEAD 2> /dev/null)
+ROOT=$(dirname "$(readlink -f $0)")
+BUILD_DIR="$ROOT/build"
+ARTIFACTS_DIR="$BUILD_DIR/artifacts"
+HTML_TEMPLATE="$ROOT/.github/templates/index.html"
+
+# contains a list of generated projects to list in the main file
+TEMP_FILE=$(mktemp)
+mv "$TEMP_FILE" "$TEMP_FILE.md"
+TEMP_FILE="$TEMP_FILE.md"
+
+cat "$ROOT/README.md" > "$TEMP_FILE"
+echo $'\n\n# Demos\n' >> "$TEMP_FILE"
+
+
+
+_bootstrap(){
+  funcs=(`declare -F | awk '{print $NF}' | sort | egrep -v "^_"`)
+  command=${1//:/_}
+
+  if [[ " ${funcs[*]} " =~ " ${command} " ]]; then
+    shift
+    $command $@
+    exit 0
+  else
+    if [[ $command ]]; then
+      echo ""
+      echo "\`${command}\` isn't a recognized command"
+      echo ""
+    fi
+    help
+    exit 1
+  fi
+}
+
+_bootstrap $@
