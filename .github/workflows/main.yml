@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
+      - name: Install 🌱
+        run: |
+          sudo apt-get install -y pandoc
       - name: Build 🔧
         run: |
           ./run build itch
