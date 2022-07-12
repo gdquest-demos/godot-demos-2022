@@ -4,10 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta property="og:type" content="website" />
     $for(author-meta)$
     <meta name="author" content="$author-meta$" />
     $endfor$ $if(date-meta)$
     <meta name="date" content="$date-meta$" />
+    $endif$ $if(title)$
+    <meta property="og:title" content="$title$" />
+    <meta name="twitter:title" content="$title$" />
+    $endif$ $if(description)$
+    <meta property="og:description" content="$description$" />
+    <meta name="twitter:description" content="$description$" />
+    $endif$ $if(image)$
+    <meta property="og:image" content="$image$" />
+    <meta name="twitter:image" content="$image$" />
+    $endif$ $if(url)$
+    <meta property="og:url" content="$url$" />
     $endif$ $for(css)$
     <link
       rel="stylesheet"
@@ -16,7 +28,7 @@
       $endif$
     />
     $endfor$
-    <title>$pagetitle$ | GDQuest</title>
+    <title>$pagetitle$</title>
   </head>
   <body class="$type$">
     <header class="title container">

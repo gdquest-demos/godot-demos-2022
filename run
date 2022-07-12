@@ -108,6 +108,7 @@ function _process_project() {
   project_name=${project_name%"(GDQuest)"}
   project_name=$(echo "$project_name" | xargs)
 
+  description=$(awk -F "=" '/config\/description/ {print $2}' "$project_file" | tr -d '"')
   dir=$(dirname "$project_file")
   base=$(basename "$dir")
   filename="$base.$DATE.$GIT_BRANCH.$GIT_HASH.zip"
@@ -132,9 +133,12 @@ function _process_project() {
 
   # Generate HTML
   pandoc \
-    --metadata title="$project_name" \
+    --metadata title="$project_name | GDQuest 2022 Demos" \
     --metadata type="project" \
     --metadata is_project \
+    --metadata url="$WEBSITE_URL/$base" \
+    --metadata description="$description" \
+    --metadata image="$WEBSITE_URL/$base/icon.png" \
     --metadata filename="$filename" \
     $videos \
     --template="$HTML_TEMPLATE" \
@@ -150,8 +154,11 @@ function _process_project() {
 
 function _generate_index() {
   pandoc \
-    --metadata title="Demos" \
+    --metadata title="GDQuest 2022 Demos" \
     --metadata type="listing" \
+    --metadata url="$WEBSITE_URL" \
+    --metadata image="$WEBSITE_URL/demos-cover.png" \
+    --metadata description="A collection of Free and Open-Source Godot demos created for learning purposes and for our YouTube videos in 2022." \
     --template="$ROOT/.github/templates/index.html" \
     --css="styles.css" \
     -t gfm -t html5 \
@@ -187,6 +194,7 @@ function generate() {
   export GIT_BRANCH
   export GIT_HASH
   export TEMP_FILE
+  export WEBSITE_URL
 
   find "$ROOT" -name "project.godot"  -exec bash -c "_process_project \"\$0\" $use_itch" {} \;
 
@@ -220,6 +228,7 @@ ROOT=$(dirname "$(readlink -f $0)")
 BUILD_DIR="$ROOT/build"
 ARTIFACTS_DIR="$BUILD_DIR/artifacts"
 HTML_TEMPLATE="$ROOT/.github/templates/index.html"
+WEBSITE_URL="https://gdquest.github.io/godot-demos-2022"
 
 # contains a list of generated projects to list in the main file
 TEMP_FILE=$(mktemp)
