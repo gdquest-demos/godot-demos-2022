@@ -150,7 +150,7 @@ function _process_project() {
 
   cp $dir/*.png "$destination"
 
-  echo " - [$project_name]($base/index.html)\\n" >> "$TEMP_FILE"
+  echo " - [$project_name]($base)\\n" >> "$TEMP_FILE"
 }
 
 function _generate_index() {
