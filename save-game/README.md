@@ -121,6 +121,44 @@ if "_init" in content_as_plain_text:
 
 Any GDScript code in a resource needs to run through the GDScript compiler to execute. That only happens when loading via Godot's resource loader.
 
+## Preventing the player from editing the save file
+
+Many developers want to prevent players from messing with save files. 
+
+First, please note that there is always a way for tech-savvy people to mess with your game files. People manage to extract data from AAA games with proprietary security. So as a small team or a solo independent developer, you will never be able to prevent that entirely.
+
+Instead of trying to prevent editing save files, what you *can* do is prevent the average player from editing the save file too easily.
+
+There's a simple way to do this with resources: save as binary in the release builds instead of text. All you have to do is change the file extension to `.res` instead of `.tres`.
+
+You can use the `OS.is_debug_build()` function to know if you should save as `.tres` or `.res`:
+
+``` gdscript
+static func get_save_path() -> String:
+	var extension := ".tres" if OS.is_debug_build() else ".res"
+	return "user://save" + extension
+```
+
+### What about encryption?
+
+Encrypting is another option to prevent editing user files. First, while saving as binary will improve loading speed, using encryption in your game will make things slower because you add an encryption and decryption step to saving and loading. 
+
+This won't be noticeable in a small game, but as your projects and files start to grow in size, you want to be aware of that.
+
+You cannot directly encrypt and decrypt a resource like plain text files in Godot. You have to make a copy of it in a text file. So your code would have to be like:
+
+- Save the resource with `ResourceSaver.save()`.
+- Open the saved file with a `File` object.
+- Get the file's content and encrypt it with `Crypto.encrypt()`.
+- Write the encrypted content to a new file.
+- Delete the resource file.
+
+You would have to do something similar when loading. If you really want encryption, perhaps saving and loading the data with `ConfigFile` or another format would be simpler. You can still use resources in your game to achieve that, but delegate the saving and loading part to `ConfigFile`.
+
+Note that encrypting a file doesn't protect it from being opened unless you also encrypt all of your game scripts because otherwise, your encryption and decryption key is readable in the scripts. You can encrypt all your GDScript files by making a custom build of Godot. 
+
+Learn more: https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html
+
 ## Rewriting resource paths
 
 In the worst-case scenario, if you **must** move files the save game depends on, you can still fix it.

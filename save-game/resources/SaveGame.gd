@@ -1,9 +1,13 @@
 class_name SaveGame
 extends Resource
 
-# You must use the user:// path prefix when saving the player's data. The .tres
-# extension stands for "text resource."
-const SAVE_GAME_PATH := "user://save.tres"
+# You must use the user:// path prefix when saving the player's data.
+#
+# We removed the extension in this demo to show how to save as text during
+# development or in debug builds and binary in the released game.
+#
+# See the get_save_path() function below.
+const SAVE_GAME_BASE_PATH := "user://save"
 
 # Use this to detect old player saves and update their data.
 export var version := 1
@@ -19,17 +23,18 @@ export var global_position := Vector2.ZERO
 
 # The next three functions are just to keep the save API inside of the SaveGame resource.
 func write_savegame() -> void:
-	ResourceSaver.save(SAVE_GAME_PATH, self)
+	ResourceSaver.save(get_save_path(), self)
 
 
 static func save_exists() -> bool:
-	return ResourceLoader.exists(SAVE_GAME_PATH)
+	return ResourceLoader.exists(get_save_path())
 
 
 static func load_savegame() -> Resource:
-	if not ResourceLoader.has_cached(SAVE_GAME_PATH):
+	var save_path := get_save_path()
+	if not ResourceLoader.has_cached(save_path):
 		# Once the resource caching bug is fixed, you will only need this line of code to load the save game.
-		return ResourceLoader.load(SAVE_GAME_PATH, "", true)
+		return ResourceLoader.load(save_path, "", true)
 	
 	# /!\ Workaround for bug https://github.com/godotengine/godot/issues/59686
 	# Without that, sub-resources will not reload from the saved data.
@@ -38,8 +43,8 @@ static func load_savegame() -> Resource:
 
 	# We first load the save game resource's content as text and store it.
 	var file := File.new()
-	if file.open(SAVE_GAME_PATH, File.READ) != OK:
-		printerr("Couldn't read file " + SAVE_GAME_PATH)
+	if file.open(save_path, File.READ) != OK:
+		printerr("Couldn't read file " + save_path)
 		return null
 
 	var data := file.get_as_text()
@@ -60,9 +65,9 @@ static func load_savegame() -> Resource:
 
 	# We load the temporary file as a resource.
 	var save = ResourceLoader.load(tmp_file_path, "", true)
-	# And make it take over the SAVE_GAME_PATH for the next time the player
+	# And make it take over the save path for the next time the player
 	# saves.
-	save.take_over_path(SAVE_GAME_PATH)
+	save.take_over_path(save_path)
 
 	# We delete the temporary file.
 	var directory := Directory.new()
@@ -72,3 +77,10 @@ static func load_savegame() -> Resource:
 
 static func make_random_path() -> String:
 	return "user://temp_file_" + str(randi()) + ".tres"
+
+
+# This function allows us to save and load a text resource in debug builds and a
+# binary resource in the released product.
+static func get_save_path() -> String:
+	var extension := ".tres" if OS.is_debug_build() else ".res"
+	return SAVE_GAME_BASE_PATH + extension
