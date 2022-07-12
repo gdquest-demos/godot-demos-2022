@@ -25,7 +25,7 @@
           </header>
         <main class="container">
             <section class="file-download">
-        <a href="./artifacts/save-game.2022-07-12-08-33-06.main.3d92dd0.zip" download
+        <a href="./artifacts/save-game.2022-07-12-08-54-00.main.918d93f.zip" download
           ><span>Download the project files</span></a
         >
       </section>
@@ -133,6 +133,29 @@ if &quot;_init&quot; in content_as_plain_text:
     printerr(&quot;This save file has been modified to run code. This could potentially harm your computer. Aborting loading.&quot;)
     return null</code></pre>
 <p>Any GDScript code in a resource needs to run through the GDScript compiler to execute. That only happens when loading via Godot’s resource loader.</p>
+<h2 id="preventing-the-player-from-editing-the-save-file">Preventing the player from editing the save file</h2>
+<p>Many developers want to prevent players from messing with save files.</p>
+<p>First, please note that there is always a way for tech-savvy people to mess with your game files. People manage to extract data from AAA games with proprietary security. So as a small team or a solo independent developer, you will never be able to prevent that entirely.</p>
+<p>Instead of trying to prevent editing save files, what you <em>can</em> do is prevent the average player from editing the save file too easily.</p>
+<p>There’s a simple way to do this with resources: save as binary in the release builds instead of text. All you have to do is change the file extension to <code>.res</code> instead of <code>.tres</code>.</p>
+<p>You can use the <code>OS.is_debug_build()</code> function to know if you should save as <code>.tres</code> or <code>.res</code>:</p>
+<pre class="gdscript"><code>static func get_save_path() -&gt; String:
+    var extension := &quot;.tres&quot; if OS.is_debug_build() else &quot;.res&quot;
+    return &quot;user://save&quot; + extension</code></pre>
+<h3 id="what-about-encryption">What about encryption?</h3>
+<p>Encrypting is another option to prevent editing user files. First, while saving as binary will improve loading speed, using encryption in your game will make things slower because you add an encryption and decryption step to saving and loading.</p>
+<p>This won’t be noticeable in a small game, but as your projects and files start to grow in size, you want to be aware of that.</p>
+<p>You cannot directly encrypt and decrypt a resource like plain text files in Godot. You have to make a copy of it in a text file. So your code would have to be like:</p>
+<ul>
+<li>Save the resource with <code>ResourceSaver.save()</code>.</li>
+<li>Open the saved file with a <code>File</code> object.</li>
+<li>Get the file’s content and encrypt it with <code>Crypto.encrypt()</code>.</li>
+<li>Write the encrypted content to a new file.</li>
+<li>Delete the resource file.</li>
+</ul>
+<p>You would have to do something similar when loading. If you really want encryption, perhaps saving and loading the data with <code>ConfigFile</code> or another format would be simpler. You can still use resources in your game to achieve that, but delegate the saving and loading part to <code>ConfigFile</code>.</p>
+<p>Note that encrypting a file doesn’t protect it from being opened unless you also encrypt all of your game scripts because otherwise, your encryption and decryption key is readable in the scripts. You can encrypt all your GDScript files by making a custom build of Godot.</p>
+<p>Learn more: https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html</p>
 <h2 id="rewriting-resource-paths">Rewriting resource paths</h2>
 <p>In the worst-case scenario, if you <strong>must</strong> move files the save game depends on, you can still fix it.</p>
 <p>You can load the player’s save as text and rewrite file paths.</p>
@@ -143,7 +166,7 @@ if &quot;_init&quot; in content_as_plain_text:
         
       </section>
             <section class="file-download">
-        <a href="./artifacts/save-game.2022-07-12-08-33-06.main.3d92dd0.zip" download>
+        <a href="./artifacts/save-game.2022-07-12-08-54-00.main.918d93f.zip" download>
           <span>Download the project files</span></a
         >
       </section>
