@@ -48,7 +48,9 @@
     <main class="container">
       $if(filename)$
       <section class="file-download">
-        <a href="./artifacts/$filename$" download>Download the project files</a>
+        <a href="./artifacts/$filename$" download
+          ><span>Download the project files</span></a
+        >
       </section>
       $endif$ $if(videos)$
       <section class="videos">
@@ -71,7 +73,9 @@
       </section>
       $if(filename)$
       <section class="file-download">
-        <a href="./artifacts/$filename$" download>Download the project files</a>
+        <a href="./artifacts/$filename$" download>
+          <span>Download the project files</span></a
+        >
       </section>
       $endif$
     </main>
