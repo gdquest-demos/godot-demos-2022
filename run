@@ -133,7 +133,8 @@ function _process_project() {
 
   # Generate HTML
   pandoc \
-    --metadata title="$project_name | GDQuest 2022 Demos" \
+    --metadata title="$project_name" \
+    --metadata pageTitle="$project_name | GDQuest 2022 Demos" \
     --metadata type="project" \
     --metadata is_project \
     --metadata url="$WEBSITE_URL/$base" \
