@@ -104,31 +104,52 @@ function _process_project() {
   project_file="$1"
   use_itch="$2"
   
+  # extract project name from project.godot
   project_name=$(awk -F "=" '/config\/name=/ {print $2}' "$project_file" | tr -d '"')
+  # remove the (GDQuest) mention
   project_name=${project_name%"(GDQuest)"}
+  # clean whitespace
   project_name=$(echo "$project_name" | xargs)
 
+  # extract project description from project.godot
   description=$(awk -F "=" '/config\/description/ {print $2}' "$project_file" | tr -d '"')
+
+  # get fully qualified directory path
   dir=$(dirname "$project_file")
+
+  # get project slug
   base=$(basename "$dir")
+
+  # generate a unique filename for artifacts
   filename="$base.$DATE.$GIT_BRANCH.$GIT_HASH.zip"
   artifact="$ARTIFACTS_DIR/$filename"
+
+  # readme location for extracting text from it
   readme="$dir/README.md"
+
+  # video listing location
+  videos_metadata_file="$dir/videos.yaml"
+
+  # destination for writing files
   destination="$BUILD_DIR/$base"
 
-  #cd "$ROOT" && zip "$artifact" -r "$base" -x "$base/.import/*" "$base/.git/*"
+  # create the zip
+  cd "$ROOT" && zip "$artifact" -r "$base" -x "$base/.import/*" "$base/.git/*"
 
   # push to itch
   if [ "$use_itch" == "itch" ]; then
     butler push "$artifact" "$ITCHIO_USERNAME/$ITCHIO_GAME:$base" --userversion "$DATE.$GIT_HASH"
   fi
 
-  videos_metadata_file="$dir/videos.yaml"
+  # check if video listing exists
   videos=""
   if [[ -f "$videos_metadata_file" ]]; then
     videos="--metadata-file=$videos_metadata_file"
   fi
 
+  ###### BUILD
+
+  # create destination directory
   mkdir -p $destination
 
   # Generate HTML
@@ -148,12 +169,17 @@ function _process_project() {
     -o "$destination/index.html" \
     "$readme"
 
+  # copy images
   cp $dir/*.png "$destination"
 
+  # write link to list for main index.html listing
   echo " - [$project_name]($base)\\n" >> "$TEMP_FILE"
 }
 
 function _generate_index() {
+
+  # Assumes $TEMP_FILE has been generated
+
   pandoc \
     --metadata title="GDQuest 2022 Demos" \
     --metadata type="listing" \
@@ -166,6 +192,7 @@ function _generate_index() {
     -o "$BUILD_DIR/index.html" \
     "$TEMP_FILE"
 
+  # Copy static files
   cp "$ROOT/demos-cover.png" "$BUILD_DIR"
   cp "$ROOT/.github/templates/styles.css" "$BUILD_DIR"
   cp "$ROOT/.github/templates/favicon.ico" "$BUILD_DIR"
@@ -238,7 +265,6 @@ TEMP_FILE="$TEMP_FILE.md"
 
 cat "$ROOT/README.md" > "$TEMP_FILE"
 echo $'\n\n# Demos\n' >> "$TEMP_FILE"
-
 
 
 _bootstrap(){
