@@ -1,17 +1,6 @@
 #!/usr/bin/env bash
 # vi:syntax=sh
 
-# BUILD SCRIPT
-# Requires the following env variables:
-#
-# For: xananax.itch.io/testing-many-uploads
-# 
-# ITCHIO_USERNAME="xananax"
-# ITCHIO_GAME="testing-many-uploads"
-# 
-# And, found on https://itch.io/user/settings/api-keys
-# BUTLER_API_KEY=""
-
 help(){
   if [ "$1" == "help" ]; then
     echo "Shows a short and helpful help text"
@@ -20,6 +9,8 @@ help(){
   me=`basename "$0"`
   echo ""
   echo "Builder Script for GDQuest demos"
+  cat "./build.md"
+  echo ""
   echo "please use one of the following commands:"
   for i in ${!funcs[@]}; do
     command=${funcs[i]}
