@@ -53,6 +53,7 @@ Caveats:
 2. The same will happen if you reference images and the other resources from your projects. You shouldn't store images or sounds in your save game resources.
 3. In Godot 3, there are no typed arrays and dictionaries. If you save an array of resources, you need to be careful when loading them back. You can't use strong typing anymore with the loaded values.
 4. Resources, like scene files, can include GDScript code, and they'll run it on instantiation. It's OK if the file lives on the player's computer, but you should not send them over a network for security reasons.
+5. You have to be careful with versioning and backwards compatibility.
 
 If you do any of the above, you will get errors when trying to load the saved data.
 
@@ -61,6 +62,8 @@ You can prevent those issues with the following techniques:
 - You can store all resource scripts in a folder and never move or rename them. That's how we do it typically.
 
 - Instead of nesting resources, you can use dictionaries and arrays to save data, reducing the number of referenced resource scripts. But you'll lose some auto-completion and error reporting. See this project's `Inventory` resource for an example.
+
+- For versioning, you should try not to change existing variable names but only extend resources. Otherwise, you'll get loading errors. If you absolutely need to make breaking changes to your save game data, you'll want to keep the old script, make a new one, and write some conversion code.
 
 - You should never save any resource that directly holds game data that could change, like file names, the display name of things in the game, and so on. You should use unique ids instead. See the `ItemData` resources in this project for an example. The exception is the resource script files, which we recommend to keep in a fixed directory, like `resources/` or `savegame/`
 
@@ -155,7 +158,9 @@ You cannot directly encrypt and decrypt a resource like plain text files in Godo
 
 You would have to do something similar when loading. If you really want encryption, perhaps saving and loading the data with `ConfigFile` or another format would be simpler. You can still use resources in your game to achieve that, but delegate the saving and loading part to `ConfigFile`.
 
-Note that encrypting a file doesn't protect it from being opened unless you also encrypt all of your game scripts because otherwise, your encryption and decryption key is readable in the scripts. You can encrypt all your GDScript files by making a custom build of Godot. 
+Note that encrypting a file doesn't protect it from being opened, and that even if you make a custom Godot build with encrypted scripts. Why? Because to encrypt and decrypt, you need a key (typically a string) and it has to be in a code file somewhere. 
+
+Now, the point is not that encryption isn't useful or good for security reasons, just that in this context, it may not add much benefit to saving the save file as binary.
 
 Learn more: https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html
 
