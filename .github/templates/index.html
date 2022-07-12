@@ -5,7 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta property="og:type" content="website" />
-    $for(author-meta)$
+    $if(favicon)$
+    <link rel="shortcut icon" type="image/x-icon" href="$favicon$" />
+    $endif$ $for(author-meta)$
     <meta name="author" content="$author-meta$" />
     $endfor$ $if(date-meta)$
     <meta name="date" content="$date-meta$" />

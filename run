@@ -159,6 +159,7 @@ function _process_project() {
     --metadata type="project" \
     --metadata is_project \
     --metadata url="$WEBSITE_URL/$base" \
+    --metadata favicon="$WEBSITE_URL/favicon.ico" \
     --metadata description="$description" \
     --metadata image="$WEBSITE_URL/$base/icon.png" \
     --metadata filename="$filename" \
@@ -185,6 +186,7 @@ function _generate_index() {
     --metadata type="listing" \
     --metadata url="$WEBSITE_URL" \
     --metadata image="$WEBSITE_URL/demos-cover.png" \
+    --metadata favicon="$WEBSITE_URL/favicon.ico" \
     --metadata description="A collection of Free and Open-Source Godot demos created for learning purposes and for our YouTube videos in 2022." \
     --template="$ROOT/.github/templates/index.html" \
     --css="styles.css" \
