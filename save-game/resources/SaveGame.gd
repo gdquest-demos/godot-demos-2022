@@ -13,7 +13,7 @@ const SAVE_GAME_BASE_PATH := "user://save"
 export var version := 1
 
 # We directly reference the characters stats and inventory in the save game resource.
-# When saving this resource, they'll get saved alongside it. 
+# When saving this resource, they'll get saved alongside it.
 export var character: Resource
 export var inventory: Resource
 
@@ -32,10 +32,10 @@ static func save_exists() -> bool:
 
 static func load_savegame() -> Resource:
 	var save_path := get_save_path()
-	if not ResourceLoader.has_cached(save_path):
+	if ResourceLoader.has_cached(save_path):
 		# Once the resource caching bug is fixed, you will only need this line of code to load the save game.
 		return ResourceLoader.load(save_path, "", true)
-	
+
 	# /!\ Workaround for bug https://github.com/godotengine/godot/issues/59686
 	# Without that, sub-resources will not reload from the saved data.
 	# We copy the SaveGame resource's data to a temporary file, load that file
@@ -59,7 +59,7 @@ static func load_savegame() -> Resource:
 	if file.open(tmp_file_path, File.WRITE) != OK:
 		printerr("Couldn't write file " + tmp_file_path)
 		return null
-	
+
 	file.store_string(data)
 	file.close()
 
