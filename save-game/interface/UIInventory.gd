@@ -12,6 +12,7 @@ onready var _ui_tooltip := $UITooltip
 onready var _add_item_button := $VBoxContainer/HBoxContainer/AddItemButton as Button
 onready var _remove_item_button := $VBoxContainer/HBoxContainer/RemoveItemButton as Button
 
+
 func _ready() -> void:
 	# If running the scene with F6, we create an inventory for testing purposes.
 	if get_parent() == get_tree().root:

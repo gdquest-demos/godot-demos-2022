@@ -2,8 +2,7 @@
 # resources to the user interface and the player.
 extends Node2D
 
-# We always keep a reference to the SaveGame resource here to prevent it from unloading.
-var _save: SaveGame
+var _save := SaveGameAsJSON.new()
 
 onready var _player := $PlayerCharacter
 onready var _ui_inventory := $UI/UIInventory
@@ -39,16 +38,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _create_or_load_save() -> void:
-	if SaveGame.save_exists():
-		_save = SaveGame.load_savegame() as SaveGame
+	if _save.save_exists():
+		_save.load_savegame()
 	else:
-		_save = SaveGame.new()
-
-		_save.inventory = Inventory.new()
 		_save.inventory.add_item("healing_gem", 3)
 		_save.inventory.add_item("sword", 1)
 
-		_save.character = Character.new()
 		_save.map_name = "map_1"
 		_save.global_position = _player.global_position
 

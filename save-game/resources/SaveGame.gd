@@ -1,3 +1,8 @@
+# Save and load the game using the text or binary resource format.
+#
+# /!\ This approach is unsafe if players download completed save games from the 
+# web. Please read the README and watch the corresponding video about security
+# issues.
 class_name SaveGame
 extends Resource
 
@@ -14,14 +19,17 @@ export var version := 1
 
 # We directly reference the characters stats and inventory in the save game resource.
 # When saving this resource, they'll get saved alongside it.
-export var character: Resource
-export var inventory: Resource
+export var character: Resource = Character.new()
+export var inventory: Resource = Inventory.new()
 
 export var map_name := ""
 export var global_position := Vector2.ZERO
 
 
 # The next three functions are just to keep the save API inside of the SaveGame resource.
+# Note that this has safety issues if players download savegame files from the 
+# web. Please see the README and check out the deciated video.
+# For a safe alternative, see the function write/load_as_json() below.
 func write_savegame() -> void:
 	ResourceSaver.save(get_save_path(), self)
 

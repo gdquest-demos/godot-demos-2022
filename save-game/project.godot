@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://resources/SaveGame.gd"
 }, {
+"base": "Reference",
+"class": "SaveGameAsJSON",
+"language": "GDScript",
+"path": "res://resources/SaveGameAsJSON.gd"
+}, {
 "base": "Control",
 "class": "UIItem",
 "language": "GDScript",
@@ -39,13 +44,14 @@ _global_script_class_icons={
 "Inventory": "",
 "ItemData": "",
 "SaveGame": "",
+"SaveGameAsJSON": "",
 "UIItem": ""
 }
 
 [application]
 
 config/name="Save game demo (GDQuest)"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://SaveAsResourceDemo.tscn"
 config/icon="res://icon.png"
 
 [autoload]

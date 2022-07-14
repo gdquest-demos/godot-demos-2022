@@ -1,6 +1,13 @@
 # Save game with resources
 
-This project goes with two youtube videos dedicated to saving game data with resources. It shows how to save and load character stats, the player's position on the map, and an inventory. This shows you all the techniques you need to then save and load more complex data.
+This project goes with two youtube videos about managing save game data with resources.
+
+It shows how to save and load character stats, the player's position on the map, and an inventory, with two approaches:
+
+1. The first demo uses the built-in resource saving and loading mechanism. This has security limitations, meaning if players download a save file shared on the internet, it could contain malicious code.
+2. In the second demo, we use a similar setup using resources at runtime, but we save and load the data using JSON files.
+
+This shows you all the techniques you need to then save and load more complex data.
 
 1. [Godot makes saves so easy!](https://youtu.be/wSq1QJ-g91M)
 2. [The Easy Way to Save Games in Godot](https://youtu.be/TGdQ57qCCF0)
@@ -11,25 +18,29 @@ This project goes with two youtube videos dedicated to saving game data with res
 
 To read this demo's code, you need to be comfortable with Godot and GDScript.
 
-Resources simplify saving and loading player data, but they also have limitations, as explained below.
+Resources simplify saving and loading player data, but they also have limitations and security issues, as explained below.
 
-Using resources for saving games is something we can recommend to indie developers, especially solo ones or small teams.
+We can recommend the code we use in the saving with JSON demo to indie developers, especially solo ones or small teams.
 
-The larger and more complex the game, the more you may want to design your own save data format instead.
+The larger and more complex the game, the more you may want to design your own save data format or perhaps use a database instead.
 
 ## How this demo works
 
 You'll find all the resources we save as part of the `SameGame` in the `resources/` folder.
 
-We use the `Game.gd` script to pass resources like the `Inventory` or the `Character` to relevant nodes. Then, when the inventory UI or the character stats UI change a value, it automatically affects the player and the `SaveGame` resource.
+We use the `GameSaveAsResourceDemo.gd` and `SaveAsJSONDemo.gd` scripts to pass resources like the `Inventory` or the `Character` to relevant nodes.
 
-## Why not JSON
+Then, when the inventory UI or the character stats UI change a value, it automatically affects the player and the save game simultaneously.
 
-In the first video, we recommend against using JSON for saved game data. The reason is simple: Godot has really nice built-in features to save and load structured data.
+## JSON or not JSON
 
-`ConfigFile` or simple text files with the functions `var2str` and `str2var` can do the job for you.
+In the first video, we recommend against using JSON for saved game data.
 
-Then, you have the `Resource` file format.
+But in the end, it turned out that almost every built-in mechanism to save and load data isn't secure. 
+
+And so if you care about preventing arbitrary code execution (including `ConfigFile` in Godot 3), you must save and load the game using formats like JSON, XML, or your own. 
+
+In any of those cases, you shouldn't use functions like `var2str` and `str2var` as they have this issue, but you may use their binary equivalent `var2bytes` and `bytes2var`, which prevent code execution by default.
 
 ## Using resources for save games
 
@@ -52,8 +63,7 @@ Caveats:
 1. The save file will store paths to the resource scripts to load them back later. So you need to be careful not to move these script files in your project.
 2. The same will happen if you reference images and the other resources from your projects. You shouldn't store images or sounds in your save game resources.
 3. In Godot 3, there are no typed arrays and dictionaries. If you save an array of resources, you need to be careful when loading them back. You can't use strong typing anymore with the loaded values.
-4. Resources, like scene files, can include GDScript code, and they'll run it on instantiation. It's OK if the file lives on the player's computer, but you should not send them over a network for security reasons.
-5. You have to be careful with versioning and backwards compatibility.
+4. You have to be careful with versioning and backward compatibility.
 
 If you do any of the above, you will get errors when trying to load the saved data.
 
@@ -65,9 +75,21 @@ You can prevent those issues with the following techniques:
 
 - For versioning, you should try not to change existing variable names but only extend resources. Otherwise, you'll get loading errors. If you absolutely need to make breaking changes to your save game data, you'll want to keep the old script, make a new one, and write some conversion code.
 
-- You should never save any resource that directly holds game data that could change, like file names, the display name of things in the game, and so on. You should use unique ids instead. See the `ItemData` resources in this project for an example. The exception is the resource script files, which we recommend to keep in a fixed directory, like `resources/` or `savegame/`
+- You should never save any resource that directly holds game data that could change, like file names, the display name of things in the game, and so on. You should use unique ids instead. See the `ItemData` resources in this project for an example. The exception is the resource script files, which we recommend keeping in a fixed directory, like `resources/` or `savegame/`
 
 The last point holds regardless of the data format you use. You should always use unique ids you're certain won't change in your players' saved data.
+
+## Arbitrary code execution
+
+Resources, like scene files, can include GDScript code, and they'll run it on instantiation.
+
+It's OK if the file lives on the player's computer, but you should not send them over a network for security reasons.
+
+It also means players downloading resources from untrusted sources and putting them into the game expose themselves to security issues. Someone could purposefully add malicious code to a resource file and share it online.
+
+Considering that, we can recommend resources for plugins and generating data files in the game project, but we would recommend using a safer data format for player saves or settings.
+
+We included a scene that shows how to use JSON in the demo.
 
 ## How's the performance?
 
@@ -79,7 +101,7 @@ Godot's scene files (tscn) are resources. If you've ever made a huge 2D level, y
 
 In Godot 3.4, resources have a [bug when loading nested resources](https://github.com/godotengine/godot/issues/59686), like for our save game file. Godot will not reload sub-resources as it considers them cached.
 
-Our teammate's already [coded a fix](https://github.com/godotengine/godot/pull/62408) and we're waiting for it to get merged.
+Our teammate's already [coded a fix](https://github.com/godotengine/godot/pull/62408), and we're waiting for it to get merged.
 
 In the meantime, you need a workaround you'll find in this demo.
 
@@ -91,38 +113,6 @@ There are two workarounds until this bug is fixed:
 2. *Copy the save game file's content* to a temporary file to avoid Godot's cache and force it to load everything.
 
 In this project, we use the second trick, copying the save game file's content. See `SaveGame.gd`'s `load_savegame()` function for the code. Despite this bug, I'd say it's still worth using resources for the code it saves you in the long run and how easy it is to share them in memory.
-
-## Security of resources
-
-Because resources can contain and run code, one last concern is that players could go on the web and download a file with malicious code. Suppose they look for a save game on an untrusted website, download it, and replace their save game with it. That file could technically harm their computer.
-
-The same is true of game mods, which people download massively (Minecraft, Skyrim, The Sims). They can technically run any code on your computer. In that case, the terms of use of your game should just make it clear that the responsibility of modifying the game in any way from non-official sources is at the user's risk. Like most games do.
-
-If, however, you want to ensure your save game and any other user file generated by your player can't run any code, you'll want to use a different format, for instance, your own format using Godot's `ConfigFile`, the `File` API, or a custom resource loader. You shouldn't use any resources, scene files, and perhaps not even the handy `var2str` and `str2var` functions.
-
-Or, if you still want to use resources but guard against code, you could:
-
-1. Open the resource as text first. It won't be able to execute any code like that.
-2. Check that the resource has no sub-resource of type GDScript, a script/source property, or an _init() function.
-3. If it does, display an error message to the player.
-
-The code would be something like that:
-
-``` gdscript
-var file := File.new()
-if file.open(SAVE_GAME_PATH, File.READ) != OK:
-    return null
-
-var content_as_plain_text := file.get_as_text()
-file.close()
-
-if "_init" in content_as_plain_text:
-    # You'd probably want to display a popup in-game instead.
-    printerr("This save file has been modified to run code. This could potentially harm your computer. Aborting loading.")
-    return null
-```
-
-Any GDScript code in a resource needs to run through the GDScript compiler to execute. That only happens when loading via Godot's resource loader.
 
 ## Preventing the player from editing the save file
 
@@ -142,38 +132,24 @@ static func get_save_path() -> String:
 	return "user://save" + extension
 ```
 
-### What about encryption?
+Another safer option would be to save your data as binary using `var2bytes`.
 
-Encrypting is another option to prevent editing user files. First, while saving as binary will improve loading speed, using encryption in your game will make things slower because you add an encryption and decryption step to saving and loading. 
+### Using encryption?
 
-This won't be noticeable in a small game, but as your projects and files start to grow in size, you want to be aware of that.
+Encrypting is another option to prevent editing user files.
 
-You cannot directly encrypt and decrypt a resource like plain text files in Godot. You have to make a copy of it in a text file. So your code would have to be like:
+First, while saving as binary will improve loading speed, using encryption in your game will make things slower because you add an encryption and decryption step to saving and loading. 
 
-- Save the resource with `ResourceSaver.save()`.
-- Open the saved file with a `File` object.
-- Get the file's content and encrypt it with `Crypto.encrypt()`.
-- Write the encrypted content to a new file.
-- Delete the resource file.
+This won't be noticeable in a small game, but as your projects and files start to grow in size, you may want to be aware of that.
 
-You would have to do something similar when loading. If you really want encryption, perhaps saving and loading the data with `ConfigFile` or another format would be simpler. You can still use resources in your game to achieve that, but delegate the saving and loading part to `ConfigFile`.
+You cannot directly encrypt and decrypt a resource like plain text files in Godot.
 
-Note that encrypting a file doesn't protect it from being opened, and that even if you make a custom Godot build with encrypted scripts. Why? Because to encrypt and decrypt, you need a key (typically a string) and it has to be in a code file somewhere. 
+When saving JSON or plain text data with a `File` object, you need to call `File.open_encrypted()` instead of `File.open()`.
 
-Now, the point is not that encryption isn't useful or good for security reasons, just that in this context, it may not add much benefit to saving the save file as binary.
+You pass the function a key to encrypt and decrypt the data.
+
+Now, that key will be in your scripts, so anyone who looks beyond the save file can find it.
+
+You could take it a step further and compile a custom Godot build with script encryption, making it harder to find the encryption key (but not impossible).
 
 Learn more: https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html
-
-## Rewriting resource paths
-
-In the worst-case scenario, if you **must** move files the save game depends on, you can still fix it.
-
-You can load the player's save as text and rewrite file paths.
-
-Godot's resources have all dependency paths stored at the top, so if you saved the player's save game as text, you could always rewrite faulty paths.
-
-Though we highly recommend never to move the resource files stored in your save game.
-
-This limitation should not be much of an issue in indie game projects. 
-
-For larger teams and game projects, you may want to design your own data format using the built-in functions `str2var()` and `var2str()` instead.
