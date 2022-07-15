@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=1]
+[ext_resource path="res://weapons/WeaponSword.gd" type="Script" id=2]
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/HaloRectangleShape2D.tres" type="Shader" id=3]
+[ext_resource path="res://weapons/Weapon.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 3 )
+shader_param/falloff = 0.25
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 39.25, 20.5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/HurtBox/CollisionShape2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.690196, 0.188235, 0.360784, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "slash"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25 ),
+"transitions": PoolRealArray( 0.31864, 1.27456, 1 ),
+"update": 0,
+"values": [ -100.0, 100.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/HurtBox/CollisionShape2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.376471, 0.376471, 0.439216, 1 ) ]
+}
+
+[node name="WeaponSword" instance=ExtResource( 4 )]
+script = ExtResource( 2 )
+pivot_path = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HurtBox" index="1"]
+self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
+material = SubResource( 6 )
+position = Vector2( 70, 0 )
+shape = SubResource( 5 )
+disabled = true
+script = ExtResource( 1 )
+palette = 6
+theme = 2
+theme_falloff = 0.25
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/RESET = SubResource( 4 )
+anims/slash = SubResource( 3 )
