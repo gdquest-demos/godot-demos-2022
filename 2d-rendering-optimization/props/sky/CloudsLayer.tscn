@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://props/sky/LoopClouds.gd" type="Script" id=1]
+[ext_resource path="res://props/sky/cloud_a.png" type="Texture" id=2]
+[ext_resource path="res://props/sky/cloud_b.png" type="Texture" id=3]
+[ext_resource path="res://props/sky/cloud_d.png" type="Texture" id=4]
+[ext_resource path="res://props/sky/cloud_c.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1920, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Clouds/Cloud3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 661, 213 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Clouds/Cloud1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 227, 500 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Clouds:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="CloudsLayer" type="ParallaxLayer"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 1920, 1080 )
+script = ExtResource( 1 )
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Cloud1" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( 227, 500 )
+texture = ExtResource( 5 )
+
+[node name="Cloud2" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( 227, 398 )
+texture = ExtResource( 2 )
+
+[node name="Cloud3" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( 661, 213 )
+texture = ExtResource( 4 )
+
+[node name="Cloud4" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( 661, 213 )
+texture = ExtResource( 3 )
+
+[node name="Cloud5" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( -793, 500 )
+texture = ExtResource( 5 )
+
+[node name="Cloud6" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( -1693, 398 )
+texture = ExtResource( 2 )
+
+[node name="Cloud7" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( -359, 213 )
+texture = ExtResource( 4 )
+
+[node name="Cloud8" type="Sprite" parent="Clouds"]
+use_parent_material = true
+position = Vector2( -1259, 213 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 0.1
+anims/Idle = SubResource( 1 )
+anims/RESET = SubResource( 2 )

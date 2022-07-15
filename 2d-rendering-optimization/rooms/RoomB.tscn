@@ -1,0 +1,99 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://rooms/BaseRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://props/details/statue_ruin.png" type="Texture" id=2]
+[ext_resource path="res://props/details/gems_mixed_1.png" type="Texture" id=3]
+[ext_resource path="res://props/details/rocks_sword.png" type="Texture" id=4]
+[ext_resource path="res://props/details/pot_clay_3.png" type="Texture" id=5]
+[ext_resource path="res://props/details/grass_rock_4.png" type="Texture" id=6]
+[ext_resource path="res://props/details/pot_stone_2.png" type="Texture" id=7]
+[ext_resource path="res://props/details/gems_green_2.png" type="Texture" id=8]
+[ext_resource path="res://props/details/pot_clay_2.png" type="Texture" id=9]
+[ext_resource path="res://props/details/gems_green_4.png" type="Texture" id=10]
+[ext_resource path="res://props/details/pot_stone_3.png" type="Texture" id=11]
+[ext_resource path="res://props/details/pot_stone_4.png" type="Texture" id=12]
+[ext_resource path="res://props/details/pot_stone_stacked.png" type="Texture" id=13]
+[ext_resource path="res://props/details/table_medium_green.png" type="Texture" id=14]
+[ext_resource path="res://props/details/grass_rock_3.png" type="Texture" id=15]
+[ext_resource path="res://props/details/statue_robot.png" type="Texture" id=16]
+
+[node name="RoomB" instance=ExtResource( 1 )]
+
+[node name="Floor" parent="." index="1"]
+tile_data = PoolIntArray( 2, 3, 0, 3, 3, 65536, 4, 3, 65536, 5, 3, 65536, 6, 3, 65536, 7, 3, 65536, 8, 3, 2, 65538, 3, 65536, 65539, 3, 65536, 65540, 3, 196609, 65541, 3, 65536, 65542, 3, 65538, 65543, 3, 65538, 65544, 3, 65536, 65545, 3, 2, 131073, 3, 0, 131074, 3, 65536, 131075, 3, 196609, 131076, 3, 196610, 131077, 3, 131072, 131078, 3, 196608, 131079, 3, 131072, 131080, 3, 65536, 131081, 3, 65536, 196608, 3, 0, 196609, 3, 65536, 196610, 3, 65536, 196611, 3, 196609, 196612, 3, 196609, 196613, 3, 131074, 196614, 3, 131074, 196615, 3, 65537, 196616, 3, 131072, 196617, 3, 65536, 196618, 3, 2, 262144, 3, 65536, 262145, 3, 65536, 262146, 3, 65536, 262147, 3, 65536, 262148, 3, 131074, 262149, 3, 65538, 262150, 3, 131074, 262151, 3, 65538, 262152, 3, 131074, 262153, 3, 65538, 262154, 3, 65536, 327680, 3, 65536, 327681, 3, 65536, 327682, 3, 196609, 327683, 3, 131074, 327684, 3, 65538, 327685, 3, 131072, 327686, 3, 65536, 327687, 3, 65536, 327688, 3, 65538, 327689, 3, 65538, 327690, 3, 65536, 393216, 3, 262147, 393217, 3, 65540, 393218, 3, 65536, 393219, 3, 131074, 393220, 3, 65538, 393221, 3, 131072, 393222, 3, 131072, 393223, 3, 65537, 393224, 3, 65536, 393225, 3, 262148, 393226, 3, 262149, 458754, 3, 65539, 458755, 3, 65536, 458756, 3, 131072, 458757, 3, 65536, 458758, 3, 196609, 458759, 3, 131074, 458760, 3, 65536, 524291, 3, 65536, 524292, 3, 65538, 524293, 3, 65536, 524294, 3, 65537, 524295, 3, 196608, 524296, 3, 65536, 524297, 3, 65536, 524298, 3, 2, 589827, 3, 262147, 589828, 3, 65536, 589829, 3, 131074, 589830, 3, 65536, 589831, 3, 65536, 589832, 3, 131074, 589833, 3, 196608, 589834, 3, 65536, 655364, 3, 65539, 655365, 3, 65540, 655366, 3, 65540, 655367, 3, 131075, 655368, 3, 131075, 655369, 3, 131076, 655370, 3, 65541 )
+
+[node name="Details" parent="." index="2"]
+tile_data = PoolIntArray( 196609, 2, 65536, 196610, 2, 65537, 196611, 2, 65537, 196612, 2, 65538, 262144, 2, 65536, 262145, 2, 196613, 262146, 2, 131073, 262147, 2, 131073, 262148, 2, 196611, 262149, 2, 65538, 327680, 2, 131077, 327681, 2, 65539, 327682, 2, 196609, 327683, 2, 65541, 327684, 2, 131073, 327685, 2, 196611, 327686, 2, 65538, 393216, 2, 196608, 393217, 2, 196610, 393219, 2, 131077, 393220, 2, 131073, 393221, 2, 131073, 393222, 2, 131074, 458755, 2, 196608, 458756, 2, 65540, 458757, 2, 196609, 458758, 2, 196610 )
+
+[node name="Walls" parent="." index="3"]
+tile_data = PoolIntArray( 65539, 1, 131077, 196616, 1, 131077, 327682, 1, 131077, 327687, 1, 131077, 589831, 1, 4, 589832, 1, 65537, 589833, 1, 196612 )
+
+[node name="Limits" parent="." index="4"]
+tile_data = PoolIntArray( -131068, 1, 0, -131065, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, 1, 1, 0, 9, 1, 0, 10, 1, 0, 65536, 1, 0, 65537, 1, 0, 65546, 1, 0, 196607, 1, 0, 131072, 1, 0, 131082, 1, 0, 131083, 1, 0, 262142, 1, 0, 262143, 1, 0, 196619, 1, 0, 196620, 1, 0, 458750, 1, 0, 458751, 1, 0, 393216, 0, 0, 393217, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 1, 0, 393228, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 0, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 524289, 1, 0, 524290, 1, 0, 524299, 1, 0, 589826, 1, 0, 589827, 0, 0, 589835, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 1, 0, 720899, 1, 0, 720900, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 786436, 1, 0, 786439, 1, 0 )
+
+[node name="RocksSword" type="Sprite" parent="." index="5"]
+position = Vector2( 473.417, 1131.63 )
+texture = ExtResource( 4 )
+
+[node name="StatueHammer" type="Sprite" parent="." index="6"]
+position = Vector2( 964, 866 )
+texture = ExtResource( 2 )
+offset = Vector2( -1.10724, -104.936 )
+
+[node name="TableMediumGreen" type="Sprite" parent="." index="7"]
+position = Vector2( 448, 267 )
+texture = ExtResource( 14 )
+
+[node name="PotStone3" type="Sprite" parent="." index="8"]
+position = Vector2( 1237, 291 )
+texture = ExtResource( 11 )
+
+[node name="PotStoneStacked2" type="Sprite" parent="." index="9"]
+position = Vector2( 1207, 256 )
+texture = ExtResource( 13 )
+
+[node name="PotStone4" type="Sprite" parent="." index="10"]
+position = Vector2( 1169, 270 )
+texture = ExtResource( 12 )
+
+[node name="PotStone2" type="Sprite" parent="." index="11"]
+position = Vector2( 1233, 219 )
+texture = ExtResource( 7 )
+
+[node name="GrassRock4" type="Sprite" parent="PotStone2" index="0"]
+position = Vector2( -945, 286 )
+texture = ExtResource( 6 )
+
+[node name="GrassRock3" type="Sprite" parent="PotStone2" index="1"]
+position = Vector2( -601, 540 )
+texture = ExtResource( 15 )
+
+[node name="PotClay3" type="Sprite" parent="." index="12"]
+position = Vector2( 350, 797 )
+texture = ExtResource( 5 )
+offset = Vector2( 3, -50 )
+
+[node name="PotClay2" type="Sprite" parent="PotClay3" index="0"]
+position = Vector2( -42, 26 )
+texture = ExtResource( 9 )
+offset = Vector2( 1, -50 )
+
+[node name="GemsMixed1" type="Sprite" parent="." index="13"]
+position = Vector2( 756, 463 )
+texture = ExtResource( 3 )
+
+[node name="GemsGreen4" type="Sprite" parent="." index="14"]
+position = Vector2( 705, 450 )
+texture = ExtResource( 10 )
+
+[node name="StatueRobot" type="Sprite" parent="GemsGreen4" index="0"]
+position = Vector2( 274, -450 )
+texture = ExtResource( 16 )
+
+[node name="StatueRobot2" type="Sprite" parent="GemsGreen4" index="1"]
+position = Vector2( -156, -450 )
+texture = ExtResource( 16 )
+
+[node name="GemsGreen2" type="Sprite" parent="." index="15"]
+position = Vector2( 793, 393 )
+texture = ExtResource( 8 )

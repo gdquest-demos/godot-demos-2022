@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://rooms/BaseRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://props/details/books_2.png" type="Texture" id=2]
+[ext_resource path="res://props/details/statue_gems.png" type="Texture" id=3]
+[ext_resource path="res://props/details/pot_clay_2.png" type="Texture" id=4]
+[ext_resource path="res://props/details/rocks_gems.png" type="Texture" id=5]
+[ext_resource path="res://props/details/table_small_pots.png" type="Texture" id=6]
+[ext_resource path="res://props/details/table_medium_mixed.png" type="Texture" id=7]
+[ext_resource path="res://props/details/pot_stone_2.png" type="Texture" id=8]
+[ext_resource path="res://props/details/pot_stone_3.png" type="Texture" id=9]
+[ext_resource path="res://props/details/pot_stone_4.png" type="Texture" id=10]
+[ext_resource path="res://props/details/gems_green_2.png" type="Texture" id=11]
+[ext_resource path="res://props/details/gems_green_4.png" type="Texture" id=12]
+
+[node name="RoomA" instance=ExtResource( 1 )]
+rotation = -0.00114604
+
+[node name="Floor" parent="." index="1"]
+tile_data = PoolIntArray( 4, 3, 0, 5, 3, 65536, 6, 3, 65536, 7, 3, 65536, 8, 3, 2, 65537, 3, 0, 65538, 3, 65536, 65539, 3, 65536, 65540, 3, 65536, 65541, 3, 131072, 65542, 3, 65538, 65543, 3, 65538, 65544, 3, 65536, 65545, 3, 2, 131073, 3, 65536, 131074, 3, 65538, 131075, 3, 196609, 131076, 3, 196610, 131077, 3, 131072, 131078, 3, 196608, 131079, 3, 131072, 131080, 3, 65538, 131081, 3, 65536, 196608, 3, 0, 196609, 3, 65536, 196610, 3, 65538, 196611, 3, 196609, 196612, 3, 196609, 196613, 3, 131074, 196614, 3, 131074, 196615, 3, 65538, 196616, 3, 65536, 196617, 3, 65536, 196618, 3, 2, 262144, 3, 65536, 262145, 3, 196608, 262146, 3, 65536, 262147, 3, 65536, 262148, 3, 131074, 262149, 3, 65538, 262150, 3, 131074, 262151, 3, 65538, 262152, 3, 65536, 262153, 3, 65538, 262154, 3, 65536, 327680, 3, 65536, 327681, 3, 131074, 327682, 3, 65537, 327683, 3, 65538, 327684, 3, 131072, 327685, 3, 131072, 327686, 3, 131072, 327687, 3, 131072, 327688, 3, 131072, 327689, 3, 131072, 327690, 3, 65536, 393216, 3, 65536, 393217, 3, 196609, 393218, 3, 196610, 393219, 3, 65536, 393220, 3, 65538, 393221, 3, 65538, 393222, 3, 65536, 393223, 3, 131074, 393224, 3, 65536, 393225, 3, 65536, 393226, 3, 65541, 458752, 3, 65539, 458753, 3, 65536, 458754, 3, 65536, 458755, 3, 65538, 458756, 3, 131073, 458757, 3, 131072, 458758, 3, 65538, 458759, 3, 65536, 458760, 3, 65536, 458761, 3, 65536, 524289, 3, 65539, 524290, 3, 65536, 524291, 3, 65538, 524292, 3, 131072, 524293, 3, 196608, 524294, 3, 196610, 524295, 3, 131072, 524296, 3, 196609, 524297, 3, 65536, 589826, 3, 262147, 589827, 3, 196612, 589828, 3, 131076, 589829, 3, 65536, 589830, 3, 65536, 589831, 3, 196612, 589832, 3, 262148, 589833, 3, 262149, 655365, 3, 262147, 655366, 3, 65541 )
+
+[node name="Walls" parent="." index="3"]
+tile_data = PoolIntArray( 2, 1, 4, 3, 1, 131074, 4, 1, 5, 196616, 1, 4, 196617, 1, 65536, 196618, 1, 5, 262145, 1, 4, 262146, 1, 131075, 262147, 1, 5, 393221, 1, 65540, 393222, 1, 262148, 393223, 1, 0, 393224, 1, 65538, 393225, 1, 5, 458758, 1, 327681 )
+
+[node name="Limits" parent="." index="4"]
+tile_data = PoolIntArray( -131068, 1, 0, -131065, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, 0, 1, 0, 1, 1, 0, 9, 1, 0, 10, 1, 0, 65536, 1, 0, 65546, 1, 0, 196607, 1, 0, 131072, 1, 0, 131082, 1, 0, 131083, 1, 0, 262142, 1, 0, 262143, 1, 0, 196619, 1, 0, 196620, 1, 0, 458750, 1, 0, 458751, 1, 0, 393226, 0, 0, 393227, 1, 0, 393228, 1, 0, 524287, 1, 0, 458752, 0, 0, 458762, 1, 0, 458763, 1, 0, 589823, 1, 0, 524288, 1, 0, 524289, 0, 0, 524298, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 720900, 1, 0, 720903, 1, 0, 786436, 1, 0, 786439, 1, 0 )
+
+[node name="PotClay2" type="Sprite" parent="." index="5"]
+position = Vector2( 560.83, 148.643 )
+texture = ExtResource( 4 )
+offset = Vector2( -3.01544, -41.738 )
+
+[node name="PotClay3" type="Sprite" parent="." index="6"]
+position = Vector2( 1160.95, 915.331 )
+texture = ExtResource( 4 )
+offset = Vector2( -3.01544, -41.738 )
+
+[node name="RocksGems" type="Sprite" parent="." index="7"]
+position = Vector2( 739.525, 414.848 )
+texture = ExtResource( 5 )
+
+[node name="GemsGreen4" type="Sprite" parent="RocksGems" index="0"]
+show_behind_parent = true
+position = Vector2( -62.0021, 1.92886 )
+texture = ExtResource( 12 )
+
+[node name="GemsGreen2" type="Sprite" parent="RocksGems" index="1"]
+position = Vector2( 39.9381, 54.0458 )
+texture = ExtResource( 11 )
+
+[node name="StatueGems" type="Sprite" parent="." index="8"]
+position = Vector2( 210.665, 694.355 )
+texture = ExtResource( 3 )
+offset = Vector2( -7.39394, -58.1212 )
+
+[node name="TableMediumMixed" type="Sprite" parent="." index="9"]
+position = Vector2( 729.805, 932.681 )
+texture = ExtResource( 7 )
+offset = Vector2( -0.835999, -32.845 )
+
+[node name="TableSmallPots" type="Sprite" parent="." index="10"]
+position = Vector2( 936.575, 929.921 )
+texture = ExtResource( 6 )
+offset = Vector2( 0.412537, -45.8469 )
+
+[node name="Books2" type="Sprite" parent="." index="11"]
+position = Vector2( 1209.41, 519.386 )
+texture = ExtResource( 2 )
+offset = Vector2( 5.07141, -84.4331 )
+
+[node name="PotStone5" type="Sprite" parent="." index="12"]
+position = Vector2( -498.843, -137.572 )
+texture = ExtResource( 9 )
+offset = Vector2( 1747.65, 305.003 )
+
+[node name="PotStone6" type="Sprite" parent="." index="13"]
+position = Vector2( -507.304, -114.545 )
+texture = ExtResource( 10 )
+offset = Vector2( 1706.71, 251.956 )
+
+[node name="PotStone3" type="Sprite" parent="." index="14"]
+position = Vector2( -1340.95, 824.464 )
+texture = ExtResource( 9 )
+offset = Vector2( 1747.65, 305.003 )
+
+[node name="PotStone4" type="Sprite" parent="." index="15"]
+position = Vector2( -1340.95, 824.464 )
+texture = ExtResource( 10 )
+offset = Vector2( 1706.71, 251.956 )
+
+[node name="PotStone2" type="Sprite" parent="." index="16"]
+position = Vector2( -1340.95, 824.464 )
+texture = ExtResource( 8 )
+offset = Vector2( 1664.65, 302.908 )
