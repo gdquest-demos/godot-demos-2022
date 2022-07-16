@@ -49,13 +49,13 @@ static func load_savegame() -> Resource:
 	# We copy the SaveGame resource's data to a temporary file, load that file
 	# as a resource, and make it take over the save game.
 
-	# We first load the save game resource's content as text and store it.
+	# We first load the save game resource's content as a byte array and store it.
 	var file := File.new()
 	if file.open(save_path, File.READ) != OK:
 		printerr("Couldn't read file " + save_path)
 		return null
 
-	var data := file.get_as_text()
+	var data := file.get_buffer(file.get_len())
 	file.close()
 
 	# Then, we generate a random file path that's not in Godot's cache.
@@ -68,7 +68,7 @@ static func load_savegame() -> Resource:
 		printerr("Couldn't write file " + tmp_file_path)
 		return null
 
-	file.store_string(data)
+	file.store_buffer(data)
 	file.close()
 
 	# We load the temporary file as a resource.
