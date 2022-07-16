@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta property="og:type" content="website" />
+        <link rel="shortcut icon" type="image/x-icon" href="https://gdquest.github.io/godot-demos-2022/favicon.ico" />
+           <meta property="og:title" content="Optimize 2D games with visibility notifiers (GDQuest and BimDav)" />
+    <meta name="twitter:title" content="Optimize 2D games with visibility notifiers (GDQuest and BimDav)" />
+         <meta property="og:description" content="This demo shows how using visibility, you can save a lot of performance in 2D games." />
+    <meta name="twitter:description" content="This demo shows how using visibility, you can save a lot of performance in 2D games." />
+         <meta property="og:image" content="https://gdquest.github.io/godot-demos-2022/2d-rendering-optimization/icon.png" />
+    <meta name="twitter:image" content="https://gdquest.github.io/godot-demos-2022/2d-rendering-optimization/icon.png" />
+         <meta property="og:url" content="https://gdquest.github.io/godot-demos-2022/2d-rendering-optimization" />
+         <link
+      rel="stylesheet"
+      href="../styles.css"
+      
+    />
+        <title>Optimize 2D games with visibility notifiers (GDQuest and BimDav)</title>
+  </head>
+  <body class="project">
+    <header class="title container">
+            <img src="./icon.png" alt="logo for Optimize 2D games with visibility notifiers (GDQuest and BimDav)" />
+             <h1 class="doc-title">Optimize 2D games with visibility notifiers (GDQuest and BimDav)</h1>
+             <a class="back" href="../">Go back to project list</a>
+          </header>
+        <main class="container">
+            <section class="file-download">
+        <a href="./artifacts/2d-rendering-optimization.2022-07-16-12-31-05.main.91e6c29.zip" download
+          ><span>Download the project files</span></a
+        >
+      </section>
+             <section class="content">
+         <h1 id="double-your-2d-games-framerate-with-visibility-notifiers">Double your 2D game’s framerate with visibility notifiers</h1>
+<p>This demo shows how you can use the <code>VisibilityNotifier2D</code> node to save on rendering performance. Depending on the game, it could double or triple the framerate, saving tons of <em>CPU</em> processing power for other game mechanics.</p>
+<p><img src="visibility-notifier-screenshot.png" /></p>
+<p>The larger your game levels and the more sprites you have, the more impactful this is.</p>
+<h2 id="the-problem">The problem</h2>
+<p>For each visible sprite, every frame, the engine has to calculate if it’s on-screen to know what to render.</p>
+<p>It’s quick for one sprite, but the more you add, the heavier it gets.</p>
+<p>The good news is Godot will skip any node with visibility turned off. And it will also instantly skip its children.</p>
+<h2 id="the-solution">The solution</h2>
+<p>To save processing power, you can turn off the visibility of nodes when they leave the screen. However, doing that individually for every node involves running the same check that causes performance issues in the first place.</p>
+<p>So you want to turn off the visibility of nodes as high as possible in the node tree. That way, Godot doesn’t even need to check their children.</p>
+<p>You can do that almost automatically with <code>VisibilityNotifier2D</code> nodes. This node has two signals <code>screen_entered</code> and <code>screen_exited</code> you can connect to the <code>show()</code> and <code>hide()</code> functions of a node respectively.</p>
+<p>This node uses a rectangle to detect if it is on-screen or not and emits signals accordingly. It’s most efficient when a single <code>VisibilityNotifier2D</code> covers a scene with many sprites. For example, the interior of a house in an <em>RPG</em> game or an entire chunk of a forest or a level.</p>
+        
+      </section>
+            <section class="file-download">
+        <a href="./artifacts/2d-rendering-optimization.2022-07-16-12-31-05.main.91e6c29.zip" download>
+          <span>Download the project files</span></a
+        >
+      </section>
+          </main>
+    <footer>
+      <a href="https://gdquest.github.io/godot-demos-2022/">Demos website</a>
+      <a href="https://github.com/GDQuest/godot-demos-2022/">Demos Github</a>
+      <a href="https://gdquest.itch.io/godot-demos-2022-edition">Itch</a>
+      <a href="https://www.gdquest.com">Main Website</a>
+    </footer>
+  </body>
+</html>
