@@ -20,9 +20,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="2D rendering optimization (GDQuest and BimDav)"
+config/name="Optimize 2D games with visibility notifiers (GDQuest and BimDav)"
 config/description="This demo shows how using visibility, you can save a lot of performance in 2D games."
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Demo.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -31,7 +31,7 @@ window/size/width=1920
 window/size/height=1080
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [input]
 
