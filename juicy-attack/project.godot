@@ -49,10 +49,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdquest_visualization_tools/2d/DebugRayCast2D.gd"
 }, {
-"base": "Area2D",
-"class": "GDQuestDebugDraggable",
+"base": "Reference",
+"class": "Trail2D",
 "language": "GDScript",
-"path": "res://GDQuestDebugDraggable/GDQuestDebugDraggable.gd"
+"path": "res://vfx/trail/Trail2D.gd"
 } ]
 _global_script_class_icons={
 "DebugCollisionPolygon": "",
@@ -63,7 +63,7 @@ _global_script_class_icons={
 "DebugPath2D": "",
 "DebugRayCast": "",
 "DebugRayCast2D": "",
-"GDQuestDebugDraggable": "res://GDQuestDebugDraggable/GDQuestDebugDraggable.svg"
+"Trail2D": ""
 }
 
 [application]
@@ -75,11 +75,13 @@ config/icon="res://icon.png"
 [autoload]
 
 GdQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
+EventBus="*res://autoload/EventBus.gd"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 
 [input]
 
@@ -106,11 +108,7 @@ move_down={
 attack={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
- ]
-}
-click={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

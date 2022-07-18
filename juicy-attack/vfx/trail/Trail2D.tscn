@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://vfx/trail/Trail2D.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.269231, 0, 0, Vector2( 1, 0.918182 ), 0.123167, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.73743, 0.994413, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.690196, 1, 0.945098, 1, 0.690196, 1, 0.945098, 1, 1, 1, 1, 0 )
+
+[node name="Trail2D" type="Line2D"]
+points = PoolVector2Array( 0, 0, 32, 0 )
+width_curve = SubResource( 1 )
+default_color = Color( 1, 1, 1, 1 )
+gradient = SubResource( 2 )
+joint_mode = 2
+script = ExtResource( 1 )

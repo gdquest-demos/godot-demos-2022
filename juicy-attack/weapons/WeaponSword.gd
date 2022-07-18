@@ -1,17 +1,23 @@
-extends "res://weapons/Weapon.gd"
+extends Node2D
 
-var follow_cursor := true
+onready var _pivot := $Pivot
+onready var _attack_sound := $AudioStreamPlayer
+onready var animation_player := $AnimationPlayer
 
 
 func use() -> void:
 	animation_player.play("slash")
+	_attack_sound.pitch_scale = rand_range(1.7, 2.6)
 
 
 func _physics_process(_delta: float) -> void:
-	if follow_cursor:
-		look_at(get_global_mouse_position())
+	var mouse_position := get_global_mouse_position()
+	
+	_pivot.look_at(mouse_position)
+	_pivot.position.y = sin(OS.get_ticks_msec() * _delta * 0.25) * 10
 
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("ui_cancel"):
-		follow_cursor = !follow_cursor
+	# Flip pivot to avoid upside down attacks
+	if mouse_position.x - global_position.x < 0:
+		_pivot.scale.y = -1
+	else:
+		_pivot.scale.y = 1

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GDQuestDebugDraggable.svg-fe9aca820f482482036ed2fe47238ce4.stex"
+path="res://.import/ice_2.png-de9964cfac9224c2c73498a7cca99964.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GDQuestDebugDraggable/GDQuestDebugDraggable.svg"
-dest_files=[ "res://.import/GDQuestDebugDraggable.svg-fe9aca820f482482036ed2fe47238ce4.stex" ]
+source_file="res://vfx/ice_2.png"
+dest_files=[ "res://.import/ice_2.png-de9964cfac9224c2c73498a7cca99964.stex" ]
 
 [params]
 
