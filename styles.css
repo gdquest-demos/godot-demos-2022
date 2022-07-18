@@ -8,6 +8,7 @@ body {
   --text: #484848;
   --link: #007ac3;
   --link-hover: #0d99ed;
+  --max-width: 960px;
   font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans,
     Ubuntu, Cantarell, helvetica neue, sans-serif;
   font-size: 1em;
@@ -24,7 +25,6 @@ a:hover {
   color: var(--link-hover);
 }
 .container {
-  max-width: 960px;
   margin: 0 auto;
   padding: 1em;
 }
@@ -33,9 +33,9 @@ img {
   max-width: 100%;
 }
 
-.title {
+.page-title {
   position: relative;
-  max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -58,9 +58,14 @@ img {
   );
 }
 
-.title h1 {
+.page-title h1 {
   font-size: 4em;
   color: var(--background);
+  max-width: var(--max-width);
+}
+
+.page-body {
+  max-width: var(--max-width);
 }
 
 .back,
@@ -105,14 +110,12 @@ img {
   align-items: center;
   margin: 2em auto;
 }
-.file-download a,
-.listing .content ul:last-child li a {
+.file-download a {
   --icon-size: 1.5em;
   align-content: center;
   max-width: 80%;
   align-items: center;
   justify-content: center;
-  align-content: center;
   text-align: center;
   text-decoration: none;
   color: var(--background);
@@ -133,6 +136,38 @@ img {
     no-repeat center center;
 }
 
+.links-list ul,
+.links-list li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-list ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1em;
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+.links-list a {
+  font-size: 1.3em;
+  color: var(--background);
+  background-color: var(--accent);
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em 0.7em;
+  border-radius: 0.5em;
+}
+
 footer {
   background-color: #272b30;
   display: flex;
@@ -145,14 +180,84 @@ footer {
   font-size: 0.9em;
 }
 
-.listing .content ul:last-child,
-.listing .content ul:last-child li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.banner-container {
+  display: none;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  color: #fff;
+  background: #032769;
 }
 
-.listing .content ul:last-child li {
-  font-size: 1.3em;
-  margin-top: 1em;
+.has-countdown .banner-container {
+  display: flex;
+}
+
+.banner-container > .character {
+  max-height: 160px;
+  align-self: flex-end;
+}
+
+.countdown-banner {
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem 0.8rem;
+  text-align: center;
+}
+
+.countdown-banner > .title {
+  color: #fff;
+  margin-top: 0;
+  font-weight: 1000;
+  margin-bottom: 1rem;
+  font-size: 2.2em;
+}
+
+.countdown-banner .countdown {
+  color: #78d7ff;
+  font-size: 1.9rem;
+  font-weight: 1000;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.button-link.-tall {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.button-link.-large {
+  font-size: large;
+}
+.button-link.-yellow {
+  background-color: #ffd500;
+  color: #272b30;
+}
+.button-link.-shadow {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+.countdown-banner > a {
+  margin-top: 1rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button-link {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: normal;
+  font-size: 0.8em;
+  font-weight: 700;
+  font-family: montserrat, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  background-color: #007ac3;
+  border: none;
+  text-decoration: none;
+  color: #007ac3;
+  transition: 0.2s ease-out;
 }

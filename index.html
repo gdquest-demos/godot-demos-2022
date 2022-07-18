@@ -21,10 +21,31 @@
         <title>GDQuest 2022 Demos</title>
   </head>
   <body class="listing">
-    <header class="title container">
+    <header class="banner-container">
+      <img src="david.svg" class="character" />
+      <div id="countdown-banner" class="countdown-banner">
+        <h2 class="title">Welcome to Godot sale!</h2>
+        <p>
+          50% off on all Godot courses with coupon code
+          <strong>WELCOME-TO-GODOT</strong>.
+        </p>
+        <div>
+          <span id="countdown" class="countdown" data-date="2022-07-24T23:59"
+            >0 days left</span
+          >
+        </div>
+        <a
+          href="https://gdquest.mavenseed.com/courses"
+          class="button-link -yellow -shadow -large -tall"
+          >Learn more</a
+        >
+      </div>
+      <img src="lula.svg" class="character" />
+    </header>
+    <header class="page-title container">
              <h1 class="doc-title">GDQuest 2022 Demos</h1>
            </header>
-        <main class="container">
+        <main class="page-body container">
              <section class="content">
          <h1 id="gdquest-godot-demos-2022-edition">GDQuest Godot demos: 2022 edition</h1>
 <p>A collection of Free and Open-Source Godot demos created for learning purposes and for our <a href="https://www.youtube.com/c/gdquest/">YouTube videos</a> in 2022.</p>
@@ -44,11 +65,13 @@
 <li><a href="https://gdquest.mavenseed.com/courses/godot-node-essentials">Godot Node Essentials</a> is the biggest Godot cookbook out there, with over 100 demos and dozens of guides.</li>
 </ul>
 <h1 id="demos">Demos</h1>
+<div class="links-list">
 <ul>
-<li><a href="godot-35-new-features">New Features in Godot 3.5</a></li>
-<li><a href="save-game">Save game demo</a></li>
-<li><a href="2d-rendering-optimization">Optimize 2D games with visibility notifiers (GDQuest and BimDav)</a></li>
+<li><a href="godot-35-new-features"><img src="godot-35-new-features/icon.png" alt="logo for New Features in Godot 3.5" /> New Features in Godot 3.5</a></li>
+<li><a href="save-game"><img src="save-game/icon.png" alt="logo for Save game demo" /> Save game demo</a></li>
+<li><a href="2d-rendering-optimization"><img src="2d-rendering-optimization/icon.png" alt="logo for Optimize 2D games with visibility notifiers" /> Optimize 2D games with visibility notifiers</a></li>
 </ul>
+</div>
         
       </section>
           </main>
@@ -58,5 +81,6 @@
       <a href="https://gdquest.itch.io/godot-demos-2022-edition">Itch</a>
       <a href="https://www.gdquest.com">Main Website</a>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
