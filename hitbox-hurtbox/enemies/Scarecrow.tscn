@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/scarecrow.png" type="Texture" id=1]
+[ext_resource path="res://enemies/boss_inactive.png" type="Texture" id=1]
 [ext_resource path="res://enemies/Scarecrow.gd" type="Script" id=2]
 [ext_resource path="res://enemies/HitBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=4]
@@ -77,7 +77,8 @@ extents = Vector2( 34.5, 52.5 )
 script = ExtResource( 2 )
 
 [node name="Scarecrow" type="Sprite" parent="."]
-position = Vector2( 0, -1 )
+position = Vector2( 0, -34 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -55 )
 
@@ -86,7 +87,7 @@ offset = Vector2( 0, -55 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 self_modulate = Color( 0.560784, 0.870588, 0.364706, 1 )
 material = SubResource( 8 )
-position = Vector2( -1.5, -54 )
+position = Vector2( 0, -54 )
 shape = SubResource( 7 )
 script = ExtResource( 4 )
 palette = 2
@@ -101,5 +102,5 @@ anims/RESET = SubResource( 3 )
 anims/hit = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, -54.5 )
+position = Vector2( 0, -54.5 )
 shape = SubResource( 5 )
