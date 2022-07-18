@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://enemies/Scarecrow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://weapons/WeaponSword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/UIOptions.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game.gd" type="Script" id=4]
 [ext_resource path="res://assets/space_background.png" type="Texture" id=11]
 [ext_resource path="res://Player.gd" type="Script" id=12]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UIOptions" parent="UI" instance=ExtResource( 3 )]
 
 [node name="SpaceBackground" type="Sprite" parent="."]
 z_index = -100

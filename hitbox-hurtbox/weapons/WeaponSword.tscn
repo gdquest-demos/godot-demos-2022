@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=1]
 [ext_resource path="res://weapons/WeaponSword.gd" type="Script" id=2]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/HaloRectangleShape2D.tres" type="Shader" id=3]
-[ext_resource path="res://weapons/Weapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GDQuestDebugDraggable/GDQuestDebugDraggable.gd" type="Script" id=4]
+[ext_resource path="res://assets/sword.png" type="Texture" id=5]
+[ext_resource path="res://weapons/HurtBox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 3 )
@@ -92,11 +94,19 @@ tracks/2/keys = {
 "values": [ Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.376471, 0.376471, 0.439216, 1 ) ]
 }
 
-[node name="WeaponSword" instance=ExtResource( 4 )]
+[node name="WeaponSword" type="Node2D"]
 script = ExtResource( 2 )
-pivot_path = NodePath("")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HurtBox" index="1"]
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+offset = Vector2( 40, 0 )
+
+[node name="HurtBox" parent="Sprite" instance=ExtResource( 6 )]
+
+[node name="GDQuestDebugDraggable" type="Area2D" parent="Sprite/HurtBox"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HurtBox"]
 self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
 material = SubResource( 6 )
 position = Vector2( 70, 0 )
@@ -107,6 +117,6 @@ palette = 6
 theme = 2
 theme_falloff = 0.25
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/slash = SubResource( 3 )

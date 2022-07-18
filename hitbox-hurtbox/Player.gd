@@ -17,6 +17,3 @@ func _physics_process(delta: float) -> void:
 	var steering = (desired_velocity - _velocity) * DRAG_FACTOR * delta
 	_velocity += steering
 	_velocity = move_and_slide(_velocity)
-	
-	if Input.is_action_pressed("attack"):
-		weapon.use()

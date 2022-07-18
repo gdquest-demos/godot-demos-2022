@@ -1,10 +1,12 @@
-extends "res://weapons/Weapon.gd"
+extends Node2D
 
 var follow_cursor := true
 
+onready var _animation_player := $AnimationPlayer
+
 
 func use() -> void:
-	animation_player.play("slash")
+	_animation_player.play("slash")
 
 
 func _physics_process(_delta: float) -> void:
@@ -15,3 +17,6 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("ui_cancel"):
 		follow_cursor = !follow_cursor
+	
+	if event.is_action_pressed("attack"):
+		use()
