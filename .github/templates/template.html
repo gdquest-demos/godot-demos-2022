@@ -33,7 +33,28 @@
     <title>$pagetitle$</title>
   </head>
   <body class="$type$">
-    <header class="title container">
+    <header class="banner-container">
+      <img src="$base$david.svg" class="character" />
+      <div id="countdown-banner" class="countdown-banner">
+        <h2 class="title">Welcome to Godot sale!</h2>
+        <p>
+          50% off on all Godot courses with coupon code
+          <strong>WELCOME-TO-GODOT</strong>.
+        </p>
+        <div>
+          <span id="countdown" class="countdown" data-date="2022-07-24T23:59"
+            >0 days left</span
+          >
+        </div>
+        <a
+          href="https://gdquest.mavenseed.com/courses"
+          class="button-link -yellow -shadow -large -tall"
+          >Learn more</a
+        >
+      </div>
+      <img src="$base$lula.svg" class="character" />
+    </header>
+    <header class="page-title container">
       $if(is_project)$
       <img src="./icon.png" alt="logo for $title$" />
       $endif$ $if(title)$
@@ -47,10 +68,10 @@
       <div class="well toc">$toc$</div>
     </header>
     $endif$
-    <main class="container">
+    <main class="page-body container">
       $if(filename)$
       <section class="file-download">
-        <a href="../artifacts/$filename$" download
+        <a href="$base$artifacts/$filename$" download
           ><span>Download the project files</span></a
         >
       </section>
@@ -75,7 +96,7 @@
       </section>
       $if(filename)$
       <section class="file-download">
-        <a href="../artifacts/$filename$" download>
+        <a href="$base$artifacts/$filename$" download>
           <span>Download the project files</span></a
         >
       </section>
@@ -87,5 +108,6 @@
       <a href="https://gdquest.itch.io/godot-demos-2022-edition">Itch</a>
       <a href="https://www.gdquest.com">Main Website</a>
     </footer>
+    <script src="$base$script.js"></script>
   </body>
 </html>

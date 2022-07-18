@@ -98,7 +98,7 @@ function _process_project() {
   # extract project name from project.godot
   project_name=$(awk -F "=" '/config\/name=/ {print $2}' "$project_file" | tr -d '"')
   # remove the (GDQuest) mention
-  project_name=${project_name%"(GDQuest)"}
+  project_name=$(echo "$project_name" | sed -e 's/([^()]*)//g')
   # clean whitespace
   project_name=$(echo "$project_name" | xargs)
 
@@ -120,6 +120,9 @@ function _process_project() {
 
   # video listing location
   videos_metadata_file="$dir/videos.yaml"
+
+  # icon.png
+  image="$base/icon.png"
 
   # destination for writing files
   destination="$BUILD_DIR/$base"
@@ -149,10 +152,11 @@ function _process_project() {
     --metadata pageTitle="$project_name | GDQuest 2022 Demos" \
     --metadata type="project" \
     --metadata is_project \
+    --metadata base="../" \
     --metadata url="$WEBSITE_URL/$base" \
     --metadata favicon="$WEBSITE_URL/favicon.ico" \
     --metadata description="$description" \
-    --metadata image="$WEBSITE_URL/$base/icon.png" \
+    --metadata image="$WEBSITE_URL/$image" \
     --metadata filename="$filename" \
     $videos \
     --template="$HTML_TEMPLATE" \
@@ -165,7 +169,7 @@ function _process_project() {
   cp $dir/*.png "$destination"
 
   # write link to list for main index.html listing
-  echo " - [$project_name]($base)\\n" >> "$TEMP_FILE"
+  echo " - [![logo for $project_name]($image) $project_name]($base)\\n" >> "$TEMP_FILE"
 }
 
 function _generate_index() {
@@ -177,9 +181,10 @@ function _generate_index() {
     --metadata type="listing" \
     --metadata url="$WEBSITE_URL" \
     --metadata image="$WEBSITE_URL/demos-cover.png" \
+    --metadata base="" \
     --metadata favicon="$WEBSITE_URL/favicon.ico" \
     --metadata description="A collection of Free and Open-Source Godot demos created for learning purposes and for our YouTube videos in 2022." \
-    --template="$ROOT/.github/templates/index.html" \
+    --template="$HTML_TEMPLATE" \
     --css="styles.css" \
     -t gfm -t html5 \
     -o "$BUILD_DIR/index.html" \
@@ -187,8 +192,7 @@ function _generate_index() {
 
   # Copy static files
   cp "$ROOT/demos-cover.png" "$BUILD_DIR"
-  cp "$ROOT/.github/templates/styles.css" "$BUILD_DIR"
-  cp "$ROOT/.github/templates/favicon.ico" "$BUILD_DIR"
+  cp $ROOT/.github/templates/static/* "$BUILD_DIR"
 }
 
 
@@ -219,6 +223,7 @@ function generate() {
 
   find "$ROOT" -name "project.godot"  -exec bash -c "_process_project \"\$0\" $use_itch" {} \;
 
+  echo $'\n</div>' >> "$TEMP_FILE"
   # create main index file
   _generate_index
 }
@@ -248,7 +253,7 @@ GIT_HASH=$(git rev-parse --short HEAD 2> /dev/null)
 ROOT=$(dirname "$(readlink -f $0)")
 BUILD_DIR="$ROOT/build"
 ARTIFACTS_DIR="$BUILD_DIR/artifacts"
-HTML_TEMPLATE="$ROOT/.github/templates/index.html"
+HTML_TEMPLATE="$ROOT/.github/templates/template.html"
 WEBSITE_URL="https://gdquest.github.io/godot-demos-2022"
 
 # contains a list of generated projects to list in the main file
@@ -257,7 +262,7 @@ mv "$TEMP_FILE" "$TEMP_FILE.md"
 TEMP_FILE="$TEMP_FILE.md"
 
 cat "$ROOT/README.md" > "$TEMP_FILE"
-echo $'\n\n# Demos\n' >> "$TEMP_FILE"
+echo $'\n\n# Demos\n<div class="links-list">' >> "$TEMP_FILE"
 
 
 _bootstrap(){
