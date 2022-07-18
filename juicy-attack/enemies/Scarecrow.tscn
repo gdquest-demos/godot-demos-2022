@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://assets/boss_inactive.png" type="Texture" id=1]
+[ext_resource path="res://enemies/boss_inactive.png" type="Texture" id=1]
 [ext_resource path="res://enemies/Scarecrow.gd" type="Script" id=2]
 [ext_resource path="res://enemies/HitBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://vfx/ice_particle_white.png" type="Texture" id=4]
@@ -14,9 +14,10 @@ code = "shader_type canvas_item;
 uniform bool active = false;
 
 void fragment() {
-	vec4 previous_color = texture(TEXTURE, UV);
-	vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
-	vec4 new_color = previous_color;
+	// Replaces all but alpha to white if active = true
+	vec4 origional_color = texture(TEXTURE, UV);
+	vec4 white_color = vec4(1.0, 1.0, 1.0, origional_color.a); 
+	vec4 new_color = origional_color;
 	if (active == true)
 	{
 		new_color = white_color
@@ -211,6 +212,9 @@ shape = SubResource( 7 )
 process_mode = 0
 wait_time = 0.2
 one_shot = true
+
+[node name="DamageLabelPivot" type="Position2D" parent="HitBox"]
+position = Vector2( -1, -105 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

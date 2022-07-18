@@ -1,10 +1,8 @@
 extends Area2D
 
-export var damage := 10 setget set_damage, get_damage
-
-func set_damage(amount: int):
-	damage = amount
+export var damage_min := 1
+export var damage_max := 5
 
 
-func get_damage():
-	return 1 + randi() % 5
+func get_damage() -> int:
+	return damage_min + randi() % damage_max

@@ -2,9 +2,10 @@ extends Node2D
 
 export var gravity := Vector2(0, 9.8)
 
-onready var _label := $Label
-
 var _velocity := Vector2.ZERO
+
+onready var _label := $Label
+onready var _animation_player := $AnimationPlayer
 
 
 func _ready() -> void:
@@ -16,7 +17,6 @@ func _process(delta: float) -> void:
 	global_position += _velocity
 	
 
-func set_damage(amount: float):
+func set_damage(amount: float) -> void:
 	_label.text = "-" + str(amount)
-	$AnimationPlayer.play("show")
-
+	_animation_player.play("show")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://vfx/ice_2.png" type="Texture" id=1]
 [ext_resource path="res://weapons/WeaponSword.gd" type="Script" id=2]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/HaloRectangleShape2D.tres" type="Shader" id=3]
-[ext_resource path="res://weapons/Weapon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://vfx/trail/sword_ice_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/shadow_circle.png" type="Texture" id=4]
+[ext_resource path="res://weapons/sword_ice_2.png" type="Texture" id=6]
 [ext_resource path="res://vfx/FrozenParticle.tscn" type="PackedScene" id=7]
 [ext_resource path="res://vfx/trail.png" type="Texture" id=8]
 [ext_resource path="res://weapons/mixkit-sword-slash-swoosh-1476.mp3" type="AudioStream" id=9]
@@ -80,12 +80,6 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "idle"
-length = 2.0
-loop = true
-step = 0.05
-
 [sub_resource type="Animation" id=9]
 resource_name = "slash"
 length = 0.4
@@ -151,32 +145,32 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[node name="WeaponSword" instance=ExtResource( 4 )]
+[node name="WeaponSword" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Pivot" type="Position2D" parent="." index="0"]
+[node name="Pivot" type="Position2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Pivot" index="0"]
+[node name="Sprite" type="Sprite" parent="Pivot"]
 texture = ExtResource( 6 )
 offset = Vector2( 40, 0 )
 
-[node name="Trail" type="Sprite" parent="Pivot/Sprite" index="0"]
+[node name="Trail" type="Sprite" parent="Pivot/Sprite"]
 visible = false
 show_behind_parent = true
 position = Vector2( 55, -31 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 8 )
 
-[node name="HurtBox" parent="Pivot/Sprite" index="1" instance=ExtResource( 10 )]
+[node name="HurtBox" parent="Pivot/Sprite" instance=ExtResource( 10 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Sprite/HurtBox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Sprite/HurtBox"]
 self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
 material = SubResource( 6 )
 position = Vector2( 70, 0 )
 shape = SubResource( 5 )
 disabled = true
 
-[node name="FrozenParticles" parent="Pivot" index="1" instance=ExtResource( 7 )]
+[node name="FrozenParticles" parent="Pivot" instance=ExtResource( 7 )]
 show_behind_parent = true
 position = Vector2( 66, 1 )
 emitting = true
@@ -185,12 +179,19 @@ randomness = 1.0
 local_coords = false
 texture = ExtResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -22.4
 pitch_scale = 2.2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
-anims/idle = SubResource( 8 )
 anims/slash = SubResource( 9 )
+
+[node name="ShadowCircle" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+position = Vector2( 8, 42 )
+scale = Vector2( 0.6, 0.6 )
+z_index = -1
+texture = ExtResource( 4 )

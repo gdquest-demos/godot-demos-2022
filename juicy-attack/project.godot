@@ -48,11 +48,6 @@ _global_script_classes=[ {
 "class": "DebugRayCast2D",
 "language": "GDScript",
 "path": "res://addons/gdquest_visualization_tools/2d/DebugRayCast2D.gd"
-}, {
-"base": "Reference",
-"class": "Trail2D",
-"language": "GDScript",
-"path": "res://vfx/trail/Trail2D.gd"
 } ]
 _global_script_class_icons={
 "DebugCollisionPolygon": "",
@@ -62,8 +57,7 @@ _global_script_class_icons={
 "DebugPath": "",
 "DebugPath2D": "",
 "DebugRayCast": "",
-"DebugRayCast2D": "",
-"Trail2D": ""
+"DebugRayCast2D": ""
 }
 
 [application]

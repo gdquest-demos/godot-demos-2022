@@ -1,6 +1,4 @@
-[gd_scene load_steps=9 format=2]
-
-[ext_resource path="res://vfx/frozen_fx.png" type="Texture" id=1]
+[gd_scene load_steps=8 format=2]
 
 [sub_resource type="Gradient" id=41]
 offsets = PoolRealArray( 0, 0.283871, 1 )
@@ -46,4 +44,3 @@ position = Vector2( 6.99999, -54 )
 emitting = false
 amount = 4
 process_material = SubResource( 36 )
-texture = ExtResource( 1 )
