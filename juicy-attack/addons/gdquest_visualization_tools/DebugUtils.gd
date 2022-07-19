@@ -1,12 +1,12 @@
 static func enum_to_string(e: Dictionary, slice := {}) -> String:
-	var partial_result := []
+	var partial_result := PoolStringArray()
 	var keys := e.keys()
 	if not slice.empty():
 		keys = keys.slice(slice.begin, slice.end, slice.get("step", 1))
 
 	for key in keys:
 		partial_result.push_back(key.capitalize())
-	return ",".join(partial_result)
+	return partial_result.join(",")
 
 
 static func array_to_texture(xs: Array) -> ImageTexture:
