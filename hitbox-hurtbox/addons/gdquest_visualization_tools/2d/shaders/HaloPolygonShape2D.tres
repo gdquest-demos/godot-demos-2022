@@ -1,0 +1,52 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+
+uniform float falloff: hint_range(0.025, 1) = 0.25;
+
+uniform int points_size = 0;
+uniform sampler2D points;
+
+const float CLIP = 0.0;
+const float STEP = 0.025;
+
+
+vec4 get_array_at(sampler2D xs, int xs_size, int index) {
+	if (index < 0 || index >= xs_size) return vec4(0.0);
+	return texelFetch(xs, ivec2(index, 0), 0);
+}
+
+
+float sd_polygon(vec2 uv, sampler2D xs, int xs_size) {
+	vec2 diff = uv - get_array_at(xs, xs_size, 0).rg;
+	float d = dot(diff, diff);
+	float s = 1.0;
+	int i = 0;
+	int j = xs_size - 1;
+	while (i < xs_size) {
+		vec2 x_i = get_array_at(xs, xs_size, i).xy;
+		vec2 x_j = get_array_at(xs, xs_size, j).xy;
+		vec2 e = x_j - x_i;
+		vec2 w = uv - x_i;
+		vec2 b = w - e * clamp(dot(w, e) / dot(e, e), 0.0, 1.0);
+		d = min(d, dot(b, b));
+		bvec3 c = bvec3(uv.y >= x_i.y, uv.y < x_j.y, e.x * w.y > e.y * w.x);
+		if (all(c) || all(not(c))) s *= -1.0;
+		j = i;
+		i++;
+	}
+	return s * sqrt(d);
+}
+
+
+float rim(float d) {
+	return 1.0 - smoothstep(CLIP - STEP, CLIP, d) - smoothstep(CLIP, CLIP - falloff, d);
+}
+
+
+void fragment() {
+	COLOR.rgb = vec3(1.0);
+	COLOR.a = rim(sd_polygon(UV, points, points_size));
+}"

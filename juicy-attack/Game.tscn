@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://enemies/Scarecrow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://weapons/WeaponSword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/UIOptions.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game.gd" type="Script" id=4]
+[ext_resource path="res://assets/space_background.png" type="Texture" id=11]
+[ext_resource path="res://Player.gd" type="Script" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UIOptions" parent="UI" instance=ExtResource( 3 )]
+
+[node name="SpaceBackground" type="Sprite" parent="."]
+z_index = -100
+texture = ExtResource( 11 )
+
+[node name="Scarecrow" parent="." instance=ExtResource( 1 )]
+position = Vector2( 150, -1 )
+
+[node name="Scarecrow2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -150, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.7, 0.7 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="WeaponSword" parent="Player" instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )

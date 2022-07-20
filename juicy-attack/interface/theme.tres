@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=14 format=2]
 
-[ext_resource path="res://assets/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -24,6 +24,12 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
 
 [sub_resource type="ImageTexture" id=11]
 
@@ -87,18 +93,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="DynamicFont" id=7]
-size = 24
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
-
 [resource]
 default_font = SubResource( 7 )
 Button/styles/focus = SubResource( 6 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
+CheckBox/fonts/font = SubResource( 7 )
 HSlider/icons/grabber = SubResource( 11 )
 HSlider/icons/grabber_disabled = SubResource( 11 )
 HSlider/icons/grabber_highlight = SubResource( 11 )
