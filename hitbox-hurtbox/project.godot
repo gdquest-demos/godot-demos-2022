@@ -52,7 +52,17 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "GDQuestDebugDraggable",
 "language": "GDScript",
-"path": "res://GDQuestDebugDraggable/GDQuestDebugDraggable.gd"
+"path": "res://utils/GDQuestDebugDraggable.gd"
+}, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://enemies/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://sword/HurtBox.gd"
 } ]
 _global_script_class_icons={
 "DebugCollisionPolygon": "",
@@ -63,7 +73,9 @@ _global_script_class_icons={
 "DebugPath2D": "",
 "DebugRayCast": "",
 "DebugRayCast2D": "",
-"GDQuestDebugDraggable": "res://GDQuestDebugDraggable/GDQuestDebugDraggable.svg"
+"GDQuestDebugDraggable": "res://utils/GDQuestDebugDraggable.svg",
+"HitBox": "",
+"HurtBox": ""
 }
 
 [application]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=1]
-[ext_resource path="res://weapons/WeaponSword.gd" type="Script" id=2]
+[ext_resource path="res://sword/WeaponSword.gd" type="Script" id=2]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/HaloRectangleShape2D.tres" type="Shader" id=3]
-[ext_resource path="res://GDQuestDebugDraggable/GDQuestDebugDraggable.gd" type="Script" id=4]
+[ext_resource path="res://utils/GDQuestDebugDraggable.gd" type="Script" id=4]
 [ext_resource path="res://assets/sword.png" type="Texture" id=5]
-[ext_resource path="res://weapons/HurtBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sword/HurtBox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 3 )

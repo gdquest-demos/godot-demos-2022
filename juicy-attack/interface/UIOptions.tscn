@@ -6,7 +6,7 @@
 [node name="UIOptions" type="Panel"]
 margin_left = 16.0
 margin_top = 14.0
-margin_right = 385.0
+margin_right = 362.0
 margin_bottom = 64.0
 theme = ExtResource( 1 )
 
@@ -18,6 +18,6 @@ margin_bottom = 32.0
 focus_mode = 0
 custom_constants/hseparation = 8
 enabled_focus_mode = 0
-text = "Enable Collision Shapes"
+text = "Show collision shapes"
 flat = true
 script = ExtResource( 2 )
