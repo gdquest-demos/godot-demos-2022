@@ -9,10 +9,6 @@
 
 [node name="AddingACameraRoom" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -419, 836 )
-current = true
-
 [node name="CaveBackground" type="Sprite" parent="."]
 position = Vector2( 689, 586 )
 z_index = -100
@@ -40,5 +36,6 @@ position = Vector2( -419, 836 )
 controls = ExtResource( 5 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.705882, 0.972549, 1 )
 position = Vector2( -622, 836 )
 controls = ExtResource( 6 )
