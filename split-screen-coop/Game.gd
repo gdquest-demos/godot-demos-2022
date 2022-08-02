@@ -17,8 +17,7 @@ onready var players := {
 
 func _ready() -> void:
 	players["2"].viewport.world_2d = players["1"].viewport.world_2d
-	for id in players:
-		var nodes: Dictionary = players[id]
+	for node in players.values():
 		var remote_transform := RemoteTransform2D.new()
-		remote_transform.remote_path = nodes.camera.get_path()
-		nodes.player.add_child(remote_transform)
+		remote_transform.remote_path = node.camera.get_path()
+		node.player.add_child(remote_transform)
