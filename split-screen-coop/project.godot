@@ -24,6 +24,10 @@ config/name="Split Screen Gameplay (GDQuest)"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1920

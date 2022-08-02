@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tileset/background_tile.png" type="Texture" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tileset/tileset_sidescroll-tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Bat/Bat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Character/player_1_controls.tres" type="Resource" id=5]
 [ext_resource path="res://Character/player_2_controls.tres" type="Resource" id=6]
 
-[node name="AddingACameraRoom" type="Node2D"]
+[node name="Room" type="Node2D"]
 
 [node name="CaveBackground" type="Sprite" parent="."]
 position = Vector2( 689, 586 )
@@ -27,9 +26,6 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 80, 80 )
 format = 1
 tile_data = PoolIntArray( -393207, 4, 1, -393200, 2, 131072, -262146, 4, 4, -196616, 2, 0, -196583, 2, 0, -65538, 3, 196609, -131070, 3, 65537, -131061, 3, 131073, -65511, 4, 2, -65506, 4, 3, -65505, 4, 1, 65520, 2, 65536, 5, 2, 65536, 19, 2, 0, 34, 4, 0, 131064, 2, 65536, 196607, 2, 0, 131084, 4, 2, 196610, 4, 0, 196614, 4, 0, 196638, 3, 196609, 327670, 4, 3, 327677, 4, 3, 262163, 4, 2, 458735, 4, 1, 458779, 3, 1, 589810, 2, 0, 524301, 3, 196608, 524320, 3, 1, 655339, 3, 131072, 786422, 3, 65537, 720922, 2, 131072, 720931, 2, 131072, 786435, 3, 0, 786444, 3, 65536, 917489, 3, 65536, 917493, 4, 0, 917496, 2, 131072, 917504, 2, 131072, 917511, 4, 0, 917522, 4, 3, 917528, 4, 0, 1048571, 4, 4, 983069, 2, 65536, 1114099, 3, 131072, 1114116, 3, 65536, 1114134, 3, 65537, 1310727, 2, 0, 1441783, 2, 0, 1441808, 2, 131072 )
-
-[node name="Bat" parent="." instance=ExtResource( 4 )]
-position = Vector2( 480, 406 )
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -419, 836 )
