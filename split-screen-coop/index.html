@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta property="og:type" content="website" />
+        <link rel="shortcut icon" type="image/x-icon" href="https://gdquest.github.io/godot-demos-2022/favicon.ico" />
+           <meta property="og:title" content="Split Screen Gameplay" />
+    <meta name="twitter:title" content="Split Screen Gameplay" />
+          <meta property="og:image" content="https://gdquest.github.io/godot-demos-2022/split-screen-coop/icon.png" />
+    <meta name="twitter:image" content="https://gdquest.github.io/godot-demos-2022/split-screen-coop/icon.png" />
+         <meta property="og:url" content="https://gdquest.github.io/godot-demos-2022/split-screen-coop" />
+         <link
+      rel="stylesheet"
+      href="../styles.css"
+      
+    />
+        <title>Split Screen Gameplay</title>
+  </head>
+  <body class="project">
+    <header class="banner-container">
+      <img src="../david.svg" class="character" />
+      <div id="countdown-banner" class="countdown-banner">
+        <h2 class="title">Welcome to Godot sale!</h2>
+        <p>
+          50% off on all Godot courses with coupon code
+          <strong>WELCOME-TO-GODOT</strong>.
+        </p>
+        <div>
+          <span id="countdown" class="countdown" data-date="2022-07-24T23:59"
+            >0 days left</span
+          >
+        </div>
+        <a
+          href="https://gdquest.mavenseed.com/courses"
+          class="button-link -yellow -shadow -large -tall"
+          >Learn more</a
+        >
+      </div>
+      <img src="../lula.svg" class="character" />
+    </header>
+    <header class="page-title container">
+            <img src="./icon.png" alt="logo for Split Screen Gameplay" />
+             <h1 class="doc-title">Split Screen Gameplay</h1>
+             <a class="back" href="../">Go back to project list</a>
+          </header>
+        <main class="page-body container">
+            <section class="file-download">
+        <a href="../artifacts/split-screen-coop.2022-08-02-08-26-21.main.9b682ee.zip" download
+          ><span>Download the project files</span></a
+        >
+      </section>
+             <section class="content">
+         <h1 id="split-screen-co-op">Split-screen co-op</h1>
+<p>This demo shows how to set up viewports and viewport containers for split-screen co-op gameplay.</p>
+<p>The demo uses a 2D game as an example, but it works the same in 3D.</p>
+<p><img src="split-screen-screenshot.png" /></p>
+<p>The steps, in short:</p>
+<ul>
+<li>Use variables or resources instead of hard-coded input actions to control characters. That way, you can give each player different controls.</li>
+<li>Create a <code>Viewport</code> in a <code>ViewportContainer</code> for each player. The <code>ViewportContainer</code> allows you to display a viewport on the screen and resize it automatically.</li>
+<li>Instantiate your full game level as a child of the first viewport.</li>
+<li>Create one camera in each viewport to render different views of your game level.</li>
+<li>Viewports have a world property that controls what they render (<code>world</code> for 3D and <code>world_2d</code> for 2D). You need to share the first viewport’s world with other viewports for every view to display the same level. You can do so with code.</li>
+<li>Finally, to control the different cameras, you create a remote transform node as a child of each character and make it target the matching camera.</li>
+</ul>
+        
+      </section>
+            <section class="file-download">
+        <a href="../artifacts/split-screen-coop.2022-08-02-08-26-21.main.9b682ee.zip" download>
+          <span>Download the project files</span></a
+        >
+      </section>
+          </main>
+    <footer>
+      <a href="https://gdquest.github.io/godot-demos-2022/">Demos website</a>
+      <a href="https://github.com/GDQuest/godot-demos-2022/">Demos Github</a>
+      <a href="https://gdquest.itch.io/godot-demos-2022-edition">Itch</a>
+      <a href="https://www.gdquest.com">Main Website</a>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>
