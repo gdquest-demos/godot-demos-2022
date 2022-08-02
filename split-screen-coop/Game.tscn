@@ -9,16 +9,17 @@ script = ExtResource( 2 )
 [node name="Row" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 0
 
 [node name="LeftViewportContainer" type="ViewportContainer" parent="Row"]
-margin_right = 951.0
+margin_right = 955.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="Row/LeftViewportContainer"]
-size = Vector2( 951, 1080 )
+size = Vector2( 955, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -36,7 +37,7 @@ rect_min_size = Vector2( 10, 10 )
 color = Color( 0.301961, 0.65098, 1, 1 )
 
 [node name="RightViewportContainer" type="ViewportContainer" parent="Row"]
-margin_left = 969.0
+margin_left = 965.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
@@ -44,7 +45,7 @@ size_flags_vertical = 3
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="Row/RightViewportContainer"]
-size = Vector2( 951, 1080 )
+size = Vector2( 955, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
