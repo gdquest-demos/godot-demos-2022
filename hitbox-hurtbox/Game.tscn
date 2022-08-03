@@ -4,7 +4,7 @@
 [ext_resource path="res://sword/WeaponSword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://interface/UIOptions.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/HaloCircleShape2D.tres" type="Shader" id=5]
-[ext_resource path="res://assets/space_background.png" type="Texture" id=11]
+[ext_resource path="res://space_background.png" type="Texture" id=11]
 [ext_resource path="res://sword/Player.gd" type="Script" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]

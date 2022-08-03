@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scarecrow.png-ed033dc199b7a23e4abf9469ae7e7372.stex"
+path="res://.import/sword.png-3101e55fc385d4a7406ec5dd2b529f3a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scarecrow.png"
-dest_files=[ "res://.import/scarecrow.png-ed033dc199b7a23e4abf9469ae7e7372.stex" ]
+source_file="res://sword/sword.png"
+dest_files=[ "res://.import/sword.png-3101e55fc385d4a7406ec5dd2b529f3a.stex" ]
 
 [params]
 

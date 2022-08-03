@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/key_esc.png-0bfcd1667852ba9210a00b990ecb8e55.stex"
+path="res://.import/HurtBox.svg-6227fc81ce5bb11c41452a20381d83c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/key_esc.png"
-dest_files=[ "res://.import/key_esc.png-0bfcd1667852ba9210a00b990ecb8e55.stex" ]
+source_file="res://nodes/HurtBox.svg"
+dest_files=[ "res://.import/HurtBox.svg-6227fc81ce5bb11c41452a20381d83c8.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sword.png-95f2475a1c94b517c0dc8c8a23b270ed.stex"
+path="res://.import/GDQuestDebugDraggable.svg-97bd2441af1314bf1b675c6b22f11225.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sword.png"
-dest_files=[ "res://.import/sword.png-95f2475a1c94b517c0dc8c8a23b270ed.stex" ]
+source_file="res://nodes/GDQuestDebugDraggable.svg"
+dest_files=[ "res://.import/GDQuestDebugDraggable.svg-97bd2441af1314bf1b675c6b22f11225.stex" ]
 
 [params]
 

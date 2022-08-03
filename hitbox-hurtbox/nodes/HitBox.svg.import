@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GDQuestDebugDraggable.svg-264858747ec584f68a687053baa8c1f6.stex"
+path="res://.import/HitBox.svg-e3195cd74892e482d51dc65fee498596.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utils/GDQuestDebugDraggable.svg"
-dest_files=[ "res://.import/GDQuestDebugDraggable.svg-264858747ec584f68a687053baa8c1f6.stex" ]
+source_file="res://nodes/HitBox.svg"
+dest_files=[ "res://.import/HitBox.svg-e3195cd74892e482d51dc65fee498596.stex" ]
 
 [params]
 

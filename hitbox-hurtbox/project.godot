@@ -49,20 +49,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdquest_visualization_tools/2d/DebugRayCast2D.gd"
 }, {
-"base": "Area2D",
+"base": "Reference",
 "class": "GDQuestDebugDraggable",
 "language": "GDScript",
-"path": "res://utils/GDQuestDebugDraggable.gd"
+"path": "res://nodes/GDQuestDebugDraggable.gd"
 }, {
 "base": "Area2D",
 "class": "HitBox",
 "language": "GDScript",
-"path": "res://enemies/HitBox.gd"
+"path": "res://nodes/HitBox.gd"
 }, {
 "base": "Area2D",
 "class": "HurtBox",
 "language": "GDScript",
-"path": "res://sword/HurtBox.gd"
+"path": "res://nodes/HurtBox.gd"
 } ]
 _global_script_class_icons={
 "DebugCollisionPolygon": "",
@@ -73,9 +73,9 @@ _global_script_class_icons={
 "DebugPath2D": "",
 "DebugRayCast": "",
 "DebugRayCast2D": "",
-"GDQuestDebugDraggable": "res://utils/GDQuestDebugDraggable.svg",
-"HitBox": "",
-"HurtBox": ""
+"GDQuestDebugDraggable": "",
+"HitBox": "res://nodes/HitBox.svg",
+"HurtBox": "res://nodes/HurtBox.svg"
 }
 
 [application]
@@ -128,6 +128,11 @@ click={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="bodies"
+2d_physics/layer_2="hurtboxes"
 
 [physics]
 
