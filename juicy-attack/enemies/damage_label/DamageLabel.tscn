@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://vfx/damage_label/DamageLabel.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://interface/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://enemies/damage_label/DamageLabel.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 outline_size = 4
 outline_color = Color( 0.929412, 0.298039, 0.25098, 1 )
 use_filter = true
-font_data = ExtResource( 2 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -69,8 +69,7 @@ tracks/1/keys = {
 }
 
 [node name="DamageLabel" type="Node2D"]
-scale = Vector2( 1e-05, 1e-05 )
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -30.0
@@ -87,5 +86,6 @@ align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
 anims/RESET = SubResource( 2 )
 anims/show = SubResource( 3 )

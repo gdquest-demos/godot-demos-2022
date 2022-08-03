@@ -48,6 +48,16 @@ _global_script_classes=[ {
 "class": "DebugRayCast2D",
 "language": "GDScript",
 "path": "res://addons/gdquest_visualization_tools/2d/DebugRayCast2D.gd"
+}, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://nodes/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://nodes/HurtBox.gd"
 } ]
 _global_script_class_icons={
 "DebugCollisionPolygon": "",
@@ -57,7 +67,9 @@ _global_script_class_icons={
 "DebugPath": "",
 "DebugPath2D": "",
 "DebugRayCast": "",
-"DebugRayCast2D": ""
+"DebugRayCast2D": "",
+"HitBox": "res://nodes/HitBox.svg",
+"HurtBox": "res://nodes/HurtBox.svg"
 }
 
 [application]

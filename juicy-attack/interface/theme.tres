@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=14 format=2]
 
-[ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://interface/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 

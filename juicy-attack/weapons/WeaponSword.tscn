@@ -9,7 +9,7 @@
 [ext_resource path="res://vfx/FrozenParticle.tscn" type="PackedScene" id=7]
 [ext_resource path="res://vfx/trail.png" type="Texture" id=8]
 [ext_resource path="res://weapons/mixkit-sword-slash-swoosh-1476.mp3" type="AudioStream" id=9]
-[ext_resource path="res://weapons/HurtBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://nodes/HitBox.gd" type="Script" id=10]
 
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 3 )
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Sprite/HurtBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Pivot/Sprite/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -45,7 +45,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pivot/Sprite/HurtBox/CollisionShape2D:self_modulate")
+tracks/2/path = NodePath("Pivot/Sprite/HitBox/CollisionShape2D:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -98,7 +98,7 @@ tracks/0/keys = {
 "values": [ 0.0, -140.0, 90.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Sprite/HurtBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Pivot/Sprite/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -110,7 +110,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pivot/Sprite/HurtBox/CollisionShape2D:self_modulate")
+tracks/2/path = NodePath("Pivot/Sprite/HitBox/CollisionShape2D:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -162,9 +162,12 @@ position = Vector2( 55, -31 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 8 )
 
-[node name="HurtBox" parent="Pivot/Sprite" instance=ExtResource( 10 )]
+[node name="HitBox" type="Area2D" parent="Pivot/Sprite"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 10 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Sprite/HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Sprite/HitBox"]
 visible = false
 self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
 material = SubResource( 10 )
