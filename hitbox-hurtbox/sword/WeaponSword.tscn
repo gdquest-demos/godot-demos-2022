@@ -54,7 +54,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "slash"
-length = 0.3
+length = 0.25
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -63,10 +63,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.25 ),
-"transitions": PoolRealArray( 0.31864, 1.27456, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.23 ),
+"transitions": PoolRealArray( 2.54912, 1.10957, 3.4822 ),
 "update": 0,
-"values": [ -100.0, 100.0, 0.0 ]
+"values": [ -30.0, 120.0, 106.69 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite/HitBox/CollisionShape2D:disabled")
@@ -75,7 +75,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.21 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -87,10 +87,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.11 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.376471, 0.376471, 0.439216, 1 ) ]
+"times": PoolRealArray( 0, 0.21 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 0.376471, 0.376471, 0.439216, 1 ) ]
 }
 
 [node name="WeaponSword" type="Node2D"]

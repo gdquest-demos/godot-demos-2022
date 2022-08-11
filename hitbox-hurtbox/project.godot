@@ -54,12 +54,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://nodes/GDQuestDebugDraggable.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
 "class": "HitBox",
 "language": "GDScript",
 "path": "res://nodes/HitBox.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
 "class": "HurtBox",
 "language": "GDScript",
 "path": "res://nodes/HurtBox.gd"
@@ -74,8 +74,8 @@ _global_script_class_icons={
 "DebugRayCast": "",
 "DebugRayCast2D": "",
 "GDQuestDebugDraggable": "",
-"HitBox": "",
-"HurtBox": ""
+"HitBox": "res://nodes/HitBox.svg",
+"HurtBox": "res://nodes/HurtBox.svg"
 }
 
 [application]
