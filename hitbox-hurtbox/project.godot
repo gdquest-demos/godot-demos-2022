@@ -136,7 +136,7 @@ click={
 
 [layer_names]
 
-2d_physics/layer_1="bodies"
+2d_physics/layer_1="game world"
 2d_physics/layer_2="hurtboxes"
 
 [physics]
