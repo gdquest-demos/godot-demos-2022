@@ -54,12 +54,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://nodes/GDQuestDebugDraggable.gd"
 }, {
-"base": "Area2D",
+"base": "Reference",
 "class": "HitBox",
 "language": "GDScript",
 "path": "res://nodes/HitBox.gd"
 }, {
-"base": "Area2D",
+"base": "Reference",
 "class": "HurtBox",
 "language": "GDScript",
 "path": "res://nodes/HurtBox.gd"
@@ -74,8 +74,8 @@ _global_script_class_icons={
 "DebugRayCast": "",
 "DebugRayCast2D": "",
 "GDQuestDebugDraggable": "",
-"HitBox": "res://nodes/HitBox.svg",
-"HurtBox": "res://nodes/HurtBox.svg"
+"HitBox": "",
+"HurtBox": ""
 }
 
 [application]
@@ -87,6 +87,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GdQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
+GDQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
 
 [display]
 
@@ -95,6 +96,10 @@ window/size/height=1080
 window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gdquest_visualization_tools/plugin.cfg" )
 
 [input]
 

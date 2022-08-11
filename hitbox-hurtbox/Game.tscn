@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://enemies/Scarecrow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sword/WeaponSword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://interface/UIOptions.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/HaloCircleShape2D.tres" type="Shader" id=5]
@@ -30,10 +30,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Scarecrow" parent="." instance=ExtResource( 1 )]
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1025, 536 )
 
-[node name="Scarecrow2" parent="." instance=ExtResource( 1 )]
+[node name="Enemy2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 948, 664 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
