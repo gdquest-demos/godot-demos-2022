@@ -36,7 +36,7 @@ tracks/0/keys = {
 }
 
 [node name="WeaponSword" type="Node2D"]
-rotation = -0.632693
+rotation = -1.05016
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

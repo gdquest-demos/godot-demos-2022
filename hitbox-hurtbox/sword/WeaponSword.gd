@@ -1,7 +1,7 @@
 extends Node2D
 
 const DRAG_FACTOR := 15.0
-const RUN_SPEED := 800.0
+const RUN_SPEED := 600.0
 
 var _velocity := Vector2.ZERO
 
