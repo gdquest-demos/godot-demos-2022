@@ -158,6 +158,7 @@ function _process_project() {
     --metadata description="$description" \
     --metadata image="$WEBSITE_URL/$image" \
     --metadata filename="$filename" \
+    --metadata repo_url="$REPO_URL/tree/main/$base" \
     $videos \
     --template="$HTML_TEMPLATE" \
     --css="../styles.css" \
@@ -185,6 +186,7 @@ function _generate_index() {
     --metadata favicon="$WEBSITE_URL/favicon.ico" \
     --metadata description="A collection of Free and Open-Source Godot demos created for learning purposes and for our YouTube videos in 2022." \
     --template="$HTML_TEMPLATE" \
+    --metadata repo_url="$REPO_URL" \
     --css="styles.css" \
     -t gfm -t html5 \
     -o "$BUILD_DIR/index.html" \
@@ -220,6 +222,7 @@ function generate() {
   export GIT_HASH
   export TEMP_FILE
   export WEBSITE_URL
+  export REPO_URL
 
   find "$ROOT" -name "project.godot"  -exec bash -c "_process_project \"\$0\" $use_itch" {} \;
 
@@ -255,6 +258,7 @@ BUILD_DIR="$ROOT/build"
 ARTIFACTS_DIR="$BUILD_DIR/artifacts"
 HTML_TEMPLATE="$ROOT/.github/templates/template.html"
 WEBSITE_URL="https://gdquest.github.io/godot-demos-2022"
+REPO_URL="https://github.com/GDQuest/godot-demos-2022"
 
 # contains a list of generated projects to list in the main file
 TEMP_FILE=$(mktemp)
