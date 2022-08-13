@@ -68,12 +68,22 @@ img {
   max-width: var(--max-width);
 }
 
-.back,
-.back:hover {
+.header-links {
   position: absolute;
   bottom: 1em;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: var(--background);
+  gap: 0.6em;
+}
+
+.header-links a,
+.header-links a:hover {
   color: var(--background);
 }
 
@@ -260,4 +270,10 @@ footer {
   text-decoration: none;
   color: #007ac3;
   transition: 0.2s ease-out;
+}
+
+.github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
