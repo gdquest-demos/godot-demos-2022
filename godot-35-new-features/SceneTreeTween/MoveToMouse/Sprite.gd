@@ -17,3 +17,5 @@ func move_to_mouse() -> void:
 
 	tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "global_position", get_global_mouse_position(), 0.5)
+
+	rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI / 2.0
