@@ -24,8 +24,6 @@ func _ready() -> void:
 
 
 func hover(is_hovering: bool) -> void:
-	if not is_enabled:
-		return
 	if is_hovering:
 		for card in get_tree().get_nodes_in_group("Hovering"):
 			card.remove_from_group("Hovering")
@@ -33,7 +31,7 @@ func hover(is_hovering: bool) -> void:
 		add_to_group("Hovering")
 		_animation_player.play("Swell")
 	else:
-		_animation_player.play("RESET")
+		_animation_player.play_backwards("Swell")
 
 
 func save_base_height() -> void:

@@ -1,10 +1,6 @@
 extends Control
 
-onready var box_list := [
-	get_node("%Box1"),
-	get_node("%Box2"),
-	get_node("%Box3")
-]
+onready var box_list := get_tree().get_nodes_in_group("box")
 
 
 func _ready() -> void:

@@ -48,10 +48,12 @@ func _calculate_new_card_transform(index: int, count: int, ratio_in_hand: float)
 
 
 func _clear() -> void:
-	if hand.get_children():
-		var tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		for child in hand.get_children():
-			tween.tween_property(child, "translation", cards_resting_place.translation, 1)
+	if hand.get_children().empty():
+		return
+
+	var tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	for child in hand.get_children():
+		tween.tween_property(child, "translation", cards_resting_place.translation, 1)
 
 
 func _on_cards_requested() -> void:

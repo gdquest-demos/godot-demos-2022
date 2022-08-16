@@ -138,5 +138,5 @@ click={
 
 [rendering]
 
-gles3/shaders/shader_compilation_mode=0
+quality/shadows/filter_mode=2
 environment/default_environment="res://default_env.tres"
