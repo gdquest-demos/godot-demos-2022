@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/UI/ui_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/UI/TextButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/UI/completionmark_gem_blue.png" type="Texture" id=3]
 [ext_resource path="res://assets/UI/completionmark_empty.png" type="Texture" id=4]
 [ext_resource path="res://SceneTreeTween/PoppingUI/PoppingUI.gd" type="Script" id=5]
@@ -34,7 +33,6 @@ position = Vector2( 19.998, 20.998 )
 texture = ExtResource( 4 )
 
 [node name="Box1" type="TextureRect" parent="Control" groups=["box"]]
-unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -63,7 +61,6 @@ position = Vector2( 19.998, 18.998 )
 texture = ExtResource( 4 )
 
 [node name="Box2" type="TextureRect" parent="Control2" groups=["box"]]
-unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -92,7 +89,6 @@ position = Vector2( 20, 21.998 )
 texture = ExtResource( 4 )
 
 [node name="Box3" type="TextureRect" parent="Control3" groups=["box"]]
-unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -106,7 +102,7 @@ rect_pivot_offset = Vector2( 159, 159 )
 texture = ExtResource( 3 )
 expand = true
 
-[node name="PopButton" parent="." instance=ExtResource( 2 )]
+[node name="Button" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -117,8 +113,8 @@ margin_right = 159.0
 margin_bottom = 312.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
+shortcut_in_tooltip = false
+action_mode = 0
 text = "Pop"
 
 [node name="Tween" type="Tween" parent="."]
-
-[connection signal="pressed" from="PopButton" to="." method="_on_PopButton_pressed"]
