@@ -1,12 +1,11 @@
 extends Spatial
 
-# ANCHOR: setup
-## Maximum rotation we apply to cards on the edges of the hand.
+# Maximum rotation we apply to cards on the edges of the hand.
 const CARD_ROTATION := deg2rad(15.0)
-## Horizontal spread of the hands on the Z axis.
+# Horizontal spread of the hands on the Z axis.
 const HAND_SPREAD := 5.0
-## Offset applied to each card towards the camera to render them in the correct
-## order.
+# Offset applied to each card towards the camera to render them in the correct
+# order.
 const HEIGHT_DIFFERENCE := 0.02
 
 export(PackedScene) var card_scene
@@ -24,11 +23,12 @@ onready var cards_resting_place: Area = $Player/CardsRestingPlace
 
 
 func _ready() -> void:
-	deck.connect("clicked", self, "_on_cards_requested")
+	deck.connect("clicked", self, "_create_and_animate_cards")
 	cards_resting_place.connect("area_entered", self, "_on_CardsRestingPlace_area_entered")
 
 
-func _on_cards_requested() -> void:
+
+func _create_and_animate_cards() -> void:
 	var tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 	if not hand.get_children().empty():
@@ -36,7 +36,6 @@ func _on_cards_requested() -> void:
 			tween.tween_property(child, "translation", cards_resting_place.translation, 1)
 
 	var card_count := int(rand_range(1, 5))
-
 	for child_index in card_count + 1:
 		# Create a new card instance
 		var new_card: Card3D = card_scene.instance()

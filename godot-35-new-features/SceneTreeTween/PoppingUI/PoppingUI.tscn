@@ -86,5 +86,3 @@ size_flags_vertical = 6
 shortcut_in_tooltip = false
 action_mode = 0
 text = "Pop"
-
-[node name="Tween" type="Tween" parent="."]
