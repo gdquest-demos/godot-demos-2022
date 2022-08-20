@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdquest_visualization_tools/2d/DebugRayCast2D.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
 "class": "GDQuestDebugDraggable",
 "language": "GDScript",
 "path": "res://nodes/GDQuestDebugDraggable.gd"
@@ -73,7 +73,7 @@ _global_script_class_icons={
 "DebugPath2D": "",
 "DebugRayCast": "",
 "DebugRayCast2D": "",
-"GDQuestDebugDraggable": "",
+"GDQuestDebugDraggable": "res://nodes/GDQuestDebugDraggable.svg",
 "HitBox": "res://nodes/HitBox.svg",
 "HurtBox": "res://nodes/HurtBox.svg"
 }
@@ -86,7 +86,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GdQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
 GDQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
 
 [display]
