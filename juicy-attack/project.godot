@@ -80,7 +80,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GdQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
+GDQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
 EventBus="*res://autoload/EventBus.gd"
 
 [display]
