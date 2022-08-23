@@ -1,18 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://interface/theme.tres" type="Theme" id=3]
 [ext_resource path="res://space_background.png" type="Texture" id=4]
 [ext_resource path="res://interface/fonts/font_text.tres" type="DynamicFont" id=5]
-[ext_resource path="res://interface/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://interface/UIShowAreas.gd" type="Script" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 33
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 6 )
 
 [node name="Demo Scene" type="Node2D"]
 
@@ -36,28 +29,30 @@ position = Vector2( 1532, 863 )
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 margin_left = 19.0
 margin_top = 17.0
-margin_right = 596.0
-margin_bottom = 239.0
+margin_right = 398.0
+margin_bottom = 173.0
 theme = ExtResource( 3 )
 
 [node name="Controls" type="Label" parent="CanvasLayer/Panel"]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 562.0
-margin_bottom = 126.0
+margin_bottom = 101.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 5 )
 text = "- Left Click to shoot Arrow
 - Right Click to shoot Fireball"
 
-[node name="ShowAreas" type="CheckButton" parent="CanvasLayer/Panel"]
-margin_left = 22.0
-margin_top = 153.0
-margin_right = 288.0
-margin_bottom = 199.0
-custom_fonts/font = SubResource( 1 )
-pressed = true
-text = " Show Areas "
+[node name="UICollisionShapeCheckBox" type="CheckBox" parent="CanvasLayer/Panel"]
+margin_left = 16.0
+margin_top = 104.0
+margin_right = 281.0
+margin_bottom = 138.0
+focus_mode = 0
+custom_constants/hseparation = 8
+enabled_focus_mode = 0
+text = "Show collision shapes"
+flat = true
 script = ExtResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
