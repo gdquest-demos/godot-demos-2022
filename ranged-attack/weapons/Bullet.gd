@@ -20,6 +20,3 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
-
-func _on_Timer_timeout():
-	queue_free()
