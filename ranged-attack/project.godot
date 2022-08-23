@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Reference",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://bullets/Bullet.gd"
+"path": "res://weapons/Bullet.gd"
 }, {
 "base": "CollisionShape2D",
 "class": "DebugCollisionShape2D",

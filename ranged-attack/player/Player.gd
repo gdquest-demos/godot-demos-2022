@@ -1,7 +1,7 @@
 extends Node2D
 
-const FireballScene := preload("res://bullets/Fireball.tscn")
-const ArrowScene := preload("res://bullets/Arrow.tscn")
+const FireballScene := preload("res://weapons/Fireball.tscn")
+const ArrowScene := preload("res://weapons/Arrow.tscn")
 
 
 func _physics_process(delta: float) -> void:
