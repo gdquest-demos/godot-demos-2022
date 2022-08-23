@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://bullets/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://nodes/HitBox.gd" type="Script" id=3]
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/Shape2D.tres" type="Shader" id=4]
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 18.0
+
+[node name="Arrow" type="Node2D"]
+script = ExtResource( 1 )
+speed = 1000.0
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.57079
+scale = Vector2( 0.255, 1 )
+texture = ExtResource( 2 )
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2( 24, 0 )
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
+material = SubResource( 2 )
+shape = SubResource( 1 )
+script = ExtResource( 5 )
+palette = 2
+theme = 0
+theme_width = 4
+theme_sample = 24
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
