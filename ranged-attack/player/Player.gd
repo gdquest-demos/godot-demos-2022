@@ -12,9 +12,9 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
-		shoot(FireballScene)
-	elif event.is_action_pressed("right_click"):
 		shoot(ArrowScene)
+	elif event.is_action_pressed("right_click"):		
+		shoot(FireballScene)
 
 
 func shoot(projectile: PackedScene) -> void:

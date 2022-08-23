@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="Ranged attacks (GDQuest)"
 run/main_scene="res://Demo.tscn"
-config/icon="res://icon.png"
+config/icon="res://weapons/arrow.png"
 
 [autoload]
 
