@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fireball/Fireball.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 146.67
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.2655
+
+[node name="Fireball" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+speed = 8.0
+lifetime = 4.0
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.57079
+texture = ExtResource( 2 )
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+modulate = Color( 0, 1, 0.486275, 0.529412 )
+shape = SubResource( 1 )
+
+[node name="CollisionBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox"]
+modulate = Color( 0, 0.0627451, 1, 0.415686 )
+rotation = -0.00256297
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="area_entered" from="CollisionBox" to="." method="_on_CollisionBox_area_entered"]
+[connection signal="body_entered" from="CollisionBox" to="." method="_on_CollisionBox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
