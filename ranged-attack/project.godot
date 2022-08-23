@@ -8,16 +8,52 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://bullets/Bullet.gd"
+}, {
+"base": "CollisionShape2D",
+"class": "DebugCollisionShape2D",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd"
+}, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://nodes/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://nodes/HurtBox.gd"
+} ]
+_global_script_class_icons={
+"Bullet": "",
+"DebugCollisionShape2D": "",
+"HitBox": "res://nodes/HitBox.svg",
+"HurtBox": "res://nodes/HurtBox.svg"
+}
+
 [application]
 
-config/name="GDQuest Tutorial - Projectile Based Ranged Attack"
-run/main_scene="res://Demo Scene.tscn"
+config/name="Ranged attacks (GDQuest)"
+run/main_scene="res://Demo.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GDQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [global]
 
@@ -29,12 +65,12 @@ common/drop_mouse_on_gui_input_disabled=true
 
 [input]
 
-"Left Click"={
+left_click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-"Right Click"={
+right_click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
