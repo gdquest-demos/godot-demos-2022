@@ -1,17 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://weapons/fire.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Bullet.gd" type="Script" id=2]
 [ext_resource path="res://nodes/HitBox.gd" type="Script" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=4]
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/Shape2D.tres" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.0
 
 [node name="Arrow" type="Node2D"]
 script = ExtResource( 2 )
+speed = 1500.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -28,6 +31,24 @@ position = Vector2( -24, 0 )
 shape = SubResource( 1 )
 script = ExtResource( 4 )
 palette = 2
+theme = 0
+theme_width = 4
+theme_sample = 24
+
+[node name="ImpactDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
+self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
+material = SubResource( 2 )
+shape = SubResource( 1 )
+script = ExtResource( 4 )
+palette = 2
+theme = 0
+theme_width = 4
+theme_sample = 24
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

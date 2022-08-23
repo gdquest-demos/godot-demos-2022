@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://weapons/fire.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Fireball.gd" type="Script" id=2]
 [ext_resource path="res://nodes/HitBox.gd" type="Script" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=4]
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/Shape2D.tres" type="Shader" id=5]
 [ext_resource path="res://weapons/particle_bullet.png" type="Texture" id=6]
 
 [sub_resource type="Gradient" id=13]
@@ -37,17 +38,20 @@ color_ramp = SubResource( 12 )
 hue_variation = 1.0
 
 [sub_resource type="ShaderMaterial" id=19]
+shader = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 226.035
 
 [sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=18]
 radius = 30.2655
 
 [node name="Fireball" type="Node2D"]
 script = ExtResource( 2 )
+lifetime = 5.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
@@ -76,6 +80,9 @@ shape = SubResource( 1 )
 disabled = true
 script = ExtResource( 4 )
 palette = 6
+theme = 0
+theme_width = 4
+theme_sample = 24
 
 [node name="ImpactDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -90,6 +97,9 @@ rotation = -0.00256297
 shape = SubResource( 18 )
 script = ExtResource( 4 )
 palette = 0
+theme = 0
+theme_width = 4
+theme_sample = 24
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

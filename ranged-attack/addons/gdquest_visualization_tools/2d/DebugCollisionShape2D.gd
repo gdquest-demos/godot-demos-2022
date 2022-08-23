@@ -9,9 +9,10 @@ var _theme := DebugCollisionTheme.new(self)
 
 
 func _ready() -> void:
-	add_to_group("DebugCollisionShape2D")
 	if not Engine.editor_hint:
 		add_to_group("GVTCollision")
+		
+	visible = GDQuestVisualizationTools.is_debug_collision_visible
 
 
 func _draw() -> void:
