@@ -1,63 +1,124 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://interface/theme.tres" type="Theme" id=3]
 [ext_resource path="res://space_background.png" type="Texture" id=4]
 [ext_resource path="res://interface/fonts/font_text.tres" type="DynamicFont" id=5]
+[ext_resource path="res://interface/checkbox_checked.png" type="Texture" id=6]
+[ext_resource path="res://interface/fonts/font_title.tres" type="DynamicFont" id=7]
 [ext_resource path="res://interface/UIShowAreas.gd" type="Script" id=8]
+[ext_resource path="res://interface/checkbox_empty.png" type="Texture" id=9]
+[ext_resource path="res://Demo.gd" type="Script" id=10]
 
 [node name="Demo Scene" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 353, 503 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1495, 794 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1461, 861 )
-
-[node name="Enemy1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1520, 296 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1532, 863 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-margin_left = 19.0
-margin_top = 17.0
-margin_right = 398.0
-margin_bottom = 173.0
-theme = ExtResource( 3 )
-
-[node name="Controls" type="Label" parent="CanvasLayer/Panel"]
-margin_left = 15.0
-margin_top = 15.0
-margin_right = 562.0
-margin_bottom = 101.0
-theme = ExtResource( 3 )
-custom_fonts/font = ExtResource( 5 )
-text = "- Left Click to shoot Arrow
-- Right Click to shoot Fireball"
-
-[node name="UICollisionShapeCheckBox" type="CheckBox" parent="CanvasLayer/Panel"]
-margin_left = 16.0
-margin_top = 104.0
-margin_right = 281.0
-margin_bottom = 138.0
-focus_mode = 0
-custom_constants/hseparation = 8
-enabled_focus_mode = 0
-text = "Show collision shapes"
-flat = true
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 mouse_filter = 2
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 959, 546 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 613, 543 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1232, 660 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1198, 727 )
+
+[node name="Enemy1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1234, 389 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1269, 729 )
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="UserInterface"]
+margin_left = 43.0
+margin_top = 41.0
+margin_right = 422.0
+margin_bottom = 342.0
+theme = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/Panel"]
+margin_right = 379.0
+margin_bottom = 301.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Panel/MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 363.0
+margin_bottom = 285.0
+custom_constants/separation = 10
+
+[node name="ControlsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_right = 347.0
+margin_bottom = 36.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 7 )
+text = "Controls"
+
+[node name="HSeparator" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 347.0
+margin_bottom = 50.0
+
+[node name="Controls2" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 347.0
+margin_bottom = 135.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "• Left-click: arrow
+• Right-click: fireball"
+
+[node name="Control" type="Control" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 145.0
+margin_right = 347.0
+margin_bottom = 165.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="OptionsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 175.0
+margin_right = 347.0
+margin_bottom = 211.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 7 )
+text = "Options"
+
+[node name="HSeparator2" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 221.0
+margin_right = 347.0
+margin_bottom = 225.0
+
+[node name="UICollisionShapeCheckBox" type="CheckBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 235.0
+margin_right = 347.0
+margin_bottom = 269.0
+focus_mode = 0
+custom_constants/hseparation = 8
+custom_icons/checked = ExtResource( 6 )
+custom_icons/unchecked = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "Show collision shapes"
+flat = true
+script = ExtResource( 8 )

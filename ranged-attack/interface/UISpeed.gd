@@ -1,6 +1,5 @@
 extends HBoxContainer
 
-
 onready var speed_slider := $HSlider
 onready var label := $Label
 
@@ -13,4 +12,4 @@ func _ready() -> void:
 
 func _on_HSlider_value_changed(value: float) -> void:
 	label.text = "%s%%" % [value]
-	Engine.time_scale = value/100
+	Engine.time_scale = value / 100

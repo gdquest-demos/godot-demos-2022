@@ -19,8 +19,10 @@ func _ready():
 	timer.start(lifetime)
 	impact_detector.connect("body_entered", self, "_on_impact")
 
+
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
-	
+
+
 func _on_impact(_body: Node) -> void:
 	queue_free()

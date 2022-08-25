@@ -11,7 +11,7 @@ var _theme := DebugCollisionTheme.new(self)
 func _ready() -> void:
 	if not Engine.editor_hint:
 		add_to_group("GVTCollision")
-		
+
 	visible = GDQuestVisualizationTools.is_debug_collision_visible
 
 

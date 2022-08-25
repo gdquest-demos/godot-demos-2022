@@ -1,6 +1,5 @@
 extends Bullet
 
-
 onready var explosion_particles := $ExplosionParticles
 
 

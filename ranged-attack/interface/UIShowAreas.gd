@@ -2,8 +2,9 @@ extends CheckBox
 
 
 func _ready():
-	connect("toggled", self, "_toggled")
+	connect("toggled", self, "_on_toggled")
 	pressed = true
 
-func _toggled(value:bool):
+
+func _on_toggled(value: bool):
 	GDQuestVisualizationTools.set_is_debug_collision_visible(value)
