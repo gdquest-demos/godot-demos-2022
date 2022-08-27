@@ -1,0 +1,115 @@
+[gd_resource type="Theme" load_steps=14 format=2]
+
+[ext_resource path="res://interface/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.282353, 0.282353, 0.411765, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.188235, 0.188235, 0.286275, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0352941, 0.0392157, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ImageTexture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.247059, 0.588235, 0.886275, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.458824, 0.745098, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=9]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.133333, 0.592157, 0.917647, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0901961, 0.0941176, 0.188235, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 7 )
+Button/styles/focus = SubResource( 6 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+HSlider/icons/grabber = SubResource( 11 )
+HSlider/icons/grabber_disabled = SubResource( 11 )
+HSlider/icons/grabber_highlight = SubResource( 11 )
+HSlider/icons/tick = SubResource( 11 )
+HSlider/styles/grabber_area = SubResource( 12 )
+HSlider/styles/grabber_area_highlight = SubResource( 13 )
+HSlider/styles/slider = SubResource( 10 )
+LineEdit/styles/focus = SubResource( 9 )
+LineEdit/styles/normal = SubResource( 8 )
+Panel/styles/panel = SubResource( 2 )
+PanelContainer/styles/panel = SubResource( 2 )
+RichTextLabel/fonts/bold_font = SubResource( 7 )
+RichTextLabel/fonts/italics_font = SubResource( 7 )
+RichTextLabel/fonts/normal_font = SubResource( 7 )
