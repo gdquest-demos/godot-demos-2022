@@ -1,4 +1,4 @@
-class_name Bullet
+class_name Projectile
 extends Node2D
 
 export var speed := 1000.0

@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://weapons/Bullet.gd"
-}, {
 "base": "CollisionShape2D",
 "class": "DebugCollisionShape2D",
 "language": "GDScript",
@@ -28,12 +23,17 @@ _global_script_classes=[ {
 "class": "HurtBox",
 "language": "GDScript",
 "path": "res://nodes/HurtBox.gd"
+}, {
+"base": "Node2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://weapons/Projectile.gd"
 } ]
 _global_script_class_icons={
-"Bullet": "",
 "DebugCollisionShape2D": "",
 "HitBox": "res://nodes/HitBox.svg",
-"HurtBox": "res://nodes/HurtBox.svg"
+"HurtBox": "res://nodes/HurtBox.svg",
+"Projectile": ""
 }
 
 [application]
