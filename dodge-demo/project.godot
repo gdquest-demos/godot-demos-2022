@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot demo template (GDQuest)"
+config/name="Dodge Demo"
 config/description="Duplicate this template to create a new Godot demo. You'll need to erase the .git folder."
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"

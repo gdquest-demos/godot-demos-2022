@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://player/godot.png" type="Texture" id=2]
 [ext_resource path="res://nodes/HurtBox.gd" type="Script" id=3]
+[ext_resource path="res://player/smoke.png" type="Texture" id=4]
+[ext_resource path="res://player/shadow_circle.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 21.0
@@ -10,10 +12,38 @@ radius = 21.0
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.203846, 0.5, 0.815385 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.780392, 0.831373, 0.882353, 1, 0.572549, 0.560784, 0.721569, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 0.468182 ), 0.0, 0.0, 0, 0, Vector2( 0.240283, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.131818 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 150.0
+damping_random = 0.5
+scale = 0.5
+scale_random = 0.5
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Godot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,10 +52,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -30 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("Godot:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -37,7 +67,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/path = NodePath("Godot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -48,12 +78,24 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Godot:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=14]
 resource_name = "dodge"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("Godot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -62,7 +104,19 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 3,
-"values": [ 15.0 ]
+"values": [ Vector2( 0, -30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Godot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.5, 1.5, 1.5, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -70,7 +124,7 @@ resource_name = "idle"
 length = 3.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("Godot:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -79,10 +133,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/path = NodePath("Godot:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -93,13 +147,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Godot:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "walk"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Godot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -108,10 +174,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -30 ), Vector2( 0, -45 ), Vector2( 0, -30 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/path = NodePath("Godot:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -122,11 +188,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Godot:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:visible")
+tracks/0/path = NodePath("Godot:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -141,7 +219,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=8]
 resource_name = "take_damage"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:visible")
+tracks/0/path = NodePath("Godot:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -156,8 +234,16 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.356863 )
+position = Vector2( 0, 31 )
+texture = ExtResource( 5 )
+
+[node name="Godot" type="Sprite" parent="."]
+position = Vector2( 0, -30 )
 texture = ExtResource( 2 )
+hframes = 3
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -171,6 +257,16 @@ script = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource( 2 )
 
+[node name="SmokeParticles" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0, 25 )
+emitting = false
+amount = 16
+lifetime = 0.8
+local_coords = false
+process_material = SubResource( 13 )
+texture = ExtResource( 4 )
+
 [node name="DodgeTimer" type="Timer" parent="."]
 process_mode = 0
 wait_time = 0.35
@@ -178,7 +274,7 @@ one_shot = true
 
 [node name="MoveAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
-anims/dodge = SubResource( 6 )
+anims/dodge = SubResource( 14 )
 anims/idle = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
