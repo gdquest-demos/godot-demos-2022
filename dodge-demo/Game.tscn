@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://turret/Turret.tscn" type="PackedScene" id=2]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 771, 514 )
+
+[node name="Turret" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1254, 736 )
+player_path = NodePath("../Player")
+
+[node name="Turret2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1407, 237 )
+player_path = NodePath("../Player")
