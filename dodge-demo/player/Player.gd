@@ -15,10 +15,10 @@ const SPEED_MOVE := 400.0
 const SPEED_DODGE := 1000.0
 
 var _state = States.MOVING
+# The character's movement speed in pixels per second.
 var _velocity := Vector2.ZERO
 # The starting value is the first direction the sprite is looking at.
 var _look_direction := Vector2.RIGHT
-# The character's movement speed in pixels per second.
 
 onready var _godot_sprite := $Godot
 onready var _hurt_box := $HurtBox
