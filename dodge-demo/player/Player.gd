@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 enum States { MOVING, DODGING, TAKING_DAMAGE }
-var state = States.MOVING
 
 const DIRECTION_TO_FRAME := {
 	Vector2.DOWN: 0,
@@ -12,64 +11,93 @@ const DIRECTION_TO_FRAME := {
 }
 
 const DRAG_FACTOR := 15.0
-const MOVE_SPEED := 400.0
-const DODGE_SPEED := 1000.0
+const SPEED_MOVE := 400.0
+const SPEED_DODGE := 1000.0
 
+var _state = States.MOVING
 var _velocity := Vector2.ZERO
-var _last_direction := Vector2.RIGHT # Assign the first direction the sprite is looking at
+# The starting value is the first direction the sprite is looking at.
+var _look_direction := Vector2.RIGHT
+# The character's movement speed in pixels per second.
 
-onready var godot_sprite := $Godot
-onready var hurt_box := $HurtBox
-onready var smoke_particles := $SmokeParticles
-onready var dodge_timer := $DodgeTimer
+onready var _godot_sprite := $Godot
+onready var _hurt_box := $HurtBox
+onready var _smoke_particles := $SmokeParticles
+onready var _dodge_timer := $DodgeTimer
 
-onready var move_animation_player := $MoveAnimationPlayer
-onready var damage_animation_player := $DamageAnimationPlayer
+onready var _move_animation_player := $MoveAnimationPlayer
+onready var _damage_animation_player := $DamageAnimationPlayer
+
+
+func _ready() -> void:
+	_dodge_timer.connect("timeout", self, "_dodge_end")
+
 
 func _physics_process(delta: float) -> void:
-	var input_direction := Vector2.ZERO
-	input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").limit_length(1)
-	
-	match state:
+	match _state:
 		States.MOVING:
-			move(input_direction, delta)
+			# Update direction and animation.
+			var input_direction := Input.get_vector(
+				"move_left", "move_right", "move_up", "move_down"
+			)
+			input_direction = input_direction.limit_length(1.0)
+
+			if input_direction:
+				_move_animation_player.play("walk")
+				_look_direction = input_direction
+			else:
+				_move_animation_player.play("idle")
+
+			# Update velocity using the follow steering equation.
+			var desired_velocity := input_direction * SPEED_MOVE
+			var steering = desired_velocity - _velocity
+			_velocity += steering * DRAG_FACTOR * get_physics_process_delta_time()
+
+			# If pressing the dodge key, we start dodging.
+			if Input.is_action_just_pressed("dodge"):
+				_dodge_start()
+
+			# This function changes where the character is looking. See our
+			# video on top-down character movement to learn how to do this.
+			_update_sprite_direction()
+
+		# In the dodge state, the player can't change direction or speed, so
+		# we don't need to do anything.
+		# We still include the state to make it clear it's intentional.
 		States.DODGING:
-			dodge(_last_direction, delta)
-		
+			pass
+
 	move_and_slide(_velocity)
 
-func move(direction: Vector2, delta: float) -> void:
-	calculate_velocity(direction, MOVE_SPEED, delta)
-	set_sprite_direction(direction)
-	move_animation_player.play("walk") if direction else move_animation_player.play("idle")
-	if direction: _last_direction = direction
-	if Input.is_action_just_pressed("dodge"):
-		hurt_box.set_deferred("monitoring", false)
-		move_animation_player.play("dodge")
-		smoke_particles.emitting = true
-		state = States.DODGING
-
-func dodge(direction: Vector2, delta: float) -> void:
-	calculate_velocity(direction, DODGE_SPEED, delta)
-	if dodge_timer.time_left == 0: dodge_timer.start()
 
 func take_damage(damage: int) -> void:
-	if not damage_animation_player.is_playing():
-		damage_animation_player.play("take_damage")
+	_damage_animation_player.play("take_damage")
 
-func calculate_velocity(direction: Vector2, speed: float, delta: float) -> void:
-	var desired_velocity := direction * speed
-	var steering = desired_velocity - _velocity
-	_velocity += steering * DRAG_FACTOR * delta
 
-func set_sprite_direction(direction: Vector2) -> void:
-	var direction_key := direction.round()
+func _update_sprite_direction() -> void:
+	var direction_key := _look_direction.round()
 	direction_key.x = abs(direction_key.x)
 	if direction_key in DIRECTION_TO_FRAME:
-		godot_sprite.frame = DIRECTION_TO_FRAME[direction_key]
-		godot_sprite.flip_h = sign(direction.x) != 1
-		
-func _on_DodgeTimer_timeout() -> void:
-	hurt_box.set_deferred("monitoring", true)
-	smoke_particles.emitting = false
-	state = States.MOVING
+		_godot_sprite.frame = DIRECTION_TO_FRAME[direction_key]
+		_godot_sprite.flip_h = sign(_look_direction.x) != 1
+
+
+func _dodge_start() -> void:
+	_state = States.DODGING
+
+	# We deactivate the hurt box while dodging to make the character invincible.
+	_hurt_box.set_deferred("monitoring", false)
+
+	_move_animation_player.play("dodge")
+	_smoke_particles.emitting = true
+
+	# We set a constant velocity for the duration of the dodge. The duration is
+	# controled by the dodge timer.
+	_velocity = SPEED_DODGE * _look_direction
+	_dodge_timer.start()
+
+
+func _dodge_end() -> void:
+	_hurt_box.set_deferred("monitoring", true)
+	_smoke_particles.emitting = false
+	_state = States.MOVING

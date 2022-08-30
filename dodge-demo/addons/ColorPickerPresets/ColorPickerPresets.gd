@@ -1,7 +1,7 @@
 tool
 extends EditorPlugin
 
-const PRESETS_FILENAME := 'presets.hex'
+const PRESETS_FILENAME := "presets.hex"
 
 
 func _enter_tree() -> void:

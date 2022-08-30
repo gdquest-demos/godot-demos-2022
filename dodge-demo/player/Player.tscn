@@ -10,7 +10,7 @@
 radius = 21.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 32 )
+extents = Vector2( 18, 29 )
 
 [sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0, 0.203846, 0.5, 0.815385 )
@@ -281,5 +281,3 @@ anims/walk = SubResource( 5 )
 [node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
 anims/take_damage = SubResource( 8 )
-
-[connection signal="timeout" from="DodgeTimer" to="." method="_on_DodgeTimer_timeout"]

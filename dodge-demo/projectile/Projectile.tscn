@@ -6,7 +6,7 @@
 [ext_resource path="res://projectile/fire.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 15.0333
+radius = 11.0
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource( 2 )
@@ -25,6 +25,7 @@ monitoring = false
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
