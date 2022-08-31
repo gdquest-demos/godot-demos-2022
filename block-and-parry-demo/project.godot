@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "GDQuestDebugDraggable",
+"language": "GDScript",
+"path": "res://nodes/GDQuestDebugDraggable.gd"
+}, {
+"base": "Area2D",
 "class": "HitBox",
 "language": "GDScript",
 "path": "res://nodes/HitBox.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://nodes/HurtBox.gd"
 } ]
 _global_script_class_icons={
+"GDQuestDebugDraggable": "res://nodes/GDQuestDebugDraggable.svg",
 "HitBox": "res://nodes/HitBox.svg",
 "HurtBox": "res://nodes/HurtBox.svg"
 }
