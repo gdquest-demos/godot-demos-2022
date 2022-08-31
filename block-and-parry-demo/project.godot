@@ -138,6 +138,7 @@ block={
 
 2d_physics/layer_1="game world"
 2d_physics/layer_2="hitboxes"
+2d_physics/layer_3="blockboxes"
 
 [rendering]
 

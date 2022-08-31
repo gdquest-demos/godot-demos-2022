@@ -6,7 +6,7 @@ extends Area2D
 func _init() -> void:
 	# The hurtbox should detect hits but not deal them. This variable does that.
 	monitorable = false
-	# This turns off collision layer bit 1 and turns on bit 2. It's the physics layer we reserve to hurtboxes in this demo.
+	# This turns off collision mask bit 1 and turns on bit 2. It's the physics layer we reserve to hurtboxes in this demo.
 	collision_mask = 2
 
 
