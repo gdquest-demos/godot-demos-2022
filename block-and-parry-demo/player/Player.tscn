@@ -280,7 +280,7 @@ position = Vector2( 32, 0 )
 shape = SubResource( 8 )
 
 [node name="ParryTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="MoveAnimationPlayer" type="AnimationPlayer" parent="."]

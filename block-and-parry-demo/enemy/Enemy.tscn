@@ -50,8 +50,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
-length = 3.0
-loop = true
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Weapon/HitBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -59,7 +58,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
@@ -71,7 +70,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 59.9999, 59.9999, -60.0 ]
@@ -143,14 +142,12 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "attack"
 anims/RESET = SubResource( 4 )
 anims/attack = SubResource( 3 )
 anims/stunned = SubResource( 5 )
