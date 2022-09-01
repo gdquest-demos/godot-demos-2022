@@ -51,6 +51,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_previous_heavy_combo = _animation_player.current_animation
 		return
 
+
 func _ready() -> void:
 	_animation_player.connect("animation_finished", self, "_on_AnimationPlayer_finished")
 
