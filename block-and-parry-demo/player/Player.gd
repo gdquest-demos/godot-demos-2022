@@ -7,6 +7,7 @@ const SPEED_MOVE := 400.0
 
 var _state = States.MOVING
 var _velocity := Vector2.ZERO
+var _blocked := false
 
 onready var _hurt_box := $HurtBox
 onready var _block_box := $BlockBox
@@ -44,11 +45,13 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage(damage: int) -> void:
-	_damage_animation_player.play("take_damage")
+	if not _blocked:
+		_damage_animation_player.play("take_damage")
 
 
 func take_block_hit(area: Area2D) -> void:
 	if not _damage_animation_player.is_playing():
+		_blocked = true
 		_damage_animation_player.play("take_block_damage")
 
 
@@ -69,8 +72,11 @@ func _on_ParryTimer_timeout() -> void:
 
 
 func _block_end() -> void:
+	_blocked = false
 	_parry_timer.stop()
+	
 	_block_box.set_deferred("monitoring", false)
 	_block_box.set_deferred("monitorable", false)
+	
 	_move_animation_player.play("idle")
 	_state = States.MOVING

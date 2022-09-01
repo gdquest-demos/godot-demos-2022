@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 			_animation_player.play("attack")
 		States.STUNNED:
 			_velocity = Vector2.ZERO
-			_animation_player.play("stunned")
 	
 	move_and_collide(_velocity * delta)
 
