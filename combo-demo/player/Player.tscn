@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -90,6 +90,34 @@ tracks/1/keys = {
 "args": [  ],
 "method": "set_accept_next_attack"
 } ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -220,6 +248,7 @@ playback_process_mode = 0
 anims/RESET = SubResource( 5 )
 anims/heavy_combo_1 = SubResource( 6 )
 anims/heavy_combo_2 = SubResource( 7 )
+anims/idle = SubResource( 8 )
 anims/light_combo_1 = SubResource( 2 )
 anims/light_combo_2 = SubResource( 3 )
 anims/light_combo_3 = SubResource( 4 )

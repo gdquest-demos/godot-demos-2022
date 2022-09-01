@@ -25,6 +25,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		_state = States.LIGHT_ATTACK
 		_accept_next_attack = false
 		
+		_animation_player.stop()
+		_animation_player.play("idle")
+		
 		match _previous_light_combo:
 			"light_combo_1":
 				_animation_player.play("light_combo_2")
@@ -41,6 +44,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		_state = States.HEAVY_ATTACK
 		_accept_next_attack = false
+		
+		_animation_player.stop()
+		_animation_player.play("idle")
 		
 		match _previous_heavy_combo:
 			"heavy_combo_1":
@@ -89,7 +95,6 @@ func _on_AnimationPlayer_finished(animation_name: String) -> void:
 	if "light_combo" in animation_name:
 		_previous_light_combo = "light_combo_3"
 		_state = States.MOVE
-	
-	if "heavy_combo" in animation_name:
+	elif "heavy_combo" in animation_name:
 		_previous_light_combo = "heavy_combo_2"
 		_state = States.MOVE
