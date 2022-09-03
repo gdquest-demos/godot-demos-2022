@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 16, 20 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 10, 30 )
