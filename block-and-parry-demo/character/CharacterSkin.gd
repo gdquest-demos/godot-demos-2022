@@ -28,22 +28,22 @@ func play(animation: String, playback_speed: int = 1) -> void:
 	_animation_player.playback_speed = playback_speed
 
 
-#func _physics_process(_delta: float) -> void:
-#	if not is_zero_approx(velocity.x):
-#		scale.x = sign(velocity.x) * start_scale.x
-#
-#	var is_jumping = velocity.y < 0 and not owner.is_on_floor()
-#	if is_jumping:
-#		play("jump")
-#	elif owner.velocity.y > 0.0:
-#		play("fall")
-#	elif owner.is_on_wall():
-#		play("push")
-#	elif owner.is_on_floor():
-#		if not is_zero_approx(velocity.x):
-#			play("run")
-#		else:
-#			play("idle")
+func _physics_process(_delta: float) -> void:
+	if not is_zero_approx(velocity.x):
+		scale.x = sign(velocity.x) * start_scale.x
+
+	var is_jumping = velocity.y < 0 and not owner.is_on_floor()
+	if is_jumping:
+		play("jump")
+	elif owner.velocity.y > 0.0:
+		play("fall")
+	elif owner.is_on_wall():
+		play("push")
+	elif owner.is_on_floor():
+		if not is_zero_approx(velocity.x):
+			play("run")
+		else:
+			play("idle")
 
 
 func _on_AnimationPlayer_animation_finished(animation_name: String) -> void:
