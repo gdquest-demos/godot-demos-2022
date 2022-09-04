@@ -32,8 +32,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Dodge Demo"
-config/description="Duplicate this template to create a new Godot demo. You'll need to erase the .git folder."
+config/name="Dodge Demo (GDQuest)"
+config/description="This demo shows how to code a mechanic to dodge enemy attacks. The character can't take damage while dodging."
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
