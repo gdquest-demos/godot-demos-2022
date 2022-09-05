@@ -28,9 +28,9 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+self_modulate = Color( 0.301961, 0.65098, 1, 1 )
 material = SubResource( 3 )
 position = Vector2( -74.9484, -7.62939e-06 )
 shape = SubResource( 2 )
-disabled = true
 script = ExtResource( 4 )
 palette = 0

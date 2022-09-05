@@ -112,7 +112,6 @@ singletons=[  ]
 [gui]
 
 theme/use_hidpi=true
-theme/custom="res://interface/theme.tres"
 
 [input]
 

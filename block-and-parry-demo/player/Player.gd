@@ -14,7 +14,6 @@ onready var _block_box := $BlockBox
 onready var _parry_timer := $ParryTimer
 
 onready var _skin := $Skin
-#onready var _move_animation_player := $MoveAnimationPlayer
 onready var _damage_animation_player := $DamageAnimationPlayer
 
 
