@@ -1,0 +1,26 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+
+uniform float falloff: hint_range(0.025, 1) = 0.25;
+
+const float CLIP = 0.0;
+const float STEP = 0.025;
+
+
+float sd_circle(vec2 uv) {
+	return length(uv) - 1.0;
+}
+
+float rim(float d) {
+	return 1.0 - smoothstep(CLIP - STEP, CLIP, d) - smoothstep(CLIP, CLIP - falloff, d);
+}
+
+
+void fragment() {
+	vec2 centered_uv = 2.0 * UV - 1.0;
+	COLOR.rgb = vec3(1.0);
+	COLOR.a = rim(sd_circle(centered_uv));
+}"

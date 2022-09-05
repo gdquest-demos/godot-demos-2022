@@ -9,6 +9,46 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "CollisionPolygon",
+"class": "DebugCollisionPolygon",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/3d/DebugCollisionPolygon.gd"
+}, {
+"base": "CollisionPolygon2D",
+"class": "DebugCollisionPolygon2D",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/2d/DebugCollisionPolygon2D.gd"
+}, {
+"base": "CollisionShape",
+"class": "DebugCollisionShape",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/3d/DebugCollisionShape.gd"
+}, {
+"base": "CollisionShape2D",
+"class": "DebugCollisionShape2D",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd"
+}, {
+"base": "Path",
+"class": "DebugPath",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/3d/DebugPath.gd"
+}, {
+"base": "Path2D",
+"class": "DebugPath2D",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/2d/DebugPath2D.gd"
+}, {
+"base": "RayCast",
+"class": "DebugRayCast",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/3d/DebugRayCast.gd"
+}, {
+"base": "RayCast2D",
+"class": "DebugRayCast2D",
+"language": "GDScript",
+"path": "res://addons/gdquest_visualization_tools/2d/DebugRayCast2D.gd"
+}, {
 "base": "Area2D",
 "class": "GDQuestDebugDraggable",
 "language": "GDScript",
@@ -25,6 +65,14 @@ _global_script_classes=[ {
 "path": "res://nodes/HurtBox.gd"
 } ]
 _global_script_class_icons={
+"DebugCollisionPolygon": "",
+"DebugCollisionPolygon2D": "",
+"DebugCollisionShape": "",
+"DebugCollisionShape2D": "",
+"DebugPath": "",
+"DebugPath2D": "",
+"DebugRayCast": "",
+"DebugRayCast2D": "",
 "GDQuestDebugDraggable": "res://nodes/GDQuestDebugDraggable.svg",
 "HitBox": "res://nodes/HitBox.svg",
 "HurtBox": "res://nodes/HurtBox.svg"
@@ -36,6 +84,10 @@ config/name="Block and Parry Demo"
 config/description="Duplicate this template to create a new Godot demo. You'll need to erase the .git folder."
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GDQuestVisualizationTools="*res://addons/gdquest_visualization_tools/GDQuestVisualizationTools.gd"
 
 [debug]
 
@@ -51,7 +103,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/ColorPickerPresets/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/ColorPickerPresets/plugin.cfg", "res://addons/gdquest_visualization_tools/plugin.cfg" )
 
 [gdnative]
 

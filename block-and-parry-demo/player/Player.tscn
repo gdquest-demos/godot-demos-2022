@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
 [ext_resource path="res://nodes/HurtBox.gd" type="Script" id=3]
 [ext_resource path="res://character/CharacterSkin.tscn" type="PackedScene" id=4]
@@ -8,8 +9,12 @@
 radius = 32.0
 height = 124.0
 
+[sub_resource type="ShaderMaterial" id=11]
+
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 17, 34 )
+
+[sub_resource type="ShaderMaterial" id=12]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 13, 87 )
@@ -92,8 +97,11 @@ monitorable = false
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+material = SubResource( 11 )
 z_index = 3
 shape = SubResource( 4 )
+script = ExtResource( 1 )
+palette = 0
 
 [node name="BlockBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -102,8 +110,12 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBox"]
+material = SubResource( 12 )
 position = Vector2( 51, -90 )
+z_index = 2
 shape = SubResource( 8 )
+script = ExtResource( 1 )
+palette = 0
 
 [node name="ParryTimer" type="Timer" parent="."]
 wait_time = 0.15
