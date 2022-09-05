@@ -1,13 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hills_night_gray.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.5, 548.5 )
 
 [node name="Game" type="Node2D"]
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 959, 476 )
+texture = ExtResource( 3 )
+
+[node name="Limits" type="Node2D" parent="."]
+
+[node name="WallLeft" type="StaticBody2D" parent="Limits"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/WallLeft"]
+position = Vector2( -24.5, 538.5 )
+shape = SubResource( 1 )
+
+[node name="WallRight" type="StaticBody2D" parent="Limits"]
+position = Vector2( 1969, 0 )
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/WallRight"]
+position = Vector2( -24.5, 538.5 )
+shape = SubResource( 1 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 628, 696 )
+position = Vector2( 628, 1064 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1227, 696 )
+position = Vector2( 1227, 1064 )
 player_path = NodePath("../Player")
