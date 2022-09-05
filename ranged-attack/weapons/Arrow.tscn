@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://weapons/arrow.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Projectile.gd" type="Script" id=2]
 [ext_resource path="res://nodes/HitBox.gd" type="Script" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=4]
-[ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/Shape2D.tres" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.0
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 5 )
 
 [node name="Arrow" type="Node2D"]
 script = ExtResource( 2 )
@@ -34,9 +31,6 @@ material = SubResource( 2 )
 shape = SubResource( 1 )
 script = ExtResource( 4 )
 palette = 2
-theme = 0
-theme_width = 4
-theme_sample = 24
 
 [node name="ImpactDetector" type="Area2D" parent="."]
 position = Vector2( 45, 0 )
@@ -50,9 +44,6 @@ material = SubResource( 3 )
 shape = SubResource( 1 )
 script = ExtResource( 4 )
 palette = 2
-theme = 0
-theme_width = 4
-theme_sample = 24
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
