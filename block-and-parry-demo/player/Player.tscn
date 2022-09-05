@@ -84,8 +84,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Skin" parent="." instance=ExtResource( 4 )]
-rotation = 3.14159
-scale = Vector2( -0.5, -0.5 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -96 )
