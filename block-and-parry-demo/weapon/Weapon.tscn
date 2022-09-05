@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://enemy/sword_ice.png" type="Texture" id=1]
 [ext_resource path="res://nodes/HitBox.gd" type="Script" id=2]
 [ext_resource path="res://weapon/Weapon.gd" type="Script" id=3]
 [ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=4]
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/shaders/Shape2D.tres" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 51.9484, 8 )
@@ -28,9 +30,12 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-self_modulate = Color( 0.301961, 0.65098, 1, 1 )
+self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
 material = SubResource( 3 )
 position = Vector2( -74.9484, -7.62939e-06 )
 shape = SubResource( 2 )
 script = ExtResource( 4 )
-palette = 0
+palette = 2
+theme = 0
+theme_width = 4
+theme_sample = 24
