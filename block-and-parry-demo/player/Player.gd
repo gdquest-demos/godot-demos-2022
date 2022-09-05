@@ -13,7 +13,8 @@ onready var _hurt_box := $HurtBox
 onready var _block_box := $BlockBox
 onready var _parry_timer := $ParryTimer
 
-onready var _move_animation_player := $MoveAnimationPlayer
+onready var _skin := $Skin
+#onready var _move_animation_player := $MoveAnimationPlayer
 onready var _damage_animation_player := $DamageAnimationPlayer
 
 
@@ -28,6 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	_block_box.connect("area_entered", self, "take_block_hit")
 	_parry_timer.connect("timeout", self, "_on_ParryTimer_timeout")
+	_skin.connect("blocking_started", self, "activate_blocking")
 
 
 func _physics_process(delta: float) -> void:
@@ -37,6 +39,11 @@ func _physics_process(delta: float) -> void:
 			var desired_velocity := horizontal_input_direction * SPEED_MOVE
 			var steering = desired_velocity - _velocity.x
 			_velocity.x += steering * DRAG_FACTOR * get_physics_process_delta_time()
+			
+			if horizontal_input_direction:
+				_skin.play("run", sign(horizontal_input_direction))
+			else:
+				_skin.play("idle")
 		
 		States.BLOCKING:
 			pass
@@ -58,7 +65,7 @@ func take_block_hit(area: Area2D) -> void:
 func _block_start() -> void:
 	_state = States.BLOCKING
 	_velocity.x = 0
-	_move_animation_player.play("block")
+	_skin.play("block")
 
 
 func activate_blocking() -> void:
@@ -78,5 +85,5 @@ func _block_end() -> void:
 	_block_box.set_deferred("monitoring", false)
 	_block_box.set_deferred("monitorable", false)
 	
-	_move_animation_player.play("idle")
+	_skin.play("idle")
 	_state = States.MOVING

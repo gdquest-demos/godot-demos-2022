@@ -16,6 +16,7 @@ player_max_distance = 160.0
 weapon_path = NodePath("Skin/torso/arm_back/Weapon")
 
 [node name="Skin" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.988235, 0.752941, 0.752941, 1 )
 
 [node name="Weapon" parent="Skin/torso/arm_back" index="0" instance=ExtResource( 1 )]
 

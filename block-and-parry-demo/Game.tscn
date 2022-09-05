@@ -6,8 +6,8 @@
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 783, 456 )
+position = Vector2( 628, 696 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 941, 518 )
+position = Vector2( 1227, 696 )
 player_path = NodePath("../Player")

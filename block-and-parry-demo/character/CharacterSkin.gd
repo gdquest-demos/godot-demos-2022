@@ -4,6 +4,8 @@ signal attack_damage_started
 signal attack_damage_ended
 signal attack_finished
 
+signal blocking_started
+
 onready var _animation_player := $AnimationPlayer
 
 var start_scale := scale
