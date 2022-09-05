@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "PlayerControls",
+"language": "GDScript",
+"path": "res://character/PlayerControls.gd"
+} ]
+_global_script_class_icons={
+"PlayerControls": ""
+}
+
 [application]
 
 config/name="Combo Demo"

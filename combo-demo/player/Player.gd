@@ -29,11 +29,11 @@ var _state = States.MOVE
 var _combo_current := []
 
 onready var _skin := $Skin
-onready var _animation_player := $AnimationPlayer
 
 
 func _ready() -> void:
-	_animation_player.connect("animation_finished", self, "_on_AnimationPlayer_finished")
+	_skin.connect("next_attack_enabled", self, "set_accept_next_attack")
+	_skin.connect("attack_finished", self, "_on_Skin_attack_finished")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -53,7 +53,10 @@ func _physics_process(delta: float) -> void:
 
 	var input_direction := Vector2.RIGHT * Input.get_axis("move_left", "move_right")
 	if input_direction:
-		_skin.scale.x = sign(input_direction.x)
+		_skin.scale.x = sign(input_direction.x) * _skin.start_scale.x
+		_skin.play("run")
+	else:
+		_skin.play("idle")
 
 	var velocity := input_direction * SPEED_MOVE
 	move_and_slide(velocity)
@@ -102,7 +105,7 @@ func _attack(attack_type: int) -> void:
 			next_attack_animation = COMBOS[combo][current_attack_count - 1].animation
 
 	if next_attack_animation:
-		_animation_player.play(next_attack_animation)
+		_skin.play(next_attack_animation)
 	else:
 		_end_combo()
 
@@ -111,7 +114,6 @@ func _attack(attack_type: int) -> void:
 # another combo.
 func _end_combo() -> void:
 	_state = States.MOVE
-	_animation_player.play("idle")
 	_combo_current.clear()
 	accept_next_attack = true
 
@@ -120,6 +122,5 @@ func set_accept_next_attack(value := true) -> void:
 	accept_next_attack = value
 
 
-func _on_AnimationPlayer_finished(animation_name: String) -> void:
-	if "combo" in animation_name:
-		_end_combo()
+func _on_Skin_attack_finished() -> void:
+	_end_combo()
