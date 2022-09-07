@@ -4,6 +4,9 @@ signal attack_damage_started
 signal attack_damage_ended
 signal attack_finished
 
+signal slash_started
+signal slash_ended
+
 signal blocking_started
 
 onready var _animation_player := $AnimationPlayer

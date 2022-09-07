@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal stunned
+
 enum States { CHECK, MOVE_CLOSER, MOVE_AWAY, ATTACK, STUNNED }
 
 const DRAG_FACTOR := 15.0
@@ -21,6 +23,7 @@ onready var _weapon := get_node(weapon_path)
 onready var _hit_box := _weapon.get_node("HitBox")
 onready var _stun_timer := $StunTimer
 onready var _skin := $Skin
+onready var _damage_animation_player := $DamageAnimationPlayer
 
 
 func _ready() -> void:
@@ -82,6 +85,9 @@ func _set_stunned() -> void:
 	_state = States.STUNNED
 	_skin.play("stun")
 	_stun_timer.start()
+	
+	_damage_animation_player.play("stun")
+	emit_signal("stunned")
 
 
 func _on_StunTimer_timeout() -> void:

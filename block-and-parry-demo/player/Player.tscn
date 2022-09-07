@@ -125,7 +125,7 @@ script = ExtResource( 1 )
 palette = 0
 theme = 0
 theme_width = 4
-theme_sample = 45
+theme_sample = 24
 
 [node name="ParryTimer" type="Timer" parent="."]
 wait_time = 0.15

@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal hit
+signal blocked
+
 enum States { MOVING, BLOCKING }
 
 const DRAG_FACTOR := 15.0
@@ -53,13 +56,14 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage: int) -> void:
 	if not _blocked:
 		_damage_animation_player.play("take_damage")
+		emit_signal("hit")
 
 
 func take_block_hit(area: Area2D) -> void:
 	if not _damage_animation_player.is_playing():
 		_blocked = true
 		_damage_animation_player.play("take_block_damage")
-
+		emit_signal("blocked")
 
 func _block_start() -> void:
 	_state = States.BLOCKING
