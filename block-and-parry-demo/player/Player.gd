@@ -16,6 +16,9 @@ onready var _hurt_box := $HurtBox
 onready var _block_box := $BlockBox
 onready var _parry_timer := $ParryTimer
 
+onready var _block_particle := $BlockParticle
+onready var _hit_particle := $HitParticle
+
 onready var _skin := $Skin
 onready var _damage_animation_player := $DamageAnimationPlayer
 
@@ -56,6 +59,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage: int) -> void:
 	if not _blocked:
 		_damage_animation_player.play("take_damage")
+		_hit_particle.emitting = true
 		emit_signal("hit")
 
 
@@ -63,6 +67,7 @@ func take_block_hit(area: Area2D) -> void:
 	if not _damage_animation_player.is_playing():
 		_blocked = true
 		_damage_animation_player.play("take_block_damage")
+		_block_particle.emitting = true
 		emit_signal("blocked")
 
 func _block_start() -> void:

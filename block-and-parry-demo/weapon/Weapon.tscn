@@ -26,6 +26,7 @@ rotation = 3.14159
 texture = ExtResource( 1 )
 
 [node name="Trail" type="Sprite" parent="Sprite"]
+visible = false
 show_behind_parent = true
 position = Vector2( 27.6087, 53.3228 )
 scale = Vector2( 0.51836, 0.52444 )
