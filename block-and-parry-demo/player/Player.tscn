@@ -14,12 +14,12 @@ height = 124.0
 [sub_resource type="ShaderMaterial" id=23]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 17, 34 )
+extents = Vector2( 17, 20 )
 
 [sub_resource type="ShaderMaterial" id=24]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 13, 87 )
+extents = Vector2( 13, 91 )
 
 [sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0.436123, 1 )

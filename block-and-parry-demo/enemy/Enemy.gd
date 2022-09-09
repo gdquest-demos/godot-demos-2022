@@ -88,7 +88,7 @@ func _set_stunned() -> void:
 	
 	_damage_animation_player.play("stun")
 	emit_signal("stunned")
-
+	
 
 func _on_StunTimer_timeout() -> void:
 	_skin.play("idle")

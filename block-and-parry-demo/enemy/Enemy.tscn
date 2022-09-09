@@ -2936,7 +2936,6 @@ tracks/15/keys = {
 [sub_resource type="Animation" id=17]
 resource_name = "stun"
 loop = true
-step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("torso/head:position")
 tracks/0/interp = 1
@@ -2956,10 +2955,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.45, 0.85 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -3.75593, 2.73593 ]
+"values": [ 0.0, 15.0, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("torso/head/eyes:texture")
@@ -2972,6 +2971,66 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("torso/arm_front:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("torso/arm_back:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -44.9999 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("torso:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, -24.3832 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("leg_front:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("leg_back:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -105.0, -91.8119 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -3498,7 +3557,7 @@ visible = false
 texture = ExtResource( 2 )
 
 [node name="StunTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
