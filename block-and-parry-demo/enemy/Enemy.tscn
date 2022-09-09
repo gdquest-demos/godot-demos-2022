@@ -3557,7 +3557,7 @@ visible = false
 texture = ExtResource( 2 )
 
 [node name="StunTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
