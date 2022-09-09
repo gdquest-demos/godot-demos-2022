@@ -43,17 +43,17 @@ void fragment() {
 	COLOR.rgb = vec3(1.0);
 }"
 
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=16]
 shader = SubResource( 15 )
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 14.0001
 height = 45.9999
 
-[sub_resource type="ShaderMaterial" id=16]
+[sub_resource type="ShaderMaterial" id=17]
 shader = SubResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id=18]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 1371.27
@@ -84,7 +84,7 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
-material = SubResource( 18 )
+material = SubResource( 16 )
 rotation = 1.57079
 shape = SubResource( 9 )
 script = ExtResource( 6 )
@@ -101,7 +101,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
 self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
-material = SubResource( 16 )
+material = SubResource( 17 )
 rotation = 1.57079
 shape = SubResource( 9 )
 script = ExtResource( 6 )
@@ -119,7 +119,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 self_modulate = Color( 0.690196, 0.188235, 0.360784, 1 )
-material = SubResource( 17 )
+material = SubResource( 18 )
 shape = SubResource( 5 )
 script = ExtResource( 6 )
 palette = 5

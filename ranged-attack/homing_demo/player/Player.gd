@@ -19,7 +19,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func shoot() -> void:
 	var missile := MissileScene.instance() as Missile
 	missile.position = _shoot_position.global_position
-	missile.start_direction = global_position.direction_to(get_global_mouse_position())
-	missile.turn_speed = _turn_speed_slider.value
-	missile.travel_speed = _travel_speed_slider.value
+	missile.drag_factor = _turn_speed_slider.value
+	missile.max_speed = _travel_speed_slider.value
 	add_child(missile)

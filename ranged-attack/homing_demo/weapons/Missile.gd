@@ -3,11 +3,12 @@ extends Node2D
 
 export var lifetime := 20.0
 
-var travel_speed := 500.0
-var turn_speed := 5.0
+var max_speed := 500.0
+var drag_factor := 0.15 setget set_drag_factor
 
-var start_direction := Vector2.ZERO
-var target: Enemy
+var _target: Enemy
+
+var _current_velocity := Vector2.ZERO
 
 onready var _timer := $Timer
 onready var _sprite := $Sprite
@@ -25,7 +26,6 @@ func _ready():
 	_target_line.set_as_toplevel(true)
 
 	set_as_toplevel(true)
-	look_at(position + start_direction)
 	_timer.connect("timeout", self, "queue_free")
 	_timer.start(lifetime)
 	_impact_detector.connect("body_entered", self, "_on_impact")
@@ -33,34 +33,26 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	var current_velocity := global_position + global_transform.x * travel_speed * delta
-
-	_aim_line.set_point_position(0, global_position)
-	_aim_line.set_point_position(1, global_position + global_transform.x * 150)
-
-	if target == null:
-		position = current_velocity
+	if not _target:
 		return
 
-	var target_position := target.global_position
+	var direction := global_position.direction_to(_target.global_position)
+	var desired_velocity := direction * max_speed
+	_current_velocity += (desired_velocity - _current_velocity) * drag_factor
 
-	var desired_direction := (target_position - global_position).normalized()
-	var desired_velocity := global_position + desired_direction * travel_speed * delta
+	position += _current_velocity * delta
+	rotation = _current_velocity.angle()
 
+	# TODO: use _draw()?
+	_aim_line.set_point_position(0, global_position)
+	_aim_line.set_point_position(1, global_position + direction * 150)
 	_target_line.set_point_position(0, global_position)
-	_target_line.set_point_position(1, global_position + desired_direction * 150)
+	_target_line.set_point_position(1, global_position + direction * 150)
 
-	var turn_velocity := (desired_velocity - current_velocity) * turn_speed * delta
-	var new_velocity := current_velocity + turn_velocity
 
-	var distance_to_target: float = global_position.distance_to(target_position)
 
-	# Prevents overshooting the target
-	if global_position.distance_to(new_velocity) > distance_to_target:
-		new_velocity = target_position
-
-	look_at(new_velocity)
-	position = new_velocity
+func set_drag_factor(new_value: float) -> void:
+	drag_factor = clamp(new_value, 0.01, 1.0)
 
 
 func _on_impact(_body: Node) -> void:
@@ -68,5 +60,5 @@ func _on_impact(_body: Node) -> void:
 
 
 func _on_enemy_detected(enemy: Enemy):
-	if target == null:
-		target = enemy
+	if _target == null:
+		_target = enemy

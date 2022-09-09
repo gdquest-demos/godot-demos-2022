@@ -189,8 +189,8 @@ margin_right = 183.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-max_value = 3000.0
-value = 500.0
+max_value = 1000.0
+value = 400.0
 
 [node name="TravelSpeedLabel" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/TravelSpeed"]
 margin_left = 187.0
@@ -212,8 +212,9 @@ margin_right = 183.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-max_value = 20.0
-value = 5.0
+max_value = 1.0
+step = 0.01
+value = 0.15
 
 [node name="TurnSpeedLabel" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/TurnSpeed"]
 margin_left = 187.0

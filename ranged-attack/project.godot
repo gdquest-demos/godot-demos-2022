@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://nodes/HurtBox.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Missile",
 "language": "GDScript",
 "path": "res://homing_demo/weapons/Missile.gd"
