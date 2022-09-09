@@ -43,4 +43,5 @@ player_path = NodePath("../Player")
 position = Vector2( 960, 540 )
 current = true
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
