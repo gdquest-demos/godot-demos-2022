@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/t_40_02.png-feb7c86357029552bbf9e68860c4ecb7.stex"
+path="res://.import/t_40_02.png-dca4f4f2cf38eaf55a165162d2976748.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://homing-demo/weapons/t_40_02.png"
-dest_files=[ "res://.import/t_40_02.png-feb7c86357029552bbf9e68860c4ecb7.stex" ]
+source_file="res://homing_demo/weapons/t_40_02.png"
+dest_files=[ "res://.import/t_40_02.png-dca4f4f2cf38eaf55a165162d2976748.stex" ]
 
 [params]
 

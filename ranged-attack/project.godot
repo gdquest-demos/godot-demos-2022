@@ -29,10 +29,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://nodes/HurtBox.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "Missile",
 "language": "GDScript",
-"path": "res://homing-demo/weapons/Missile.gd"
+"path": "res://homing_demo/weapons/Missile.gd"
 }, {
 "base": "Node2D",
 "class": "Projectile",
@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ranged attacks (GDQuest)"
-run/main_scene="res://homing-demo/homing-demo.tscn"
+run/main_scene="res://homing_demo/HomingDemo.tscn"
 config/icon="res://icon.png"
 
 [autoload]

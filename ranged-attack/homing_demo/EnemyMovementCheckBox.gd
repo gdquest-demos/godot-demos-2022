@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_toggled(value: bool):
-	if value: 
+	if value:
 		animation_player.play("Move Enemy")
 	else:
 		animation_player.stop(false)
