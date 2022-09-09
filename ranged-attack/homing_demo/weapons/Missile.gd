@@ -10,7 +10,6 @@ var _target: Enemy
 
 var _current_velocity := Vector2.ZERO
 
-onready var _timer := $Timer
 onready var _sprite := $Sprite
 
 onready var _hitbox := $HitBox
@@ -22,16 +21,17 @@ onready var _target_line := $TargetLine
 
 
 func _ready():
+	set_as_toplevel(true)
 	_aim_line.set_as_toplevel(true)
 	_target_line.set_as_toplevel(true)
 
-	set_as_toplevel(true)
-	_timer.connect("timeout", self, "queue_free")
-	_timer.start(lifetime)
 	_impact_detector.connect("body_entered", self, "_on_impact")
 	_enemy_detector.connect("body_entered", self, "_on_enemy_detected")
 
+	var timer := get_tree().create_timer(lifetime)
+	timer.connect("timeout", self, "queue_free")
 
+	
 func _physics_process(delta: float) -> void:
 	if not _target:
 		return
@@ -43,12 +43,11 @@ func _physics_process(delta: float) -> void:
 	position += _current_velocity * delta
 	rotation = _current_velocity.angle()
 
-	# TODO: use _draw()?
+	# Update the drawing of lines following the missile
 	_aim_line.set_point_position(0, global_position)
-	_aim_line.set_point_position(1, global_position + direction * 150)
+	_aim_line.set_point_position(1, global_position + _current_velocity.normalized() * 150)
 	_target_line.set_point_position(0, global_position)
 	_target_line.set_point_position(1, global_position + direction * 150)
-
 
 
 func set_drag_factor(new_value: float) -> void:
@@ -60,5 +59,4 @@ func _on_impact(_body: Node) -> void:
 
 
 func _on_enemy_detected(enemy: Enemy):
-	if _target == null:
-		_target = enemy
+	_target = enemy
