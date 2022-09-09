@@ -1,6 +1,8 @@
 class_name Missile
 extends Node2D
 
+const LAUNCH_SPEED := 1800.0
+
 export var lifetime := 20.0
 
 var max_speed := 500.0
@@ -13,7 +15,6 @@ var _current_velocity := Vector2.ZERO
 onready var _sprite := $Sprite
 
 onready var _hitbox := $HitBox
-onready var _impact_detector := $ImpactDetector
 onready var _enemy_detector := $EnemyDetector
 
 onready var _aim_line := $AimLine
@@ -25,11 +26,14 @@ func _ready():
 	_aim_line.set_as_toplevel(true)
 	_target_line.set_as_toplevel(true)
 
-	_impact_detector.connect("body_entered", self, "_on_impact")
-	_enemy_detector.connect("body_entered", self, "_on_enemy_detected")
+	_hitbox.connect("body_entered", self, "_on_HitBox_body_entered")
+	# Detects a target to lock on within a large radius.
+	_enemy_detector.connect("body_entered", self, "_on_EnemyDetector_body_entered")
 
 	var timer := get_tree().create_timer(lifetime)
 	timer.connect("timeout", self, "queue_free")
+	
+	_current_velocity = LAUNCH_SPEED * Vector2.RIGHT.rotated(rotation)
 
 	
 func _physics_process(delta: float) -> void:
@@ -54,9 +58,11 @@ func set_drag_factor(new_value: float) -> void:
 	drag_factor = clamp(new_value, 0.01, 1.0)
 
 
-func _on_impact(_body: Node) -> void:
+func _on_HitBox_body_entered(_body: Node) -> void:
 	queue_free()
 
 
-func _on_enemy_detected(enemy: Enemy):
+func _on_EnemyDetector_body_entered(enemy: Enemy):
+	if enemy == null:
+		return
 	_target = enemy
