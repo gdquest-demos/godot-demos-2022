@@ -1,0 +1,189 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/sidescroll_tileset/tileset_sidescroll-tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/enemy/enemy.png" type="Texture" id=2]
+[ext_resource path="res://assets/blackhole.png" type="Texture" id=3]
+[ext_resource path="res://assets/background.png" type="Texture" id=4]
+[ext_resource path="res://NavigationServer/NavigationServer2D/WithAvoidance/EnemyShipWithAvoidance.gd" type="Script" id=5]
+[ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=6]
+
+[sub_resource type="NavigationPolygon" id=5]
+vertices = PoolVector2Array( 192, 192, 1088, 192, 1088, 272, 192, 448, 1280, 272, 1280, 192, 1728, 192, 1536, 448, 1728, 960, 192, 960, 192, 640, 1280, 792, 1280, 640, 1472, 792, 1536, 640, 1472, 640, 1280, 448, 1280, 368, 1088, 368, 1088, 448 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 10, 12, 11 ), PoolIntArray( 8, 11, 13 ), PoolIntArray( 6, 8, 13, 14 ), PoolIntArray( 13, 15, 14 ), PoolIntArray( 6, 14, 7 ), PoolIntArray( 7, 16, 17 ), PoolIntArray( 4, 7, 17, 2 ), PoolIntArray( 2, 17, 18 ), PoolIntArray( 3, 2, 18 ), PoolIntArray( 3, 18, 19 ) ]
+outlines = [ PoolVector2Array( 192, 192, 192, 448, 1088, 448, 1088, 368, 1280, 368, 1280, 448, 1536, 448, 1536, 640, 1472, 640, 1472, 792, 1280, 792, 1280, 640, 192, 640, 192, 960, 1728, 960, 1728, 192, 1280, 192, 1280, 272, 1088, 272, 1088, 192 ) ]
+
+[sub_resource type="NavigationPolygon" id=6]
+vertices = PoolVector2Array( 320, 448, 320, 632, 256, 632, 256, 448 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 256, 448, 256, 632, 320, 632, 320, 448 ) ]
+
+[sub_resource type="NavigationPolygon" id=7]
+vertices = PoolVector2Array( 640, 632, 640, 456, 880, 456, 880, 632 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 640, 632, 640, 456, 880, 456, 880, 632 ) ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 51.3074
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 64.4981
+
+[sub_resource type="Animation" id=13]
+resource_name = "New Anim"
+length = 4.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 768, 192 ), Vector2( 768, 448 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 768, 288 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "New Anim"
+length = 3.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 1.8 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 768, 656 ), Vector2( 768, 920 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 768, 288 ) ]
+}
+
+[node name="NavigationServer2D" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 80, 80 )
+collision_layer = 5
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 1, -131072, 0, 1, -131071, 0, 1, -131070, 0, 1, -131069, 0, 1, -131068, 0, 1, -131067, 0, 1, -131066, 0, 1, -131065, 0, 1, -131064, 0, 1, -131063, 0, 1, -131062, 0, 1, -131061, 0, 1, -131060, 0, 1, -131059, 0, 1, -131058, 0, 1, -131057, 0, 1, -131056, 0, 1, -131055, 0, 1, -131054, 0, 1, -131053, 0, 1, -131052, 0, 1, -131051, 0, 1, -131050, 0, 1, -131049, 0, 1, -131048, 0, 1, -131047, 0, 1, -131046, 0, 2, -2, 0, 65536, -1, 0, 65537, -65536, 0, 65537, -65535, 0, 65537, -65534, 0, 65537, -65533, 0, 65537, -65532, 0, 65537, -65531, 0, 65537, -65530, 0, 65537, -65529, 0, 65537, -65528, 0, 65537, -65527, 0, 65537, -65526, 0, 65537, -65525, 0, 65537, -65524, 0, 65537, -65523, 0, 65537, -65522, 0, 65537, -65521, 0, 65537, -65520, 0, 65537, -65519, 0, 65537, -65518, 0, 65537, -65517, 0, 65537, -65516, 0, 65537, -65515, 0, 65537, -65514, 0, 65537, -65513, 0, 65537, -65512, 0, 65537, -65511, 0, 65537, -65510, 0, 65538, 65534, 0, 65536, 65535, 0, 65537, 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65537, 5, 0, 65537, 6, 0, 65537, 7, 0, 65537, 8, 0, 65537, 9, 0, 65537, 10, 0, 65537, 11, 0, 65537, 12, 0, 65537, 13, 0, 65537, 14, 0, 65537, 15, 0, 65537, 16, 0, 65537, 17, 0, 65537, 18, 0, 65537, 19, 0, 65537, 20, 0, 65537, 21, 0, 65537, 22, 0, 65537, 23, 0, 65537, 24, 0, 65537, 25, 0, 65537, 26, 0, 65538, 131070, 0, 65536, 131071, 0, 65537, 65536, 0, 65537, 65537, 0, 65541, 65538, 0, 131073, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 131073, 65543, 0, 131073, 65544, 0, 131073, 65545, 0, 131073, 65546, 0, 131073, 65547, 0, 131073, 65548, 0, 131073, 65549, 0, 131073, 65550, 0, 65542, 65551, 0, 65541, 65552, 0, 131073, 65553, 0, 131073, 65554, 0, 131073, 65555, 0, 131073, 65556, 0, 131073, 65557, 0, 131073, 65558, 0, 65542, 65559, 0, 65537, 65560, 0, 65537, 65561, 0, 65537, 65562, 0, 65538, 196606, 0, 65536, 196607, 0, 65537, 131072, 0, 65537, 131073, 0, 65538, 131086, 0, 131072, 131087, 0, 131074, 131094, 0, 65536, 131095, 0, 65537, 131096, 0, 65537, 131097, 0, 65537, 131098, 0, 65538, 262142, 0, 65536, 262143, 0, 65537, 196608, 0, 65537, 196609, 0, 65538, 196630, 0, 65536, 196631, 0, 65537, 196632, 0, 65537, 196633, 0, 65537, 196634, 0, 65538, 327678, 0, 65536, 327679, 0, 65537, 262144, 0, 65537, 262145, 0, 65538, 262166, 0, 65536, 262167, 0, 65537, 262168, 0, 65537, 262169, 0, 65537, 262170, 0, 65538, 393214, 0, 65536, 393215, 0, 65537, 327680, 0, 65537, 327681, 0, 65538, 327694, 0, 0, 327695, 0, 2, 327702, 0, 65536, 327703, 0, 65537, 327704, 0, 65537, 327705, 0, 65537, 327706, 0, 65538, 458750, 0, 65536, 458751, 0, 65537, 393216, 0, 65537, 393217, 0, 131077, 393218, 0, 2, 393220, 0, 0, 393221, 0, 1, 393222, 0, 1, 393223, 0, 2, 393227, 0, 0, 393228, 0, 1, 393229, 0, 1, 393230, 0, 131078, 393231, 0, 131077, 393232, 0, 1, 393233, 0, 1, 393234, 0, 2, 393238, 0, 65536, 393239, 0, 65537, 393240, 0, 65537, 393241, 0, 65537, 393242, 0, 65538, 524286, 0, 65536, 524287, 0, 65537, 458752, 0, 65537, 458753, 0, 65541, 458754, 0, 131074, 458756, 0, 131072, 458757, 0, 131073, 458758, 0, 131073, 458759, 0, 131074, 458763, 0, 131072, 458764, 0, 131073, 458765, 0, 131073, 458766, 0, 131073, 458767, 0, 131073, 458768, 0, 65542, 458769, 0, 65541, 458770, 0, 131074, 458774, 0, 65536, 458775, 0, 65537, 458776, 0, 65537, 458777, 0, 65537, 458778, 0, 65538, 589822, 0, 65536, 589823, 0, 65537, 524288, 0, 65537, 524289, 0, 65538, 524304, 0, 65536, 524305, 0, 65538, 524310, 0, 65536, 524311, 0, 65537, 524312, 0, 65537, 524313, 0, 65537, 524314, 0, 65538, 655358, 0, 65536, 655359, 0, 65537, 589824, 0, 65537, 589825, 0, 65538, 589840, 0, 131072, 589841, 0, 131074, 589846, 0, 65536, 589847, 0, 65537, 589848, 0, 65537, 589849, 0, 65537, 589850, 0, 65538, 720894, 0, 65536, 720895, 0, 65537, 655360, 0, 65537, 655361, 0, 65538, 655382, 0, 65536, 655383, 0, 65537, 655384, 0, 65537, 655385, 0, 65537, 655386, 0, 65538, 786430, 0, 65536, 786431, 0, 65537, 720896, 0, 65537, 720897, 0, 65538, 720918, 0, 65536, 720919, 0, 65537, 720920, 0, 65537, 720921, 0, 65537, 720922, 0, 65538, 851966, 0, 65536, 851967, 0, 65537, 786432, 0, 65537, 786433, 0, 131077, 786434, 0, 1, 786435, 0, 1, 786436, 0, 1, 786437, 0, 1, 786438, 0, 1, 786439, 0, 1, 786440, 0, 1, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 1, 786447, 0, 1, 786448, 0, 1, 786449, 0, 1, 786450, 0, 1, 786451, 0, 1, 786452, 0, 1, 786453, 0, 1, 786454, 0, 131078, 786455, 0, 65537, 786456, 0, 65537, 786457, 0, 65537, 786458, 0, 65538, 917502, 0, 65536, 917503, 0, 65537, 851968, 0, 65537, 851969, 0, 65537, 851970, 0, 65537, 851971, 0, 65537, 851972, 0, 65537, 851973, 0, 65537, 851974, 0, 65537, 851975, 0, 65537, 851976, 0, 65537, 851977, 0, 65537, 851978, 0, 65537, 851979, 0, 65537, 851980, 0, 65537, 851981, 0, 65537, 851982, 0, 65537, 851983, 0, 65537, 851984, 0, 65537, 851985, 0, 65537, 851986, 0, 65537, 851987, 0, 65537, 851988, 0, 65537, 851989, 0, 65537, 851990, 0, 65537, 851991, 0, 65537, 851992, 0, 65537, 851993, 0, 65537, 851994, 0, 65538, 983038, 0, 65536, 983039, 0, 65537, 917504, 0, 65537, 917505, 0, 65537, 917506, 0, 65537, 917507, 0, 65537, 917508, 0, 65537, 917509, 0, 65537, 917510, 0, 65537, 917511, 0, 65537, 917512, 0, 65537, 917513, 0, 65537, 917514, 0, 65537, 917515, 0, 65537, 917516, 0, 65537, 917517, 0, 65537, 917518, 0, 65537, 917519, 0, 65537, 917520, 0, 65537, 917521, 0, 65537, 917522, 0, 65537, 917523, 0, 65537, 917524, 0, 65537, 917525, 0, 65537, 917526, 0, 65537, 917527, 0, 65537, 917528, 0, 65537, 917529, 0, 65537, 917530, 0, 65538, 1048574, 0, 131072, 1048575, 0, 131073, 983040, 0, 131073, 983041, 0, 131073, 983042, 0, 131073, 983043, 0, 131073, 983044, 0, 131073, 983045, 0, 131073, 983046, 0, 131073, 983047, 0, 131073, 983048, 0, 131073, 983049, 0, 131073, 983050, 0, 131073, 983051, 0, 131073, 983052, 0, 131073, 983053, 0, 131073, 983054, 0, 131073, 983055, 0, 131073, 983056, 0, 131073, 983057, 0, 131073, 983058, 0, 131073, 983059, 0, 131073, 983060, 0, 131073, 983061, 0, 131073, 983062, 0, 131073, 983063, 0, 131073, 983064, 0, 131073, 983065, 0, 131073, 983066, 0, 131074 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1640, 568 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+edge_connection_margin = 20.0
+
+[node name="NorthRoomUnlockedPolygon" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 5 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 6 )
+
+[node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 7 )
+
+[node name="EnemyShip" type="KinematicBody2D" parent="Navigation2D"]
+position = Vector2( 280, 328 )
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 5 )
+path_to_player = NodePath("../../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/EnemyShip"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/EnemyShip"]
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="Navigation2D/EnemyShip"]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation2D/EnemyShip"]
+path_desired_distance = 20.0
+target_desired_distance = 20.0
+path_max_distance = 60.0
+avoidance_enabled = true
+radius = 60.0
+neighbor_dist = 200.0
+max_speed = 350.0
+
+[node name="BlackHole" type="KinematicBody2D" parent="Navigation2D"]
+position = Vector2( 768, 288 )
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/BlackHole"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/BlackHole"]
+shape = SubResource( 8 )
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Navigation2D/BlackHole"]
+radius = 66.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Navigation2D/BlackHole"]
+autoplay = "New Anim"
+playback_process_mode = 0
+"anims/New Anim" = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
+[node name="BlackHole2" type="KinematicBody2D" parent="Navigation2D"]
+position = Vector2( 768, 288 )
+motion/sync_to_physics = true
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/BlackHole2"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/BlackHole2"]
+shape = SubResource( 8 )
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Navigation2D/BlackHole2"]
+radius = 66.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Navigation2D/BlackHole2"]
+autoplay = "New Anim"
+playback_process_mode = 0
+"anims/New Anim" = SubResource( 11 )
+anims/RESET = SubResource( 12 )
