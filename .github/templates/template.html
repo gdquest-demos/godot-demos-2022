@@ -59,9 +59,16 @@
       <img src="./icon.png" alt="logo for $title$" />
       $endif$ $if(title)$
       <h1 class="doc-title">$title$</h1>
-      <div class="header-links">
         $if(repo_url)$
-        <a class="repo-url" href="$repo_url$">Git repository</a>
+        <div class="header-links">
+          <div class="github-links">
+          <a class="github-button" href="https://github.com/GDQuest/godot-demos-2022" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star GDQuest/godot-demos-2022 on GitHub">Star</a>
+          <a class="github-button" href="https://github.com/GDQuest/godot-demos-2022/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork GDQuest/godot-demos-2022 on GitHub">Fork</a>
+          <a class="github-button" href="https://github.com/GDQuest" data-size="large" aria-label="Follow @GDQuest on GitHub">Follow @GDQuest</a>
+          $if(is_project)$
+          <a class="github-button" href="$repo_url$" data-size="large" aria-label="Access this Demo on Github">This Demo on Github</a>
+          $endif$
+        </div>
         $endif$ $endif$ $if(is_project)$
         <a class="back" href="../">&larr; Go back to project list</a>
         $endif$
@@ -122,6 +129,7 @@
         alt="Fork me on GitHub"
         data-recalc-dims="1"
     /></a>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="$base$script.js"></script>
   </body>
 </html>
