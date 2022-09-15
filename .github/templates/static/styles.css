@@ -82,6 +82,12 @@ img {
   gap: 0.6em;
 }
 
+.header-links .github-links{
+  display: flex;
+  flex-direction: row;
+  gap: 0.3em;
+}
+
 .header-links a,
 .header-links a:hover {
   color: var(--background);
@@ -151,6 +157,10 @@ img {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.links-list li {
+  min-height: 9em;
 }
 
 .links-list ul {
