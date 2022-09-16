@@ -13,9 +13,10 @@ onready var reload_progress_display := $"%ReloadProgressDisplay"
 onready var shoot_timer := $"Shoot Timer"
 onready var fire_rate_slider := $"%FireRateSlider"
 
+var reload_time :float
 var max_ammo:int
 var current_ammo:int
-var reload_time :float
+
 var is_reloading := false
 var left_click_held := false
 var shoot_ready := true
@@ -36,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 	
 	if left_click_held:
-		try_shoot()
+		shoot()
 	
 	if is_reloading:
 		reloading_progress_bar.value = 1 - (reload_timer.time_left/reload_time)
@@ -51,17 +52,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("right_click"):
 		start_reload()
-
-
-func try_shoot() -> void:
-	if current_ammo == 0:
-		start_reload()
-	
-	if current_ammo > 0 and shoot_ready:
-		shoot()
 		
 
 func shoot() -> void:
+	if current_ammo == 0:
+		start_reload()
+		return
+		
+	if !shoot_ready:
+		return
+			
 	if is_reloading:
 		cancel_reload()
 		
