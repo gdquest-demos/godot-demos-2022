@@ -13,9 +13,9 @@ offset = Vector2( 39, 0 )
 [node name="ShootPosition" type="Position2D" parent="."]
 position = Vector2( 61, 0 )
 
-[node name="Reload Timer" type="Timer" parent="."]
+[node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Shoot Timer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
