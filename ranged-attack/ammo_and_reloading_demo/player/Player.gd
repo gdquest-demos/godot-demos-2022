@@ -13,110 +13,77 @@ onready var _reload_progress_display := $"%ReloadProgressDisplay"
 onready var _shoot_timer := $"ShootTimer"
 onready var _fire_rate_slider := $"%FireRateSlider"
 
-var reload_time :float
-var max_ammo:int
-var current_ammo:int
+var max_ammo := 10 setget set_max_ammo
 
-var is_reloading := false
-var left_click_held := false
-var shoot_ready := true
+var _reload_time := 1.0 setget set_reload_time
+var _current_ammo := max_ammo
+
 
 func _ready() -> void:
 	max_ammo = _max_ammo_spin_box.value
-	_max_ammo_spin_box.connect("value_changed", self, "_on_max_ammo_changed")
-	
-	reload_time = _reload_time_spin_box.value
-	_reload_time_spin_box.connect("value_changed", self, "_on_reload_time_changed")
-	
-	_reload_timer.connect("timeout", self, "reload")
-	_shoot_timer.connect("timeout", self, "_on_shoot_timer_timeout")
-	
-	reload()
+	_max_ammo_spin_box.connect("value_changed", self, "set_max_ammo")
+
+	_reload_time_spin_box.connect("value_changed", self, "set_reload_time")
+	set_reload_time(_reload_time_spin_box.value)
+
+	_reload_timer.connect("timeout", self, "refill_ammo")
+	refill_ammo()
 
 
 func _physics_process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
-	
-	if left_click_held:
-		shoot()
-	
-	if is_reloading:
-		_reloading_progress_bar.value = 1 - (_reload_timer.time_left/reload_time)
 
+	if not _reload_timer.is_stopped():
+		return
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
-		left_click_held = true
-		
-	if event.is_action_released("left_click"):
-		left_click_held = false
-		
-	if event.is_action_pressed("right_click"):
-		start_reload()
-		
+	if Input.is_action_pressed("left_click"):
+		if _current_ammo > 0:
+			shoot()
+		else:
+			reload()
+	elif Input.is_action_just_pressed("right_click") and _current_ammo < max_ammo:
+		reload()
+
 
 func shoot() -> void:
-	if current_ammo == 0:
-		start_reload()
+	if not _shoot_timer.is_stopped():
 		return
-		
-	if !shoot_ready:
-		return
-			
-	if is_reloading:
-		cancel_reload()
-		
-	current_ammo -= 1
-	
+
+	_current_ammo -= 1
+
 	var bullet := BulletScene.instance() as Bullet
 	bullet.global_position = _shoot_position.global_position
 	bullet.direction = global_position.direction_to(get_global_mouse_position())
 	add_child(bullet)
 	_ammo_display.get_child(0).queue_free()
-	
 	_shoot_timer.start(0.251 - _fire_rate_slider.value)
-	shoot_ready = false	
-	
-	
-func start_reload() -> void:
-	if current_ammo == max_ammo:
-		return
-		
-	if is_reloading:
-		return
-		
-	_reload_timer.start(reload_time)
-	is_reloading = true
-	_reload_progress_display.show()
-	
-	
-func cancel_reload() -> void:
-	_reload_timer.stop()
-	is_reloading = false
-	_reload_progress_display.hide()
-		
+
 
 func reload() -> void:
-	current_ammo = max_ammo
-	is_reloading = false
+	_reload_timer.start(_reload_time)
+	_reload_progress_display.show()
+
+	var tween := create_tween()
+	_reloading_progress_bar.value = 0.0
+	tween.tween_property(_reloading_progress_bar, "value", 1.0, _reload_time)
+
+
+func refill_ammo() -> void:
+	_current_ammo = max_ammo
 	_reload_progress_display.hide()
-	
+
 	for child in _ammo_display.get_children():
 		child.queue_free()
-		
+
 	for i in max_ammo:
-		var ammo_display_instance = AmmoVisualScene.instance()
-		_ammo_display.add_child(ammo_display_instance)
+		var instance = AmmoVisualScene.instance()
+		_ammo_display.add_child(instance)
 
 
-func _on_max_ammo_changed(value) -> void:
+func set_max_ammo(value: int) -> void:
 	max_ammo = value
-	reload()
-	
-	
-func _on_reload_time_changed(value) -> void:
-	reload_time = value
-	
-	
-func _on_shoot_timer_timeout():
-	shoot_ready = true
+	refill_ammo()
+
+
+func set_reload_time(value: float) -> void:
+	_reload_time = value
