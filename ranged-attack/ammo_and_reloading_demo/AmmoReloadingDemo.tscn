@@ -5,11 +5,11 @@
 [ext_resource path="res://interface/theme.tres" type="Theme" id=3]
 [ext_resource path="res://space_background.png" type="Texture" id=4]
 [ext_resource path="res://interface/fonts/font_text.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ammo_and_reloading_demo/AmmoReloadingDemo.gd" type="Script" id=6]
 [ext_resource path="res://interface/fonts/font_title.tres" type="DynamicFont" id=7]
-[ext_resource path="res://homing_demo/HomingDemo.gd" type="Script" id=10]
 
 [node name="AmmoReloadingDemo" type="Node2D"]
-script = ExtResource( 10 )
+script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 461, 539 )
