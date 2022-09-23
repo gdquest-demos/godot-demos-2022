@@ -5,27 +5,21 @@ const AmmoVisualScene = preload("../AmmoVisual.tscn")
 
 onready var _shoot_position := $ShootPosition
 onready var _ammo_display := $"%AmmoDisplay"
-onready var _max_ammo_spin_box := $"%MaxAmmoSpinBox"
+
+onready var _reload_progress_display := $"%ReloadProgressDisplay"
 onready var _reloading_progress_bar := $"%ReloadingProgressBar"
 onready var _reload_timer := $"ReloadTimer"
-onready var _reload_time_spin_box := $"%ReloadTimeSpinBox"
-onready var _reload_progress_display := $"%ReloadProgressDisplay"
 onready var _shoot_timer := $"ShootTimer"
-onready var _fire_rate_slider := $"%FireRateSlider"
+
 
 var max_ammo := 10 setget set_max_ammo
 
 var _reload_time := 1.0 setget set_reload_time
 var _current_ammo := max_ammo
+var _fire_rate := 0.13 setget set_fire_rate
 
 
 func _ready() -> void:
-	max_ammo = _max_ammo_spin_box.value
-	_max_ammo_spin_box.connect("value_changed", self, "set_max_ammo")
-
-	_reload_time_spin_box.connect("value_changed", self, "set_reload_time")
-	set_reload_time(_reload_time_spin_box.value)
-
 	_reload_timer.connect("timeout", self, "refill_ammo")
 	refill_ammo()
 
@@ -56,7 +50,7 @@ func shoot() -> void:
 	bullet.direction = global_position.direction_to(get_global_mouse_position())
 	add_child(bullet)
 	_ammo_display.get_child(0).queue_free()
-	_shoot_timer.start(0.251 - _fire_rate_slider.value)
+	_shoot_timer.start(0.251 - _fire_rate)
 
 
 func reload() -> void:
@@ -87,3 +81,7 @@ func set_max_ammo(value: int) -> void:
 
 func set_reload_time(value: float) -> void:
 	_reload_time = value
+	
+	
+func set_fire_rate(value: float) -> void:
+	_fire_rate = value
