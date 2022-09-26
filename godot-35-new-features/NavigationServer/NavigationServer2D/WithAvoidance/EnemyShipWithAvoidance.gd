@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 
 
 func move(velocity: Vector2) -> void:
-	move_and_slide(velocity)
+	_velocity = move_and_slide(velocity)
 	_sprite.rotation = lerp_angle(_sprite.rotation, velocity.angle(), 10.0 * get_physics_process_delta_time())
 	
 
