@@ -57,7 +57,7 @@ theme = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="UserInterface/Panel"]
 margin_right = 384.0
-margin_bottom = 406.0
+margin_bottom = 498.0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -67,7 +67,7 @@ custom_constants/margin_bottom = 16
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 368.0
-margin_bottom = 390.0
+margin_bottom = 482.0
 custom_constants/separation = 10
 
 [node name="ControlsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
@@ -117,10 +117,33 @@ margin_top = 228.0
 margin_right = 352.0
 margin_bottom = 232.0
 
-[node name="MaxAmmo" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+[node name="ReserveAmmo" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
 margin_top = 242.0
 margin_right = 352.0
 margin_bottom = 280.0
+custom_constants/separation = 15
+
+[node name="ReserveAmmoSpinBox" type="SpinBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer/ReserveAmmo"]
+unique_name_in_owner = true
+margin_right = 112.0
+margin_bottom = 38.0
+max_value = 9999.0
+value = 30.0
+
+[node name="Label" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/ReserveAmmo"]
+margin_left = 127.0
+margin_top = 1.0
+margin_right = 311.0
+margin_bottom = 37.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "Reserve Ammo"
+align = 1
+
+[node name="MaxAmmo" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 290.0
+margin_right = 352.0
+margin_bottom = 328.0
 custom_constants/separation = 15
 
 [node name="MaxAmmoSpinBox" type="SpinBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer/MaxAmmo"]
@@ -142,9 +165,9 @@ text = "Max Ammo"
 align = 1
 
 [node name="ReloadTime" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
-margin_top = 290.0
+margin_top = 338.0
 margin_right = 352.0
-margin_bottom = 328.0
+margin_bottom = 376.0
 custom_constants/separation = 15
 
 [node name="ReloadTimeSpinBox" type="SpinBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer/ReloadTime"]
@@ -167,9 +190,9 @@ text = "Reload Time"
 align = 1
 
 [node name="FireRate" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
-margin_top = 338.0
+margin_top = 386.0
 margin_right = 352.0
-margin_bottom = 374.0
+margin_bottom = 422.0
 custom_constants/separation = 11
 
 [node name="FireRateSlider" type="HSlider" parent="UserInterface/Panel/MarginContainer/VBoxContainer/FireRate"]
@@ -190,3 +213,13 @@ rect_min_size = Vector2( 160, 0 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 5 )
 text = "Fire Rate"
+
+[node name="RefillReservesButton" type="Button" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 352.0
+margin_bottom = 466.0
+grow_horizontal = 2
+rect_min_size = Vector2( 225, 0 )
+text = "Refill Reserves"
+
+[connection signal="pressed" from="UserInterface/Panel/MarginContainer/VBoxContainer/RefillReservesButton" to="." method="_on_RefillReservesButton_pressed"]
