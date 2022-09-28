@@ -19,12 +19,17 @@ onready var _enemy_detector := $EnemyDetector
 
 onready var _aim_line := $AimLine
 onready var _target_line := $TargetLine
-
+onready var _change_line := $ChangeLine
 
 func _ready():
 	set_as_toplevel(true)
 	_aim_line.set_as_toplevel(true)
 	_target_line.set_as_toplevel(true)
+	_change_line.set_as_toplevel(true)
+	
+	_aim_line.visible = GDQuestVisualizationTools.is_debug_navigation_visible
+	_target_line.visible = GDQuestVisualizationTools.is_debug_navigation_visible
+	_change_line.visible = GDQuestVisualizationTools.is_debug_navigation_visible
 
 	_hitbox.connect("body_entered", self, "_on_HitBox_body_entered")
 	# Detects a target to lock on within a large radius.
@@ -42,16 +47,21 @@ func _physics_process(delta: float) -> void:
 
 	var direction := global_position.direction_to(_target.global_position)
 	var desired_velocity := direction * max_speed
+	var _previous_velocity = _current_velocity
+	
 	_current_velocity += (desired_velocity - _current_velocity) * drag_factor
-
 	position += _current_velocity * delta
-	rotation = _current_velocity.angle()
+	look_at(global_position + _current_velocity)
+	#rotation = _current_velocity.angle()	
 
 	# Update the drawing of lines following the missile
 	_aim_line.set_point_position(0, global_position)
 	_aim_line.set_point_position(1, global_position + _current_velocity.normalized() * 150)
 	_target_line.set_point_position(0, global_position)
 	_target_line.set_point_position(1, global_position + direction * 150)
+	_change_line.set_point_position(0, global_position + _previous_velocity.normalized() * 150)	
+	_change_line.set_point_position(1, global_position + _current_velocity.normalized() * 150)
+	
 
 
 func set_drag_factor(new_value: float) -> void:

@@ -10,8 +10,8 @@
 [ext_resource path="res://interface/UIShowAreas.gd" type="Script" id=8]
 [ext_resource path="res://interface/checkbox_empty.png" type="Texture" id=9]
 [ext_resource path="res://homing_demo/HomingDemo.gd" type="Script" id=10]
-[ext_resource path="res://homing_demo/EnemyMovementCheckBox.gd" type="Script" id=11]
-[ext_resource path="res://homing_demo/VelocityLinesCheckBox.gd" type="Script" id=12]
+[ext_resource path="res://homing_demo/scripts/EnemyMovementCheckBox.gd" type="Script" id=11]
+[ext_resource path="res://homing_demo/scripts/VelocityLinesCheckBox.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Move Enemy"
