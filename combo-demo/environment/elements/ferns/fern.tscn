@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://environment/elements/ferns/leaves/fern_leave_1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://environment/elements/ferns/leaves/fern_leave_2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/elements/ferns/fern.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=1]
+min_value = 0.5
+_data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Fern" type="Node2D"]
+script = ExtResource( 3 )
+possible_leaves = [ ExtResource( 1 ), ExtResource( 2 ) ]
+leaves_scale = SubResource( 1 )

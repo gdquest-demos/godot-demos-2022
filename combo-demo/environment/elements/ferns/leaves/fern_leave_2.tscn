@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://environment/elements/ferns/textures/fern_atlas.png" type="Texture" id=1]
+[ext_resource path="res://environment/elements/ferns/fern_leave_mat.tres" type="Material" id=2]
+[ext_resource path="res://environment/elements/grass/blades/blade.gd" type="Script" id=3]
+
+[node name="Leave" type="Polygon2D"]
+material = ExtResource( 2 )
+offset = Vector2( -400, -363 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 249.55, 16.2162, 389.189, -12.6126, 472.072, 174.775, 473.874, 375.676, 342.342, 375.676, 272.973, 208.108 )
+uv = PoolVector2Array( 249.55, 16.2162, 389.189, -12.6126, 472.072, 174.775, 473.874, 375.676, 342.342, 375.676, 272.973, 208.108 )
+polygons = [ PoolIntArray( 0, 1, 2, 5 ), PoolIntArray( 4, 5, 2, 3 ) ]
+script = ExtResource( 3 )

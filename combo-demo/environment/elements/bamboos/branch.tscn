@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://environment/elements/bamboos/textures/bamboo.png" type="Texture" id=1]
+
+[node name="Branch" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+offset = Vector2( -604, -257 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 576, 384, 576, 64, 896, 64, 832, 320 )
+uv = PoolVector2Array( 576, 384, 576, 64, 896, 64, 896, 384 )

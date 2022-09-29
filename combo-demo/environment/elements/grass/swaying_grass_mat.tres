@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 world_position = vec2(0.0);
+uniform sampler2D wind_noise_sampler;
+uniform vec4 base_color : hint_color = vec4(1.0);
+uniform vec4 mult_color : hint_color = vec4(1.0);
+
+void vertex(){
+	float wind_noise = texture(wind_noise_sampler, UV * vec2(0.0, 0.1) +  world_position + (TIME * vec2(0.2143, 0.1254))).x;
+	VERTEX.x += (0.5 - wind_noise) * 200.0 * (1.0 - UV.y);
+	VERTEX.y += (0.5 - wind_noise) * 10.0 * (1.0 - UV.y);
+}
+
+void fragment(){
+	vec2 noise_and_color = texture(TEXTURE, UV).xa;
+	
+	vec3 mult = mix(mult_color.rgb, vec3(1.0), noise_and_color.x);
+	
+	COLOR.rgb = base_color.rgb * mult;
+	COLOR.a = noise_and_color.y;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=3]
+period = 256.0
+persistence = 0.25
+lacunarity = 1.0
+
+[sub_resource type="NoiseTexture" id=4]
+seamless = true
+noise = SubResource( 3 )
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/world_position = Vector2( 0, 0 )
+shader_param/base_color = Color( 0.207843, 0.556863, 0.254902, 1 )
+shader_param/mult_color = Color( 0.207843, 0.384314, 0.462745, 1 )
+shader_param/wind_noise_sampler = SubResource( 4 )

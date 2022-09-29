@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://environment/elements/grass/textures/dark_grass_atlast.png" type="Texture" id=1]
+[ext_resource path="res://environment/elements/grass/swaying_grass_mat.tres" type="Material" id=2]
+[ext_resource path="res://environment/elements/grass/blades/blade.gd" type="Script" id=3]
+
+[node name="Blade1" type="Polygon2D"]
+material = ExtResource( 2 )
+offset = Vector2( -105, -485 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 50, 130, 140, 130, 140, 300, 140, 490, 50, 490, 50, 300 )
+uv = PoolVector2Array( 50, 130, 140, 130, 140, 300, 140, 490, 50, 490, 50, 300 )
+polygons = [ PoolIntArray( 0, 1, 2, 5 ), PoolIntArray( 5, 2, 3, 4 ) ]
+script = ExtResource( 3 )
