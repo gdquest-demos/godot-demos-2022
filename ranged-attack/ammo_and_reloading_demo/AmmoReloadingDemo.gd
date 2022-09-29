@@ -15,6 +15,7 @@ func _ready() -> void:
 	
 	player.set_max_ammo(_max_ammo_spin_box.value)
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
