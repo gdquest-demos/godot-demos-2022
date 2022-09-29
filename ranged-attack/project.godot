@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ranged attacks (GDQuest)"
-run/main_scene="res://ammo_and_reloading_demo/AmmoReloadingDemo.tscn"
+run/main_scene="res://Demo.tscn"
 config/icon="res://icon.png"
 
 [autoload]
