@@ -12,7 +12,7 @@
 script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 461, 539 )
+position = Vector2( 716, 539 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
