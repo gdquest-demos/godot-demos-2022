@@ -4,7 +4,7 @@ const MissileScene := preload("../weapons/Missile.tscn")
 
 onready var _shoot_position := $ShootPosition
 onready var _travel_speed_slider := $"%TravelSpeedSlider"
-onready var _turn_speed_slider := $"%TurnSpeedSlider"
+onready var _drag_factor_slider := $"%DragFactorSlider"
 
 
 func _physics_process(_delta: float) -> void:
@@ -19,7 +19,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func shoot() -> void:
 	var missile := MissileScene.instance() as Missile
 
-	missile.drag_factor = _turn_speed_slider.value
+	missile.drag_factor = _drag_factor_slider.value
 	missile.max_speed = _travel_speed_slider.value
 
 	missile.global_position = _shoot_position.global_position

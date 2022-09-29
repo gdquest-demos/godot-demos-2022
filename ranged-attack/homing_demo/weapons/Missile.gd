@@ -38,7 +38,7 @@ func _ready():
 	var timer := get_tree().create_timer(lifetime)
 	timer.connect("timeout", self, "queue_free")
 	
-	_current_velocity = LAUNCH_SPEED * Vector2.RIGHT.rotated(rotation)
+	_current_velocity = max_speed * 5 * Vector2.RIGHT.rotated(rotation)
 
 	
 func _physics_process(delta: float) -> void:
@@ -47,25 +47,27 @@ func _physics_process(delta: float) -> void:
 
 	var direction := global_position.direction_to(_target.global_position)
 	var desired_velocity := direction * max_speed
-	var _previous_velocity = _current_velocity
+	var previous_velocity = _current_velocity
+	var change = (desired_velocity - _current_velocity) * drag_factor
 	
-	_current_velocity += (desired_velocity - _current_velocity) * drag_factor
+	_current_velocity += change
+	
 	position += _current_velocity * delta
 	look_at(global_position + _current_velocity)
-	#rotation = _current_velocity.angle()	
+	#rotation = _current_velocity.angle()
 
 	# Update the drawing of lines following the missile
 	_aim_line.set_point_position(0, global_position)
 	_aim_line.set_point_position(1, global_position + _current_velocity.normalized() * 150)
 	_target_line.set_point_position(0, global_position)
 	_target_line.set_point_position(1, global_position + direction * 150)
-	_change_line.set_point_position(0, global_position + _previous_velocity.normalized() * 150)	
+	_change_line.set_point_position(0, global_position + previous_velocity.normalized() * 150)	
 	_change_line.set_point_position(1, global_position + _current_velocity.normalized() * 150)
 	
 
 
 func set_drag_factor(new_value: float) -> void:
-	drag_factor = clamp(new_value, 0.01, 1.0)
+	drag_factor = clamp(new_value, 0.01, 0.5)
 
 
 func _on_HitBox_body_entered(_body: Node) -> void:
