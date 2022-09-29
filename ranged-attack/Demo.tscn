@@ -9,7 +9,7 @@
 [ext_resource path="res://interface/fonts/font_title.tres" type="DynamicFont" id=7]
 [ext_resource path="res://interface/UIShowAreas.gd" type="Script" id=8]
 [ext_resource path="res://interface/checkbox_empty.png" type="Texture" id=9]
-[ext_resource path="res://Demo.gd" type="Script" id=10]
+[ext_resource path="res://homing_demo/HomingDemo.gd" type="Script" id=10]
 
 [node name="Demo Scene" type="Node2D"]
 script = ExtResource( 10 )

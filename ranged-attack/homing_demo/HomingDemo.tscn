@@ -1,0 +1,232 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://homing_demo/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=3]
+[ext_resource path="res://space_background.png" type="Texture" id=4]
+[ext_resource path="res://interface/fonts/font_text.tres" type="DynamicFont" id=5]
+[ext_resource path="res://interface/checkbox_checked.png" type="Texture" id=6]
+[ext_resource path="res://interface/fonts/font_title.tres" type="DynamicFont" id=7]
+[ext_resource path="res://interface/UIShowAreas.gd" type="Script" id=8]
+[ext_resource path="res://interface/checkbox_empty.png" type="Texture" id=9]
+[ext_resource path="res://homing_demo/HomingDemo.gd" type="Script" id=10]
+[ext_resource path="res://homing_demo/scripts/EnemyMovementCheckBox.gd" type="Script" id=11]
+[ext_resource path="res://homing_demo/scripts/VelocityLinesCheckBox.gd" type="Script" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Move Enemy"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Enemy:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 840, -0.25, 0, 0.25, 0, 256, -0.25, 0, 0.25, 0, 840, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Enemy:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1432, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Enemy:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 840, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="HomingDemo" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 481, 549 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 959, 546 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1432, 840 )
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="UserInterface"]
+margin_left = 43.0
+margin_top = 41.0
+margin_right = 422.0
+margin_bottom = 342.0
+theme = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/Panel"]
+margin_right = 379.0
+margin_bottom = 442.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Panel/MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 363.0
+margin_bottom = 426.0
+custom_constants/separation = 10
+
+[node name="ControlsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_right = 347.0
+margin_bottom = 36.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 7 )
+text = "Homing Missile Demo"
+
+[node name="HSeparator" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 347.0
+margin_bottom = 50.0
+
+[node name="Controls2" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 347.0
+margin_bottom = 96.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "• Left-click: Homing Missile"
+
+[node name="Control" type="Control" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 106.0
+margin_right = 347.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="OptionsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 136.0
+margin_right = 347.0
+margin_bottom = 172.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 7 )
+text = "Options"
+
+[node name="HSeparator2" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 182.0
+margin_right = 347.0
+margin_bottom = 186.0
+
+[node name="UICollisionShapeCheckBox" type="CheckBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 196.0
+margin_right = 347.0
+margin_bottom = 230.0
+focus_mode = 0
+custom_constants/hseparation = 8
+custom_icons/checked = ExtResource( 6 )
+custom_icons/unchecked = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "Show collision shapes"
+flat = true
+script = ExtResource( 8 )
+
+[node name="VelocityLinesCheckBox" type="CheckBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 347.0
+margin_bottom = 274.0
+focus_mode = 0
+custom_constants/hseparation = 8
+custom_icons/checked = ExtResource( 6 )
+custom_icons/unchecked = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "Show velocity lines"
+flat = true
+script = ExtResource( 12 )
+
+[node name="EnemyMovementCheckBox" type="CheckBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 284.0
+margin_right = 347.0
+margin_bottom = 318.0
+focus_mode = 0
+custom_constants/hseparation = 8
+custom_icons/checked = ExtResource( 6 )
+custom_icons/unchecked = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "Enemy movement"
+flat = true
+script = ExtResource( 11 )
+
+[node name="TravelSpeed" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 328.0
+margin_right = 347.0
+margin_bottom = 364.0
+
+[node name="TravelSpeedSlider" type="HSlider" parent="UserInterface/Panel/MarginContainer/VBoxContainer/TravelSpeed"]
+unique_name_in_owner = true
+margin_right = 183.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1000.0
+value = 400.0
+
+[node name="TravelSpeedLabel" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/TravelSpeed"]
+margin_left = 187.0
+margin_right = 347.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 160, 0 )
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "Travel Speed"
+
+[node name="DragFactor" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+margin_top = 374.0
+margin_right = 347.0
+margin_bottom = 410.0
+
+[node name="DragFactorSlider" type="HSlider" parent="UserInterface/Panel/MarginContainer/VBoxContainer/DragFactor"]
+unique_name_in_owner = true
+margin_right = 183.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 0.5
+step = 0.01
+value = 0.15
+
+[node name="DragFactorLabel" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/DragFactor"]
+margin_left = 187.0
+margin_right = 347.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 160, 0 )
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "Drag Factor"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Move Enemy"
+playback_speed = 0.2
+"anims/Move Enemy" = SubResource( 1 )
+anims/RESET = SubResource( 2 )
