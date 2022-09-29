@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ammo_and_reloading_demo/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://weapons/wand_fire.png" type="Texture" id=2]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=3]
+[ext_resource path="res://interface/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ammo_and_reloading_demo/weapons/Bullet.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Player" type="Node2D"]
+position = Vector2( 275, 525 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 39, 0 )
+
+[node name="ShootPosition" type="Position2D" parent="."]
+position = Vector2( 61, 0 )
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+margin_left = 23.0
+margin_top = 843.0
+margin_right = 542.0
+margin_bottom = 927.0
+custom_constants/separation = 14
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+margin_right = 75.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="AmmoReservesLabel" type="Label" parent="CanvasLayer/HBoxContainer/TextureRect"]
+unique_name_in_owner = true
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 36 )
+custom_fonts/font = SubResource( 1 )
+text = "99"
+align = 2
+valign = 1
+
+[node name="AmmoDisplay" type="GridContainer" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 89.0
+margin_right = 529.0
+margin_bottom = 84.0
+grow_vertical = 0
+rect_min_size = Vector2( 440, 84 )
+columns = 10
+
+[node name="ReloadProgressDisplay" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -89.0
+margin_right = -128.0
+margin_bottom = -89.0
+theme = ExtResource( 3 )
+
+[node name="ReloadingProgressBar" type="ProgressBar" parent="CanvasLayer/ReloadProgressDisplay"]
+unique_name_in_owner = true
+margin_right = 300.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 300, 50 )
+theme = ExtResource( 3 )
+max_value = 1.0
+step = 0.001
+percent_visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer/ReloadProgressDisplay"]
+margin_top = 8.0
+margin_right = 300.0
+margin_bottom = 42.0
+text = "Reloading"
+align = 1
