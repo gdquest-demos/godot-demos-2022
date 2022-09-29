@@ -1,0 +1,11 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+render_mode depth_draw_opaque, unshaded, shadows_disabled, cull_disabled;
+
+uniform vec4 color: hint_color = vec4(1.0);
+
+void fragment() {
+	ALBEDO = color.rgb;
+}"

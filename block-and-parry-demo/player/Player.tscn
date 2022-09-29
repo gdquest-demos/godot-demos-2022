@@ -1,0 +1,192 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://addons/gdquest_visualization_tools/2d/DebugCollisionShape2D.gd" type="Script" id=1]
+[ext_resource path="res://player/Player.gd" type="Script" id=2]
+[ext_resource path="res://nodes/HurtBox.gd" type="Script" id=3]
+[ext_resource path="res://character/CharacterSkin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://vfx/flameA_yellow.png" type="Texture" id=6]
+[ext_resource path="res://vfx/particle_bullet.png" type="Texture" id=7]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 32.0
+height = 124.0
+
+[sub_resource type="ShaderMaterial" id=23]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 17, 20 )
+
+[sub_resource type="ShaderMaterial" id=24]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 13, 91 )
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0.436123, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0.012, 0.00340903 ), 0.0, 4.76191, 0, 0, Vector2( 0.06, 0.963636 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.17554, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 500.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 0.7
+scale_curve = SubResource( 19 )
+color_ramp = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=22]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 500.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.3
+scale_random = 0.7
+scale_curve = SubResource( 19 )
+color_ramp = SubResource( 14 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "take_block_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -10, 0 ), Vector2( 10, 0 ), Vector2( -5, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "take_damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Skin" parent="." instance=ExtResource( 4 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -96 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2( 0, -89 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+self_modulate = Color( 0.560784, 0.870588, 0.364706, 1 )
+material = SubResource( 23 )
+z_index = 3
+shape = SubResource( 4 )
+script = ExtResource( 1 )
+palette = 3
+
+[node name="BlockBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBox"]
+self_modulate = Color( 0.301961, 0.65098, 1, 1 )
+material = SubResource( 24 )
+position = Vector2( 51, -90 )
+z_index = 2
+shape = SubResource( 8 )
+script = ExtResource( 1 )
+palette = 0
+
+[node name="BlockParticle" type="Particles2D" parent="."]
+position = Vector2( 45, -98 )
+z_index = 3
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 15 )
+texture = ExtResource( 7 )
+
+[node name="HitParticle" type="Particles2D" parent="."]
+position = Vector2( 45, -98 )
+z_index = 3
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 22 )
+texture = ExtResource( 6 )
+
+[node name="ParryTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/take_block_damage = SubResource( 5 )
+anims/take_damage = SubResource( 7 )
