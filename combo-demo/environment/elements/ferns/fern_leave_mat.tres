@@ -15,7 +15,7 @@ void vertex(){
 }
 
 void fragment(){
-	vec3 noise_and_color = texture(TEXTURE, UV).xya;
+	vec3 noise_and_color = texture(TEXTURE, UV).rga;
 	
 	vec3 mult = mix(mult_color.rgb, vec3(1.0), noise_and_color.x);
 	
