@@ -42,10 +42,11 @@ func _ready():
 
 	
 func _physics_process(delta: float) -> void:
-	if not _target:
-		return
+	var direction := Vector2.RIGHT.rotated(rotation).normalized()
+	
+	if _target:
+		direction = global_position.direction_to(_target.global_position)
 
-	var direction := global_position.direction_to(_target.global_position)
 	var desired_velocity := direction * max_speed
 	var previous_velocity = _current_velocity
 	var change = (desired_velocity - _current_velocity) * drag_factor
@@ -54,7 +55,6 @@ func _physics_process(delta: float) -> void:
 	
 	position += _current_velocity * delta
 	look_at(global_position + _current_velocity)
-	#rotation = _current_velocity.angle()
 
 	# Update the drawing of lines following the missile
 	_aim_line.set_point_position(0, global_position)
@@ -64,8 +64,7 @@ func _physics_process(delta: float) -> void:
 	_change_line.set_point_position(0, global_position + previous_velocity.normalized() * 150)	
 	_change_line.set_point_position(1, global_position + _current_velocity.normalized() * 150)
 	
-
-
+	
 func set_drag_factor(new_value: float) -> void:
 	drag_factor = clamp(new_value, 0.01, 0.5)
 
@@ -75,6 +74,10 @@ func _on_HitBox_body_entered(_body: Node) -> void:
 
 
 func _on_EnemyDetector_body_entered(enemy: Enemy):
+	if _target != null:
+		return
+		
 	if enemy == null:
 		return
+		
 	_target = enemy
