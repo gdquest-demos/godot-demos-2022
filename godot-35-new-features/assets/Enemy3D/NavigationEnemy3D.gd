@@ -6,7 +6,6 @@ extends KinematicBody
 
 const FRAMES_BETWEEN_UPDATES := 10
 
-export var navigation_path: NodePath
 export var player_path: NodePath
 
 export var move_speed := 2.0
@@ -22,13 +21,11 @@ var _frame_counter = 0
 
 onready var _model: Spatial = $Model
 onready var _navigation_agent: NavigationAgent = $NavigationAgent
-onready var _navigation: Navigation = get_node(navigation_path) as Navigation
 onready var _player: Player3D = get_node(player_path) as Player3D
 
 
 func _ready() -> void:
 	_navigation_agent.connect("velocity_computed", self, "_on_velocity_computed")
-	_navigation_agent.set_navigation(_navigation)
 
 
 func _physics_process(delta: float) -> void:
@@ -38,20 +35,18 @@ func _physics_process(delta: float) -> void:
 		
 	_frame_counter = wrapi(_frame_counter + 1, 0, FRAMES_BETWEEN_UPDATES)
 
-
-	var position_on_navigation_mesh = _navigation.get_closest_point(global_transform.origin)
 	var next_location = _navigation_agent.get_next_location()
-	
-	var direction: Vector3 = next_location - position_on_navigation_mesh
+	var direction: Vector3 = next_location - global_translation
 
 	direction.y = 0.0
 	direction = direction.normalized()
 
-	_orient_character_to_direction(direction, delta)
+	if direction != Vector3.ZERO:
+		_orient_character_to_direction(direction, delta)
 
 	var final_destination := _navigation_agent.get_final_location()
 #
-	if position_on_navigation_mesh.distance_squared_to(final_destination) > stopping_distance:
+	if global_translation.distance_squared_to(final_destination) > stopping_distance:
 		_velocity = _velocity.linear_interpolate(direction * move_speed, acceleration * delta)
 		_navigation_agent.set_velocity(_velocity)
 
