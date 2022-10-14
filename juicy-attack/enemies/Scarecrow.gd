@@ -16,6 +16,7 @@ func take_damage(amount: int) -> void:
 	var label := preload("damage_label/DamageLabel.tscn").instance()
 	label.global_position = damage_spawning_point.global_position
 	label.set_damage(amount)
+	EventBus.emit_signal("enemy_hit")
 	add_child(label)
 
 

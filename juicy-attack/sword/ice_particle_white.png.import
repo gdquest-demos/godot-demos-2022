@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sword_ice.png-edf54d9f2ca3ab361b8a2bc7eabf865d.stex"
+path="res://.import/ice_particle_white.png-2d7ad96d84bfbcac479ab26380b11d15.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/sword_ice.png"
-dest_files=[ "res://.import/sword_ice.png-edf54d9f2ca3ab361b8a2bc7eabf865d.stex" ]
+source_file="res://sword/ice_particle_white.png"
+dest_files=[ "res://.import/ice_particle_white.png-2d7ad96d84bfbcac479ab26380b11d15.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/trail.png-f5797ad02c2a1d79a04a70f90f975360.stex"
+path="res://.import/sword_ice_2.png-1d0c1bf974cdf73e9dd844c6d0caae6e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vfx/trail.png"
-dest_files=[ "res://.import/trail.png-f5797ad02c2a1d79a04a70f90f975360.stex" ]
+source_file="res://sword/sword_ice_2.png"
+dest_files=[ "res://.import/sword_ice_2.png-1d0c1bf974cdf73e9dd844c6d0caae6e.stex" ]
 
 [params]
 
