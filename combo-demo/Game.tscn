@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hills_night_blue.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29, 556.5 )
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 959, 463 )
+texture = ExtResource( 2 )
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="WallLeft" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/WallLeft"]
+position = Vector2( -30, 546.5 )
+shape = SubResource( 1 )
+
+[node name="WallRight" type="StaticBody2D" parent="Boundaries"]
+position = Vector2( 1979, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/WallRight"]
+position = Vector2( -30, 546.5 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 937, 1045 )

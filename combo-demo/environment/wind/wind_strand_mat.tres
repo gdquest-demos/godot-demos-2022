@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float multiplier = 1.0;
+uniform float offset = 0.0;
+
+void fragment(){
+	float cap_offset = ((offset * 2.0) - 0.5) * multiplier;
+	float dist = distance(vec2(cap_offset , 0.5), vec2(UV.x * multiplier, UV.y));
+	float wind_mark =  smoothstep(0.5, 0.15, dist) * 0.8;
+	float mask = 1.0 - smoothstep(0.25, 0.5, distance(vec2(0.5,0.5), UV));
+	COLOR.a = wind_mark * mask;
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/multiplier = 1.0
+shader_param/offset = 0.641

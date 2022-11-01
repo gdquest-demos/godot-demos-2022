@@ -1,0 +1,1303 @@
+[gd_scene load_steps=88 format=2]
+
+[ext_resource path="res://environment/elements/grass/grass_group.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/elements/ferns/fern.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=4]
+[ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=5]
+[ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=6]
+[ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=7]
+[ext_resource path="res://addons/rmsmartshape/shapes/shape_closed.gd" type="Script" id=8]
+[ext_resource path="res://environment/elements/grounds/ground_center.png" type="Texture" id=9]
+[ext_resource path="res://addons/rmsmartshape/materials/edge_material.gd" type="Script" id=10]
+[ext_resource path="res://addons/rmsmartshape/normal_range.gd" type="Script" id=11]
+[ext_resource path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" type="Script" id=12]
+[ext_resource path="res://environment/elements/grounds/ground_top.png" type="Texture" id=13]
+[ext_resource path="res://environment/elements/mountains/back_mountain.png" type="Texture" id=14]
+[ext_resource path="res://environment/elements/bamboos/bamboo.tscn" type="PackedScene" id=15]
+[ext_resource path="res://environment/scatter/scatter_node.gd" type="Script" id=16]
+[ext_resource path="res://environment/wind/wind_holder.tscn" type="PackedScene" id=17]
+[ext_resource path="res://environment/elements/particles/bamboo_leave.png" type="Texture" id=18]
+
+[sub_resource type="Environment" id=335]
+background_mode = 4
+background_canvas_max_layer = 20
+tonemap_mode = 2
+tonemap_exposure = 0.85
+tonemap_white = 1.2
+dof_blur_near_amount = 0.34
+adjustment_contrast = 1.1
+
+[sub_resource type="Resource" id=680]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=681]
+script = ExtResource( 5 )
+position = Vector2( 1280, 448 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 680 )
+
+[sub_resource type="Resource" id=682]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=683]
+script = ExtResource( 5 )
+position = Vector2( -1280, 448 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 682 )
+
+[sub_resource type="Resource" id=684]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=685]
+script = ExtResource( 5 )
+position = Vector2( -1280, 448 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 684 )
+
+[sub_resource type="Resource" id=686]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=687]
+script = ExtResource( 5 )
+position = Vector2( 1280, 320 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 686 )
+
+[sub_resource type="Resource" id=688]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=689]
+script = ExtResource( 5 )
+position = Vector2( -1280, 320 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 688 )
+
+[sub_resource type="Resource" id=690]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=691]
+script = ExtResource( 5 )
+position = Vector2( -960, 384 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 690 )
+
+[sub_resource type="Resource" id=692]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=693]
+script = ExtResource( 5 )
+position = Vector2( -512, 320 )
+point_in = Vector2( -192, 0 )
+point_out = Vector2( 256, 0 )
+properties = SubResource( 692 )
+
+[sub_resource type="Resource" id=694]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=695]
+script = ExtResource( 5 )
+position = Vector2( 512, 384 )
+point_in = Vector2( -128, 0 )
+point_out = Vector2( 192, 0 )
+properties = SubResource( 694 )
+
+[sub_resource type="Resource" id=696]
+script = ExtResource( 6 )
+_points = {
+4: SubResource( 681 ),
+20: SubResource( 683 ),
+21: SubResource( 685 ),
+22: SubResource( 687 ),
+23: SubResource( 689 ),
+24: SubResource( 691 ),
+25: SubResource( 693 ),
+27: SubResource( 695 )
+}
+_point_order = [ 20, 23, 24, 25, 27, 22, 4, 21 ]
+_constraints = {
+[ 20, 21 ]: 15
+}
+_next_key = 28
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 10 )
+textures = [ ExtResource( 13 ) ]
+texture_normals = [  ]
+textures_corner_outer = [  ]
+textures_corner_inner = [  ]
+texture_normals_corner_outer = [  ]
+texture_normals_corner_inner = [  ]
+textures_taper_left = [  ]
+textures_taper_right = [  ]
+texture_normals_taper_left = [  ]
+texture_normals_taper_right = [  ]
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 11 )
+begin = 0.0
+distance = 0.0
+edgeRendering = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=46]
+script = ExtResource( 12 )
+edge_material = SubResource( 44 )
+normal_range = SubResource( 45 )
+weld = true
+render = true
+z_index = 0
+z_as_relative = true
+offset = 0.0
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 4 )
+_edge_meta_materials = [ SubResource( 46 ) ]
+fill_textures = [ ExtResource( 9 ) ]
+fill_texture_normals = [  ]
+fill_texture_z_index = -1
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[sub_resource type="Curve2D" id=233]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1261, 338, 0, 0, 0, 0, -1249, 431, 0, 0, 0, 0, 1254, 430, 0, 0, 0, 0, 1248, 348, 0, 0, 0, 0, 609, 378, 0, 0, 0, 0, -79, 369, 0, 0, 0, 0, -443, 350, 0, 0, 0, 0, -884, 391, 0, 0, 0, 0, -1024, 384 )
+}
+
+[sub_resource type="Resource" id=697]
+script = ExtResource( 7 )
+texture_idx = -1
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=698]
+script = ExtResource( 5 )
+position = Vector2( -2255.31, -11.2715 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 697 )
+
+[sub_resource type="Resource" id=699]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=700]
+script = ExtResource( 5 )
+position = Vector2( -1280, 640 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 699 )
+
+[sub_resource type="Resource" id=701]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=702]
+script = ExtResource( 5 )
+position = Vector2( -1280, 384 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 701 )
+
+[sub_resource type="Resource" id=703]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=704]
+script = ExtResource( 5 )
+position = Vector2( -1280, 640 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 703 )
+
+[sub_resource type="Resource" id=705]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=706]
+script = ExtResource( 5 )
+position = Vector2( 1280, 384 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 705 )
+
+[sub_resource type="Resource" id=707]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=708]
+script = ExtResource( 5 )
+position = Vector2( 1280, 640 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 707 )
+
+[sub_resource type="Resource" id=709]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=710]
+script = ExtResource( 5 )
+position = Vector2( -960, 320 )
+point_in = Vector2( -64, 0 )
+point_out = Vector2( 64, 0 )
+properties = SubResource( 709 )
+
+[sub_resource type="Resource" id=711]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=712]
+script = ExtResource( 5 )
+position = Vector2( -640, 384 )
+point_in = Vector2( -128, 0 )
+point_out = Vector2( 128, 0 )
+properties = SubResource( 711 )
+
+[sub_resource type="Resource" id=713]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=714]
+script = ExtResource( 5 )
+position = Vector2( 1007.91, 646.545 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 713 )
+
+[sub_resource type="Resource" id=715]
+script = ExtResource( 6 )
+_points = {
+25: SubResource( 698 ),
+27: SubResource( 700 ),
+28: SubResource( 702 ),
+30: SubResource( 704 ),
+31: SubResource( 706 ),
+32: SubResource( 708 ),
+34: SubResource( 710 ),
+35: SubResource( 712 ),
+36: SubResource( 714 )
+}
+_point_order = [ 27, 28, 34, 35, 31, 32, 36, 30 ]
+_constraints = {
+[ 27, 30 ]: 15
+}
+_next_key = 37
+
+[sub_resource type="Curve2D" id=418]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 78, 505, 0, 0, 0, 0, 1195, 504, 0, 0, 0, 0, 1186, 404, 0, 0, 0, 0, 100, 401 )
+}
+
+[sub_resource type="Curve2D" id=623]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1247, 410, 0, 0, 0, 0, -1242, 527, 0, 0, 0, 0, -335, 506, 0, 0, 0, 0, -412, 414, 0, 0, 0, 0, -746, 417, 0, 0, 0, 0, -945, 385 )
+}
+
+[sub_resource type="Shader" id=677]
+code = "shader_type particles;
+
+uniform vec4 leaf_color : hint_color = vec4(0.0);
+uniform vec2 emit_pos = vec2(0, 0);
+uniform float spawn_width = 100.0;
+uniform int seed = 0;
+
+float rand(float n){return fract(sin(n) * 43758.5453123);}
+
+float noise(float p){
+	float fl = floor(p);
+  float fc = fract(p);
+	return mix(rand(fl), rand(fl + 1.0), fc);
+}
+
+
+void vertex(){
+	  if (RESTART) {
+		CUSTOM.y = TIME;
+		CUSTOM.x = rand(float(INDEX + seed));
+		TRANSFORM[3].x = ((rand(TIME + float(seed)) - 0.5) * 2.0) * spawn_width;
+		TRANSFORM[3].xy += emit_pos;
+		VELOCITY.y = 200.0 * max(CUSTOM.x, 0.5);
+		
+	  } else {
+		VELOCITY.x = sin(TIME + float(INDEX + seed)) * 100.0;
+		VELOCITY.x += 60.0;
+	  }
+		
+	float rot = (VELOCITY.x * 0.01) + (1.57);
+	float scale = CUSTOM.x * 0.5;
+	TRANSFORM[0].x = cos(rot) * scale;
+	TRANSFORM[0].y = sin(rot) * scale;
+	TRANSFORM[1].x = -sin(rot) * scale;
+	TRANSFORM[1].y = cos(rot) * scale;
+	
+	
+	
+	float alpha_percent = (TIME - CUSTOM.y)/LIFETIME;
+	//COLOR.a = sin(alpha_percent * 3.14);
+	COLOR.rgb = leaf_color.rgb;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=285]
+resource_local_to_scene = true
+shader = SubResource( 677 )
+shader_param/leaf_color = Color( 1, 1, 1, 1 )
+shader_param/emit_pos = Vector2( 0, 0 )
+shader_param/spawn_width = 1200.0
+shader_param/seed = 0
+
+[sub_resource type="Shader" id=81]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR.rgb = vec3(0.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=82]
+shader = SubResource( 81 )
+
+[sub_resource type="Resource" id=716]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=717]
+script = ExtResource( 5 )
+position = Vector2( -1280, 640 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 716 )
+
+[sub_resource type="Resource" id=718]
+script = ExtResource( 7 )
+texture_idx = 2
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=719]
+script = ExtResource( 5 )
+position = Vector2( -1280, 384 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 718 )
+
+[sub_resource type="Resource" id=720]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=721]
+script = ExtResource( 5 )
+position = Vector2( -1280, 640 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 720 )
+
+[sub_resource type="Resource" id=722]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=723]
+script = ExtResource( 5 )
+position = Vector2( 1280, 448 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 722 )
+
+[sub_resource type="Resource" id=724]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=725]
+script = ExtResource( 5 )
+position = Vector2( 1280, 640 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 724 )
+
+[sub_resource type="Resource" id=726]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=727]
+script = ExtResource( 5 )
+position = Vector2( -576, 384 )
+point_in = Vector2( -128, 0 )
+point_out = Vector2( 192, 0 )
+properties = SubResource( 726 )
+
+[sub_resource type="Resource" id=728]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=729]
+script = ExtResource( 5 )
+position = Vector2( -128, 448 )
+point_in = Vector2( -192, 0 )
+point_out = Vector2( 192, 0 )
+properties = SubResource( 728 )
+
+[sub_resource type="Resource" id=730]
+script = ExtResource( 7 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=731]
+script = ExtResource( 5 )
+position = Vector2( 576, 384 )
+point_in = Vector2( -256, 0 )
+point_out = Vector2( 256, 0 )
+properties = SubResource( 730 )
+
+[sub_resource type="Resource" id=732]
+script = ExtResource( 6 )
+_points = {
+0: SubResource( 717 ),
+2: SubResource( 719 ),
+3: SubResource( 721 ),
+4: SubResource( 723 ),
+20: SubResource( 725 ),
+21: SubResource( 727 ),
+22: SubResource( 729 ),
+23: SubResource( 731 )
+}
+_point_order = [ 0, 2, 21, 22, 23, 4, 20, 3 ]
+_constraints = {
+[ 0, 3 ]: 15
+}
+_next_key = 26
+
+[sub_resource type="Curve2D" id=385]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1265, 440, 0, 0, 0, 0, -1253, 551, 0, 0, 0, 0, -222, 610, 0, 0, 0, 0, 103, 608, 0, 0, 0, 0, 1263, 539, 0, 0, 0, 0, 1261, 439, 0, 0, 0, 0, 631, 433, 0, 0, 0, 0, 91, 490, 0, 0, 0, 0, -200, 486, 0, 0, 0, 0, -477, 458, 0, 0, 0, 0, -1264, 394 )
+}
+
+[sub_resource type="Curve" id=477]
+_data = [ Vector2( 0, 0 ), 0.0, 0.345233, 0, 0, Vector2( 0.251445, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.727273 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve2D" id=622]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1255, 457, 0, 0, 0, 0, -1263, 623, 0, 0, 0, 0, -422, 673, 0, 0, 0, 0, 386, 677, 0, 0, 0, 0, 1214, 593, 0, 0, 0, 0, 1249, 463, 0, 0, 0, 0, 383, 634, 0, 0, 0, 0, -417, 611, 0, 0, 0, 0, -1255, 457 )
+}
+
+[sub_resource type="Shader" id=678]
+code = "shader_type particles;
+
+uniform vec4 leaf_color : hint_color = vec4(0.0);
+uniform vec2 emit_pos = vec2(0, 0);
+uniform float spawn_width = 100.0;
+uniform int seed = 0;
+
+float rand(float n){return fract(sin(n) * 43758.5453123);}
+
+float noise(float p){
+	float fl = floor(p);
+  float fc = fract(p);
+	return mix(rand(fl), rand(fl + 1.0), fc);
+}
+
+
+void vertex(){
+	  if (RESTART) {
+		CUSTOM.y = TIME;
+		CUSTOM.x = rand(float(INDEX + seed));
+		TRANSFORM[3].x = ((rand(TIME + float(seed)) - 0.5) * 2.0) * spawn_width;
+		TRANSFORM[3].xy += emit_pos;
+		VELOCITY.y = 200.0 * max(CUSTOM.x, 0.5);
+		
+	  } else {
+		VELOCITY.x = sin(TIME + float(INDEX + seed)) * 100.0;
+		VELOCITY.x += 60.0;
+	  }
+		
+	float rot = (VELOCITY.x * 0.01) + (1.57);
+	float scale = CUSTOM.x * 0.5;
+	TRANSFORM[0].x = cos(rot) * scale;
+	TRANSFORM[0].y = sin(rot) * scale;
+	TRANSFORM[1].x = -sin(rot) * scale;
+	TRANSFORM[1].y = cos(rot) * scale;
+	
+	
+	
+	float alpha_percent = (TIME - CUSTOM.y)/LIFETIME;
+	//COLOR.a = sin(alpha_percent * 3.14);
+	COLOR.rgb = leaf_color.rgb;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=679]
+resource_local_to_scene = true
+shader = SubResource( 678 )
+shader_param/leaf_color = Color( 1, 1, 1, 1 )
+shader_param/emit_pos = Vector2( 0, 0 )
+shader_param/spawn_width = 1200.0
+shader_param/seed = 2
+
+[node name="EnvironmentMain" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 335 )
+
+[node name="Sky" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="SkyColor" type="ColorRect" parent="Sky"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.686275, 0.890196, 0.960784, 1 )
+
+[node name="BackBack" type="ParallaxBackground" parent="."]
+layer = -20
+
+[node name="BackMountains" type="ParallaxLayer" parent="BackBack"]
+motion_scale = Vector2( 0.2, 0.2 )
+
+[node name="Mountains" type="TextureRect" parent="BackBack/BackMountains"]
+modulate = Color( 0.368627, 0.635294, 0.858824, 1 )
+margin_left = -3000.0
+margin_top = -512.0
+margin_right = 3000.0
+margin_bottom = 512.0
+rect_scale = Vector2( 0.834245, 0.834245 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 2
+
+[node name="Mountains" type="ParallaxLayer" parent="BackBack"]
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="Mountains" type="TextureRect" parent="BackBack/Mountains"]
+modulate = Color( 0.101961, 0.121569, 0.219608, 1 )
+margin_left = -3234.0
+margin_top = -295.0
+margin_right = 2766.0
+margin_bottom = 729.0
+rect_scale = Vector2( 0.834245, 0.834245 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 2
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackBack"]
+motion_scale = Vector2( 0.6, 0.6 )
+
+[node name="YSort" type="YSort" parent="BackBack/ParallaxLayer"]
+
+[node name="Bamboos" type="YSort" parent="BackBack/ParallaxLayer/YSort"]
+
+[node name="Bamboo" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 362, 356 )
+rotation = 0.0620472
+scale = Vector2( 0.518, 0.518 )
+height = 1740.0
+base_scale = 0.518
+
+[node name="Bamboo2" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -349, 376 )
+rotation = -0.00963831
+scale = Vector2( 0.5, 0.5 )
+height = 1800.0
+base_scale = 0.5
+branch_count = 4
+
+[node name="Bamboo3" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -659, 411 )
+rotation = 0.102303
+height = 1610.0
+
+[node name="Bamboo4" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -286, 378 )
+rotation = 0.102303
+scale = Vector2( 0.5, 0.5 )
+height = 1660.0
+base_scale = 0.5
+branch_count = 4
+
+[node name="Bamboo16" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -584, 376 )
+rotation = -0.0649037
+height = 1530.0
+
+[node name="Bamboo17" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -942, 411 )
+rotation = 0.0816389
+scale = Vector2( 0.5, 0.5 )
+height = 1660.0
+base_scale = 0.5
+
+[node name="Bamboo18" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -569, 378 )
+rotation = 0.0816389
+height = 1530.0
+
+[node name="Bamboo20" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -798, 376 )
+rotation = -0.0649037
+height = 1610.0
+
+[node name="Bamboo21" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -891, 411 )
+rotation = -0.0473885
+scale = Vector2( 0.5, 0.5 )
+height = 1660.0
+base_scale = 0.5
+
+[node name="Bamboo22" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -783, 378 )
+rotation = 0.0816389
+height = 1610.0
+
+[node name="Bamboo23" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -664, 363 )
+rotation = 0.0556764
+height = 1610.0
+
+[node name="Bamboo6" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 548, 356 )
+rotation = 0.0620472
+scale = Vector2( 0.5, 0.5 )
+height = 1660.0
+base_scale = 0.5
+
+[node name="Bamboo7" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 276, 387 )
+rotation = -0.0442396
+scale = Vector2( 0.518, 0.518 )
+height = 1740.0
+base_scale = 0.518
+
+[node name="Bamboo9" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 289, 378 )
+rotation = 0.102303
+scale = Vector2( 0.518, 0.518 )
+height = 1740.0
+base_scale = 0.518
+
+[node name="Bamboo10" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 408, 363 )
+rotation = 0.0763405
+scale = Vector2( 0.518, 0.518 )
+height = 1740.0
+base_scale = 0.518
+
+[node name="Bamboo11" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 169, 364 )
+rotation = -0.00518531
+scale = Vector2( 0.5, 0.5 )
+height = 1660.0
+base_scale = 0.5
+
+[node name="Bamboo14" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 301, 358 )
+rotation = -0.00185654
+scale = Vector2( 0.518, 0.518 )
+height = 1740.0
+base_scale = 0.518
+
+[node name="Bamboo15" parent="BackBack/ParallaxLayer/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 503, 333 )
+rotation = -0.00565681
+scale = Vector2( 0.518, 0.518 )
+height = 1740.0
+base_scale = 0.518
+
+[node name="Plants" type="YSort" parent="BackBack/ParallaxLayer/YSort"]
+
+[node name="Fern" parent="BackBack/ParallaxLayer/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -724, 450 )
+rotation = -0.164533
+scale = Vector2( 0.535753, 0.535753 )
+
+[node name="Fern2" parent="BackBack/ParallaxLayer/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 304, 413 )
+scale = Vector2( 0.486844, 0.486844 )
+
+[node name="Fern3" parent="BackBack/ParallaxLayer/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 370, 450 )
+scale = Vector2( 0.633072, 0.633072 )
+
+[node name="Fern4" parent="BackBack/ParallaxLayer/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 514, 388 )
+scale = Vector2( 0.633072, 0.633072 )
+
+[node name="Fern5" parent="BackBack/ParallaxLayer/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 619, 422 )
+scale = Vector2( 0.60399, 0.60399 )
+
+[node name="BackFog" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="FogTint" type="ColorRect" parent="BackFog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.568627, 0.94902, 0.984314, 0.313726 )
+
+[node name="Background" type="ParallaxBackground" parent="."]
+layer = -5
+
+[node name="Background" type="ParallaxLayer" parent="Background"]
+modulate = Color( 0.564706, 0.721569, 0.803922, 1 )
+motion_scale = Vector2( 0.8, 0.8 )
+
+[node name="Ground3" type="Node2D" parent="Background/Background"]
+script = ExtResource( 8 )
+_points = SubResource( 696 )
+material_overrides = {
+}
+shape_material = SubResource( 22 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="YSort" type="YSort" parent="Background/Background"]
+
+[node name="ScatterGrass" type="Path2D" parent="Background/Background/YSort"]
+z_as_relative = false
+curve = SubResource( 233 )
+script = ExtResource( 16 )
+scatter_target = NodePath("../ScatterTarget")
+objects_count = 60
+object_base_scale = 0.4
+object_to_scatter = ExtResource( 2 )
+
+[node name="ScatterTarget" type="YSort" parent="Background/Background/YSort"]
+
+[node name="Bamboos" type="YSort" parent="Background/Background/YSort"]
+
+[node name="Bamboo5" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 703, 347 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo6" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 632, 362 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo7" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 869, 371 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo8" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 798, 386 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo9" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 488, 368 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo10" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 417, 383 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo11" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 654, 392 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo12" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 583, 407 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo13" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 166, 368 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo16" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 261, 407 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo14" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -460, 371 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo15" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -981, 398 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo17" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -1163, 368 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo18" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -1068, 407 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo20" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -285, 407 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo23" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -945, 368 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo25" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -1098, 371 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo26" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -1218, 387 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Bamboo29" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 1059, 387 )
+rotation = 0.0914025
+height = 1620.0
+
+[node name="Bamboo30" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 895, 387 )
+rotation = 0.0914025
+height = 1620.0
+
+[node name="Bamboo27" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -1041, 365 )
+rotation = 0.0201446
+height = 1620.0
+
+[node name="Bamboo28" parent="Background/Background/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -949, 407 )
+rotation = -0.0264612
+height = 1620.0
+
+[node name="Plants" type="YSort" parent="Background/Background/YSort"]
+
+[node name="Fern" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -529, 417 )
+rotation = -0.202433
+scale = Vector2( 0.671446, 0.671446 )
+
+[node name="Fern2" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 126, 417 )
+rotation = -0.120548
+scale = Vector2( 0.469627, 0.469627 )
+
+[node name="Fern3" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 375, 397 )
+rotation = 0.115728
+scale = Vector2( 0.733268, 0.733268 )
+
+[node name="Fern6" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -311, 364 )
+scale = Vector2( 0.458635, 0.458635 )
+
+[node name="Fern7" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -126, 380 )
+rotation = 0.115728
+scale = Vector2( 0.413696, 0.413696 )
+
+[node name="Fern4" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 681, 417 )
+
+[node name="Fern5" parent="Background/Background/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 770, 417 )
+rotation = 0.881401
+scale = Vector2( 0.695056, 0.695056 )
+
+[node name="LightFog" type="CanvasLayer" parent="."]
+layer = -5
+
+[node name="FogTint" type="ColorRect" parent="LightFog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.854902, 0.956863, 1, 0.117647 )
+
+[node name="MainGround" type="Node2D" parent="."]
+
+[node name="WindHolder" parent="MainGround" instance=ExtResource( 17 )]
+position = Vector2( 0, -155 )
+size = Vector2( 2400, 1000 )
+
+[node name="Ground" type="Node2D" parent="MainGround"]
+modulate = Color( 0.843137, 0.776471, 0.776471, 1 )
+script = ExtResource( 8 )
+_points = SubResource( 715 )
+material_overrides = {
+}
+shape_material = SubResource( 22 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="YSort" type="YSort" parent="MainGround"]
+
+[node name="ScatterGrass" type="Path2D" parent="MainGround/YSort"]
+z_as_relative = false
+curve = SubResource( 418 )
+script = ExtResource( 16 )
+scatter_target = NodePath("../ScatterTarget")
+objects_count = 60
+object_base_scale = 0.35
+object_to_scatter = ExtResource( 2 )
+
+[node name="ScatterGrass2" type="Path2D" parent="MainGround/YSort"]
+z_as_relative = false
+curve = SubResource( 623 )
+script = ExtResource( 16 )
+scatter_target = NodePath("../ScatterTarget2")
+objects_count = 40
+object_base_scale = 0.35
+object_to_scatter = ExtResource( 2 )
+
+[node name="ScatterTarget" type="YSort" parent="MainGround/YSort"]
+
+[node name="ScatterTarget2" type="YSort" parent="MainGround/YSort"]
+
+[node name="Bamboos" type="YSort" parent="MainGround/YSort"]
+
+[node name="Bamboo" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -651, 384 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo2" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -514, 384 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo7" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -757, 384 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo8" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -620, 384 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo9" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -897, 396 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo10" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( -760, 396 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo3" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 583, 384 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo4" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 720, 384 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo5" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 491, 384 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo6" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 628, 384 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo11" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 667, 384 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo12" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 804, 384 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo13" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 745, 438 )
+rotation = -0.0406829
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="Bamboo14" parent="MainGround/YSort/Bamboos" instance=ExtResource( 15 )]
+position = Vector2( 882, 438 )
+rotation = 0.0352068
+scale = Vector2( 0.75, 0.75 )
+height = 1580.0
+base_scale = 0.75
+branch_count = 6
+
+[node name="FallingLeaves" type="Particles2D" parent="MainGround"]
+position = Vector2( 0, -700 )
+amount = 12
+lifetime = 16.0
+visibility_rect = Rect2( -200, -200, 400, 400 )
+process_material = SubResource( 285 )
+texture = ExtResource( 18 )
+
+[node name="ForeGround" type="ParallaxBackground" parent="."]
+layer = 10
+
+[node name="ForeGroundParallax" type="ParallaxLayer" parent="ForeGround"]
+modulate = Color( 0.658824, 0.72549, 0.780392, 1 )
+material = SubResource( 82 )
+motion_scale = Vector2( 1.2, 1.2 )
+
+[node name="Ground2" type="Node2D" parent="ForeGround/ForeGroundParallax"]
+script = ExtResource( 8 )
+_points = SubResource( 732 )
+material_overrides = {
+}
+shape_material = SubResource( 22 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="YSort" type="YSort" parent="ForeGround/ForeGroundParallax"]
+
+[node name="Plants" type="YSort" parent="ForeGround/ForeGroundParallax/YSort"]
+
+[node name="Fern" parent="ForeGround/ForeGroundParallax/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( 189, 511 )
+scale = Vector2( 0.492454, 0.492454 )
+
+[node name="Fern2" parent="ForeGround/ForeGroundParallax/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -341, 568 )
+scale = Vector2( 0.610006, 0.610006 )
+
+[node name="Fern3" parent="ForeGround/ForeGroundParallax/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -584, 450 )
+scale = Vector2( 0.520819, 0.520819 )
+
+[node name="Fern4" parent="ForeGround/ForeGroundParallax/YSort/Plants" instance=ExtResource( 3 )]
+position = Vector2( -525, 535 )
+scale = Vector2( 0.691943, 0.691943 )
+
+[node name="Grass" type="YSort" parent="ForeGround/ForeGroundParallax/YSort"]
+
+[node name="ScatterGrass" type="Path2D" parent="ForeGround/ForeGroundParallax/YSort/Grass"]
+z_as_relative = false
+curve = SubResource( 385 )
+script = ExtResource( 16 )
+scatter_target = NodePath("../ScatterTarget")
+objects_count = 100
+object_base_scale = 0.5
+object_to_scatter = ExtResource( 2 )
+
+[node name="ScatterTarget" type="YSort" parent="ForeGround/ForeGroundParallax/YSort/Grass"]
+
+[node name="Bamboo" parent="ForeGround/ForeGroundParallax/YSort" instance=ExtResource( 15 )]
+position = Vector2( -598, 497 )
+rotation = -0.0434648
+scale = Vector2( 0.5, 0.5 )
+branches_scale = SubResource( 477 )
+height = 2600.0
+base_scale = 0.5
+
+[node name="Bamboo2" parent="ForeGround/ForeGroundParallax/YSort" instance=ExtResource( 15 )]
+position = Vector2( -571, 518 )
+rotation = 0.0226983
+scale = Vector2( 0.5, 0.5 )
+branches_scale = SubResource( 477 )
+height = 2600.0
+base_scale = 0.5
+
+[node name="Bamboo5" parent="ForeGround/ForeGroundParallax/YSort" instance=ExtResource( 15 )]
+position = Vector2( 669, 499 )
+rotation = -0.0434648
+scale = Vector2( 0.5, 0.5 )
+branches_scale = SubResource( 477 )
+height = 2370.0
+base_scale = 0.5
+
+[node name="Bamboo6" parent="ForeGround/ForeGroundParallax/YSort" instance=ExtResource( 15 )]
+position = Vector2( 696, 520 )
+rotation = 0.0226983
+scale = Vector2( 0.5, 0.5 )
+branches_scale = SubResource( 477 )
+height = 2600.0
+base_scale = 0.5
+
+[node name="LensForeground" type="ParallaxLayer" parent="ForeGround"]
+modulate = Color( 0.231373, 0.27451, 0.321569, 1 )
+motion_scale = Vector2( 1.4, 1.4 )
+
+[node name="YSort" type="YSort" parent="ForeGround/LensForeground"]
+
+[node name="Bamboo" parent="ForeGround/LensForeground/YSort" instance=ExtResource( 15 )]
+position = Vector2( 744, 515 )
+rotation = 0.0509289
+scale = Vector2( 0.8, 0.8 )
+height = 1590.0
+base_scale = 0.8
+
+[node name="Bamboo3" parent="ForeGround/LensForeground/YSort" instance=ExtResource( 15 )]
+position = Vector2( 878, 593 )
+rotation = 0.0509289
+scale = Vector2( 0.65, 0.65 )
+height = 1590.0
+base_scale = 0.65
+
+[node name="Bamboo4" parent="ForeGround/LensForeground/YSort" instance=ExtResource( 15 )]
+position = Vector2( 656, 637 )
+rotation = 0.00774572
+scale = Vector2( 0.8, 0.8 )
+height = 1590.0
+base_scale = 0.8
+
+[node name="Bamboo5" parent="ForeGround/LensForeground/YSort" instance=ExtResource( 15 )]
+position = Vector2( -868, 559 )
+rotation = -0.0309632
+scale = Vector2( 0.65, 0.65 )
+height = 1590.0
+base_scale = 0.65
+
+[node name="Bamboo2" parent="ForeGround/LensForeground/YSort" instance=ExtResource( 15 )]
+position = Vector2( -777.999, 512.478 )
+rotation = -0.0738422
+scale = Vector2( 0.8, 0.8 )
+height = 1590.0
+base_scale = 0.8
+
+[node name="Grass2" type="YSort" parent="ForeGround/LensForeground"]
+
+[node name="ScatterGrass" type="Path2D" parent="ForeGround/LensForeground/Grass2"]
+z_as_relative = false
+curve = SubResource( 622 )
+script = ExtResource( 16 )
+scatter_target = NodePath("../ScatterTarget")
+objects_count = 40
+object_base_scale = 0.6
+object_to_scatter = ExtResource( 2 )
+
+[node name="ScatterTarget" type="YSort" parent="ForeGround/LensForeground/Grass2"]
+
+[node name="Fern" parent="ForeGround/LensForeground/Grass2" instance=ExtResource( 3 )]
+position = Vector2( -991, 605 )
+
+[node name="Fern2" parent="ForeGround/LensForeground/Grass2" instance=ExtResource( 3 )]
+position = Vector2( 1095, 561 )
+
+[node name="FallingLeaves2" type="Particles2D" parent="ForeGround/LensForeground"]
+position = Vector2( 0, -700 )
+amount = 6
+lifetime = 16.0
+visibility_rect = Rect2( -200, -200, 400, 400 )
+process_material = SubResource( 679 )
+texture = ExtResource( 18 )

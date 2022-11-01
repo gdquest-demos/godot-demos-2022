@@ -1,0 +1,386 @@
+[gd_scene load_steps=132 format=2]
+
+[ext_resource path="res://samurai_fox/sprite/kick/0000.png" type="Texture" id=1]
+[ext_resource path="res://samurai_fox/sprite/kick/0011.png" type="Texture" id=2]
+[ext_resource path="res://samurai_fox/sprite/kick/0004.png" type="Texture" id=3]
+[ext_resource path="res://samurai_fox/sprite/kick/0012.png" type="Texture" id=4]
+[ext_resource path="res://samurai_fox/sprite/kick/0010.png" type="Texture" id=5]
+[ext_resource path="res://samurai_fox/sprite/kick/0005.png" type="Texture" id=6]
+[ext_resource path="res://samurai_fox/sprite/kick/0009.png" type="Texture" id=7]
+[ext_resource path="res://samurai_fox/sprite/kick/0006.png" type="Texture" id=8]
+[ext_resource path="res://samurai_fox/sprite/kick/0001.png" type="Texture" id=9]
+[ext_resource path="res://samurai_fox/sprite/kick/0003.png" type="Texture" id=10]
+[ext_resource path="res://samurai_fox/sprite/kick/0008.png" type="Texture" id=11]
+[ext_resource path="res://samurai_fox/sprite/kick/0002.png" type="Texture" id=12]
+[ext_resource path="res://samurai_fox/sprite/kick/0007.png" type="Texture" id=13]
+[ext_resource path="res://samurai_fox/sprite/idle/0000.png" type="Texture" id=14]
+[ext_resource path="res://samurai_fox/sprite/idle/0020.png" type="Texture" id=15]
+[ext_resource path="res://samurai_fox/sprite/idle/0030.png" type="Texture" id=16]
+[ext_resource path="res://samurai_fox/sprite/idle/0034.png" type="Texture" id=17]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0000.png" type="Texture" id=18]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0005.png" type="Texture" id=19]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0007.png" type="Texture" id=20]
+[ext_resource path="res://samurai_fox/sprite/idle/0004.png" type="Texture" id=21]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0010.png" type="Texture" id=22]
+[ext_resource path="res://samurai_fox/sprite/idle/0024.png" type="Texture" id=23]
+[ext_resource path="res://samurai_fox/sprite/idle/0012.png" type="Texture" id=24]
+[ext_resource path="res://samurai_fox/sprite/idle/0036.png" type="Texture" id=25]
+[ext_resource path="res://samurai_fox/sprite/idle/0002.png" type="Texture" id=26]
+[ext_resource path="res://samurai_fox/sprite/idle/0014.png" type="Texture" id=27]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0012.png" type="Texture" id=28]
+[ext_resource path="res://samurai_fox/sprite/idle/0018.png" type="Texture" id=29]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0011.png" type="Texture" id=30]
+[ext_resource path="res://samurai_fox/sprite/idle/0028.png" type="Texture" id=31]
+[ext_resource path="res://samurai_fox/sprite/idle/0008.png" type="Texture" id=32]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0001.png" type="Texture" id=33]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0007.png" type="Texture" id=34]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0010.png" type="Texture" id=35]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0001.png" type="Texture" id=36]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0011.png" type="Texture" id=37]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0002.png" type="Texture" id=38]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0009.png" type="Texture" id=39]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0006.png" type="Texture" id=40]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0000.png" type="Texture" id=41]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0008.png" type="Texture" id=42]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0005.png" type="Texture" id=43]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0004.png" type="Texture" id=44]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0003.png" type="Texture" id=45]
+[ext_resource path="res://samurai_fox/sprite/down_swing/0012.png" type="Texture" id=46]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0010.png" type="Texture" id=47]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0005.png" type="Texture" id=48]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0003.png" type="Texture" id=49]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0009.png" type="Texture" id=50]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0004.png" type="Texture" id=51]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0000.png" type="Texture" id=52]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0006.png" type="Texture" id=53]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0002.png" type="Texture" id=54]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0001.png" type="Texture" id=55]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0007.png" type="Texture" id=56]
+[ext_resource path="res://samurai_fox/sprite/middle_swing/0008.png" type="Texture" id=57]
+[ext_resource path="res://samurai_fox/sprite/run/0004.png" type="Texture" id=58]
+[ext_resource path="res://samurai_fox/sprite/run/0006.png" type="Texture" id=59]
+[ext_resource path="res://samurai_fox/sprite/run/0001.png" type="Texture" id=60]
+[ext_resource path="res://samurai_fox/sprite/run/0009.png" type="Texture" id=61]
+[ext_resource path="res://samurai_fox/sprite/run/0011.png" type="Texture" id=62]
+[ext_resource path="res://samurai_fox/sprite/run/0015.png" type="Texture" id=63]
+[ext_resource path="res://samurai_fox/sprite/run/0010.png" type="Texture" id=64]
+[ext_resource path="res://samurai_fox/sprite/run/0013.png" type="Texture" id=65]
+[ext_resource path="res://samurai_fox/sprite/run/0012.png" type="Texture" id=66]
+[ext_resource path="res://samurai_fox/sprite/run/0008.png" type="Texture" id=67]
+[ext_resource path="res://samurai_fox/sprite/run/0014.png" type="Texture" id=68]
+[ext_resource path="res://samurai_fox/sprite/run/0005.png" type="Texture" id=69]
+[ext_resource path="res://samurai_fox/sprite/run/0000.png" type="Texture" id=70]
+[ext_resource path="res://samurai_fox/sprite/run/0007.png" type="Texture" id=71]
+[ext_resource path="res://samurai_fox/sprite/run/0002.png" type="Texture" id=72]
+[ext_resource path="res://samurai_fox/sprite/run/0003.png" type="Texture" id=73]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0013.png" type="Texture" id=74]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0009.png" type="Texture" id=75]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0006.png" type="Texture" id=76]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0004.png" type="Texture" id=77]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0002.png" type="Texture" id=78]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0014.png" type="Texture" id=79]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0008.png" type="Texture" id=80]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0003.png" type="Texture" id=81]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0017.png" type="Texture" id=82]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0018.png" type="Texture" id=83]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0019.png" type="Texture" id=84]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0020.png" type="Texture" id=85]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0016.png" type="Texture" id=86]
+[ext_resource path="res://samurai_fox/sprite/jump_swing/0015.png" type="Texture" id=87]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0008.png" type="Texture" id=88]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0006.png" type="Texture" id=89]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0013.png" type="Texture" id=90]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0001.png" type="Texture" id=91]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0010.png" type="Texture" id=92]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0005.png" type="Texture" id=93]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0009.png" type="Texture" id=94]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0014.png" type="Texture" id=95]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0003.png" type="Texture" id=96]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0012.png" type="Texture" id=97]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0007.png" type="Texture" id=98]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0004.png" type="Texture" id=99]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0002.png" type="Texture" id=100]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0000.png" type="Texture" id=101]
+[ext_resource path="res://samurai_fox/sprite/lift_swing/0011.png" type="Texture" id=102]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer:root_node")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ NodePath("..") ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "down_swing"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 41 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 40 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 39 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 46 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+length = 1.04
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ), ExtResource( 26 ), ExtResource( 21 ), ExtResource( 32 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 29 ), ExtResource( 15 ), ExtResource( 23 ), ExtResource( 31 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 25 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "jump_swing"
+length = 0.92
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 18 ), ExtResource( 33 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 77 ), ExtResource( 19 ), ExtResource( 76 ), ExtResource( 20 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 22 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 74 ), ExtResource( 79 ), ExtResource( 87 ), ExtResource( 86 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.32, 0.52 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -60 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "kick"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.55, 0.6, 0.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "lift_swing"
+length = 0.6
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 101 ), ExtResource( 91 ), ExtResource( 100 ), ExtResource( 96 ), ExtResource( 99 ), ExtResource( 93 ), ExtResource( 89 ), ExtResource( 98 ), ExtResource( 88 ), ExtResource( 94 ), ExtResource( 92 ), ExtResource( 102 ), ExtResource( 97 ), ExtResource( 90 ), ExtResource( 95 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "middle_swing"
+length = 0.65
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.225, 0.25, 0.275, 0.4, 0.45, 0.5, 0.55, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 52 ), ExtResource( 55 ), ExtResource( 54 ), ExtResource( 49 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 53 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 50 ), ExtResource( 47 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "run"
+length = 0.64
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 70 ), ExtResource( 60 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 58 ), ExtResource( 69 ), ExtResource( 59 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 65 ), ExtResource( 68 ), ExtResource( 63 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "down_swing"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "jump_swing"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "kick"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "lift_swing"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "middle_swing"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=1]
+states/down_swing/node = SubResource( 11 )
+states/down_swing/position = Vector2( 492, -11 )
+states/idle/node = SubResource( 8 )
+states/idle/position = Vector2( 286, 57 )
+states/jump_swing/node = SubResource( 23 )
+states/jump_swing/position = Vector2( 380, -100 )
+states/kick/node = SubResource( 6 )
+states/kick/position = Vector2( 492, 161 )
+states/lift_swing/node = SubResource( 27 )
+states/lift_swing/position = Vector2( 196, -100 )
+states/middle_swing/node = SubResource( 15 )
+states/middle_swing/position = Vector2( 492, 57 )
+states/run/node = SubResource( 19 )
+states/run/position = Vector2( 7, 57 )
+transitions = [ "idle", "kick", SubResource( 9 ), "kick", "idle", SubResource( 10 ), "idle", "down_swing", SubResource( 12 ), "down_swing", "idle", SubResource( 13 ), "idle", "middle_swing", SubResource( 16 ), "middle_swing", "idle", SubResource( 17 ), "idle", "run", SubResource( 20 ), "run", "idle", SubResource( 21 ), "idle", "jump_swing", SubResource( 24 ), "jump_swing", "idle", SubResource( 25 ), "idle", "lift_swing", SubResource( 28 ), "lift_swing", "idle", SubResource( 29 ) ]
+start_node = "idle"
+graph_offset = Vector2( -122, -195 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="Root" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 29 )
+offset = Vector2( -32, -116 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/RESET = SubResource( 5 )
+anims/down_swing = SubResource( 3 )
+anims/idle = SubResource( 7 )
+anims/jump_swing = SubResource( 22 )
+anims/kick = SubResource( 4 )
+anims/lift_swing = SubResource( 26 )
+anims/middle_swing = SubResource( 14 )
+anims/run = SubResource( 18 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite"]
+tree_root = SubResource( 1 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 2 )
