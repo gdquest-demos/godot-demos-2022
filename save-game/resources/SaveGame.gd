@@ -28,7 +28,7 @@ export var global_position := Vector2.ZERO
 
 # The next three functions are just to keep the save API inside of the SaveGame resource.
 # Note that this has safety issues if players download savegame files from the 
-# web. Please see the README and check out the deciated video.
+# web. Please see the README and check out the dedicated video.
 # For a safe alternative, see the function write/load_as_json() below.
 func write_savegame() -> void:
 	ResourceSaver.save(get_save_path(), self)
