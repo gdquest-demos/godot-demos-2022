@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://environment/elements/bamboos/themes/bamboo_theme_builder.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.486328, 0.351329, 0.22427, 1, 0.220703, 0.15192, 0.128992, 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.14557, 0.808017, 0.850211, 1 )
+colors = PoolColorArray( 0.531468, 0.707031, 0.587703, 1, 0.506431, 0.728516, 0.322417, 1, 0.218628, 0.388672, 0.273095, 1, 0.828125, 0.707932, 0.500792, 1, 0.671875, 0.435957, 0.255358, 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.823529, 1 )
+colors = PoolColorArray( 1, 0.986592, 0.785473, 1, 1, 0.893937, 0.711149, 1, 0.951172, 0.905833, 0.681245, 1 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.822785, 1 )
+colors = PoolColorArray( 0.125402, 0.135127, 0.136719, 1, 0.251716, 0.315906, 0.398438, 1, 0.273438, 0.25513, 0.23972, 1 )
+
+[resource]
+script = ExtResource( 1 )
+diffuse = SubResource( 2 )
+light = SubResource( 3 )
+occlusion = SubResource( 4 )
+details = SubResource( 1 )

@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://environment/elements/bamboos/branch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://environment/elements/bamboos/textures/bamboo_body_atlas.png" type="Texture" id=2]
+[ext_resource path="res://environment/elements/bamboos/bamboo.gd" type="Script" id=3]
+[ext_resource path="res://environment/elements/bamboos/themes/green_theme.tres" type="Resource" id=4]
+[ext_resource path="res://environment/elements/bamboos/bamboo_mat.tres" type="Material" id=5]
+[ext_resource path="res://environment/elements/bamboos/textures/bamboo_roots.png" type="Texture" id=6]
+[ext_resource path="res://environment/elements/bamboos/textures/bamboo_tip.png" type="Texture" id=7]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.272727 ), 0.0, 0.345233, 0, 0, Vector2( 0.260116, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.727273 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Bamboo" type="Node2D"]
+scale = Vector2( 0.6, 0.6 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+themes = [ ExtResource( 4 ) ]
+tip_texture = ExtResource( 7 )
+branch_scene = ExtResource( 1 )
+branches_scale = SubResource( 1 )
+branch_offset = 28
+height = 1460.0
+base_scale = 0.6
+branch_count = 3
+
+[node name="Body" type="Polygon2D" parent="."]
+material = ExtResource( 5 )
+offset = Vector2( -64, 0 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../Skeleton")
+polygon = PoolVector2Array( 0, 0, 0, -486.667, 0, -973.333, 0, -1460, 128, -1460, 128, -973.333, 128, -486.667, 128, 0 )
+uv = PoolVector2Array( 0, 0, 0, -486.667, 0, -973.333, 0, -1460, 128, -1460, 128, -973.333, 128, -486.667, 128, 0 )
+polygons = [ PoolIntArray( 3, 4, 5, 2 ), PoolIntArray( 2, 5, 6, 1 ), PoolIntArray( 1, 6, 7, 0 ) ]
+bones = [ "/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Bamboo/Skeleton/Bone2D2", PoolRealArray( 0, 1, 0, 0, 0, 0, 1, 0 ), "/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Bamboo/Skeleton/Bone2D2/Bone2D", PoolRealArray( 0, 0, 1, 0, 0, 1, 0, 0 ), "/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Bamboo/Skeleton/Bone2D2/Bone2D/Bone2D", PoolRealArray( 0, 0, 0, 1, 1, 0, 0, 0 ) ]
+
+[node name="Skeleton" type="Skeleton2D" parent="."]
+
+[node name="Roots" type="Sprite" parent="."]
+material = ExtResource( 5 )
+position = Vector2( 0, -5 )
+texture = ExtResource( 6 )

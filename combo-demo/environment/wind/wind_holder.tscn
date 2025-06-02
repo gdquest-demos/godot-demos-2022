@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://environment/wind/wind_holder.gd" type="Script" id=1]
+[ext_resource path="res://environment/wind/wind_strand.tscn" type="PackedScene" id=2]
+
+[node name="WindHolder" type="Node2D"]
+script = ExtResource( 1 )
+strand_scene = ExtResource( 2 )
+size = Vector2( 1920, 1080 )
+strands_count = 3
+time_between = 5

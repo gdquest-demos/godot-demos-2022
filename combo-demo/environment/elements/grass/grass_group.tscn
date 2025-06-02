@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://environment/elements/grass/grass_group.gd" type="Script" id=1]
+[ext_resource path="res://environment/elements/grass/blades/blade_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/elements/grass/blades/blade_2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/elements/grass/blades/blade_3.tscn" type="PackedScene" id=4]
+
+[node name="GrassGroup" type="Node2D"]
+z_as_relative = false
+script = ExtResource( 1 )
+possible_blades = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]

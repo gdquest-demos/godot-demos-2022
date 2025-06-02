@@ -1,0 +1,38 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec4 base_color : hint_color = vec4(1.0);
+uniform vec4 light_color : hint_color = vec4(1.0);
+uniform vec4 occlusion_color : hint_color = vec4(1.0);
+uniform vec4 detail_colors : hint_color = vec4(1.0);
+
+
+vec3 blendOverlay(vec3 base, vec3 blend) {
+    return mix(1.0 - 2.0 * (1.0 - base) * (1.0 - blend), 2.0 * base * blend, step(base, vec3(0.5)));
+}
+
+void fragment(){
+	vec4 texture_data = texture(TEXTURE, UV);
+	vec3 occlusion = mix(occlusion_color.rgb, vec3(1.0), texture_data.x);
+	
+	vec3 light = mix(light_color.rgb, vec3(0.5), texture_data.y);
+	
+	vec3 details = mix(detail_colors.rgb, vec3(1.0), texture_data.z);
+	
+	vec3 flat_color = base_color.rgb * details;
+	
+	vec3 lighted = blendOverlay(flat_color, light)  * occlusion;
+	
+	COLOR.rgb = lighted;
+	COLOR.a = texture_data.a;
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/base_color = Color( 0.279437, 0.460477, 0.283516, 1 )
+shader_param/light_color = Color( 1, 0.91143, 0.725181, 1 )
+shader_param/occlusion_color = Color( 0.227961, 0.281908, 0.349219, 1 )
+shader_param/detail_colors = Color( 0.308877, 0.218114, 0.160619, 1 )

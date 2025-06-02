@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://environment/wind/wind_strand_mat.tres" type="Material" id=1]
+[ext_resource path="res://environment/wind/wind_strand.gd" type="Script" id=2]
+
+[node name="WindStrand" type="Line2D"]
+material = ExtResource( 1 )
+width = 20.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 2
+script = ExtResource( 2 )
