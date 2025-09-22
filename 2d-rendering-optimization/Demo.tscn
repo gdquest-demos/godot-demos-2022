@@ -1,107 +1,111 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=19 format=3 uid="uid://dj3e1j142oc0v"]
 
-[ext_resource path="res://Demo.gd" type="Script" id=1]
-[ext_resource path="res://Camera2D.gd" type="Script" id=2]
-[ext_resource path="res://rooms/RoomB.tscn" type="PackedScene" id=3]
-[ext_resource path="res://rooms/RoomD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://rooms/RoomC.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Label.gd" type="Script" id=6]
-[ext_resource path="res://props/sky/BackgroundBlueSky.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/checkbox_empty.png" type="Texture" id=8]
-[ext_resource path="res://assets/FiraCode-Bold.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://assets/checkbox_disabled_empty.png" type="Texture" id=10]
-[ext_resource path="res://assets/checkbox_disabled_checked.png" type="Texture" id=11]
-[ext_resource path="res://assets/checkbox_checked.png" type="Texture" id=12]
-[ext_resource path="res://rooms/RoomA.tscn" type="PackedScene" id=13]
+[ext_resource type="Script" uid="uid://dgaomcqi7x4uk" path="res://Demo.gd" id="1"]
+[ext_resource type="Script" uid="uid://cneq0m68iywri" path="res://Camera2D.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bks0k7ckwaaaw" path="res://rooms/RoomB.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b8rvkwkt25bwb" path="res://rooms/RoomD.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bx75fkxtu6hyo" path="res://rooms/RoomC.tscn" id="5"]
+[ext_resource type="Script" uid="uid://8gecst468w4g" path="res://Label.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://cki5jii1lxrf5" path="res://props/sky/BackgroundBlueSky.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://dhjidtcotvwkw" path="res://assets/checkbox_empty.png" id="8"]
+[ext_resource type="FontFile" uid="uid://c8rch5afixu3e" path="res://assets/FiraCode-Bold.ttf" id="9"]
+[ext_resource type="Texture2D" uid="uid://bt3etanwuib63" path="res://assets/checkbox_disabled_empty.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://c85mqbt53xeby" path="res://assets/checkbox_disabled_checked.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://bd5r6pnjxlkqn" path="res://assets/checkbox_checked.png" id="12"]
+[ext_resource type="PackedScene" uid="uid://dpnsux2divmd2" path="res://rooms/RoomA.tscn" id="13"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 42
-font_data = ExtResource( 9 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("9")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id="2"]
 content_margin_left = 14.0
-content_margin_right = 14.0
 content_margin_top = 10.0
+content_margin_right = 14.0
 content_margin_bottom = 10.0
-bg_color = Color( 0.145098, 0.117647, 0.172549, 1 )
+bg_color = Color(0.145098, 0.117647, 0.172549, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=3]
-size = 28
-font_data = ExtResource( 9 )
+[sub_resource type="FontFile" id="3"]
+fallbacks = Array[Font]([ExtResource("9")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id="4"]
 content_margin_left = 14.0
-content_margin_right = 14.0
 content_margin_top = 10.0
+content_margin_right = 14.0
 content_margin_bottom = 10.0
-bg_color = Color( 0.184314, 0.164706, 0.203922, 1 )
+bg_color = Color(0.184314, 0.164706, 0.203922, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id="5"]
 
-[node name="Demo" type="YSort"]
-script = ExtResource( 1 )
-rooms = [ ExtResource( 13 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ]
+[node name="Demo" type="Node2D"]
+script = ExtResource("1")
+rooms = [ExtResource("13"), ExtResource("3"), ExtResource("5"), ExtResource("4")]
 grid_width = 12
 grid_height = 12
 
-[node name="BackgroundBlueSky" parent="." instance=ExtResource( 7 )]
+[node name="BackgroundBlueSky" parent="." instance=ExtResource("7")]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer"]
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -147.0
-margin_top = 64.0
-margin_right = 147.0
-margin_bottom = 203.0
-custom_constants/separation = 12
+offset_left = -147.0
+offset_top = 64.0
+offset_right = 147.0
+offset_bottom = 203.0
+theme_override_constants/separation = 12
 
 [node name="Label" type="Label" parent="UILayer/VBoxContainer"]
-margin_right = 294.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 260, 0 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+theme_override_styles/normal = SubResource("2")
 text = "FPS: 2800"
-align = 1
-valign = 1
-script = ExtResource( 6 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6")
 
 [node name="CheckBox" type="CheckBox" parent="UILayer/VBoxContainer"]
-margin_top = 84.0
-margin_right = 294.0
-margin_bottom = 139.0
-rect_min_size = Vector2( 260, 0 )
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-custom_colors/font_color = Color( 0.917647, 0.92549, 0.933333, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 3 )
-custom_icons/checked_disabled = ExtResource( 11 )
-custom_icons/checked = ExtResource( 12 )
-custom_icons/unchecked_disabled = ExtResource( 10 )
-custom_icons/unchecked = ExtResource( 8 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/hover_pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 2 )
+theme_override_colors/font_color = Color(0.917647, 0.92549, 0.933333, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("3")
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("2")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/hover_pressed = SubResource("4")
+theme_override_styles/focus = SubResource("5")
+theme_override_icons/checked = ExtResource("12")
+theme_override_icons/unchecked = ExtResource("8")
+theme_override_icons/checked_disabled = ExtResource("11")
+theme_override_icons/unchecked_disabled = ExtResource("10")
 text = " Use notifiers"
-align = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 960, 540 )
-current = true
-smoothing_enabled = true
-smoothing_speed = 7.0
-script = ExtResource( 2 )
+position = Vector2(960, 540)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+script = ExtResource("2")
 speed = 1200.0
