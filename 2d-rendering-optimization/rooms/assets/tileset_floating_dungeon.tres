@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://otxi26wdntut"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://otxi26wdntut"]
 
 [ext_resource type="Texture2D" uid="uid://cqdrgyphxt02k" path="res://rooms/assets/tileset_floating_dungeon.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bc3s7j13nx1xp" path="res://rooms/assets/tileset_invisible_walls.svg" id="2_6atuw"]
@@ -726,6 +726,7 @@ texture_region_size = Vector2i(128, 128)
 3:11/0 = 0
 4:11/0 = 0
 5:11/0 = 0
+6:11/next_alternative_id = 2
 6:11/0 = 0
 6:11/0/terrain_set = 0
 6:11/0/terrain = 0
@@ -736,6 +737,7 @@ texture_region_size = Vector2i(128, 128)
 7:11/0/terrain = 0
 7:11/0/terrains_peering_bit/right_side = 0
 7:11/0/terrains_peering_bit/bottom_side = 0
+8:11/next_alternative_id = 2
 8:11/0 = 0
 8:11/0/terrain_set = 0
 8:11/0/terrain = 0
@@ -756,15 +758,21 @@ texture_region_size = Vector2i(128, 128)
 11:11/0/terrain = 0
 11:11/0/terrains_peering_bit/left_side = 0
 11:11/0/terrains_peering_bit/top_side = 0
+12:10/0 = 0
+12:10/0/terrain_set = 0
+12:10/0/terrain = 0
+12:10/0/terrains_peering_bit/bottom_side = 0
+12:11/next_alternative_id = 3
+12:11/0 = 0
+12:11/0/terrain_set = 0
+12:11/0/terrain = 0
+12:11/0/terrains_peering_bit/bottom_side = 0
+12:11/1 = 1
+12:11/1/terrain_set = 0
+12:11/1/terrain = 0
+12:11/1/terrains_peering_bit/top_side = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2jxul"]
-resource_name = "SingleBridge"
-texture = ExtResource("1")
-texture_region_size = Vector2i(128, 256)
-12:5/0 = 0
-12:5/0/texture_origin = Vector2i(0, -64)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omdwh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6atuw"]
 resource_name = "Invalid"
 texture = ExtResource("2_6atuw")
 texture_region_size = Vector2i(128, 128)
@@ -789,5 +797,4 @@ terrain_set_2/terrain_0/color = Color(1, 1, 0, 1)
 terrain_set_2/terrain_1/name = "HorizontalWall"
 terrain_set_2/terrain_1/color = Color(0, 1, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_7vd4x")
-sources/1 = SubResource("TileSetAtlasSource_2jxul")
-sources/2 = SubResource("TileSetAtlasSource_omdwh")
+sources/1 = SubResource("TileSetAtlasSource_6atuw")

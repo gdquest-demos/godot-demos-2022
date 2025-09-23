@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2idrt6ybygn1"]
+[gd_scene load_steps=8 format=3 uid="uid://c2idrt6ybygn1"]
 
-[ext_resource type="Texture2D" uid="uid://dj7to8kkk3tvf" path="res://props/sky/cloud_a.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://dpwxogooxht1i" path="res://props/sky/cloud_b.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://cpaxkpqnn5mh1" path="res://props/sky/cloud_d.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://dmpwu0557ess1" path="res://props/sky/cloud_c.png" id="4"]
-[ext_resource type="Script" uid="uid://df872wyijg8te" path="res://props/sky/LoopClouds.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dmpwu0557ess1" path="res://props/sky/cloud_c.png" id="1_qfx0j"]
+[ext_resource type="Texture2D" uid="uid://dj7to8kkk3tvf" path="res://props/sky/cloud_a.png" id="2_48gvk"]
+[ext_resource type="Texture2D" uid="uid://cpaxkpqnn5mh1" path="res://props/sky/cloud_d.png" id="3_sokkq"]
+[ext_resource type="Texture2D" uid="uid://dpwxogooxht1i" path="res://props/sky/cloud_b.png" id="4_fdg4w"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Idle"
@@ -13,7 +12,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LoopClouds/Pos:position")
+tracks/0/path = NodePath("LoopClouds/Marker2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LoopClouds/Pos:position")
+tracks/0/path = NodePath("LoopClouds/Marker2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,49 +44,48 @@ _data = {
 }
 
 [node name="LoopClouds" type="Node2D"]
-script = ExtResource("5")
 
-[node name="Pos" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="Cloud1" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D1" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(407, 702)
-texture = ExtResource("4")
+texture = ExtResource("1_qfx0j")
 
-[node name="Cloud2" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D2" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(227, 398)
-texture = ExtResource("1")
+texture = ExtResource("2_48gvk")
 
-[node name="Cloud3" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D3" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(661, 213)
-texture = ExtResource("3")
+texture = ExtResource("3_sokkq")
 
-[node name="Cloud4" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D4" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(1397, 467)
-texture = ExtResource("2")
+texture = ExtResource("4_fdg4w")
 
-[node name="Cloud5" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D5" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(-1513, 702)
-texture = ExtResource("4")
+texture = ExtResource("1_qfx0j")
 
-[node name="Cloud6" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D6" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(-1693, 398)
-texture = ExtResource("1")
+texture = ExtResource("2_48gvk")
 
-[node name="Cloud7" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D7" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(-1259, 213)
-texture = ExtResource("3")
+texture = ExtResource("3_sokkq")
 
-[node name="Cloud8" type="Sprite2D" parent="Pos"]
+[node name="CloudSprite2D8" type="Sprite2D" parent="Marker2D"]
 use_parent_material = true
 position = Vector2(-523, 467)
-texture = ExtResource("2")
+texture = ExtResource("4_fdg4w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -96,3 +94,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_eke8f")
 }
 autoplay = "Idle"
+speed_scale = 0.1

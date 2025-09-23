@@ -1,0 +1,48 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://nkh4yub81wxl"]
+
+[ext_resource type="Texture2D" uid="uid://bd5r6pnjxlkqn" path="res://ui/checkbox_checked.png" id="1_7any1"]
+[ext_resource type="Texture2D" uid="uid://c85mqbt53xeby" path="res://ui/checkbox_disabled_checked.png" id="2_3fgq6"]
+[ext_resource type="Texture2D" uid="uid://dhjidtcotvwkw" path="res://ui/checkbox_empty.png" id="3_y5ki2"]
+[ext_resource type="Texture2D" uid="uid://bt3etanwuib63" path="res://ui/checkbox_disabled_empty.png" id="4_rtqkv"]
+[ext_resource type="FontFile" uid="uid://c8rch5afixu3e" path="res://ui/FiraCode-Bold.ttf" id="5_47c11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2pqw"]
+
+[sub_resource type="StyleBoxFlat" id="4"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.184314, 0.164706, 0.203922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="2"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.145098, 0.117647, 0.172549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("5_47c11")
+CheckBox/colors/font_color = Color(0.91764706, 0.9254902, 0.93333334, 1)
+CheckBox/colors/font_hover_color = Color(1, 1, 1, 1)
+CheckBox/constants/h_separation = 8
+CheckBox/icons/checked = ExtResource("1_7any1")
+CheckBox/icons/checked_disabled = ExtResource("2_3fgq6")
+CheckBox/icons/unchecked = ExtResource("3_y5ki2")
+CheckBox/icons/unchecked_disabled = ExtResource("4_rtqkv")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_x2pqw")
+CheckBox/styles/hover = SubResource("4")
+CheckBox/styles/hover_pressed = SubResource("4")
+CheckBox/styles/normal = SubResource("2")
+CheckBox/styles/pressed = SubResource("2")
+Label/styles/normal = SubResource("2")
+VBoxContainer/constants/separation = 12

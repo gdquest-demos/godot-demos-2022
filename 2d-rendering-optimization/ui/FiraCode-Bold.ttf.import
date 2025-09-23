@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c8rch5afixu3e"
-path="res://.godot/imported/FiraCode-Bold.ttf-97d45d6a9bb602078c65b55daca377b6.fontdata"
+path="res://.godot/imported/FiraCode-Bold.ttf-481417dbe6da5c049cb1870369cf3909.fontdata"
 
 [deps]
 
-source_file="res://assets/FiraCode-Bold.ttf"
-dest_files=["res://.godot/imported/FiraCode-Bold.ttf-97d45d6a9bb602078c65b55daca377b6.fontdata"]
+source_file="res://ui/FiraCode-Bold.ttf"
+dest_files=["res://.godot/imported/FiraCode-Bold.ttf-481417dbe6da5c049cb1870369cf3909.fontdata"]
 
 [params]
 
