@@ -1,0 +1,190 @@
+[gd_scene load_steps=21 format=3 uid="uid://dxdi8ntgifbov"]
+
+[ext_resource type="Script" uid="uid://db140abp8p8xa" path="res://player/player_2d.gd" id="2"]
+[ext_resource type="Script" uid="uid://d1n3e3njhp7cr" path="res://nodes/hurt_area_2d.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://b2qxxc7uh0i70" path="res://character/character_skin_2d.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://dyfq2t7c8f3xx" path="res://vfx/flameA_yellow.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://ctyo6rrr4kmne" path="res://vfx/particle_bullet.png" id="7"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 32.0
+height = 124.0
+
+[sub_resource type="ShaderMaterial" id="23"]
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(34, 40)
+
+[sub_resource type="ShaderMaterial" id="24"]
+
+[sub_resource type="RectangleShape2D" id="8"]
+size = Vector2(26, 182)
+
+[sub_resource type="Gradient" id="13"]
+offsets = PackedFloat32Array(0.436123, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="14"]
+gradient = SubResource("13")
+
+[sub_resource type="Curve" id="18"]
+_data = [Vector2(0.012, 0.00340903), 0.0, 4.76191, 0, 0, Vector2(0.06, 0.963636), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.17554, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="19"]
+curve = SubResource("18")
+
+[sub_resource type="ParticleProcessMaterial" id="15"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("19")
+color_ramp = SubResource("14")
+
+[sub_resource type="ParticleProcessMaterial" id="22"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.0
+scale_curve = SubResource("19")
+color_ramp = SubResource("14")
+
+[sub_resource type="Animation" id="10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSkin2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSkin2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "take_block_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSkin2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "take_damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSkin2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8kxw"]
+_data = {
+&"RESET": SubResource("10"),
+&"take_block_damage": SubResource("5"),
+&"take_damage": SubResource("7")
+}
+
+[node name="Player2D" type="CharacterBody2D"]
+script = ExtResource("2")
+
+[node name="CharacterSkin2D" parent="." instance=ExtResource("4")]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0, -96)
+shape = SubResource("1")
+
+[node name="HurtArea2D" type="Area2D" parent="."]
+position = Vector2(0, -89)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
+self_modulate = Color(0.560784, 0.870588, 0.364706, 1)
+z_index = 3
+material = SubResource("23")
+shape = SubResource("4")
+
+[node name="BlockArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockArea2D"]
+self_modulate = Color(0.301961, 0.65098, 1, 1)
+z_index = 2
+material = SubResource("24")
+position = Vector2(51, -90)
+shape = SubResource("8")
+
+[node name="BlockGPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = 3
+position = Vector2(45, -98)
+emitting = false
+amount = 5
+texture = ExtResource("7")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("15")
+
+[node name="HitGPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = 3
+position = Vector2(45, -98)
+emitting = false
+amount = 5
+texture = ExtResource("6")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("22")
+
+[node name="ParryTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.15
+one_shot = true
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_x8kxw")
+}

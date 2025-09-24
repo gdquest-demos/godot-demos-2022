@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cskceiych2vhf"]
+
+[ext_resource type="Script" uid="uid://dxv8fraedb6kt" path="res://game_2d.gd" id="1_mq1rl"]
+[ext_resource type="Texture2D" uid="uid://crr10pkynt7f5" path="res://hills_night_gray.png" id="2_maf6m"]
+[ext_resource type="PackedScene" uid="uid://dxdi8ntgifbov" path="res://player/player_2d.tscn" id="3_g6ab5"]
+[ext_resource type="PackedScene" uid="uid://dsni6it7gcwra" path="res://enemy/enemy_2d.tscn" id="4_7lhhl"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(47, 1097)
+
+[node name="Game2D" type="Node2D"]
+script = ExtResource("1_mq1rl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(959, 476)
+texture = ExtResource("2_maf6m")
+
+[node name="Limits" type="Node2D" parent="."]
+
+[node name="WallLeft" type="StaticBody2D" parent="Limits"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/WallLeft"]
+position = Vector2(-24.5, 538.5)
+shape = SubResource("1")
+
+[node name="WallRight" type="StaticBody2D" parent="Limits"]
+position = Vector2(1969, 0)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/WallRight"]
+position = Vector2(-24.5, 538.5)
+shape = SubResource("1")
+
+[node name="Player2D" parent="." instance=ExtResource("3_g6ab5")]
+unique_name_in_owner = true
+position = Vector2(628, 1064)
+
+[node name="Enemy2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_7lhhl")]
+unique_name_in_owner = true
+position = Vector2(1227, 1064)
+player = NodePath("../Player2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://btjhppvcgt0sa"]
+
+[ext_resource type="Script" uid="uid://i3h4eo1syea2" path="res://weapon/weapon_2d.gd" id="1_uapej"]
+[ext_resource type="Texture2D" uid="uid://b132227hfyle6" path="res://enemy/sword_ice.png" id="2_vvrsw"]
+[ext_resource type="Texture2D" uid="uid://csp4obt2uhnl0" path="res://vfx/trail.png" id="3_laoef"]
+[ext_resource type="Script" uid="uid://cq74rbcn6u4bs" path="res://nodes/hit_area_2d.gd" id="4_tc1ds"]
+
+[sub_resource type="ShaderMaterial" id="3"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(103.8968, 16)
+
+[node name="Weapon2D" type="Marker2D"]
+z_index = 1
+script = ExtResource("1_uapej")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-62, 0)
+rotation = 3.14159
+texture = ExtResource("2_vvrsw")
+
+[node name="TrailSprite2D" type="Sprite2D" parent="Sprite2D"]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(27.6087, 53.3228)
+scale = Vector2(0.51836, 0.52444)
+texture = ExtResource("3_laoef")
+flip_v = true
+
+[node name="HitArea2D" type="Area2D" parent="."]
+position = Vector2(-75, 0)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_tc1ds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+unique_name_in_owner = true
+self_modulate = Color(0.690196, 0.188235, 0.360784, 1)
+material = SubResource("3")
+shape = SubResource("2")
