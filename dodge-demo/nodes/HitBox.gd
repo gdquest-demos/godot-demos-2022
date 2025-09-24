@@ -2,7 +2,7 @@
 class_name HitBox, "HitBox.svg"
 extends Area2D
 
-export var damage := 10
+@export var damage := 10
 
 
 func _init() -> void:

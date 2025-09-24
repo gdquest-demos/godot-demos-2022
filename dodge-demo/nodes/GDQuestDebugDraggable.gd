@@ -6,8 +6,8 @@ extends Area2D
 var _click_offset := Vector2.ZERO
 var _collision_shape := CollisionShape2D.new()
 
-onready var _parent := get_parent() as CollisionObject2D
-onready var tree := get_tree()
+@onready var _parent := get_parent() as CollisionObject2D
+@onready var tree := get_tree()
 
 
 func _ready() -> void:

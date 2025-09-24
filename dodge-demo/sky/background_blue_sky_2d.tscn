@@ -1,0 +1,196 @@
+[gd_scene load_steps=20 format=3 uid="uid://bf4xg5c5wqv6r"]
+
+[ext_resource type="Texture2D" uid="uid://b3bbbr0brj4g1" path="res://sky/town_float_01.png" id="1_5vesa"]
+[ext_resource type="Texture2D" uid="uid://b6qgacr0tti17" path="res://sky/town_float_02.png" id="2_adbue"]
+[ext_resource type="Texture2D" uid="uid://dvhjpdw07hanf" path="res://sky/town_float_03.png" id="3_r4p0n"]
+[ext_resource type="Texture2D" uid="uid://bvxjeesil01wx" path="res://sky/town_float_04.png" id="4_6k5dn"]
+[ext_resource type="PackedScene" uid="uid://c2idrt6ybygn1" path="res://sky/loop_clouds.tscn" id="5_r4p0n"]
+[ext_resource type="Texture2D" uid="uid://csclhp3knm2fr" path="res://sky/wind_fx.png" id="6_6k5dn"]
+[ext_resource type="Texture2D" uid="uid://dmpwu0557ess1" path="res://sky/cloud_c.png" id="7_ge6vb"]
+[ext_resource type="Texture2D" uid="uid://ds0jy5y6adblv" path="res://sky/pillar_broken_01.png" id="8_1uid5"]
+[ext_resource type="Texture2D" uid="uid://dyqgppj3spg1i" path="res://sky/rock_float_05.png" id="9_dx3b4"]
+[ext_resource type="Texture2D" uid="uid://bsqqo25hijqx0" path="res://sky/rock_float_02.png" id="10_gn31m"]
+[ext_resource type="Texture2D" uid="uid://ca6qfgu0jhhm5" path="res://sky/pillar_broken_04.png" id="11_s4lp5"]
+[ext_resource type="Texture2D" uid="uid://cv1m5n2xs7otp" path="res://sky/pillar.png" id="12_qw770"]
+[ext_resource type="Texture2D" uid="uid://dbl5t68wl7co7" path="res://sky/pillar_broken_03.png" id="13_857kt"]
+
+[sub_resource type="Curve" id="Curve_3g1lb"]
+_data = [Vector2(0, 0), 0.0, 4.712, 0, 0, Vector2(0.2480534, 1), 0.0, 0.0, 0, 0, Vector2(0.5173234, 0), -4.712, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="35"]
+curve = SubResource("Curve_3g1lb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0xm6j"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+spread = 4.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.19999999
+scale_curve = SubResource("35")
+
+[sub_resource type="Animation" id="36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 988)]
+}
+
+[sub_resource type="Animation" id="37"]
+resource_name = "loop"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 988), Vector2(2496, 988)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8a22l"]
+_data = {
+&"RESET": SubResource("36"),
+&"loop": SubResource("37")
+}
+
+[node name="BackgroundBlueSky2D" type="Node2D"]
+
+[node name="SkyCanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="BlueSky" type="ColorRect" parent="SkyCanvasLayer"]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.137255, 0.603922, 0.788235, 1)
+
+[node name="ParallaxCanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+follow_viewport_enabled = true
+
+[node name="BottomParallax2D" type="Parallax2D" parent="ParallaxCanvasLayer"]
+modulate = Color(0.31764707, 0.76862746, 0.93333334, 0.15294118)
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(4000, 2000)
+repeat_times = 2
+
+[node name="TownFloat01" type="Sprite2D" parent="ParallaxCanvasLayer/BottomParallax2D"]
+position = Vector2(536, 454)
+texture = ExtResource("1_5vesa")
+
+[node name="TownFloat02" type="Sprite2D" parent="ParallaxCanvasLayer/BottomParallax2D"]
+position = Vector2(2280, 1660)
+texture = ExtResource("2_adbue")
+
+[node name="TownFloat03" type="Sprite2D" parent="ParallaxCanvasLayer/BottomParallax2D"]
+position = Vector2(3142, 462)
+texture = ExtResource("3_r4p0n")
+
+[node name="TownFloat04" type="Sprite2D" parent="ParallaxCanvasLayer/BottomParallax2D"]
+position = Vector2(1260, 1288)
+texture = ExtResource("4_6k5dn")
+
+[node name="MiddleParallax2D" type="Parallax2D" parent="ParallaxCanvasLayer"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1920, 1080)
+repeat_times = 2
+
+[node name="LoopClouds" parent="ParallaxCanvasLayer/MiddleParallax2D" instance=ExtResource("5_r4p0n")]
+
+[node name="WindParticle" type="GPUParticles2D" parent="ParallaxCanvasLayer/MiddleParallax2D"]
+position = Vector2(960, 540)
+amount = 2
+texture = ExtResource("6_6k5dn")
+trail_enabled = true
+trail_lifetime = 0.75
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_0xm6j")
+
+[node name="TopParallax2D" type="Parallax2D" parent="ParallaxCanvasLayer"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(3000, 1500)
+repeat_times = 2
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(576, 988)
+scale = Vector2(2, 2)
+texture = ExtResource("7_ge6vb")
+
+[node name="CloudMirror" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D/Cloud"]
+position = Vector2(-1920, 0)
+texture = ExtResource("7_ge6vb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxCanvasLayer/TopParallax2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_8a22l")
+}
+autoplay = "loop"
+
+[node name="PillarBroken01" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(168, 197)
+rotation = -0.156636
+texture = ExtResource("8_1uid5")
+
+[node name="RockFloat05" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(1999, 513)
+rotation = 0.189768
+texture = ExtResource("9_dx3b4")
+
+[node name="RockFloat02" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(345, 750)
+rotation = -0.129458
+texture = ExtResource("10_gn31m")
+
+[node name="PillarBroken04" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(1146, 369)
+rotation = -0.0508357
+texture = ExtResource("11_s4lp5")
+
+[node name="RockFloat06" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(738, 479)
+rotation = -0.076616
+texture = ExtResource("9_dx3b4")
+
+[node name="Pillar" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D/RockFloat06"]
+position = Vector2(10.1902, -67.4178)
+texture = ExtResource("12_qw770")
+
+[node name="PillarBroken03" type="Sprite2D" parent="ParallaxCanvasLayer/TopParallax2D"]
+position = Vector2(1483, 891)
+rotation = 0.114756
+texture = ExtResource("13_857kt")
+
+[node name="FadeCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="FadeColorRect" type="ColorRect" parent="FadeCanvasLayer"]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.545098, 0.72549, 0.823529, 0.14902)

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 enum States { MOVING, DODGING, TAKING_DAMAGE }
 
@@ -20,17 +20,17 @@ var _velocity := Vector2.ZERO
 # The starting value is the first direction the sprite is looking at.
 var _look_direction := Vector2.RIGHT
 
-onready var _godot_sprite := $Godot
-onready var _hurt_box := $HurtBox
-onready var _smoke_particles := $SmokeParticles
-onready var _dodge_timer := $DodgeTimer
+@onready var _godot_sprite := $Godot
+@onready var _hurt_box := $HurtBox
+@onready var _smoke_particles := $SmokeParticles
+@onready var _dodge_timer := $DodgeTimer
 
-onready var _move_animation_player := $MoveAnimationPlayer
-onready var _damage_animation_player := $DamageAnimationPlayer
+@onready var _move_animation_player := $MoveAnimationPlayer
+@onready var _damage_animation_player := $DamageAnimationPlayer
 
 
 func _ready() -> void:
-	_dodge_timer.connect("timeout", self, "_dodge_end")
+	_dodge_timer.connect("timeout", Callable(self, "_dodge_end"))
 
 
 func _physics_process(delta: float) -> void:
@@ -67,7 +67,8 @@ func _physics_process(delta: float) -> void:
 		States.DODGING:
 			pass
 
-	move_and_slide(_velocity)
+	set_velocity(_velocity)
+	move_and_slide()
 
 
 func take_damage(damage: int) -> void:

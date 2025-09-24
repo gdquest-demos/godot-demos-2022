@@ -1,11 +1,11 @@
 extends Node2D
 
-export var speed := 1000.0
+@export var speed := 1000.0
 var direction := Vector2.ZERO
 
 
 func _ready() -> void:
-	set_as_toplevel(true)
+	set_as_top_level(true)
 	look_at(position + direction)
 
 
