@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Dodge Demo (GDQuest)"
 config/description="This demo shows how to code a mechanic to dodge enemy attacks. The character can't take damage while dodging."
-run/main_scene="res://Game.tscn"
+run/main_scene="res://game_2d.tscn"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
@@ -41,9 +41,7 @@ singletons=[]
 
 [gui]
 
-theme/custom="res://interface/theme.tres"
 common/drop_mouse_on_gui_input_disabled=true
-theme/use_hidpi=true
 
 [input]
 
@@ -125,8 +123,8 @@ right_click={
 
 [layer_names]
 
-2d_physics/layer_1="game world"
-2d_physics/layer_2="hitboxes"
+2d_physics/layer_1="Game World"
+2d_physics/layer_2="Hit"
 
 [physics]
 

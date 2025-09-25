@@ -1,32 +1,32 @@
 [gd_scene load_steps=5 format=4 uid="uid://dqkudchx2ytfj"]
 
-[ext_resource type="PackedScene" uid="uid://qlr1brl0w1qn" path="res://player/Player.tscn" id="1"]
-[ext_resource type="TileSet" uid="uid://otxi26wdntut" path="res://tileset/tileset_floating_dungeon.tres" id="1_sb48q"]
-[ext_resource type="PackedScene" uid="uid://tmhg84iqoisp" path="res://turret/Turret.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://bf4xg5c5wqv6r" path="res://sky/background_blue_sky_2d.tscn" id="4_sb48q"]
+[ext_resource type="TileSet" uid="uid://otxi26wdntut" path="res://tileset/tileset_floating_dungeon.tres" id="1_mq1rl"]
+[ext_resource type="PackedScene" uid="uid://qlr1brl0w1qn" path="res://player/player_2d.tscn" id="2_maf6m"]
+[ext_resource type="PackedScene" uid="uid://tmhg84iqoisp" path="res://turret/turret_2d.tscn" id="3_g6ab5"]
+[ext_resource type="PackedScene" uid="uid://bf4xg5c5wqv6r" path="res://sky/background_blue_sky_2d.tscn" id="4_7lhhl"]
 
-[node name="Game" type="Node2D"]
+[node name="Game2D" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level2D" type="Node2D" parent="."]
 
-[node name="FloorTileMapLayer" type="TileMapLayer" parent="Level"]
+[node name="FloorTileMapLayer" type="TileMapLayer" parent="Level2D"]
 tile_map_data = PackedByteArray("AAAMAAcAAAALAAoAAAAMAAYAAAAGAAgAAAAMAAUAAAAIAAcAAAAMAAQAAAAHAAcAAAAMAAMAAAAGAAcAAAAMAAIAAAAIAAkAAAAMAAEAAAAIAAYAAAALAAcAAAAGAAoAAAALAAYAAAAHAAcAAAALAAUAAAAHAAgAAAALAAQAAAAHAAkAAAALAAMAAAAGAAgAAAALAAIAAAAGAAcAAAALAAEAAAAIAAgAAAAKAAcAAAAHAAoAAAAKAAYAAAAGAAkAAAAKAAUAAAAIAAcAAAAKAAQAAAAHAAkAAAAKAAMAAAAGAAgAAAAKAAIAAAAGAAgAAAAKAAEAAAAIAAkAAAAJAAcAAAAKAAgAAAAJAAYAAAAGAAcAAAAJAAUAAAAIAAcAAAAJAAQAAAAGAAkAAAAJAAMAAAAGAAcAAAAJAAIAAAAHAAkAAAAJAAEAAAAHAAgAAAAIAAcAAAAGAAoAAAAIAAYAAAAHAAgAAAAIAAUAAAAHAAkAAAAIAAQAAAAGAAcAAAAIAAMAAAAIAAgAAAAIAAIAAAAGAAgAAAAIAAEAAAAHAAgAAAAHAAcAAAALAAkAAAAHAAYAAAAIAAcAAAAHAAUAAAAGAAcAAAAHAAQAAAAGAAcAAAAHAAMAAAAHAAkAAAAHAAIAAAAIAAkAAAAHAAEAAAAIAAgAAAAGAAcAAAAJAAgAAAAGAAYAAAAGAAgAAAAGAAUAAAAGAAcAAAAGAAQAAAAGAAkAAAAGAAMAAAAIAAcAAAAGAAIAAAAGAAkAAAAGAAEAAAAGAAkAAAAFAAcAAAAKAAcAAAAFAAYAAAAHAAgAAAAFAAUAAAAGAAkAAAAFAAQAAAAGAAkAAAAFAAMAAAAIAAgAAAAFAAIAAAAHAAgAAAAFAAEAAAAGAAcAAAAEAAcAAAAIAAoAAAAEAAYAAAAHAAkAAAAEAAUAAAAHAAkAAAAEAAQAAAAGAAcAAAAEAAMAAAAHAAkAAAAEAAIAAAAHAAkAAAAEAAEAAAAHAAkAAAADAAcAAAAGAAoAAAADAAYAAAAIAAgAAAADAAUAAAAIAAcAAAADAAQAAAAGAAgAAAADAAMAAAAIAAcAAAADAAIAAAAIAAcAAAADAAEAAAAGAAcAAAACAAcAAAAJAAoAAAACAAYAAAAIAAcAAAACAAUAAAAIAAcAAAACAAQAAAAGAAcAAAACAAMAAAAHAAcAAAACAAIAAAAHAAkAAAACAAEAAAAGAAYAAAA=")
-tile_set = ExtResource("1_sb48q")
+tile_set = ExtResource("1_mq1rl")
 rendering_quadrant_size = 64
 
-[node name="LimitsTileMapLayer" type="TileMapLayer" parent="Level"]
+[node name="LimitsTileMapLayer" type="TileMapLayer" parent="Level2D"]
+visible = false
 tile_map_data = PackedByteArray("AAABAAEAAQABAAAAAAABAAIAAQABAAAAAAABAAMAAQABAAAAAAABAAQAAQABAAAAAAABAAUAAQABAAAAAAABAAYAAQABAAAAAAABAAcAAQABAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAAAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAANAAEAAQABAAAAAAANAAIAAQABAAAAAAANAAMAAQABAAAAAAANAAQAAQABAAAAAAANAAUAAQABAAAAAAANAAYAAQABAAAAAAANAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAALAAcAAQAAAAAAAAAMAAcAAQAAAAAAAAA=")
-tile_set = ExtResource("1_sb48q")
+tile_set = ExtResource("1_mq1rl")
 
-[node name="Player2D" parent="." instance=ExtResource("1")]
+[node name="Player2D" parent="." instance=ExtResource("2_maf6m")]
+unique_name_in_owner = true
 position = Vector2(771, 514)
 
-[node name="TurretStaticBody2D" parent="." instance=ExtResource("2")]
+[node name="Turret2D" parent="." instance=ExtResource("3_g6ab5")]
 position = Vector2(1254, 736)
-player_path = NodePath("../Player2D")
 
-[node name="TurretStaticBody2D2" parent="." instance=ExtResource("2")]
+[node name="Turret2D2" parent="." instance=ExtResource("3_g6ab5")]
 position = Vector2(1407, 237)
-player_path = NodePath("../Player2D")
 
-[node name="BackgroundBlueSky2D" parent="." instance=ExtResource("4_sb48q")]
+[node name="BackgroundBlueSky2D" parent="." instance=ExtResource("4_7lhhl")]

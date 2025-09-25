@@ -777,10 +777,13 @@ resource_name = "Invalid"
 texture = ExtResource("2_6638c")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 0, 64, 0, 64, 64, -64, 64)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [resource]
 tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 2
 terrain_set_0/terrain_0/name = "Bridge"
 terrain_set_0/terrain_0/color = Color(1, 0, 0, 1)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cic2b42tls38f"]
+
+[ext_resource type="Script" uid="uid://dypajnt8hqhja" path="res://projectile/projectile_2d.gd" id="1_rs4er"]
+[ext_resource type="Texture2D" uid="uid://bdkix67eovr7u" path="res://projectile/fire_trail.png" id="2_mq72w"]
+[ext_resource type="Texture2D" uid="uid://cl3rrvxswtu2g" path="res://projectile/fire.png" id="3_kaft3"]
+[ext_resource type="Script" uid="uid://b5v00khk3jykf" path="res://nodes/hit_area_2d.gd" id="4_axjl5"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 11.0
+
+[node name="Projectile2D" type="Node2D"]
+script = ExtResource("1_rs4er")
+
+[node name="TrailSprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33, 0)
+texture = ExtResource("2_mq72w")
+
+[node name="FireSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_kaft3")
+
+[node name="HitArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_axjl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+position = Vector2(3, 0)
+shape = SubResource("1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true

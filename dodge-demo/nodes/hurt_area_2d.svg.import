@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjo2xfixpqd7a"
-path="res://.godot/imported/checkbox_empty.png-f0498668c78a4185a4f68e2f8e65d543.ctex"
+uid="uid://cqt454fqic4ls"
+path="res://.godot/imported/hurt_area_2d.svg-f5a69fc7e063e37fed3b2bcb78f2997f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/checkbox_empty.png"
-dest_files=["res://.godot/imported/checkbox_empty.png-f0498668c78a4185a4f68e2f8e65d543.ctex"]
+source_file="res://nodes/hurt_area_2d.svg"
+dest_files=["res://.godot/imported/hurt_area_2d.svg-f5a69fc7e063e37fed3b2bcb78f2997f.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

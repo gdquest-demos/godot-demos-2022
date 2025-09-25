@@ -12,7 +12,7 @@
 
 [node name="Demo" type="Node2D"]
 script = ExtResource("1_36gju")
-rooms = [ExtResource("2_tql22"), ExtResource("3_jbdfk"), ExtResource("4_4gl14"), ExtResource("5_5g7v7")]
+rooms = Array[PackedScene]([ExtResource("2_tql22"), ExtResource("3_jbdfk"), ExtResource("4_4gl14"), ExtResource("5_5g7v7")])
 grid_width = 12
 grid_height = 12
 

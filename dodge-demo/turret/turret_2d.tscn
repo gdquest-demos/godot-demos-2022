@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://tmhg84iqoisp"]
 
 [ext_resource type="Texture2D" uid="uid://dp84k74h0cx6d" path="res://turret/wand_fire.png" id="1"]
-[ext_resource type="Script" uid="uid://d4eb8kgw12yhl" path="res://turret/Turret.gd" id="2"]
+[ext_resource type="Script" uid="uid://d4eb8kgw12yhl" path="res://turret/turret_2d.gd" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 44.0114
@@ -13,14 +13,17 @@ script = ExtResource("2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
-[node name="Weapon" type="Node2D" parent="."]
+[node name="Weapon2D" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
+[node name="Sprite2D" type="Sprite2D" parent="Weapon2D"]
 position = Vector2(53, 0)
 texture = ExtResource("1")
 
-[node name="ProjectileSpawner" type="Marker2D" parent="Weapon"]
+[node name="ProjectileSpawner2D" type="Marker2D" parent="Weapon2D"]
+unique_name_in_owner = true
 position = Vector2(69, 0)
 
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
 autostart = true
