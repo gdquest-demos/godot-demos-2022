@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7nsar57oxwr3"]
+
+[ext_resource type="PackedScene" uid="uid://cb1o4rl20igkt" path="res://ui/tooltip_panel.tscn" id="1"]
+[ext_resource type="Theme" uid="uid://bk0edvbb81s2k" path="res://ui/theme.tres" id="2"]
+[ext_resource type="Script" uid="uid://ccetcucgrl0x1" path="res://ui/inventory_panel.gd" id="4"]
+
+[node name="InventoryPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 80.0
+offset_right = -80.0
+offset_bottom = -80.0
+theme = ExtResource("2")
+script = ExtResource("4")
+
+[node name="TooltipPanel" parent="." instance=ExtResource("1")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 310.0
+offset_bottom = 137.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = -80.0
+offset_bottom = -80.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemGridContainer" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 1
+
+[node name="AddItemButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Add Item"
+
+[node name="RemoveItemButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove Item"

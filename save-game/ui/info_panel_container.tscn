@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgxalyql07gy7"]
+
+[ext_resource type="Theme" uid="uid://bk0edvbb81s2k" path="res://ui/theme.tres" id="1"]
+[ext_resource type="Script" uid="uid://ducsd07sn3p5e" path="res://ui/info_panel_container.gd" id="2"]
+
+[node name="InfoPanelContainer" type="PanelContainer"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 484.0
+offset_bottom = 360.0
+theme = ExtResource("1")
+script = ExtResource("2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerPositionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Global position: "
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RunSpeedHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/RunSpeedHBoxContainer"]
+layout_mode = 2
+text = "Run speed:"
+
+[node name="RunSpeedHSlider" type="HSlider" parent="MarginContainer/VBoxContainer/RunSpeedHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 200.0
+max_value = 1000.0
+value = 600.0
+
+[node name="StrengthHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/StrengthHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Strength"
+
+[node name="StrengthSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/StrengthHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 99.0
+rounded = true
+
+[node name="EnduranceHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/EnduranceHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Endurance"
+
+[node name="EnduranceSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/EnduranceHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 99.0
+rounded = true
+
+[node name="IntelligenceHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/IntelligenceHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Intelligence"
+
+[node name="IntelligenceSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/IntelligenceHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 99.0
+rounded = true

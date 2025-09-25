@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://44poqbdqu3q5"]
+
+[ext_resource type="Theme" uid="uid://bk0edvbb81s2k" path="res://ui/theme.tres" id="1_lq18c"]
+[ext_resource type="Script" uid="uid://sjlvwmrj3tx2" path="res://ui/item_panel.gd" id="2_2nlfp"]
+
+[node name="ItemPanel" type="Panel"]
+custom_minimum_size = Vector2(140, 60)
+offset_right = 335.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lq18c")
+script = ExtResource("2_2nlfp")
+
+[node name="TooltipTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+clip_text = true
+
+[node name="AmountLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1

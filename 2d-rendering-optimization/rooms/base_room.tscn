@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=4 uid="uid://7cviypjobrtq"]
 
-[ext_resource type="TileSet" uid="uid://otxi26wdntut" path="res://rooms/assets/tileset_floating_dungeon.tres" id="1"]
+[ext_resource type="TileSet" uid="uid://otxi26wdntut" path="res://rooms/tileset/tileset_floating_dungeon.tres" id="1"]
 [ext_resource type="Script" uid="uid://dw6cy5ee447ty" path="res://rooms/base_room.gd" id="3"]
 
 [node name="BaseRoom" type="Node2D"]

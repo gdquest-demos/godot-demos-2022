@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb1o4rl20igkt"]
+
+[ext_resource type="Theme" uid="uid://bk0edvbb81s2k" path="res://ui/theme.tres" id="1_h7t4f"]
+[ext_resource type="Script" uid="uid://bys7p0ywxsjsw" path="res://ui/tooltip_panel.gd" id="2_kbr6i"]
+
+[node name="TooltipPanel" type="Panel"]
+custom_minimum_size = Vector2(260, 100)
+offset_right = 266.0
+offset_bottom = 103.0
+theme = ExtResource("1_h7t4f")
+script = ExtResource("2_kbr6i")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 15.0
+offset_right = -12.0
+offset_bottom = -15.0
+text = "Item description goes here!"
+clip_text = true

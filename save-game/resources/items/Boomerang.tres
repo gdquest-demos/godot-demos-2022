@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/boomerang_wood.png" type="Texture" id=1]
-[ext_resource path="res://resources/ItemData.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://c5jl2ug4ayb6y" path="res://assets/boomerang_wood.png" id="1"]
+[ext_resource type="Script" uid="uid://dmv3mf0io0fon" path="res://resources/item_data.gd" id="2"]
 
 [resource]
 script = ExtResource( 2 )

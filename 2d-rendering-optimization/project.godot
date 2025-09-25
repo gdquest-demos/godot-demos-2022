@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Optimize 2D games with visibility notifiers (GDQuest and BimDav)"
 config/description="This demo shows how using visibility, you can save a lot of performance in 2D games."
-run/main_scene="res://demo.tscn"
+run/main_scene="res://demo_2d.tscn"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
