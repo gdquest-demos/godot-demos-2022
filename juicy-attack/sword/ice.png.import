@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3hkgsgk65ret"
-path="res://.godot/imported/shadow_circle.png-6d22601ba9de0f9495edff6fda1e2186.ctex"
+uid="uid://cl1bq6xfokvvg"
+path="res://.godot/imported/ice.png-d7c88e7c2c20ee54f96900add3e58c89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shadow_circle.png"
-dest_files=["res://.godot/imported/shadow_circle.png-6d22601ba9de0f9495edff6fda1e2186.ctex"]
+source_file="res://sword/ice.png"
+dest_files=["res://.godot/imported/ice.png-d7c88e7c2c20ee54f96900add3e58c89.ctex"]
 
 [params]
 

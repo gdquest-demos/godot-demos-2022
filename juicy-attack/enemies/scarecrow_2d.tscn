@@ -1,0 +1,237 @@
+[gd_scene load_steps=16 format=3 uid="uid://bbont3gk20h54"]
+
+[ext_resource type="Texture2D" uid="uid://b02cv4cxgrnda" path="res://enemies/boss_inactive.png" id="1"]
+[ext_resource type="Script" uid="uid://bbpgvx2vet04c" path="res://enemies/scarecrow_2d.gd" id="2"]
+[ext_resource type="Script" uid="uid://oxejaoyw8o2a" path="res://nodes/hurt_area_2d.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://hfhigg7ev70s" path="res://sword/snow.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://3hkgsgk65ret" path="res://assets/shadow_circle.png" id="6"]
+
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(69, 106)
+
+[sub_resource type="Shader" id="9"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+void fragment() {
+	// Replaces all but alpha to white if active = true
+	COLOR = texture(TEXTURE, UV);
+	if (active == true)
+		COLOR.rgb = vec3(1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="10"]
+resource_local_to_scene = true
+shader = SubResource("9")
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="14"]
+
+[sub_resource type="Curve" id="11"]
+_data = [Vector2(0, 0.35061), 0.0, 0.0, 0, 0, Vector2(0.14, 0.992886), 0.0, 0.0, 0, 0, Vector2(1, 0.221545), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="12"]
+curve = SubResource("11")
+
+[sub_resource type="ParticleProcessMaterial" id="13"]
+emission_shape = 1
+emission_sphere_radius = 16.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("12")
+
+[sub_resource type="Animation" id="3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtArea2D/CollisionShape2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.560784, 0.870588, 0.364706, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodySprite2D:material:shader_param/active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitGPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "hit"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtArea2D/CollisionShape2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.560784, 0.870588, 0.364706, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25),
+"transitions": PackedFloat32Array(-2, -2, 1, 1),
+"update": 0,
+"values": [-20.0, 20.0, -10.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite2D:material:shader_param/active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitGPUParticles2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitGPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sixs"]
+_data = {
+&"RESET": SubResource("3"),
+&"hit": SubResource("4")
+}
+
+[node name="Scarecrow2D" type="CharacterBody2D"]
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -54.5)
+shape = SubResource("7")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
+texture = ExtResource("6")
+
+[node name="BodySprite2D" type="Sprite2D" parent="."]
+material = SubResource("10")
+position = Vector2(0, -39)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+offset = Vector2(0, -40)
+
+[node name="DamageSpawningPoint2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -105)
+
+[node name="HurtArea2D" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
+self_modulate = Color(0.560784, 0.870588, 0.364706, 1)
+material = SubResource("14")
+position = Vector2(0, -54)
+shape = SubResource("7")
+
+[node name="DamageLabelPivot2D" type="Marker2D" parent="HurtArea2D"]
+position = Vector2(-1, -105)
+
+[node name="Timer" type="Timer" parent="HurtArea2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="HitGPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -39)
+emitting = false
+amount = 6
+texture = ExtResource("4")
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.8
+randomness = 0.59
+process_material = SubResource("13")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_1sixs")
+}

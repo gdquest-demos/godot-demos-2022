@@ -1,0 +1,236 @@
+[gd_scene load_steps=20 format=3 uid="uid://c8n2h8bppd5bt"]
+
+[ext_resource type="Texture2D" uid="uid://cl1bq6xfokvvg" path="res://sword/ice.png" id="1"]
+[ext_resource type="Script" uid="uid://b8shprjaeiw0w" path="res://sword/sword_2d.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://3hkgsgk65ret" path="res://assets/shadow_circle.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c4pokmv0g6knf" path="res://sword/sword_ice.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dx1jxs0dx1b51" path="res://sword/trail.png" id="8"]
+[ext_resource type="AudioStream" uid="uid://cwu71uucxqjc3" path="res://sword/mixkit-sword-slash-swoosh-1476.mp3" id="9"]
+[ext_resource type="Script" uid="uid://cf4ge0o1ksd2v" path="res://nodes/hit_area_2d.gd" id="10"]
+
+[sub_resource type="ShaderMaterial" id="43"]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(78.5, 52)
+
+[sub_resource type="Gradient" id="41"]
+offsets = PackedFloat32Array(0, 0.283871, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.690196, 1, 0.945098, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="42"]
+gradient = SubResource("41")
+
+[sub_resource type="Curve" id="37"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="38"]
+curve = SubResource("37")
+
+[sub_resource type="Curve" id="39"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.516854, 0.963636), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="40"]
+curve = SubResource("39")
+
+[sub_resource type="ParticleProcessMaterial" id="36"]
+emission_shape = 3
+emission_box_extents = Vector3(40, 10, 1)
+direction = Vector3(0, 1, 0)
+spread = 25.0
+gravity = Vector3(0, 200, 0)
+damping_curve = SubResource("38")
+scale_min = 0.14
+scale_max = 0.16
+scale_curve = SubResource("40")
+color_ramp = SubResource("42")
+
+[sub_resource type="Animation" id="7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot2D/Sprite2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot2D/Sprite2D/HitArea2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot2D/Sprite2D/HitArea2D/CollisionShape2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.690196, 0.188235, 0.360784, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot2D/Sprite2D/TrailSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="9"]
+resource_name = "slash"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot2D/Sprite2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.3),
+"transitions": PackedFloat32Array(-2, 0.31864, 2, 1),
+"update": 0,
+"values": [0.0, -140.0, 90.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot2D/Sprite2D/HitArea2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot2D/Sprite2D/HitArea2D/CollisionShape2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.06, 0.14, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.376471, 0.376471, 0.439216, 1), Color(0.376471, 0.376471, 0.439216, 1), Color(0.690196, 0.188235, 0.360784, 1), Color(0.690196, 0.188235, 0.360784, 1), Color(0.376471, 0.376471, 0.439216, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot2D/Sprite2D/TrailSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lx4ti"]
+_data = {
+&"RESET": SubResource("7"),
+&"slash": SubResource("9")
+}
+
+[node name="Sword2D" type="Node2D"]
+script = ExtResource("2")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(8, 42)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4")
+
+[node name="Pivot2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot2D"]
+texture = ExtResource("6")
+offset = Vector2(40, 0)
+
+[node name="TrailSprite2D" type="Sprite2D" parent="Pivot2D/Sprite2D"]
+visible = false
+show_behind_parent = true
+position = Vector2(55, -31)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8")
+
+[node name="HitArea2D" type="Area2D" parent="Pivot2D/Sprite2D"]
+script = ExtResource("10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot2D/Sprite2D/HitArea2D"]
+self_modulate = Color(0.690196, 0.188235, 0.360784, 1)
+material = SubResource("43")
+position = Vector2(70, 0)
+shape = SubResource("5")
+disabled = true
+
+[node name="FrozenGPUParticles2D" type="GPUParticles2D" parent="Pivot2D"]
+show_behind_parent = true
+position = Vector2(66, 1)
+amount = 6
+texture = ExtResource("1")
+randomness = 1.0
+process_material = SubResource("36")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9")
+volume_db = -22.4
+pitch_scale = 2.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_lx4ti")
+}

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://5d5lxk7hnuwo"]
+
+[ext_resource type="Script" uid="uid://db4myhjp7h4e" path="res://game_2d.gd" id="1_maf6m"]
+[ext_resource type="Texture2D" uid="uid://cysgy6diop8x5" path="res://assets/space_background.png" id="2_g6ab5"]
+[ext_resource type="PackedScene" uid="uid://bbont3gk20h54" path="res://enemies/scarecrow_2d.tscn" id="3_7lhhl"]
+[ext_resource type="Script" uid="uid://cskdkxht75264" path="res://sword/player_2d.gd" id="4_w8cch"]
+[ext_resource type="PackedScene" uid="uid://c8n2h8bppd5bt" path="res://sword/sword_2d.tscn" id="5_5me66"]
+
+[sub_resource type="CircleShape2D" id="1"]
+
+[node name="Game2D" type="Node2D"]
+script = ExtResource("1_maf6m")
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_g6ab5")
+
+[node name="Scarecrows2D" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Scarecrow2D" parent="Scarecrows2D" instance=ExtResource("3_7lhhl")]
+position = Vector2(150, -1)
+
+[node name="Scarecrow2D2" parent="Scarecrows2D" instance=ExtResource("3_7lhhl")]
+position = Vector2(-150, 0)
+
+[node name="Player2D" type="CharacterBody2D" parent="."]
+script = ExtResource("4_w8cch")
+
+[node name="Sword2D" parent="Player2D" instance=ExtResource("5_5me66")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2D"]
+shape = SubResource("1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.429, 1.429)
