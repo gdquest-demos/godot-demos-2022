@@ -1,0 +1,131 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bd4gxxobnrgwr"]
+
+[ext_resource type="Texture2D" uid="uid://cw334whc6kqo7" path="res://ui/checkbox_checked.png" id="1_iqtc0"]
+[ext_resource type="FontFile" uid="uid://bbm25fo1brvp0" path="res://ui/fonts/OpenSans-Regular.ttf" id="1_jf26r"]
+[ext_resource type="FontFile" uid="uid://sgrnmovdvqlh" path="res://ui/fonts/Montserrat-Bold.ttf" id="2_6lx7k"]
+[ext_resource type="Texture2D" uid="uid://cy1d2eimtuhkj" path="res://ui/checkbox_empty.png" id="2_7any1"]
+
+[sub_resource type="StyleBoxEmpty" id="6"]
+
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.282353, 0.282353, 0.411765, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="4"]
+bg_color = Color(0.188235, 0.188235, 0.286275, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="5"]
+bg_color = Color(0.0352941, 0.0392157, 0.12549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ImageTexture" id="11"]
+
+[sub_resource type="StyleBoxFlat" id="12"]
+bg_color = Color(0.247059, 0.588235, 0.886275, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="13"]
+bg_color = Color(0.458824, 0.745098, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="10"]
+bg_color = Color(0.0431373, 0.0470588, 0.12549, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.0431373, 0.0470588, 0.12549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="9"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.133333, 0.592157, 0.917647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="8"]
+content_margin_left = 12.0
+content_margin_top = 2.0
+content_margin_right = 12.0
+content_margin_bottom = 2.0
+bg_color = Color(0.0431373, 0.0470588, 0.12549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0.0901961, 0.0941176, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="FontFile" id="7"]
+fallbacks = Array[Font]([ExtResource("1_jf26r")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[resource]
+default_font = ExtResource("1_jf26r")
+default_font_size = 24
+Button/styles/focus = SubResource("6")
+Button/styles/hover = SubResource("3")
+Button/styles/normal = SubResource("4")
+Button/styles/pressed = SubResource("5")
+CheckBox/constants/h_separation = 8
+CheckBox/icons/checked = ExtResource("1_iqtc0")
+CheckBox/icons/unchecked = ExtResource("2_7any1")
+HSlider/icons/grabber = SubResource("11")
+HSlider/icons/grabber_disabled = SubResource("11")
+HSlider/icons/grabber_highlight = SubResource("11")
+HSlider/icons/tick = SubResource("11")
+HSlider/styles/grabber_area = SubResource("12")
+HSlider/styles/grabber_area_highlight = SubResource("13")
+HSlider/styles/slider = SubResource("10")
+LineEdit/styles/focus = SubResource("9")
+LineEdit/styles/normal = SubResource("8")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+Panel/styles/panel = SubResource("2")
+PanelContainer/styles/panel = SubResource("2")
+RichTextLabel/fonts/bold_font = SubResource("7")
+RichTextLabel/fonts/italics_font = SubResource("7")
+RichTextLabel/fonts/normal_font = SubResource("7")
+TitleLabel/base_type = &"Label"
+TitleLabel/font_sizes/font_size = 26
+TitleLabel/fonts/font = ExtResource("2_6lx7k")

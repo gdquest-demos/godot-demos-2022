@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dou3cs6aramfv"]
+
+[ext_resource type="Script" uid="uid://brboio0wmv11o" path="res://ammo_and_reloading_demo/weapons/bullet_2d.gd" id="1_vvaxq"]
+[ext_resource type="Texture2D" uid="uid://18nmy6sa4fbl" path="res://weapons/particle_bullet.png" id="2_jels7"]
+[ext_resource type="Texture2D" uid="uid://bogvf3l0trx23" path="res://ammo_and_reloading_demo/weapons/bullet.png" id="3_c83oa"]
+[ext_resource type="Script" uid="uid://5n88immsujob" path="res://nodes/hit_area_2d.gd" id="4_sbsjm"]
+
+[sub_resource type="Gradient" id="10"]
+offsets = PackedFloat32Array(0, 0.407407, 1)
+colors = PackedColorArray(0.0634918, 0.0734516, 0.427734, 1, 0.341957, 0.349487, 0.658203, 0.8, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="11"]
+gradient = SubResource("10")
+
+[sub_resource type="ParticleProcessMaterial" id="12"]
+lifetime_randomness = 0.65
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.0
+color_ramp = SubResource("11")
+
+[sub_resource type="ShaderMaterial" id="15"]
+
+[sub_resource type="CapsuleShape2D" id="9"]
+radius = 14.0001
+height = 45.9999
+
+[node name="Bullet2D" type="Node2D"]
+script = ExtResource("1_vvaxq")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-32, 0)
+amount = 20
+texture = ExtResource("2_jels7")
+lifetime = 0.2
+randomness = 1.0
+process_material = SubResource("12")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 0)
+rotation = 0.785397
+scale = Vector2(0.250331, 0.250331)
+texture = ExtResource("3_c83oa")
+
+[node name="HitArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, 0)
+script = ExtResource("4_sbsjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+self_modulate = Color(0.690196, 0.188235, 0.360784, 1)
+material = SubResource("15")
+rotation = 1.57079
+shape = SubResource("9")

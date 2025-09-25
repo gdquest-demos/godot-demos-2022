@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://bq0455w836k"]
+
+[ext_resource type="Script" uid="uid://c1umti11y8y7w" path="res://homing_demo/weapons/missile_2d.gd" id="1_45ye1"]
+[ext_resource type="Texture2D" uid="uid://18nmy6sa4fbl" path="res://weapons/particle_bullet.png" id="2_buo73"]
+[ext_resource type="Texture2D" uid="uid://bucpg2mgsim5m" path="res://homing_demo/weapons/t_40_02.png" id="3_iyonj"]
+[ext_resource type="Script" uid="uid://5n88immsujob" path="res://nodes/hit_area_2d.gd" id="4_y0kdj"]
+
+[sub_resource type="Gradient" id="10"]
+offsets = PackedFloat32Array(0, 0.31339, 0.777778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.930664, 0.798064, 0.112698, 1, 0.933594, 0.072937, 0.072937, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="11"]
+gradient = SubResource("10")
+
+[sub_resource type="Curve" id="13"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.475936, 0.418182), -2.6093, -2.6093, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="14"]
+curve = SubResource("13")
+
+[sub_resource type="ParticleProcessMaterial" id="12"]
+lifetime_randomness = 0.65
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.0
+scale_curve = SubResource("14")
+color_ramp = SubResource("11")
+
+[sub_resource type="ShaderMaterial" id="15"]
+
+[sub_resource type="CapsuleShape2D" id="9"]
+radius = 14.0001
+height = 45.9999
+
+[sub_resource type="ShaderMaterial" id="16"]
+
+[sub_resource type="CircleShape2D" id="5"]
+radius = 1371.27
+
+[node name="Missile2D" type="Node2D"]
+script = ExtResource("1_45ye1")
+lifetime = 10.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-32, 0)
+amount = 200
+texture = ExtResource("2_buo73")
+lifetime = 0.5
+randomness = 0.57
+process_material = SubResource("12")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 0)
+rotation = 0.785397
+scale = Vector2(0.250331, 0.250331)
+texture = ExtResource("3_iyonj")
+
+[node name="HitArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, 0)
+script = ExtResource("4_y0kdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+material = SubResource("15")
+rotation = 1.57079
+shape = SubResource("9")
+
+[node name="EnemyDetectorArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(42, 0)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorArea2D"]
+material = SubResource("16")
+shape = SubResource("5")
+
+[node name="AimLine2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.247059, 0.576471, 0.941176, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TargetLine2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.854902, 0.411765, 0.294118, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ChangeLine2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.290196, 1, 0, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

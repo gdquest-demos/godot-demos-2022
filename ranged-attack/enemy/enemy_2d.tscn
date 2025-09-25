@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://bim1nqexkfxbi"]
+
+[ext_resource type="Texture2D" uid="uid://bhevel5ufkdeg" path="res://enemy/enemy.png" id="1"]
+[ext_resource type="Script" uid="uid://c4qvvyc1mgn05" path="res://enemy/enemy_2d.gd" id="2"]
+[ext_resource type="Script" uid="uid://d248pejc5vv5p" path="res://nodes/hurt_area_2d.gd" id="3"]
+
+[sub_resource type="ShaderMaterial" id="10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5p6bu"]
+radius = 23.0
+
+[sub_resource type="ShaderMaterial" id="9"]
+
+[sub_resource type="Animation" id="3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "hit"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.004, -1.889, 0.002, 0.777, 0.942, 0, 0.038, 0.002, -0.169, -0.038, -0.004, 0, 0.004, 0),
+"times": PackedFloat32Array(0, 0.1, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5p6bu"]
+_data = {
+&"RESET": SubResource("3"),
+&"hit": SubResource("7")
+}
+
+[node name="Enemy2D" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+self_modulate = Color(0.560784, 0.870588, 0.364706, 1)
+material = SubResource("10")
+shape = SubResource("CircleShape2D_5p6bu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+
+[node name="HurtArea2D" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
+self_modulate = Color(0.560784, 0.870588, 0.364706, 1)
+material = SubResource("9")
+shape = SubResource("CircleShape2D_5p6bu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5p6bu")
+}

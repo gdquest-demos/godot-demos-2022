@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://bt4oowvncnvus"]
+
+[ext_resource type="PackedScene" uid="uid://3gtrfu262kv8" path="res://homing_demo/player/player_2d.tscn" id="2_yqyed"]
+[ext_resource type="Texture2D" uid="uid://cj03akkqyw6vw" path="res://space_background.png" id="3_wm1n6"]
+[ext_resource type="PackedScene" uid="uid://bim1nqexkfxbi" path="res://enemy/enemy_2d.tscn" id="4_vxx51"]
+[ext_resource type="Theme" uid="uid://bd4gxxobnrgwr" path="res://ui/theme.tres" id="5_3biby"]
+[ext_resource type="FontFile" path="res://ui/fonts/font_text.tres" id="7_a2fjj"]
+[ext_resource type="Script" uid="uid://cicy7t5k8offd" path="res://homing_demo/enemy_movement_check_box.gd" id="12_kakr2"]
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1432, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(840, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="1"]
+resource_name = "enemy_move"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(840, -0.25, 0, 0.25, 0, 256, -0.25, 0, 0.25, 0, 840, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nseuv"]
+_data = {
+&"RESET": SubResource("2"),
+&"enemy_move": SubResource("1")
+}
+
+[node name="HomingDemo2D" type="Node2D"]
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("3_wm1n6")
+centered = false
+
+[node name="Player2D" parent="." instance=ExtResource("2_yqyed")]
+position = Vector2(481, 549)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(959, 546)
+zoom = Vector2(1.429, 1.429)
+
+[node name="Enemy2D" parent="." instance=ExtResource("4_vxx51")]
+position = Vector2(1432, 840)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_nseuv")
+}
+autoplay = "enemy_move"
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="UserInterface"]
+offset_left = 43.0
+offset_top = 41.0
+offset_right = 422.0
+offset_bottom = 342.0
+theme = ExtResource("5_3biby")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ControlsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_3biby")
+theme_type_variation = &"TitleLabel"
+text = "Homing Missile Demo"
+
+[node name="HSeparator" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_3biby")
+theme_override_fonts/font = ExtResource("7_a2fjj")
+text = "• Left-click: Homing Missile"
+
+[node name="HSeparator2" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="OptionsTitle" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_3biby")
+theme_type_variation = &"TitleLabel"
+text = "Options"
+
+[node name="HSeparator3" type="HSeparator" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EnemyMovementCheckBox" type="CheckBox" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+text = "Enemy movement"
+flat = true
+script = ExtResource("12_kakr2")
+
+[node name="TravelSpeedHBoxContainer" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TravelSpeedHSlider" type="HSlider" parent="UserInterface/Panel/MarginContainer/VBoxContainer/TravelSpeedHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1000.0
+value = 400.0
+
+[node name="Label" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/TravelSpeedHBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme = ExtResource("5_3biby")
+theme_override_fonts/font = ExtResource("7_a2fjj")
+text = "Travel Speed"
+
+[node name="DragFactorHBoxContainer" type="HBoxContainer" parent="UserInterface/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DragFactorHSlider" type="HSlider" parent="UserInterface/Panel/MarginContainer/VBoxContainer/DragFactorHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 0.5
+step = 0.01
+value = 0.15
+
+[node name="Label" type="Label" parent="UserInterface/Panel/MarginContainer/VBoxContainer/DragFactorHBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme = ExtResource("5_3biby")
+theme_override_fonts/font = ExtResource("7_a2fjj")
+text = "Drag Factor"

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dowo1iewsketx"]
+
+[ext_resource type="Script" uid="uid://majisc137l4h" path="res://weapons/arrow_2d.gd" id="1_8oog4"]
+[ext_resource type="Texture2D" uid="uid://buklt3a6ti5e7" path="res://weapons/arrow.png" id="2_jxf5n"]
+[ext_resource type="Script" uid="uid://5n88immsujob" path="res://nodes/hit_area_2d.gd" id="3_k6733"]
+
+[sub_resource type="ShaderMaterial" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 18.0
+
+[sub_resource type="ShaderMaterial" id="3"]
+
+[node name="Arrow2D" type="Node2D"]
+script = ExtResource("1_8oog4")
+speed = 1500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jxf5n")
+
+[node name="HitArea2D" type="Area2D" parent="."]
+position = Vector2(45, 0)
+monitoring = false
+script = ExtResource("3_k6733")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+material = SubResource("2")
+shape = SubResource("1")
+
+[node name="ImpactDetectorArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(45, 0)
+collision_layer = 0
+collision_mask = 5
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetectorArea2D"]
+material = SubResource("3")
+shape = SubResource("1")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

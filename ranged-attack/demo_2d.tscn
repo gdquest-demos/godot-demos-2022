@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://b86nwkqyp5uft"]
+
+[ext_resource type="PackedScene" uid="uid://dxiayhvrk5tnm" path="res://player/player_2d.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bim1nqexkfxbi" path="res://enemy/enemy_2d.tscn" id="2"]
+[ext_resource type="Theme" uid="uid://bd4gxxobnrgwr" path="res://ui/theme.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://cj03akkqyw6vw" path="res://space_background.png" id="4"]
+
+[node name="Demo2D" type="Node2D"]
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("4")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(959, 546)
+zoom = Vector2(1.429, 1.429)
+
+[node name="Player2D" parent="." instance=ExtResource("1")]
+position = Vector2(613, 543)
+
+[node name="Enemy2" parent="." instance=ExtResource("2")]
+position = Vector2(1232, 660)
+
+[node name="Enemy3" parent="." instance=ExtResource("2")]
+position = Vector2(1198, 727)
+
+[node name="Enemy1" parent="." instance=ExtResource("2")]
+position = Vector2(1234, 389)
+
+[node name="Enemy4" parent="." instance=ExtResource("2")]
+position = Vector2(1269, 729)
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="UICanvasLayer"]
+offset_left = 43.0
+offset_top = 41.0
+offset_right = 343.0
+offset_bottom = 199.0
+theme = ExtResource("3")
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="UICanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3")
+theme_type_variation = &"TitleLabel"
+text = "Controls"
+
+[node name="HSeparator" type="HSeparator" parent="UICanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="UICanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3")
+text = "• Left-click: arrow
+• Right-click: fireball"

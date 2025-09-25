@@ -1,0 +1,9 @@
+[gd_resource type="FontFile" load_steps=2 format=2]
+
+[ext_resource type="FontFile" uid="uid://sgrnmovdvqlh" path="res://ui/fonts/Montserrat-Bold.ttf" id="1"]
+
+[resource]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )

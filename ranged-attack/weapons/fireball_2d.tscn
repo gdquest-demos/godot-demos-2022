@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6cdu73m6nkv4"]
+
+[ext_resource type="Texture2D" uid="uid://bqbpr3rah6h5d" path="res://weapons/fire.png" id="1"]
+[ext_resource type="Script" uid="uid://syio7nvaaks3" path="res://weapons/fireball_2d.gd" id="2"]
+[ext_resource type="Script" uid="uid://5n88immsujob" path="res://nodes/hit_area_2d.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://18nmy6sa4fbl" path="res://weapons/particle_bullet.png" id="6"]
+
+[sub_resource type="Gradient" id="13"]
+offsets = PackedFloat32Array(0, 0.133333, 0.283333, 0.74, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.992188, 1, 0, 1, 1, 0.304688, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="12"]
+gradient = SubResource("13")
+
+[sub_resource type="Curve" id="14"]
+_data = [Vector2(0, 1), 0.0, 0.74375, 0, 0, Vector2(1, 0.0147727), -3.70909, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="5"]
+curve = SubResource("14")
+
+[sub_resource type="ParticleProcessMaterial" id="15"]
+emission_shape = 1
+emission_sphere_radius = 6.99
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.0
+scale_curve = SubResource("5")
+color_ramp = SubResource("12")
+
+[sub_resource type="ShaderMaterial" id="19"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 226.035
+
+[sub_resource type="ShaderMaterial" id="20"]
+
+[sub_resource type="CircleShape2D" id="18"]
+radius = 30.2655
+
+[node name="Fireball2D" type="Node2D"]
+script = ExtResource("2")
+lifetime = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+texture = ExtResource("1")
+
+[node name="ExplosionGPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 100
+texture = ExtResource("6")
+lifetime = 0.6
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.6
+process_material = SubResource("15")
+
+[node name="HitArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+material = SubResource("19")
+shape = SubResource("1")
+disabled = true
+
+[node name="ImpactDetectorArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 5
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetectorArea2D"]
+self_modulate = Color(0.301961, 0.65098, 1, 1)
+material = SubResource("20")
+rotation = -0.00256297
+shape = SubResource("18")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

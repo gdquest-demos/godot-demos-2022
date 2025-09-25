@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhkjwqpn5hico"]
+
+[ext_resource type="Script" uid="uid://cxwqt44j6egh" path="res://ammo_and_reloading_demo/player/player_2d.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bvqeosshxr8oe" path="res://weapons/wand_fire.png" id="2"]
+[ext_resource type="Theme" uid="uid://bd4gxxobnrgwr" path="res://ui/theme.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://dubulx8tp0qwq" path="res://ammo_and_reloading_demo/weapons/ammo_texture_rect.tscn" id="3_ynrb7"]
+
+[node name="Player2D" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+offset = Vector2(39, 0)
+
+[node name="ShootPosition2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(61, 0)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UICanvasLayer"]
+offset_left = 23.0
+offset_top = 843.0
+offset_right = 542.0
+offset_bottom = 927.0
+theme_override_constants/separation = 14
+
+[node name="AmmoVisualTextureRect" parent="UICanvasLayer/HBoxContainer" instance=ExtResource("3_ynrb7")]
+unique_name_in_owner = false
+layout_mode = 2
+
+[node name="AmmoReservesLabel" type="Label" parent="UICanvasLayer/HBoxContainer/AmmoVisualTextureRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 36)
+layout_mode = 0
+offset_left = -30.0
+offset_top = -15.0
+offset_right = 30.0
+offset_bottom = 21.0
+theme = ExtResource("3")
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AmmoGridContainer" type="GridContainer" parent="UICanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 84)
+layout_mode = 2
+columns = 10
+
+[node name="ReloadProgressControl" type="Control" parent="UICanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -89.0
+offset_right = -128.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3")
+
+[node name="ReloadingProgressBar" type="ProgressBar" parent="UICanvasLayer/ReloadProgressControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 30.0
+theme = ExtResource("3")
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
+[node name="Label" type="Label" parent="UICanvasLayer/ReloadProgressControl"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 300.0
+offset_bottom = 42.0
+text = "Reloading"
+horizontal_alignment = 1

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dubulx8tp0qwq"]
+
+[ext_resource type="Texture2D" uid="uid://bogvf3l0trx23" path="res://ammo_and_reloading_demo/weapons/bullet.png" id="1_j1nbr"]
+
+[node name="AmmoTextureRect" type="TextureRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+texture = ExtResource("1_j1nbr")
+expand_mode = 1
+stretch_mode = 5
