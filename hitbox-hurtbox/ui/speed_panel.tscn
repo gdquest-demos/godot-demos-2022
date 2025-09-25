@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://haurk7184ppv"]
+
+[ext_resource type="Theme" uid="uid://dqsspujlsjg62" path="res://ui/theme.tres" id="1"]
+[ext_resource type="Script" uid="uid://c0rbqlo2fbabw" path="res://ui/speed_panel.gd" id="2"]
+
+[node name="SpeedPanel" type="Panel"]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 454.0
+offset_bottom = 126.0
+theme = ExtResource("1")
+script = ExtResource("2")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 410.0
+offset_bottom = 39.0
+text = "Speed"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 41.0
+offset_right = 410.0
+offset_bottom = 81.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 10.0
+step = 5.0
+value = 50.0
+scrollable = false

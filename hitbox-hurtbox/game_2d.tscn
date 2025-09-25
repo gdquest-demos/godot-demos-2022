@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch3cy4gj2q7o8"]
+
+[ext_resource type="PackedScene" uid="uid://haurk7184ppv" path="res://ui/speed_panel.tscn" id="1_mq1rl"]
+[ext_resource type="Texture2D" uid="uid://dsvmrlmvd4ho6" path="res://space_background.png" id="2_maf6m"]
+[ext_resource type="PackedScene" uid="uid://bcix3mq5srmum" path="res://enemy/enemy_2d.tscn" id="3_g6ab5"]
+[ext_resource type="PackedScene" uid="uid://bigdrw7ciqlx5" path="res://sword/sword_2d.tscn" id="4_7lhhl"]
+
+[node name="Game2D" type="Node2D"]
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeedPanel" parent="UICanvasLayer" instance=ExtResource("1_mq1rl")]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 458.0
+offset_bottom = 139.0
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+position = Vector2(963, 537)
+texture = ExtResource("2_maf6m")
+
+[node name="Enemy2D" parent="." instance=ExtResource("3_g6ab5")]
+position = Vector2(1025, 536)
+
+[node name="Enemy2D2" parent="." instance=ExtResource("3_g6ab5")]
+position = Vector2(948, 664)
+
+[node name="Sword2D" parent="." instance=ExtResource("4_7lhhl")]
+position = Vector2(839, 513)
+rotation = -0.783584
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(938, 524)
+zoom = Vector2(1.429, 1.429)

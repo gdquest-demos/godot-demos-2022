@@ -36,8 +36,6 @@ func _physics_process(delta: float) -> void:
 		States.MOVING:
 			# Update direction and animation.
 			var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-			input_direction = input_direction.normalized()
-
 			if input_direction == Vector2.ZERO:
 				_move_animation_player.play("idle")
 			else:

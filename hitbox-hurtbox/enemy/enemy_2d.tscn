@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcix3mq5srmum"]
+
+[ext_resource type="Texture2D" uid="uid://xnegfgsbg7ao" path="res://enemy/enemy.png" id="1"]
+[ext_resource type="Script" uid="uid://cvxs5tyiodusx" path="res://enemy/enemy_2d.gd" id="2"]
+[ext_resource type="Script" uid="uid://ccbcjmb05rjit" path="res://nodes/hurt_area_2d.gd" id="3"]
+[ext_resource type="Theme" uid="uid://dqsspujlsjg62" path="res://ui/theme.tres" id="4_23e3h"]
+
+[sub_resource type="ShaderMaterial" id="8"]
+
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(69, 106)
+
+[sub_resource type="Animation" id="3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtArea2D/CollisionShape2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.560784, 0.870588, 0.364706, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtArea2D/CollisionShape2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.560784, 0.870588, 0.364706, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-10.3044, 12.8719, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5p6bu"]
+_data = {
+&"RESET": SubResource("3"),
+&"hit": SubResource("4")
+}
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(69, 105)
+
+[node name="Enemy2D" type="CharacterBody2D"]
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -34)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+offset = Vector2(0, -55)
+
+[node name="HurtArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
+self_modulate = Color(0.560784, 0.870588, 0.364706, 1)
+material = SubResource("8")
+position = Vector2(0, -54)
+shape = SubResource("7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5p6bu")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -54.5)
+shape = SubResource("5")
+
+[node name="HPProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 10)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -140.0
+offset_right = 50.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_23e3h")
+value = 100.0
+show_percentage = false
