@@ -1,0 +1,32 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://b61ghbi1frs5d"]
+
+[ext_resource type="Texture2D" uid="uid://c3kf44kypbs7n" path="res://tileset/sidescroll_tileset.png" id="1_ven4g"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ven4g"]
+resource_name = "Bushes1"
+texture = ExtResource("1_ven4g")
+texture_region_size = Vector2i(160, 80)
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4x6tr"]
+resource_name = "Bushes2"
+texture = ExtResource("1_ven4g")
+margins = Vector2i(80, 0)
+texture_region_size = Vector2i(160, 80)
+6:0/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+7:2/0 = 0
+
+[resource]
+tile_size = Vector2i(160, 80)
+sources/0 = SubResource("TileSetAtlasSource_ven4g")
+sources/1 = SubResource("TileSetAtlasSource_4x6tr")

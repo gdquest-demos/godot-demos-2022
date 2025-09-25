@@ -1,16 +1,15 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export var speed := 600.0
-export var gravity := 4500.0
-export var jump_strengths := [1400.0, 1000.0]
+@export var speed := 600.0
+@export var gravity := 4500.0
+@export var jump_strengths := [1400.0, 1000.0]
 
-export var controls: Resource = null
+@export var controls: Resource = null
 
 var jump_number := 0
-var velocity := Vector2.ZERO
 
+@onready var _skin := %Skin2D
 
-onready var skin := $Skin
 
 func _ready() -> void:
 	if not controls:
@@ -30,5 +29,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0
 	elif is_on_floor():
 		jump_number = 0
-	velocity = move_and_slide(velocity, Vector2.UP)
-	skin.velocity = velocity
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	_skin.velocity = velocity

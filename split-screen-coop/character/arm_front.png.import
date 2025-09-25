@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpgx0uxx56h74"
-path="res://.godot/imported/background_tile.png-1bf8b84d5a5a0f10f48ece53cbbd4ba3.ctex"
+uid="uid://btr66p71gn27r"
+path="res://.godot/imported/arm_front.png-4d77fd22f4fa28de91cb688f28cfbffe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset/background_tile.png"
-dest_files=["res://.godot/imported/background_tile.png-1bf8b84d5a5a0f10f48ece53cbbd4ba3.ctex"]
+source_file="res://character/arm_front.png"
+dest_files=["res://.godot/imported/arm_front.png-4d77fd22f4fa28de91cb688f28cfbffe.ctex"]
 
 [params]
 

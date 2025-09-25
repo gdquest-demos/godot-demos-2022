@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bekoq5o75pg4i"]
+
+[ext_resource type="Texture2D" uid="uid://c3kf44kypbs7n" path="res://tileset/sidescroll_tileset.png" id="1_syeys"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syeys"]
+texture = ExtResource("1_syeys")
+margins = Vector2i(80, 0)
+texture_region_size = Vector2i(160, 160)
+5:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+
+[resource]
+tile_size = Vector2i(160, 160)
+sources/1 = SubResource("TileSetAtlasSource_syeys")

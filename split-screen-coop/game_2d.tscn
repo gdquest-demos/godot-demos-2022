@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dck2c5p17auta"]
+
+[ext_resource type="Script" uid="uid://dnftah25o4vhq" path="res://game_2d.gd" id="1_iddsw"]
+[ext_resource type="PackedScene" uid="uid://beiuo0kwfqk2b" path="res://room_2d.tscn" id="2_64hpc"]
+
+[node name="Game2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iddsw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="LeftSubViewport" type="SubViewport" parent="HBoxContainer/LeftViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(955, 1080)
+render_target_update_mode = 4
+
+[node name="LeftCamera2D" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+unique_name_in_owner = true
+
+[node name="Room2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" instance=ExtResource("2_64hpc")]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+color = Color(0.301961, 0.65098, 1, 1)
+
+[node name="RightViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="RightSubViewport" type="SubViewport" parent="HBoxContainer/RightViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(955, 1080)
+render_target_update_mode = 4
+
+[node name="RightCamera2D" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+unique_name_in_owner = true
+
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Room2D"]
