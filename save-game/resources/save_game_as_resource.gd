@@ -21,7 +21,6 @@ const SAVE_GAME_BASE_PATH := "user://save"
 @export var character: Resource = Character.new()
 @export var inventory: Resource = Inventory.new()
 
-@export var map_name := ""
 @export var global_position := Vector2.ZERO
 
 

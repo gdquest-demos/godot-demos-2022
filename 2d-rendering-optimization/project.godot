@@ -65,3 +65,8 @@ zoom_out={
 [physics]
 
 common/enable_pause_aware_picking=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -44,7 +44,6 @@ func _create_or_load_save() -> void:
 		_save.inventory.add_item("healing_gem", 3)
 		_save.inventory.add_item("sword", 1)
 
-		_save.map_name = "map_1"
 		_save.global_position = _player.global_position
 
 		_save.write_savegame()

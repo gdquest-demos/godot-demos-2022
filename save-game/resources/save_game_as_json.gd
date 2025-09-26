@@ -7,11 +7,10 @@ var version := 1
 var character: Resource = Character.new()
 var inventory: Resource = Inventory.new()
 
-var map_name := ""
 var global_position := Vector2.ZERO
 
 
-func save_exists() -> bool:
+func save_exists() -> bool:dddd
 	return FileAccess.file_exists(SAVE_GAME_PATH)
 
 
@@ -26,7 +25,6 @@ func write_savegame() -> void:
 			"x": global_position.x,
 			"y": global_position.y,
 		},
-		"map_name": map_name,
 		"player": {
 			"display_name": character.display_name,
 			"run_speed": character.run_speed,
@@ -57,7 +55,6 @@ func load_savegame() -> void:
 	test_json_conv.parse(content)
 	var data: Dictionary = test_json_conv.data
 	global_position = Vector2(data.global_position.x, data.global_position.y)
-	map_name = data.map_name
 
 	character = Character.new()
 	character.display_name = data.player.display_name
