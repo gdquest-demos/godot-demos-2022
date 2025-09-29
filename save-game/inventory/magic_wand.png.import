@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm82d4jevnlvp"
-path="res://.godot/imported/sword.png-95f2475a1c94b517c0dc8c8a23b270ed.ctex"
+uid="uid://s5tgxeq6hxn1"
+path="res://.godot/imported/magic_wand.png-d3d906e971b7586371662539cc139353.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sword.png"
-dest_files=["res://.godot/imported/sword.png-95f2475a1c94b517c0dc8c8a23b270ed.ctex"]
+source_file="res://inventory/magic_wand.png"
+dest_files=["res://.godot/imported/magic_wand.png-d3d906e971b7586371662539cc139353.ctex"]
 
 [params]
 

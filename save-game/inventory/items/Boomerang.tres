@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource type="Texture2D" uid="uid://de7ag52gb01op" path="res://assets/gem_ice.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c5jl2ug4ayb6y" path="res://inventory/boomerang_wood.png" id="1"]
 [ext_resource type="Script" uid="uid://dmv3mf0io0fon" path="res://resources/item_data.gd" id="2"]
 
 [resource]
 script = ExtResource( 2 )
-unique_id = "ice_gem"
-display_name = "Ice gem"
-description = "Freezes enemies in an area."
+unique_id = "boomerang"
+display_name = "Boomerang"
+description = "It booms, then it rangs back"
 icon = ExtResource( 1 )

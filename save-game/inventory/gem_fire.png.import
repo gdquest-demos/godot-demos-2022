@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s5tgxeq6hxn1"
-path="res://.godot/imported/magic_wand.png-1c1c724dc911953472e6384c66640108.ctex"
+uid="uid://ddcqcnkft6nu8"
+path="res://.godot/imported/gem_fire.png-a4d2d8d3fcf12975e60257c3ef9d18ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/magic_wand.png"
-dest_files=["res://.godot/imported/magic_wand.png-1c1c724dc911953472e6384c66640108.ctex"]
+source_file="res://inventory/gem_fire.png"
+dest_files=["res://.godot/imported/gem_fire.png-a4d2d8d3fcf12975e60257c3ef9d18ac.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource type="Texture2D" uid="uid://c5jl2ug4ayb6y" path="res://assets/boomerang_wood.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://s5tgxeq6hxn1" path="res://inventory/magic_wand.png" id="1"]
 [ext_resource type="Script" uid="uid://dmv3mf0io0fon" path="res://resources/item_data.gd" id="2"]
 
 [resource]
 script = ExtResource( 2 )
-unique_id = "boomerang"
-display_name = "Boomerang"
-description = "It booms, then it rangs back"
+unique_id = "wand"
+display_name = "Wand"
+description = "Makes magic"
 icon = ExtResource( 1 )

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource type="Texture2D" uid="uid://ddcqcnkft6nu8" path="res://assets/gem_fire.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d10xr7kkijs6v" path="res://inventory/gem_health.png" id="1"]
 [ext_resource type="Script" uid="uid://dmv3mf0io0fon" path="res://resources/item_data.gd" id="2"]
 
 [resource]
 script = ExtResource( 2 )
-unique_id = "fire_gem"
-display_name = "Fire Gem"
-description = "Launches a fireball."
+unique_id = "healing_gem"
+display_name = "Healing gem"
+description = "Restores 10 health points."
 icon = ExtResource( 1 )

@@ -1,16 +1,20 @@
-class_name SaveGameAsJSON extends RefCounted
+## This version of the demo uses JSON just for saving and loading.
+## 
+class_name SaveGameAsJSON
+extends RefCounted
+
 
 const SAVE_GAME_PATH := "user://save.json"
 
 var version := 1
 
-var character: Resource = Character.new()
-var inventory: Resource = Inventory.new()
+var character := Character.new()
+var inventory := Inventory.new()
 
 var global_position := Vector2.ZERO
 
 
-func save_exists() -> bool:dddd
+func save_exists() -> bool:
 	return FileAccess.file_exists(SAVE_GAME_PATH)
 
 

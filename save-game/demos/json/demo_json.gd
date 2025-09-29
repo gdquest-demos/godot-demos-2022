@@ -2,7 +2,7 @@
 # resources to the user interface and the player.
 extends Node2D
 
-var _save := SaveGameAsJSON.new()
+var _save := .new()
 
 @onready var _player: CharacterBody2D = %Player2D
 @onready var _info_panel_container: PanelContainer = %InfoPanelContainer

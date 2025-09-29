@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Save game demo (GDQuest)"
-run/main_scene="res://save_as_resource_2d.tscn"
+run/main_scene="res://demos/resource/demo_resource.tscn"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 

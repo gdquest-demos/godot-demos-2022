@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://b3yj0uvil015d"]
 
 [ext_resource type="Texture2D" uid="uid://h5xklvjsyrd2" path="res://assets/shadow_circle.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://btq0ns0pp5mhe" path="res://assets/godot.png" id="2"]
-[ext_resource type="Script" uid="uid://byffq2w8tpwct" path="res://player_2d.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://btq0ns0pp5mhe" path="res://player/godot.png" id="2"]
+[ext_resource type="Script" uid="uid://byffq2w8tpwct" path="res://player/player_2d.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://p1bvqjllsf3h" path="res://assets/smoke.png" id="4"]
 
 [sub_resource type="CircleShape2D" id="1"]

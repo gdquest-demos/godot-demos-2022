@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource type="Texture2D" uid="uid://s5tgxeq6hxn1" path="res://assets/magic_wand.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://de7ag52gb01op" path="res://inventory/gem_ice.png" id="1"]
 [ext_resource type="Script" uid="uid://dmv3mf0io0fon" path="res://resources/item_data.gd" id="2"]
 
 [resource]
 script = ExtResource( 2 )
-unique_id = "wand"
-display_name = "Wand"
-description = "Makes magic"
+unique_id = "ice_gem"
+display_name = "Ice gem"
+description = "Freezes enemies in an area."
 icon = ExtResource( 1 )
