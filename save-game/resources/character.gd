@@ -1,4 +1,5 @@
-class_name Character extends Resource
+class_name Character
+extends Resource
 
 # You could use this to display the character's name in-game, in menus, dialogues...
 @export var display_name := "Godot"

@@ -3,7 +3,8 @@
 # /!\ This approach is unsafe if players download completed save games from the
 # web. Please read the README and watch the corresponding video about security
 # issues.
-class_name SaveGameAsResource extends Resource
+class_name SaveGameAsResource
+extends Resource
 
 # You must use the user:// path prefix when saving the player's data.
 #

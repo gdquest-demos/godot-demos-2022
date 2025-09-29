@@ -1,4 +1,5 @@
-class_name Inventory extends Resource
+class_name Inventory
+extends Resource
 
 # Ideally, I would like to store an array of item resources here, but this is
 # not well-supported in Godot 3. Once loaded back, the item resources would lose

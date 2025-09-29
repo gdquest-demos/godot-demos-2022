@@ -1,4 +1,5 @@
-class_name ItemPanel extends Panel
+class_name ItemPanel
+extends Panel
 
 signal tooltip_requested
 

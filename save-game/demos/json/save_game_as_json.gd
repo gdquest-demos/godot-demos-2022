@@ -3,7 +3,6 @@
 class_name SaveGameAsJSON
 extends RefCounted
 
-
 const SAVE_GAME_PATH := "user://save.json"
 
 var version := 1
