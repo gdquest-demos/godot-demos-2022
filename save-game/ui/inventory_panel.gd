@@ -37,10 +37,10 @@ func _update_items_display() -> void:
 	for node in _item_grid_container.get_children():
 		node.queue_free()
 
-	for item_unique_id in inventory.items:
+	for item_stack in inventory.items:
 		var item_panel: ItemPanel = ItemPanelScene.instantiate()
 		_item_grid_container.add_child(item_panel)
-		item_panel.display_item(item_unique_id, inventory.get_amount(item_unique_id))
+		item_panel.display_item(item_stack.unique_id, item_stack.amount)
 		item_panel.tooltip_requested.connect(_on_tooltip_requested.bind(item_panel))
 
 
@@ -50,10 +50,16 @@ func _on_tooltip_requested(item_panel: ItemPanel) -> void:
 
 
 func _add_random_item() -> void:
-	var item_unique_id: String = ItemDatabase.ITEMS.keys()[randi() % ItemDatabase.ITEMS.keys().size()]
+	if ItemDatabase.ITEMS.is_empty():
+		printerr("Cannot add item: ItemDatabase has no items loaded.")
+		return
+
+	var item_keys := ItemDatabase.ITEMS.keys()
+	var item_unique_id: String = item_keys[randi() % item_keys.size()]
 	inventory.add_item(item_unique_id)
 
 
 func _remove_random_item() -> void:
-	if inventory.items:
-		inventory.remove_item(inventory.items.keys()[randi() % inventory.items.keys().size()])
+	if inventory.items.size() > 0:
+		var random_index := randi() % inventory.items.size()
+		inventory.remove_item(inventory.items[random_index].unique_id)

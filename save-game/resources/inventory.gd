@@ -1,39 +1,54 @@
 class_name Inventory
 extends Resource
 
-# Ideally, I would like to store an array of item resources here, but this is
-# not well-supported in Godot 3. Once loaded back, the item resources would lose
-# their type information. This is because GDScript does not support typed arrays in Godot 3.
+# Godot 4 supports typed arrays! We can now store an array of ItemStack objects
+# directly in the inventory resource.
 #
-# So instead, we use a plain dictionary with strings and numbers. Keys are the
-# items' unique ids and values represent the owned amount.
-#
-# Note that dictionaries preserve their order in GDScript.
-@export var items := { }
+# Note: We use Array[Resource] instead of Array[ItemStack] because Godot 4's
+# typed arrays with custom classes can sometimes have issues with serialization.
+# The ItemStack class is defined in item_stack.gd.
+@export var items: Array[ItemStack] = []
 
 
 func add_item(unique_id: String, amount := 1) -> void:
-	if unique_id in items:
-		items[unique_id] += amount
-	else:
-		items[unique_id] = amount
+	# Try to find an existing stack with this item
+	# If we don't find it, create a new stack
+	for item_stack in items:
+		if item_stack.unique_id == unique_id:
+			item_stack.amount += amount
+			emit_changed()
+			return
+
+	var new_stack := ItemStack.new(unique_id, amount)
+	items.append(new_stack)
 	emit_changed()
 
 
 func get_amount(item_unique_id: String) -> int:
-	if not item_unique_id in items:
-		printerr("Trying to get the amount of item %s but the inventory doesn't have it." % item_unique_id)
-		return -1
+	for item_stack in items:
+		if item_stack.unique_id == item_unique_id:
+			return item_stack.amount
 
-	return items[item_unique_id]
+	printerr("Trying to get the amount of item %s but the inventory doesn't have it." % item_unique_id)
+	return 0
 
 
 func remove_item(item_unique_id: String, amount := 1) -> void:
-	if not item_unique_id in items:
-		printerr("Trying to remove item %s but the inventory doesn't have it." % item_unique_id)
-		return
+	for i in range(items.size()):
+		var item_stack := items[i]
+		if item_stack.unique_id == item_unique_id:
+			item_stack.amount -= amount
+			if item_stack.amount <= 0:
+				items.remove_at(i)
+			emit_changed()
+			return
 
-	items[item_unique_id] -= amount
-	if items[item_unique_id] <= 0:
-		items.erase(item_unique_id)
-	emit_changed()
+	printerr("Trying to remove item %s but the inventory doesn't have it." % item_unique_id)
+
+
+# Helper function to check if an item exists in the inventory
+func has_item(item_unique_id: String) -> bool:
+	for item_stack in items:
+		if item_stack.unique_id == item_unique_id:
+			return true
+	return false

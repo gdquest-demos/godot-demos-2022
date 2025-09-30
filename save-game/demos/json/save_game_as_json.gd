@@ -1,5 +1,5 @@
-## This version of the demo uses JSON just for saving and loading.
-## 
+## This version of the demo uses JSON for saving and loading.
+## Updated to work with typed arrays of ItemStack objects in Godot 4.
 class_name SaveGameAsJSON
 extends RefCounted
 
@@ -23,7 +23,18 @@ func write_savegame() -> void:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, FileAccess.get_open_error()])
 		return
 
+	# We need to convert the data to be compatible with JSON. This is what we do here.
+	var inventory_data: Array = []
+	for item_stack in inventory.items:
+		inventory_data.append(
+			{
+				"unique_id": item_stack.unique_id,
+				"amount": item_stack.amount,
+			},
+		)
+
 	var data := {
+		"version": version,
 		"global_position": {
 			"x": global_position.x,
 			"y": global_position.y,
@@ -37,10 +48,10 @@ func write_savegame() -> void:
 			"endurance": character.endurance,
 			"intelligence": character.intelligence,
 		},
-		"inventory": inventory.items,
+		"inventory": inventory_data,
 	}
 
-	var json_string := JSON.stringify(data)
+	var json_string := JSON.stringify(data, "\t")
 	file.store_string(json_string)
 	file.close()
 
@@ -54,11 +65,16 @@ func load_savegame() -> void:
 	var content := file.get_as_text()
 	file.close()
 
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(content)
-	var data: Dictionary = test_json_conv.data
+	var json = JSON.new()
+	var error := json.parse(content)
+	if error != OK:
+		printerr("Failed to parse JSON save file. Error: %s" % json.get_error_message())
+		return
+
+	var data: Dictionary = json.data
 	global_position = Vector2(data.global_position.x, data.global_position.y)
 
+	# After loading from JSON, we need to manually restore the typed Resource properties.
 	character = Character.new()
 	character.display_name = data.player.display_name
 	character.run_speed = data.player.run_speed
@@ -69,4 +85,7 @@ func load_savegame() -> void:
 	character.intelligence = data.player.intelligence
 
 	inventory = Inventory.new()
-	inventory.items = data.inventory
+	var inventory_data: Array = data.inventory
+	for item_data in inventory_data:
+		var item_stack := ItemStack.new(item_data.get("unique_id", ""), item_data.get("amount", 1))
+		inventory.items.append(item_stack)

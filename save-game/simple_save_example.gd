@@ -1,37 +1,43 @@
 extends Node2D
 
 var _save: SimpleSave = null
+var health := 100.0
+var coins := 0
 
 
 func _ready() -> void:
-	_create_or_load_savegame()
-	_update_label()
+	create_or_load_savegame()
+	print_save_data()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
+		_save.health = health
+		_save.coins = coins
 		_save.write_savegame()
-		_update_label()
+		print_save_data()
 	elif event.is_action_pressed("ui_cancel"):
-		_create_or_load_savegame()
-		_update_label()
+		create_or_load_savegame()
+		print_save_data()
 
 
 func _physics_process(delta: float) -> void:
-	_save.health = max(_save.health - delta * 5.0, 0.0)
-	_save.coins += 1
-	_update_label()
+	health = max(health - delta * 5.0, 0.0)
+	coins += 1
 
 
-func _create_or_load_savegame() -> SimpleSave:
+func create_or_load_savegame() -> SimpleSave:
 	if SimpleSave.save_exists():
-		return SimpleSave.load_savegame()
+		_save = SimpleSave.load_savegame()
 	else:
-		var save := SimpleSave.new()
-		save.health = 100.0
-		save.coins = 0
-		return save
+		_save = SimpleSave.new()
+		_save.health = 100.0
+		_save.coins = 0
+
+	health = _save.health
+	coins = _save.coins
+	return _save
 
 
-func _update_label() -> void:
-	print("Health: %.1f | Coins: %d\n\nPress Space to SAVE\nPress Escape to LOAD" % [_save.health, _save.coins])
+func print_save_data() -> void:
+	print("Health: %.1f | Coins: %d\n\nPress Space to SAVE\nPress Escape to LOAD" % [health, coins])

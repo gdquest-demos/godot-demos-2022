@@ -19,7 +19,7 @@ func get_item_data(unique_id: String) -> ItemData:
 
 static func _load_items() -> Array:
 	var item_files := []
-	var items_folder := "res://resources/items"
+	var items_folder := "res://inventory/items"
 
 	var directory := DirAccess.open(items_folder)
 	if not directory:
