@@ -85,8 +85,8 @@ texture = ExtResource("1")
 offset = Vector2(0, -55)
 
 [node name="HurtArea2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
